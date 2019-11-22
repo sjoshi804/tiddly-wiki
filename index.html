@@ -181,6 +181,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/search</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -211,7 +213,11 @@ Error message and password prompt
 
 <li>Meta-Learning via Meta-Gradients</li>
 
+<li>Non-linearity of Data</li>
+
 <li>Normalization of Features</li>
+
+<li>Number of Features and Examples</li>
 
 <li>One-Hot Encoding</li>
 
@@ -9551,7 +9557,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Welcome [[How to Contribute?]]" title="$:/StoryList" revision="1" bag="default">
+<div created="20191122040526968" list="[[Chapter 5 (The Hundred-Page Machine Learning Book)]] [[Non-linearity of Data]] [[Number of Features and Examples]] Welcome [[How to Contribute?]]" modified="20191122041310841" title="$:/StoryList" revision="17" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9611,6 +9617,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20191122040524884" modified="20191122040525690" title="$:/temp/search" revision="7" bag="default">
+<pre>chapter</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -9735,7 +9744,7 @@ e.g. Grouping age in brackets such as 0-5, 5-10, 10-20 etc. to indicate to the m
 
 Opposite of [[One-Hot Encoding]] in a sense.</pre>
 </div>
-<div author="Siddharth Joshi" created="20191122014205483" modified="20191122024755513" tags="[[machine learning]] [[book summary]]" title="Chapter 5 (The Hundred-Page Machine Learning Book)" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="Siddharth Joshi" created="20191122014205483" modified="20191122041508140" tags="[[machine learning]] [[book summary]]" title="Chapter 5 (The Hundred-Page Machine Learning Book)" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>!!! Feature Engineering
 The task of transforming raw data into a dataset with elements being feature vectors. 
 
@@ -9755,7 +9764,9 @@ Factors to consider:
 * [[Memory Requirements of the Dataset]]
 * [[Number of Features and Examples]]
 * [[Non-linearity of Data]]
-* [[Training Speed]]</pre>
+* Training and Prediction Speeds
+
+!!! Dividing Data into Training Set</pre>
 </div>
 <div author="Siddharth Joshi" created="20191122022337773" modified="20191122024526637" tags="[[machine learning]] [[feature engineering]]" title="Data Imputation Techniques" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Techniques to impute a feature value when one is missing for a given example:
@@ -9847,12 +9858,27 @@ Thanks for contributing!</pre>
 <div created="20191120053237171" modified="20191121010456596" tags="incomplete research [[intelligence project]] [[meta learning]]" title="Meta-Learning via Meta-Gradients" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div author="Siddharth Joshi" created="20191122040921452" modified="20191122041301631" tags="[[learning algorithm selection]] [[machine learning]]" title="Non-linearity of Data" revision="1" bag="default">
+<pre>Linearly separable data can be handled well by:
+
+* [[SVMs with Linear Kernel |Support Vector Machine]]
+* [[Logistic Regression]]
+* [[Linear Regression]]
+while others like:
+
+* [[Neural Networks]]
+* SVMs with non-linear kernel
+would be better if the data cannot be modeled by a linear model. </pre>
+</div>
 <div author="Siddharth Joshi" created="20191122020538393" modified="20191122021210115" tags="[[machine learning]] [[feature engineering]]" title="Normalization of Features" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Normalizing the dataset to map the entire range of values into the interval [0, 1] or [-1, 1].
 
 This can help by making hyperparameter  settings found useful in other similar distributions over different ranges applicable, and also by obviating the problems of overflow. 
 
 see also: [[Standardization of Features]]</pre>
+</div>
+<div author="Siddharth Joshi" created="20191122040546770" modified="20191122040906597" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Number of Features and Examples" revision="1" bag="default">
+<pre>Some models like [[Neural Networks]] and [[Gradient Boosting Algorithms]] can handle large datasets with millions of features even whereas others like [[SVMs |Support Vector Machine]] have a much lower capacity. </pre>
 </div>
 <div author="Siddharth Joshi" created="20191122015704840" modified="20191122020919002" tags="[[machine learning]] [[feature engineering]]" title="One-Hot Encoding" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre> Increasing dimensionality of a feature to represent it in the feature vector rather than assigning arbitrary ordered values that might mislead the model. 
