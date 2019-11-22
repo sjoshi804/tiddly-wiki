@@ -169,6 +169,12 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
+<li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -181,6 +187,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/search</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -189,17 +197,37 @@ Error message and password prompt
 
 <li>Auxiliary Tasks in Reinforcement Learning</li>
 
+<li>Binning</li>
+
+<li>Chapter 5 (The Hundred-Page Machine Learning Book)</li>
+
+<li>Data Imputation Techniques</li>
+
+<li>Dealing with Missing Features</li>
+
 <li>Discovery of Useful Questions as Auxiliary Tasks</li>
+
+<li>Explainability of Model</li>
 
 <li>GVF</li>
 
 <li>How to Contribute?</li>
 
+<li>Memory Requirements of the Dataset</li>
+
 <li>Meta Learning</li>
 
 <li>Meta-Learning via Meta-Gradients</li>
 
+<li>Normalization of Features</li>
+
+<li>One-Hot Encoding</li>
+
 <li>Slow Cooker Chicken Curry</li>
+
+<li>Standardization of Features</li>
+
+<li>The Hundred-Page Machine Learning Book by Andriy Burkov</li>
 
 <li>UCLA CS M282A - Cryptography 1</li>
 
@@ -9519,6 +9547,15 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20191122014900188" modified="20191122015520848" title="$:/state/showeditpreview" revision="3" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20191122015518496" modified="20191122020132209" title="$:/state/sidebar" revision="2" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20191122025449682" modified="20191122025449682" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/More</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9531,7 +9568,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Welcome [[How to Contribute?]]" title="$:/StoryList" revision="1" bag="default">
+<div created="20191122014139320" list="[[Chapter 5 (The Hundred-Page Machine Learning Book)]] [[Memory Requirements of the Dataset]] [[Explainability of Model]] [[Data Imputation Techniques]] [[Dealing with Missing Features]] [[Standardization of Features]] [[Normalization of Features]]" modified="20191122025239082" title="$:/StoryList" revision="83" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9591,6 +9628,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20191122024538120" modified="20191122024540113" title="$:/temp/search" revision="17" bag="default">
+<pre>how to contribute</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -9707,6 +9747,54 @@ Error message and password prompt
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div author="Siddharth Joshi" created="20191122020156822" modified="20191122020920036" tags="[[feature engineering]] [[machine learning]]" title="Binning" revision="3" bag="default">
+<pre>Taking a numerical feature and converting it into a categorical one.
+
+e.g. Grouping age in brackets such as 0-5, 5-10, 10-20 etc. to indicate to the model that values in the same bucket behave identically for the purposes of the predication task. 
+
+
+Opposite of [[One-Hot Encoding]] in a sense.</pre>
+</div>
+<div author="Siddharth Joshi" created="20191122014205483" modified="20191122024754349" tags="[[machine learning]] [[book summary]]" title="Chapter 5 (The Hundred-Page Machine Learning Book)" type="text/vnd.tiddlywiki" revision="10" bag="default">
+<pre>!!! Feature Engineering
+The task of transforming raw data into a dataset with elements being feature vectors. 
+
+Some common strategies:
+
+* [[One-Hot Encoding]]
+* [[Binning]]
+* [[Normalization |Normalization of Features]]
+* [[Standardization |Standardization of Features]]
+* [[Dealing with Missing Features]]
+* [[Data Imputation Techniques]]
+
+!!! Learning Algorithm Selection
+Factors to consider:
+
+* [[Explainability of Model]]
+* [[Memory Requirements of the Dataset]]
+* [[Number of Features and Examples]]
+* [[Non-linearity of Data]]
+* [[Training Speed]]</pre>
+</div>
+<div author="Siddharth Joshi" created="20191122022337773" modified="20191122024525289" tags="[[machine learning]] [[feature engineering]]" title="Data Imputation Techniques" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<pre>Techniques to impute a feature value when one is missing for a given example:
+
+* Set it to the average value of the feature in the dataset
+* Set it to a special value outside of the normal range
+* Set it to the average value of the range (if the range is finite)
+
+Apply the same techniques to the data which the model must make predictions for to ensure consistency. </pre>
+</div>
+<div author="Siddharth Joshi" created="20191122022030288" modified="20191122022322829" tags="[[feature engineering]] [[machine learning]] [[needs expanding]]" title="Dealing with Missing Features" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre>Data can sometimes have pre-defined features but given datasets can have examples with missing features. 
+
+Can deal with this by:
+
+* Removing said examples if dataset is large enough
+* Use a learning algorithm that can deal with missing features on its own
+* Using [[Data Imputation Techniques]]</pre>
+</div>
 <div author="Siddharth Joshi, Tejas Ramdas" created="20191119182457568" modified="20191120062447902" tags="deepmind research [[intelligence project]] [[reinforcement learning]] [[machine learning]] incomplete [[needs formatting]]" title="Discovery of Useful Questions as Auxiliary Tasks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Link to Paper
 https://arxiv.org/pdf/1909.04607v1
@@ -9747,6 +9835,11 @@ end for
 tbd
 </pre>
 </div>
+<div author="Siddharth Joshi" created="20191122024614624" modified="20191122025224289" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Explainability of Model" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre>Most very accurate learning algorithms are 'black-boxes' i.e it is hard to understand why a model made a particular prediction. 
+
+e.g. [[Neural Networks]], [[Ensemble Models]] are hard to explain but very accurate as opposed to [[K Nearest Neighbors]], [[Linear Regression]], [[Decision Tree Learning]] are quite easy to explain but perhaps not as accurate</pre>
+</div>
 <div author="Siddharth Joshi, Tejas Ramdas" created="20191119200401984" modified="20191121010432345" tags="incomplete [[machine learning]] [[reinforcement learning]] research [[intelligence project]]" title="GVF" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>General Value Function</pre>
 </div>
@@ -9765,11 +9858,26 @@ and many more things that you can look up by googling tiddlywiki
 
 Thanks for contributing!</pre>
 </div>
+<div author="Siddharth Joshi" created="20191122025246838" modified="20191122025438922" tags="[[machine learning]] [[learning algorithm selection]]" title="Memory Requirements of the Dataset" revision="1" bag="default">
+<pre>Can the dataset be fully loaded into the RAM available? If not, it might be better to choose  [[Incremental Learning Algorithms]] that can improve by adding more data gradually. </pre>
+</div>
 <div created="20191119202245097" modified="20191121010413406" tags="incomplete [[intelligence project]] [[machine learning]] [[meta learning]]" title="Meta Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
 <div created="20191120053237171" modified="20191121010456596" tags="incomplete research [[intelligence project]] [[meta learning]]" title="Meta-Learning via Meta-Gradients" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
+</div>
+<div author="Siddharth Joshi" created="20191122020538393" modified="20191122021209042" tags="[[machine learning]] [[feature engineering]]" title="Normalization of Features" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<pre>Normalizing the dataset to map the entire range of values into the interval [0, 1] or [-1, 1].
+
+This can help by making hyperparameter  settings found useful in other similar distributions over different ranges applicable, and also by obviating the problems of overflow. 
+
+see also: [[Standardization of Features]]</pre>
+</div>
+<div author="Siddharth Joshi" created="20191122015704840" modified="20191122020917904" tags="[[machine learning]] [[feature engineering]]" title="One-Hot Encoding" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<pre> Increasing dimensionality of a feature to represent it in the feature vector rather than assigning arbitrary ordered values that might mislead the model. 
+
+e..g: Encoding what major a college student as many dimensional vector with 1 in the index corresponding to the student's major and 0 everywhere else instead of assigning numbers 1, 2, 3 ... to the majors and implying an ordering. </pre>
 </div>
 <div author="Siddharth Joshi" created="20191119181730637" modified="20191119182440762" tags="recipe" title="Slow Cooker Chicken Curry" type="text/plain" revision="0" bag="default">
 <pre>Ingredients:
@@ -9791,6 +9899,29 @@ Instructions:
 - Add pureed tomatoes, diced chicken and saute-ed mixture to slow cooker for 6 hours
 - Add salt to taste
 - Add coriander leaves on top if available</pre>
+</div>
+<div created="20191122021118679" modified="20191122021706169" tags="[[machine learning]] [[feature engineering]]" title="Standardization of Features" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<pre>(Also known as z-score normalization)
+
+Rescaling the values to have the properties of the standard normal distribution with mean = 0 and standard deviation = 1. 
+
+Benefits are similar to [[Normalization of Features]]
+
+Prefer Standardization when:
+
+* There are extreme outliers that would make normalization force most values into a tiny range
+* If the distribution is similar to the normal distribution (and thus typically unsupervised algorithms benefit from standardization as many naturally occurring distributions resemble the normal distribution</pre>
+</div>
+<div author="Siddharth Joshi" created="20191122013518807" modified="20191122014131805" tags="incomplete [[machine learning]] [[book summary]]" title="The Hundred-Page Machine Learning Book by Andriy Burkov" type="text/vnd.tiddlywiki" revision="5" bag="default">
+<pre>!!! Overview
+This is a chapter by chapter summary of the topics covered in The Hundred-Page Machine Learning Book by Andriy Burkov. These notes should hopefully provide an absolute beginner a broad understanding of the most fundamental concepts in theory and implementation of machine learning. 
+
+!!! Contents
+* [[Chapter 1 |Chapter 1 (The Hundred-Page Machine Learning Book)]]
+* [[Chapter 2 |Chapter 2 (The Hundred-Page Machine Learning Book)]]
+* [[Chapter 3 |Chapter 3 (The Hundred-Page Machine Learning Book)]]
+* [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
+* [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
 <div created="20191121010859851" modified="20191121011220661" tags="" title="UCLA CS M282A - Cryptography 1" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
