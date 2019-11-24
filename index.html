@@ -169,6 +169,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/Link/--1502361583/search</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -181,13 +183,13 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/search</li>
-
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
 <li>$:/view</li>
+
+<li>A New Math for Learning Tasks</li>
 
 <li>Auxiliary Tasks in Reinforcement Learning</li>
 
@@ -220,6 +222,8 @@ Error message and password prompt
 <li>Number of Features and Examples</li>
 
 <li>One-Hot Encoding</li>
+
+<li>Persistent Homology</li>
 
 <li>Slow Cooker Chicken Curry</li>
 
@@ -9545,6 +9549,9 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20191124055512659" modified="20191124055512659" title="$:/state/Link/--1502361583/search" revision="1" bag="default">
+<pre>e</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9557,7 +9564,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20191122040526968" list="[[Chapter 5 (The Hundred-Page Machine Learning Book)]] [[Non-linearity of Data]] [[Number of Features and Examples]] Welcome [[How to Contribute?]]" modified="20191122041310841" title="$:/StoryList" revision="17" bag="default">
+<div list="[[A New Math for Learning Tasks]] [[Persistent Homology]] Welcome [[How to Contribute?]]" title="$:/StoryList" revision="9" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9605,11 +9612,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1440&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;900&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9617,9 +9624,6 @@ Error message and password prompt
         }
     }
 }</pre>
-</div>
-<div created="20191122040524884" modified="20191122040525690" title="$:/temp/search" revision="7" bag="default">
-<pre>chapter</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -9733,6 +9737,27 @@ Error message and password prompt
 <div created="20191121035138747" modified="20191121035148674" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>classic</pre>
 </div>
+<div created="20191124054651558" modified="20191124061050656" tags="ongoing [[intelligence project]] research" title="A New Math for Learning Tasks" revision="1" bag="default">
+<pre>The idea emerged initially as a desire to define an inner product space for the set of reinforcement learning tasks to optimize  the work done by auxiliary tasks like in [[Discovery of Useful Questions as Auxiliary Tasks]]. 
+
+After discussion, it seems unlikely that the space we are dealing with can be modeled as a vector space. Maybe more a more general structure such as a topological space would be more useful as it demands less structure. Techniques from [[Topological Data Analysis]] such as [[Persistent Homology]] might be useful as they are able to capture more qualitative notions of similarity and difference. 
+
+Additionally, without making some simplifying assumptions this task is insurmountable as we would be trying to define a mathematical model that can define everything in some sense as everything could be phrased as reinforcement learning task (potentially, albeit with some redundancy and superfluity)
+
+But to make the right assumptions, we would need to clearly define our goal as we don't want our assumptions to over-simplify the problem into 1) something that has already been solved but more importantly 2) something that no longer has the practical applications our initial idea could possibly have.
+
+The initial goal was to define a notion of orthogonality in the space of value functions that define reinforcement learning tasks. The issue, however, is that while value functions are a useful abstraction in solving the problem, when it comes to describing the problem for the purpose of comparison, it seems that any workable mathematical idea doesn't capture any interesting information about the true nature of the problem. 
+
+Thus another idea was maybe thinking of the task in terms of a state diagram. (This raises some questions like is this an accurate representation? I think so, but not sure. More troublingly, is this too general a representation? Cause it might not be limited to representing only reinforcement learning tasks. But if it isn't, do reinforcement learning problems look fundamentally different from others ones or does this state diagram overlaid with other information from the value function, present a particularly useful representation of reinforcement learning tasks?)
+
+However, this idea seemed appealing for many reasons. There are benefits of the state diagram approach from the perspective of applying mathematical tools to it:
+
+* It retains information about the problem better than the value function
+* The resulting structure is a graph which allows usage of a host of tools from graph theory or study of networks
+* It seems to be more adaptable to techniques such as [[Persistent Homology]]
+
+</pre>
+</div>
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
@@ -9744,7 +9769,7 @@ e.g. Grouping age in brackets such as 0-5, 5-10, 10-20 etc. to indicate to the m
 
 Opposite of [[One-Hot Encoding]] in a sense.</pre>
 </div>
-<div author="Siddharth Joshi" created="20191122014205483" modified="20191122041508140" tags="[[machine learning]] [[book summary]]" title="Chapter 5 (The Hundred-Page Machine Learning Book)" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div author="Siddharth Joshi" created="20191122014205483" modified="20191122041509220" tags="[[machine learning]] [[book summary]]" title="Chapter 5 (The Hundred-Page Machine Learning Book)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Feature Engineering
 The task of transforming raw data into a dataset with elements being feature vectors. 
 
@@ -9858,7 +9883,7 @@ Thanks for contributing!</pre>
 <div created="20191120053237171" modified="20191121010456596" tags="incomplete research [[intelligence project]] [[meta learning]]" title="Meta-Learning via Meta-Gradients" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
-<div author="Siddharth Joshi" created="20191122040921452" modified="20191122041301631" tags="[[learning algorithm selection]] [[machine learning]]" title="Non-linearity of Data" revision="1" bag="default">
+<div author="Siddharth Joshi" created="20191122040921452" modified="20191122041302705" tags="[[learning algorithm selection]] [[machine learning]]" title="Non-linearity of Data" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Linearly separable data can be handled well by:
 
 * [[SVMs with Linear Kernel |Support Vector Machine]]
@@ -9877,13 +9902,21 @@ This can help by making hyperparameter  settings found useful in other similar d
 
 see also: [[Standardization of Features]]</pre>
 </div>
-<div author="Siddharth Joshi" created="20191122040546770" modified="20191122040906597" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Number of Features and Examples" revision="1" bag="default">
+<div author="Siddharth Joshi" created="20191122040546770" modified="20191122040907778" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Number of Features and Examples" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Some models like [[Neural Networks]] and [[Gradient Boosting Algorithms]] can handle large datasets with millions of features even whereas others like [[SVMs |Support Vector Machine]] have a much lower capacity. </pre>
 </div>
 <div author="Siddharth Joshi" created="20191122015704840" modified="20191122020919002" tags="[[machine learning]] [[feature engineering]]" title="One-Hot Encoding" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre> Increasing dimensionality of a feature to represent it in the feature vector rather than assigning arbitrary ordered values that might mislead the model. 
 
 e..g: Encoding what major a college student as many dimensional vector with 1 in the index corresponding to the student's major and 0 everywhere else instead of assigning numbers 1, 2, 3 ... to the majors and implying an ordering. </pre>
+</div>
+<div author="Siddharth Joshi" created="20191124054140398" modified="20191124054453260" tags="incomplete [[intelligence project]] research math topology" title="Persistent Homology" revision="3" bag="default">
+<pre>Persistent homology is a method for computing topological features of a space at different spatial resolutions. More persistent features are detected over a wide range of spatial scales and are deemed more likely to represent true features of the underlying space rather than artifacts of sampling, noise, or particular choice of parameters.
+
+Useful Links:
+
+* https://towardsdatascience.com/from-tda-to-dl-d06f234f51d
+</pre>
 </div>
 <div author="Siddharth Joshi" created="20191119181730637" modified="20191119182440762" tags="recipe" title="Slow Cooker Chicken Curry" type="text/plain" revision="0" bag="default">
 <pre>Ingredients:
