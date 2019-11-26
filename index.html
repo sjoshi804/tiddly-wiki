@@ -169,8 +169,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/Link/--1502361583/search</li>
-
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -183,15 +181,21 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/search</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
 <li>$:/view</li>
 
-<li>A New Math for Learning Tasks</li>
+<li>A New Math for Learning Tasks (1)</li>
+
+<li>A New Math for Learning Tasks (2)</li>
 
 <li>Auxiliary Tasks in Reinforcement Learning</li>
+
+<li>Bayesian Network</li>
 
 <li>Binning</li>
 
@@ -203,17 +207,25 @@ Error message and password prompt
 
 <li>Discovery of Useful Questions as Auxiliary Tasks</li>
 
+<li>Do Calculus</li>
+
 <li>Explainability of Model</li>
 
 <li>GVF</li>
 
 <li>How to Contribute?</li>
 
+<li>Lambda Calculus</li>
+
+<li>Markov Decision Process</li>
+
 <li>Memory Requirements of the Dataset</li>
 
 <li>Meta Learning</li>
 
 <li>Meta-Learning via Meta-Gradients</li>
+
+<li>Model Theory</li>
 
 <li>Non-linearity of Data</li>
 
@@ -224,6 +236,8 @@ Error message and password prompt
 <li>One-Hot Encoding</li>
 
 <li>Persistent Homology</li>
+
+<li>Reinforcement Learning: Introduction</li>
 
 <li>Slow Cooker Chicken Curry</li>
 
@@ -9549,9 +9563,6 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20191124055512659" modified="20191124055512659" title="$:/state/Link/--1502361583/search" revision="1" bag="default">
-<pre>e</pre>
-</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9564,7 +9575,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="[[A New Math for Learning Tasks]] [[Persistent Homology]] Welcome [[How to Contribute?]]" title="$:/StoryList" revision="9" bag="default">
+<div created="20191126064752089" list="[[Lambda Calculus]] [[Model Theory]] [[A New Math for Learning Tasks (1)]] [[A New Math for Learning Tasks (2)]] Welcome [[How to Contribute?]]" modified="20191126072912373" title="$:/StoryList" revision="32" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9624,6 +9635,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20191126064747560" modified="20191126072910923" title="$:/temp/search" revision="17" bag="default">
+<pre>lamb</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -9737,7 +9751,7 @@ Error message and password prompt
 <div created="20191121035138747" modified="20191121035148674" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>classic</pre>
 </div>
-<div created="20191124054651558" modified="20191124061050656" tags="ongoing [[intelligence project]] research" title="A New Math for Learning Tasks" revision="1" bag="default">
+<div author="Siddharth Joshi, Tejas Ramdas" created="20191124054651558" modified="20191126070748216" tags="ongoing [[intelligence project]] research" title="A New Math for Learning Tasks (1)" type="text/vnd.tiddlywiki" revision="3" bag="default">
 <pre>The idea emerged initially as a desire to define an inner product space for the set of reinforcement learning tasks to optimize  the work done by auxiliary tasks like in [[Discovery of Useful Questions as Auxiliary Tasks]]. 
 
 After discussion, it seems unlikely that the space we are dealing with can be modeled as a vector space. Maybe more a more general structure such as a topological space would be more useful as it demands less structure. Techniques from [[Topological Data Analysis]] such as [[Persistent Homology]] might be useful as they are able to capture more qualitative notions of similarity and difference. 
@@ -9754,12 +9768,32 @@ However, this idea seemed appealing for many reasons. There are benefits of the 
 
 * It retains information about the problem better than the value function
 * The resulting structure is a graph which allows usage of a host of tools from graph theory or study of networks
-* It seems to be more adaptable to techniques such as [[Persistent Homology]]
+* It seems to be more adaptable to techniques such as [[Persistent Homology]]. It would still require some work as there is no concept of faces etc. but perhaps that could be worked upon? (Cycles create faces for e.g.?)
 
-</pre>
+^Is this essentially the same thing as a [[Bayesian Network]]?
+Or a [[Markov Decision Process]]?
+
+Back to the topic of defining the research problem clearly though, it may be interesting to limit the domain of problems by talking about their [[Kolmogorov Complexity]]. 
+
+Another interesting way would be to work from specific samples but from different enough networks that a math that unifies all of them would probably need to have some generalizability. 
+
+[[Do Calculus]] could serve as a good reference example for how to take a real world concept and create a mathematics of it. 
+
+[[A New Math for Learning Tasks (2)]]</pre>
+</div>
+<div author="Siddharth Joshi" created="20191126070723011" modified="20191126072116994" tags="research ongoing [[intelligence project]]" title="A New Math for Learning Tasks (2)" revision="5" bag="default">
+<pre>There is another issue with defining a mathematics for learning tasks and that is that there are infinitely many representations of what is to a human, obviously the same learning tasks even if we were to fix a representational style. This is due to the fact that it is possible to consider the tasks at various differing granularities with the state diagram changing drastically. E.g. the task of playing video game X can be modeled rather uselessly by three states as well: start game --- take action ----&gt; win game or --- take other action --&gt; lose game. To avoid the nightmare of dealing with such trivial cases, an assumption that forces either some minimum degree or some exact amount of meaningfulness (which itself must be defined) in the chosen representation. 
+
+A potential candidate for defining meaningfulness may be the cryptographic notion indistinguishability. If every machine (discussion on its computational bounds follows) cannot distinguish between a given representation and the description of a meaningless task defined as above then it should be considered meaningless. As soon as we introduce this Turing Test-like idea to determine how meaningful something is, it is critical to consider what computational bounds do we place on our machine and to force our representations to be sufficiently easy to extract information from, the lower the bound the better. For lack of a better reason than borrowing convention, let's assume our machines belong to the class of [[Probabilistic Polynomial Time]] Algorithms. A second concern is that for such a definition to work, we would need to define some initial set of meaningless representations. This is tricky and may make this route infeasible. 
+
+The real challenge is defining a sufficiently abstract representation of a learning task that still retains enough information for a 'reasonable' program to be solve it. 
+In fact, could a game based formulation of the above statement be our criteria for a meaningful representation. </pre>
 </div>
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
+</div>
+<div created="20191124073726690" modified="20191124073730343" tags="incomplete" title="Bayesian Network" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>https://towardsdatascience.com/introduction-to-bayesian-networks-81031eeed94e</pre>
 </div>
 <div author="Siddharth Joshi" created="20191122020156822" modified="20191122020921139" tags="[[feature engineering]] [[machine learning]]" title="Binning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Taking a numerical feature and converting it into a categorical one.
@@ -9851,6 +9885,9 @@ end for
 tbd
 </pre>
 </div>
+<div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
+</div>
 <div author="Siddharth Joshi" created="20191122024614624" modified="20191122025225433" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Explainability of Model" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Most very accurate learning algorithms are 'black-boxes' i.e it is hard to understand why a model made a particular prediction. 
 
@@ -9859,10 +9896,12 @@ e.g. [[Neural Networks]], [[Ensemble Models]] are hard to explain but very accur
 <div author="Siddharth Joshi, Tejas Ramdas" created="20191119200401984" modified="20191121010432345" tags="incomplete [[machine learning]] [[reinforcement learning]] research [[intelligence project]]" title="GVF" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>General Value Function</pre>
 </div>
-<div author="Siddharth Joshi" created="20191119211052677" modified="20191121034855963" tags="introduction" title="How to Contribute?" type="text/plain" revision="0" bag="default">
+<div author="Siddharth Joshi" created="20191119211052677" modified="20191124061635080" tags="introduction" title="How to Contribute?" type="text/plain" revision="0" bag="default">
 <pre>To contribute, simply click on the + button on the left panel -&gt; this creates a new 'tiddler'
 
-Once you're done editing, save your tiddler and then click the export button (the one with the upward arrow - 2nd button from the left on the top right of your tiddler) to export as a '.tid' file and email the tiddler to me at sjoshi804@gmail.com (I'll go ahead and add it to the wiki!)
+Once you're done editing, save your tiddler and then click the export button (the one with the upward arrow - 2nd button from the left on the top right of your tiddler) to export as a '.tid' file and email the tiddler to me at sjoshi804@gmail.com (I'll go ahead and add it to the wiki!). 
+
+You can also use the same method for editing an existing tiddler. The ones tagged as incomplete would definitely be the best to start with in that case!
 
 You can also:
 - add tags that help group your tiddler with other tiddlers and make searching easier
@@ -9874,6 +9913,14 @@ and many more things that you can look up by googling tiddlywiki
 
 Thanks for contributing!</pre>
 </div>
+<div created="20191124070525772" modified="20191126073014889" tags="incomplete [[theoretical computer science]] math" title="Lambda Calculus" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre>Lambda calculus (also written as λ-calculus) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution. It is a universal model of computation that can be used to simulate any Turing machine.
+
+It is the fundamental basis for all functional programming languages. </pre>
+</div>
+<div author="Siddharth Joshi" created="20191125022318215" modified="20191125023541160" tags="incomplete" title="Markov Decision Process" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>https://towardsdatascience.com/reinforcement-learning-demystified-markov-decision-processes-part-1-bf00dda41690</pre>
+</div>
 <div author="Siddharth Joshi" created="20191122025246838" modified="20191122025440102" tags="[[machine learning]] [[learning algorithm selection]]" title="Memory Requirements of the Dataset" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Can the dataset be fully loaded into the RAM available? If not, it might be better to choose  [[Incremental Learning Algorithms]] that can improve by adding more data gradually. </pre>
 </div>
@@ -9882,6 +9929,9 @@ Thanks for contributing!</pre>
 </div>
 <div created="20191120053237171" modified="20191121010456596" tags="incomplete research [[intelligence project]] [[meta learning]]" title="Meta-Learning via Meta-Gradients" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
+</div>
+<div author="Siddharth Joshi" created="20191126064803358" modified="20191126072900485" tags="incomplete philosophy logic" title="Model Theory" revision="2" bag="default">
+<pre>https://plato.stanford.edu/entries/model-theory/</pre>
 </div>
 <div author="Siddharth Joshi" created="20191122040921452" modified="20191122041302705" tags="[[learning algorithm selection]] [[machine learning]]" title="Non-linearity of Data" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Linearly separable data can be handled well by:
@@ -9910,13 +9960,16 @@ see also: [[Standardization of Features]]</pre>
 
 e..g: Encoding what major a college student as many dimensional vector with 1 in the index corresponding to the student's major and 0 everywhere else instead of assigning numbers 1, 2, 3 ... to the majors and implying an ordering. </pre>
 </div>
-<div author="Siddharth Joshi" created="20191124054140398" modified="20191124054453260" tags="incomplete [[intelligence project]] research math topology" title="Persistent Homology" revision="3" bag="default">
+<div author="Siddharth Joshi" created="20191124054140398" modified="20191124054454331" tags="incomplete [[intelligence project]] research math topology" title="Persistent Homology" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Persistent homology is a method for computing topological features of a space at different spatial resolutions. More persistent features are detected over a wide range of spatial scales and are deemed more likely to represent true features of the underlying space rather than artifacts of sampling, noise, or particular choice of parameters.
 
 Useful Links:
 
 * https://towardsdatascience.com/from-tda-to-dl-d06f234f51d
 </pre>
+</div>
+<div author="Siddharth Joshi" created="20191125022514242" modified="20191125022735084" tags="[[reinforcement learning]] [[machine learning]] incomplete" title="Reinforcement Learning: Introduction" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>https://skymind.ai/wiki/deep-reinforcement-learning</pre>
 </div>
 <div author="Siddharth Joshi" created="20191119181730637" modified="20191119182440762" tags="recipe" title="Slow Cooker Chicken Curry" type="text/plain" revision="0" bag="default">
 <pre>Ingredients:
