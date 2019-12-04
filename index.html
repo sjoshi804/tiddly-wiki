@@ -9746,7 +9746,7 @@ Error message and password prompt
 <div created="20191121035138747" modified="20191121035148674" title="$:/view" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>classic</pre>
 </div>
-<div author="Siddharth Joshi, Tejas Ramdas" created="20191124054651558" modified="20191126070749286" tags="ongoing [[intelligence project]] research" title="A New Math for Learning Tasks (1)" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="Siddharth Joshi, Tejas Ramdas" created="20191124054651558" modified="20191128004341837" tags="ongoing [[intelligence project]] research" title="A New Math for Learning Tasks (1)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The idea emerged initially as a desire to define an inner product space for the set of reinforcement learning tasks to optimize  the work done by auxiliary tasks like in [[Discovery of Useful Questions as Auxiliary Tasks]]. 
 
 After discussion, it seems unlikely that the space we are dealing with can be modeled as a vector space. Maybe more a more general structure such as a topological space would be more useful as it demands less structure. Techniques from [[Topological Data Analysis]] such as [[Persistent Homology]] might be useful as they are able to capture more qualitative notions of similarity and difference. 
@@ -9774,15 +9774,32 @@ Another interesting way would be to work from specific samples but from differen
 
 [[Do Calculus]] could serve as a good reference example for how to take a real world concept and create a mathematics of it. 
 
+&lt;Tejas&gt;
+Can we use graphs to model connection between tasks? Is there a reason to believe that tasks that seem similar actually have similar solutions? Unable to think of concrete examples and it is also possible the natural world is such that this constraint applies. It may be interesting to look at how evolution &quot;used&quot; randomness to solve tasks. Why is random exploration required if the path from one milestone to the next is straightforward? Is that reason to believe that things are complicated?
+
+If we are truly working on a moonshot project then truly developing a model of the world (which by my definition involves causality) is the biggest leap we can achieve. This brings us to a better definition of our problem. What is a good limited domain to test this? Deepmind used an adversarial block stacking game in which the agent seemed to build some notion of theory of mind that enabled it to generally learn how to use block a certain way (it always boxed the opponent in and the like).
+
+I think a philosophical idea that relates to persistent homology is emergence. How do these points in our space reflect laws working at different scales? What is scale? I visualize at zooming in and out but since this is more abstract it may not be accurate. 
+
+
 [[A New Math for Learning Tasks (2)]]</pre>
 </div>
-<div author="Siddharth Joshi" created="20191126070723011" modified="20191126072118070" tags="research ongoing [[intelligence project]]" title="A New Math for Learning Tasks (2)" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="Siddharth Joshi" created="20191126070723011" modified="20191127195514316" tags="research ongoing [[intelligence project]]" title="A New Math for Learning Tasks (2)" type="application/x-tiddler" revision="0" bag="default">
 <pre>There is another issue with defining a mathematics for learning tasks and that is that there are infinitely many representations of what is to a human, obviously the same learning tasks even if we were to fix a representational style. This is due to the fact that it is possible to consider the tasks at various differing granularities with the state diagram changing drastically. E.g. the task of playing video game X can be modeled rather uselessly by three states as well: start game --- take action ----&gt; win game or --- take other action --&gt; lose game. To avoid the nightmare of dealing with such trivial cases, an assumption that forces either some minimum degree or some exact amount of meaningfulness (which itself must be defined) in the chosen representation. 
 
 A potential candidate for defining meaningfulness may be the cryptographic notion indistinguishability. If every machine (discussion on its computational bounds follows) cannot distinguish between a given representation and the description of a meaningless task defined as above then it should be considered meaningless. As soon as we introduce this Turing Test-like idea to determine how meaningful something is, it is critical to consider what computational bounds do we place on our machine and to force our representations to be sufficiently easy to extract information from, the lower the bound the better. For lack of a better reason than borrowing convention, let's assume our machines belong to the class of [[Probabilistic Polynomial Time]] Algorithms. A second concern is that for such a definition to work, we would need to define some initial set of meaningless representations. This is tricky and may make this route infeasible. 
 
 The real challenge is defining a sufficiently abstract representation of a learning task that still retains enough information for a 'reasonable' program to be solve it. 
-In fact, could a game based formulation of the above statement be our criteria for a meaningful representation. </pre>
+In fact, could a game based formulation of the above statement be our criteria for a meaningful representation. 
+
+&lt;Tejas&gt;
+
+A different notion of complexity is in the syntax/semantics of defining the problem. Kolmogorov complexity uses the minimum description length of a problem as a measure of how complex it is. Since this is a more abstract notion, it is unclear to me how best to define it and incorporate but the causal generative models paper happened to include this notion in their definition. 
+
+It is also unclear when something is fully defined because I think that implicitly assumes some restricted universe of possible things or some pre-defined notions of meanings? For example, when I say &quot;home&quot; in the geographical sense to refer to a specific lat/long, knowledge of English and the meaning of the word &quot;home&quot; and the idea that it is my home is assumed. This is simpler for numbers, where 65536 can be denoted as 2^(2^(2^2)) or ((2^^4)) 
+(Knuth notation) which keeps popping up.
+
+Another connected idea is Solomonoff induction but no clue what that is and seems to be more connected to prediction than definition.</pre>
 </div>
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
