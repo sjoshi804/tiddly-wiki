@@ -171,6 +171,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -211,6 +213,8 @@ Error message and password prompt
 
 <li>Do Calculus</li>
 
+<li>Equivalence Relations</li>
+
 <li>Explainability of Model</li>
 
 <li>For Every and There Exists</li>
@@ -218,6 +222,10 @@ Error message and password prompt
 <li>GVF</li>
 
 <li>How to Contribute?</li>
+
+<li>Induction</li>
+
+<li>Integers</li>
 
 <li>Lambda Calculus</li>
 
@@ -230,6 +238,8 @@ Error message and password prompt
 <li>Meta-Learning via Meta-Gradients</li>
 
 <li>Model Theory</li>
+
+<li>Natural Numbers</li>
 
 <li>Non-linearity of Data</li>
 
@@ -9738,6 +9748,9 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20191227164948445" modified="20191227164948445" title="$:/state/showeditpreview" revision="1" bag="default">
+<pre>yes</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9750,7 +9763,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20191227163935771" list="[[UCLA Math 131AH - Real Analysis]] [[For Every and There Exists]] [[UCLA Math 115A - Linear Algebra]] Welcome [[How to Contribute?]]" modified="20191227164358643" title="$:/StoryList" revision="10" bag="default">
+<div created="20191227163935771" list="[[UCLA Math 131AH - Real Analysis]] Integers [[Equivalence Relations]] Induction [[Natural Numbers]] [[For Every and There Exists]] [[UCLA Math 115A - Linear Algebra]] Welcome [[How to Contribute?]]" modified="20191227170623474" title="$:/StoryList" revision="38" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10080,6 +10093,18 @@ tbd
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
 </div>
+<div created="20191227170002568" modified="20191227170612852" tags="[[real analysis]] math [[discrete math]]" title="Equivalence Relations" revision="1" bag="default">
+<pre>Relation on a set $$S$$ is a subset of $$S \times S$$
+
+For a relation to be an equivalence relation:
+
+* Reflexive: $$ a \sim a, \forall a \in S $$
+* Symmetric: $$ a \sim b \implies b \sim a $$
+* Transitive: $$ a \sim b, b \sim c \implies a \sim c $$
+
+If the relation is non-empty then symmetric and transitive imply reflexive. 
+</pre>
+</div>
 <div author="Siddharth Joshi" created="20191122024614624" modified="20191122025225433" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Explainability of Model" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Most very accurate learning algorithms are 'black-boxes' i.e it is hard to understand why a model made a particular prediction. 
 
@@ -10110,6 +10135,19 @@ and many more things that you can look up by googling tiddlywiki
 
 Thanks for contributing!</pre>
 </div>
+<div created="20191227165419740" modified="20191227165948699" tags="[[real analysis]] math" title="Induction" revision="1" bag="default">
+<pre>Proof for Induction based on [[Natural Numbers]] axiomatic definition.
+
+Claim: If $$A(1)$$ is true and $$A(n) \implies A(n+1)$$ then $$A(n)$$ is true $$\forall n \in \mathbb{N}$$
+
+Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
+
+By axiom, S = N</pre>
+</div>
+<div created="20191227170641254" modified="20191227173812190" tags="math [[real analysis]]" title="Integers" revision="1" bag="default">
+<pre>Axiomatic Definition:
+</pre>
+</div>
 <div created="20191124070525772" modified="20191126073015986" tags="incomplete [[theoretical computer science]] math" title="Lambda Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Lambda calculus (also written as λ-calculus) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution. It is a universal model of computation that can be used to simulate any Turing machine.
 
@@ -10129,6 +10167,15 @@ It is the fundamental basis for all functional programming languages. </pre>
 </div>
 <div author="Siddharth Joshi" created="20191126064803358" modified="20191126072901553" tags="incomplete philosophy logic" title="Model Theory" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://plato.stanford.edu/entries/model-theory/</pre>
+</div>
+<div author="Siddharth Joshi" created="20191227164459504" modified="20191227165218134" tags="[[real analysis]] math" title="Natural Numbers" type="" revision="6" bag="default">
+<pre>Defining the natural numbers axiomatically:
+
+* $$ 1 \in \mathbb{N} $$
+* $$ f: \mathbb{N} \rightarrow \mathbb{N}, f(x) \neq 1 $$ (also f is injective)
+* if $$ 1 \in S $$ and $$ f(x) \in S, \forall x \in S $$ then $$ S = \mathbb{N} $$
+
+We 'represent' f by +1 and we define 1+1 as 2 and so on and so forth.</pre>
 </div>
 <div author="Siddharth Joshi" created="20191122040921452" modified="20191122041302705" tags="[[learning algorithm selection]] [[machine learning]]" title="Non-linearity of Data" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Linearly separable data can be handled well by:
@@ -10223,9 +10270,9 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 # [[Diagonalization]]
 # [[Inner Products]]</pre>
 </div>
-<div author="Siddharth Joshi" created="20191120203243535" modified="20191227164048701" tags="incomplete [[real analysis]] math ucla" title="UCLA Math 131AH - Real Analysis" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div author="Siddharth Joshi" created="20191120203243535" modified="20191227164440341" tags="incomplete [[real analysis]] math ucla" title="UCLA Math 131AH - Real Analysis" type="text/vnd.tiddlywiki" revision="4" bag="default">
 <pre>!!! Syllabus
-# [[Basic Logic | For Every and There Exists]]
+# [[For Every and There Exists]]
 # [[Natural Numbers]]
 # [[Induction]]
 # [[Equivalence Relations]]
