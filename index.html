@@ -171,8 +171,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/showeditpreview</li>
-
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -204,6 +202,8 @@ Error message and password prompt
 <li>Binning</li>
 
 <li>Chapter 5 (The Hundred-Page Machine Learning Book)</li>
+
+<li>Computer Abstractions and Technology</li>
 
 <li>Data Imputation Techniques</li>
 
@@ -258,6 +258,8 @@ Error message and password prompt
 <li>Standardization of Features</li>
 
 <li>The Hundred-Page Machine Learning Book by Andriy Burkov</li>
+
+<li>UCLA CS M151B - Computer Architecture</li>
 
 <li>UCLA CS M282A - Cryptography 1</li>
 
@@ -9748,9 +9750,6 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20191227164948445" modified="20191227164948445" title="$:/state/showeditpreview" revision="1" bag="default">
-<pre>yes</pre>
-</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9763,7 +9762,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20191227163935771" list="[[UCLA Math 131AH - Real Analysis]] Integers [[Equivalence Relations]] Induction [[Natural Numbers]] [[For Every and There Exists]] [[UCLA Math 115A - Linear Algebra]] Welcome [[How to Contribute?]]" modified="20191227170623474" title="$:/StoryList" revision="38" bag="default">
+<div created="20200120204250047" list="[[UCLA CS M151B - Computer Architecture]] [[Computer Abstractions and Technology]] Welcome [[How to Contribute?]]" modified="20200120204254151" title="$:/StoryList" revision="3" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9811,11 +9810,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1440&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;900&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9824,8 +9823,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20191227163933360" modified="20191227163934310" title="$:/temp/search" revision="8" bag="default">
-<pre>ucla mat</pre>
+<div created="20200120204247424" modified="20200120204248127" title="$:/temp/search" revision="4" bag="default">
+<pre>m151</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10032,6 +10031,94 @@ Factors to consider:
 
 !!! Dividing Data into Training Set</pre>
 </div>
+<div created="20200115174257794" modified="20200115181627558" tags="incomplete [[computer architecture]]" title="Computer Abstractions and Technology" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Moore's Law - doubling of transistor density with every generation -&gt; made modern computing possible
+
+
+Classes of Computers:
+
+* Personal Computers - general purpose, cost/performance tradeoff
+* Server Computers - network based, high capacity performance and reliability
+* Super Computers - highest capability for high-end scientific calculations
+* Embedded Computers - hidden as components of systems, stringent power/performance/cost constraints
+
+
+Post PC Era (Main Types):
+
+* Personal Mobile Devices: battery operated, internet connected
+* Cloud Computing - SaaS, Warehouse Scale Computers
+
+
+Understanding Performance:
+
+* Algorithm - determines num of ops executed
+* Programming Language, Compiler, Architecture - num of machine instructions per op
+* Processor and Memory System - how fast each instruction is executed
+* I/O System - how fast I/O ops are executed
+
+
+8 Great Ideas of Processor Design:
+
+* Design for Moore's Law
+* Abstraction to simplify design
+* Make common case fast
+* Parallelism
+* Pipelining
+* Prediction 
+* Hierarchy of Memories
+* Dependability via Redundancy
+
+
+Below Your Program:
+
+* Application Software - high level language
+* System Software - compiler (high lvl to machine code) -&gt; OS (handles i/o, manages memory, scheduling
+* Hardware - processor, memory, i/o controllers
+
+
+Levels of Program Code:
+
+* High Level Languages - level of abstraction closer to actual problem, best for portability
+* Assembly Language - textual representation of instructions (machine-specific)
+* Hardware Representation - binary, encoded instructions and data
+
+
+I/O Devices:
+
+* User-interfaced Devices - display, keyboard, mouse
+* Storage Devices - hard disk, flash
+* Network Adapters
+
+
+SoC - System on Chip - combines all components CPU, GPU, Memory etc. on one chip to improve performance via easier communication than via pins (heterogenous design)
+
+
+Inside the CPU:
+
+* Data path - perform ops on data
+* Control - sequences data path memory
+* Cache Memory - Small fast SRAM for immediate access to data
+
+
+Abstractions: 
+
+* Instruction Set Architecture - hardware/software interface - agreement of expectations between hardware and software
+* Application Binary Interface - ISA + system software interface
+* Implementation
+
+
+Technology Trends - memory capacity increasing exponentially but processor speed much faster therefore need to deal with this issue with our architecture
+
+
+Manufacturing ICs: Silicon Ingot -&gt; Blank Wafers -&gt; Patterned Wafers -&gt; Wafer Tester -&gt; Bonded to Package -&gt; Part Tester -&gt; ...
+- yield - proportion of working chips produced
+
+
+Part 3 &amp; 4 Pending
+
+
+</pre>
+</div>
 <div author="Siddharth Joshi" created="20191122022337773" modified="20191122024526637" tags="[[machine learning]] [[feature engineering]]" title="Data Imputation Techniques" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Techniques to impute a feature value when one is missing for a given example:
 
@@ -10093,7 +10180,7 @@ tbd
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
 </div>
-<div created="20191227170002568" modified="20191227170612852" tags="[[real analysis]] math [[discrete math]]" title="Equivalence Relations" revision="1" bag="default">
+<div created="20191227170002568" modified="20191227170613995" tags="[[real analysis]] math [[discrete math]]" title="Equivalence Relations" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Relation on a set $$S$$ is a subset of $$S \times S$$
 
 For a relation to be an equivalence relation:
@@ -10110,7 +10197,7 @@ If the relation is non-empty then symmetric and transitive imply reflexive.
 
 e.g. [[Neural Networks]], [[Ensemble Models]] are hard to explain but very accurate as opposed to [[K Nearest Neighbors]], [[Linear Regression]], [[Decision Tree Learning]] are quite easy to explain but perhaps not as accurate</pre>
 </div>
-<div created="20191227164059875" modified="20191227164350267" tags="math logic [[real analysis]]" title="For Every and There Exists" revision="1" bag="default">
+<div created="20191227164059875" modified="20191227164351343" tags="math logic [[real analysis]]" title="For Every and There Exists" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Negation of a for every x, proposition is true is there exists x such that proposition is false
 * Can swap the order of two adjacent for every or two adjacent there exists without changing logical meaning
 * Cannot swap the order of for every and there exists, in particular: There exists y such that for every x ... is stronger than for every x there exists y ...</pre>
@@ -10135,7 +10222,7 @@ and many more things that you can look up by googling tiddlywiki
 
 Thanks for contributing!</pre>
 </div>
-<div created="20191227165419740" modified="20191227165948699" tags="[[real analysis]] math" title="Induction" revision="1" bag="default">
+<div created="20191227165419740" modified="20191227165949790" tags="[[real analysis]] math" title="Induction" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Proof for Induction based on [[Natural Numbers]] axiomatic definition.
 
 Claim: If $$A(1)$$ is true and $$A(n) \implies A(n+1)$$ then $$A(n)$$ is true $$\forall n \in \mathbb{N}$$
@@ -10144,7 +10231,7 @@ Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
 </div>
-<div created="20191227170641254" modified="20191227173812190" tags="math [[real analysis]]" title="Integers" revision="1" bag="default">
+<div created="20191227170641254" modified="20191227174905602" tags="math [[real analysis]]" title="Integers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Axiomatic Definition:
 </pre>
 </div>
@@ -10168,7 +10255,7 @@ It is the fundamental basis for all functional programming languages. </pre>
 <div author="Siddharth Joshi" created="20191126064803358" modified="20191126072901553" tags="incomplete philosophy logic" title="Model Theory" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://plato.stanford.edu/entries/model-theory/</pre>
 </div>
-<div author="Siddharth Joshi" created="20191227164459504" modified="20191227165218134" tags="[[real analysis]] math" title="Natural Numbers" type="" revision="6" bag="default">
+<div author="Siddharth Joshi" created="20191227164459504" modified="20191227165219221" tags="[[real analysis]] math" title="Natural Numbers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Defining the natural numbers axiomatically:
 
 * $$ 1 \in \mathbb{N} $$
@@ -10259,10 +10346,14 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
+<div created="20200115032001461" modified="20200115174227220" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! Syllabus
+# [[Computer Abstractions and Technology]]</pre>
+</div>
 <div created="20191121010859851" modified="20191121011220661" tags="" title="UCLA CS M282A - Cryptography 1" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
-<div author="Siddharth Joshi" created="20191120202501607" modified="20191121010927794" tags="incomplete math [[linear algebra]] ucla" title="UCLA Math 115A - Linear Algebra" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="Siddharth Joshi" created="20191120202501607" modified="20200115174134338" tags="incomplete math [[linear algebra]] ucla" title="UCLA Math 115A - Linear Algebra" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
 # [[Vector Spaces]]
 # [[Linear Transformations]]
@@ -10270,7 +10361,7 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 # [[Diagonalization]]
 # [[Inner Products]]</pre>
 </div>
-<div author="Siddharth Joshi" created="20191120203243535" modified="20191227164440341" tags="incomplete [[real analysis]] math ucla" title="UCLA Math 131AH - Real Analysis" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<div author="Siddharth Joshi" created="20191120203243535" modified="20191227164441415" tags="incomplete [[real analysis]] math ucla" title="UCLA Math 131AH - Real Analysis" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
 # [[For Every and There Exists]]
 # [[Natural Numbers]]
