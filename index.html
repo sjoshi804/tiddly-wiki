@@ -171,6 +171,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -224,6 +226,8 @@ Error message and password prompt
 <li>How to Contribute?</li>
 
 <li>Induction</li>
+
+<li>Instructions: Language of the Computer</li>
 
 <li>Integers</li>
 
@@ -9750,6 +9754,9 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200120223505849" modified="20200122004335568" title="$:/state/showeditpreview" revision="2" bag="default">
+<pre>no</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9762,7 +9769,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200120204250047" list="[[UCLA CS M151B - Computer Architecture]] [[Computer Abstractions and Technology]] Welcome [[How to Contribute?]]" modified="20200120204254151" title="$:/StoryList" revision="3" bag="default">
+<div created="20200120222657579" list="[[UCLA CS M151B - Computer Architecture]] [[Instructions: Language of the Computer]]" modified="20200122005420176" title="$:/StoryList" revision="17" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9823,8 +9830,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200120204247424" modified="20200120204248127" title="$:/temp/search" revision="4" bag="default">
-<pre>m151</pre>
+<div created="20200120222650977" modified="20200120222654665" title="$:/temp/search" revision="11" bag="default">
+<pre>cs m1</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10031,8 +10038,10 @@ Factors to consider:
 
 !!! Dividing Data into Training Set</pre>
 </div>
-<div created="20200115174257794" modified="20200115181627558" tags="incomplete [[computer architecture]]" title="Computer Abstractions and Technology" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>Moore's Law - doubling of transistor density with every generation -&gt; made modern computing possible
+<div created="20200115174257794" modified="20200122005433873" tags="[[computer architecture]]" title="Computer Abstractions and Technology" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<pre>__Introduction__
+
+Moore's Law - doubling of transistor density with every generation -&gt; made modern computing possible
 
 
 Classes of Computers:
@@ -10114,8 +10123,83 @@ Manufacturing ICs: Silicon Ingot -&gt; Blank Wafers -&gt; Patterned Wafers -&gt;
 - yield - proportion of working chips produced
 
 
-Part 3 &amp; 4 Pending
+__Defining Performance__
 
+* Response Time - how long it takes to do a task?
+* Throughput - total work done per unit time
+
+
+Performance = 1 / Execution Time, X is n times faster than y i.e. Performance_x / Performance_y
+
+
+Measuring Execution Time:
+* Elapsed Time: Total response time - processing, i/o, os overhead, idle time
+* CPU Time - time spent processing a given job (discounts i/o time, other jobs' share)
+
+
+User CPU Time - time for actual program, System CPU Time - time kernel spends in actual CPU
+
+
+CPU Clocking:
+
+* Operational of digital hardware governed by a constant-rate clock
+* Clock period: duration of a clock cycle 
+* Clock frequency: cycles per second (inverse of above) measured in GHz
+
+
+CPU Time:
+
+* CPU Time = CPU Clock Cycles * Clock Cycle Time = CPU Clock Cycles / Clock Rate
+* Performance improved by reducing number of cycles, increasing clock rate (often a trade off between the two)
+
+
+Instruction Count and CPI:
+
+* Clock Cycles = Instruction Count * Cycles per Instruction
+* CPU Time = instruction Count * CPI * Clock Cycle Time = Instruction Count * CPI / Clock Rate
+* Instruction Count for a program: determined by program, ISA and compiler (dynamic count that is how many instructions executed over the course of executing the program)
+* Average cycles per instruction: determined by CPU hardware, if different instructions have different CPI then average of the mix used taken
+* CPI is program dependent (as mix varies from program to program)
+* Clock Cycles  = $$ \sum{CPI_i * Instruction Count} = \sum{CPI_i * \frac{Instruction Count _ i}{Instruction Count}}$$
+
+
+Performance Summary:
+
+* CPU Time = Instructions / Program * Clock Cycles / Instruction * Seconds / Clock Cycle
+* Algorithm: affects IC, possibly CPI
+* Programming lang: affects IC, CPI
+* Compiler: affects IC, CPI
+* ISA: affects IC, CI, Cycle Time
+
+__Power Trends__
+
+Power = Capacitative load * Voltage^2 * Frequency
+
+Dynamic Voltage Scaling - start with 1 voltage, scale it back if utilization low
+
+Frequency Scaling - reducing frequency if utilization is low
+
+
+Power Wall - can't reduce voltage further nor can we remove more heat
+
+Uniprocessor Performance - constrained by power, instruction-level parallelism, memory latency
+
+
+Multiprocessors:
+
+* More than one processor per chip
+* Requires explicitly parallel programming - unlike instruction level parallelism that is hidden from programmer
+* Hard to do - programming for performance, load balancing, optimizing communication and synchronization
+
+
+SPEC CPU Benchmark:
+
+* Develops benchmarks for CPU, negligible i/o so focuses on CPU performance
+
+
+Amdahl's Law - making the common case fast - $$T_improved = T_affected / improvement factor  + T_unaffected $$
+
+Millions of Instructions Per Second = Instruction Count / Execution Time * 10^6 sec
 
 </pre>
 </div>
@@ -10230,6 +10314,9 @@ Claim: If $$A(1)$$ is true and $$A(n) \implies A(n+1)$$ then $$A(n)$$ is true $$
 Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
+</div>
+<div created="20200122005428211" modified="20200122005438930" tags="[[computer architecture]]" title="Instructions: Language of the Computer" revision="1" bag="default">
+<pre></pre>
 </div>
 <div created="20191227170641254" modified="20191227174905602" tags="math [[real analysis]]" title="Integers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Axiomatic Definition:
@@ -10346,9 +10433,10 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
-<div created="20200115032001461" modified="20200115174227220" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200115032001461" modified="20200122005418659" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>!!! Syllabus
-# [[Computer Abstractions and Technology]]</pre>
+# [[Computer Abstractions and Technology]]
+# [[Instructions: Language of the Computer]]</pre>
 </div>
 <div created="20191121010859851" modified="20191121011220661" tags="" title="UCLA CS M282A - Cryptography 1" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
