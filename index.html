@@ -9754,7 +9754,7 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200120223505849" modified="20200122004335568" title="$:/state/showeditpreview" revision="2" bag="default">
+<div created="20200120223505849" modified="20200122045140496" title="$:/state/showeditpreview" revision="4" bag="default">
 <pre>no</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
@@ -9769,7 +9769,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200120222657579" list="[[UCLA CS M151B - Computer Architecture]] [[Instructions: Language of the Computer]]" modified="20200122005420176" title="$:/StoryList" revision="17" bag="default">
+<div created="20200120222657579" list="[[UCLA CS M151B - Computer Architecture]] [[Instructions: Language of the Computer]]" modified="20200122005420176" title="$:/StoryList" revision="25" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10315,8 +10315,138 @@ Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
 </div>
-<div created="20200122005428211" modified="20200122005438930" tags="[[computer architecture]]" title="Instructions: Language of the Computer" revision="1" bag="default">
-<pre></pre>
+<div created="20200122005428211" modified="20200122051515800" tags="incomplete [[computer architecture]]" title="Instructions: Language of the Computer" type="text/vnd.tiddlywiki" revision="6" bag="default">
+<pre>Instruction Set - repertoire of instructions of a computer
+
+
+Key ISA Decisions:
+
+* Operations - how many, which ones, length - how many bits to represent instruction
+* Operands - how many, location, types, how to specify - how many bits
+* Instruction format - size, how many formats
+
+
+Main ISA Classes:
+
+* Complex Instruction Set Computers: large # of instructions (makes coding easier, but hw job is harder - good when memory expensive), many specialized complex instructions (x86 uses microops that translate CISC into RISC practically)
+* Reduction Instruction Set Computers: relatively few instructions which enabled pipelining and parallelism
+
+
+Arithmetic Operations:
+
+* add a, b, c --&gt; a = b + c
+* All arithmetic ops have this form
+* ''Design Principle 1'': Regularity makes implementation simpler, simplicity enables higher performance at lower cost
+
+
+Operands:
+
+* Immediate - a literal encoded into instruction itself
+* Register - fast hardware memory located on chip, MIPS 32 * 32 bit register, 32-bit wordm $t0 ... $t9 for temp, $s0 ... $s7 for saved ---&gt; '' Design Principle 2'': Smaller is faster - only 5 bits to specify which register desired, shorter wire length 
+* Memory Operands - load values from memory into register, stores result from register to memory, memory is byte addressed (8-bit byte), words are aligned in memory as multiples of 4, MIPS = Big Endian (MSB at lowest address)
+
+Memory Operand Example: 4 bytes per word
+
+A[12] = h + A[8] --&gt; 
+
+lw $t0, 32($s3) - offset = 32 and base register = $s3 - gets value from memory at $s3 + 32
+
+add $t0, $s2, $t0
+
+sw $t0, 48($s3) # stores value of $t0 at memory address pointed to by $s3 + 48
+
+
+Registers v/s Memory:
+
+* registers faster to access
+* MIPS more ops as need to load and store from memory into register to be able to compute
+* Compiler's job is to optimize for register utilization, should spill memory as little as possible as loads &amp; stores not only extra ops but more expensive ops typically
+
+Immediate Operands:
+
+* addi $s3, $s3, 4 - add immediate instruction, no subtract immediate instruction
+* ''Design Principle 3'': Make the common case fast
+* Can only take values up to 16 bits - good for small constants
+
+
+Constant Zero - 0 - $zero, cannot be overwritten, used to recreate move with add by adding zero
+
+
+Unsigned Binary Integers: 0 to 2^n - 1 - with 32 bits - 0 to $$2^n - 1$$
+
+
+2s-Complement: MSB is negative, range is $$-2^{n-1}$$ to $$2^{n-1} - 1$$, most -ve: 1000 0000 ... 0000, most +ve: 0111 ... 1111
+
+
+Signed Negation: Complement and add 1 as x + x' = -1
+
+
+Sign Extension -  Replicate most significant bit and extend towards the left:
+
+* addi - extends immediate value
+* lb, lh - extends loaded byte/halfword
+* beq, bne - extends displacement
+
+
+Representing instructions:
+
+* Instructions encoded in binary - machine code
+* MIPS instructions = 32 bits, small number of formats encoding opcode --&gt; regularity 
+* Register numbers: $t0 - $t7 are 8-15, $t8 - $t9 are 24-25, $s0 - $s7 are 16-23
+
+
+Hexadecimal: 0 ... 9 a ... f -&gt; represent 0 to 15 -&gt; represent 4 bits
+
+
+MIPS R-format Instructions:
+
+* opcode: 6 bits - specifies the format
+* rs: first src register 5 bits
+* rt: snd src register 5 bits
+* rd: dest src register 5 bits
+* shamt: shift amount 5 bits
+* funct: function code (extends opcode) 6 bits - specifies what operation to perform
+* e.g. add $t0, $s1, $s2 -&gt; format $s1 $s2 $t0 0 add -&gt; 0 17 18 8 0 32 (all of this needs to be part of the ISA)
+
+
+MIPS I-format Instructions: (provides an immediate)
+
+*opcode: 6 bits
+* rs: src register, 5 bits
+* rt: src/dest register, 5 bits
+* constant or address: $$-2^15$$ to $$2^15 - 1$$ 
+
+
+Logical Operations - instructions for bitwise manipulation, useful for extracting and inserting groups of bits in a words:
+
+* shift left - &lt;&lt; - sll (shamt) - shift left and fill w 0s
+* shift right - &gt;&gt; - srr (shamt) - shift right and fill w 0s
+* Bitwise AND - &amp; - and, andi - and dest, src1, src2 - selector - rformat
+* Bitwise OR - | - or, ori - rformat
+* Bitwise NOT - no not, must use nor - nor $t0, $t1, $zero -&gt; nor with zero = not
+
+
+Conditional Operations (typically instruction ptr increments 4 bytes = 32 bits at a time)
+
+* Branch to a labelled instruction if condition true
+* beq rs, rt, L1 -&gt; if (rs == rt) jump to L1
+* bne rs, rt, L1 -&gt; if (rs != rt) jump to L1
+* j L1 -&gt; unconditional branch to L1
+
+Assembler calculates addresses from labels like L1
+
+Compiling Loop Statements: 
+
+* a bne or be or conditional jump to break out
+* and an unconditional jump if didn't break out
+
+
+Basic Blocks:
+
+* no embedded branches (except at end) i.e. doesn't jump anywhere
+* no branch targets (except at beginning) - won't start midway
+* a compiler identifies basic blocks for optimization
+* advanced processor can accelerate execution of basic blocks</pre>
 </div>
 <div created="20191227170641254" modified="20191227174905602" tags="math [[real analysis]]" title="Integers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Axiomatic Definition:
