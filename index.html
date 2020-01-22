@@ -9769,7 +9769,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200120222657579" list="[[UCLA CS M151B - Computer Architecture]] [[Instructions: Language of the Computer]]" modified="20200122005420176" title="$:/StoryList" revision="25" bag="default">
+<div created="20200120222657579" list="[[UCLA CS M151B - Computer Architecture]] [[Instructions: Language of the Computer]]" modified="20200122005420176" title="$:/StoryList" revision="31" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10315,7 +10315,7 @@ Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
 </div>
-<div created="20200122005428211" modified="20200122051515800" tags="incomplete [[computer architecture]]" title="Instructions: Language of the Computer" type="text/vnd.tiddlywiki" revision="6" bag="default">
+<div created="20200122005428211" modified="20200122054954348" tags="[[computer architecture]]" title="Instructions: Language of the Computer" type="text/vnd.tiddlywiki" revision="9" bag="default">
 <pre>Instruction Set - repertoire of instructions of a computer
 
 
@@ -10446,7 +10446,61 @@ Basic Blocks:
 * no embedded branches (except at end) i.e. doesn't jump anywhere
 * no branch targets (except at beginning) - won't start midway
 * a compiler identifies basic blocks for optimization
-* advanced processor can accelerate execution of basic blocks</pre>
+* advanced processor can accelerate execution of basic blocks
+
+
+More Conditional Operations:
+
+* slt rd, rs, rt - if rs &lt; rt, rd = 1, else rd = 0 (sltu - unsigned)
+* slti rt, rs, const - if (rs &lt; constant) rt = 1, else rt = 0 (sltui - unsigned)
+* used in combination with bne to implement greater than or less than
+* example of designing for common case
+
+
+Procedure call - place parameters in registers, transfer control to procedure, acquire storage for procedure, perform procedure's ops, place result in register for caller, return to place of call
+
+
+Register Usage:
+
+* $0 - register 0 that only has 0 in it
+* $a0 - $a3: arguments (4-7)
+* $v0, $v1: result values (2, 3)
+* $t0 - $t9: temporaries, can be overwritten by callee
+* $s0 - $s7: saved, must be saved &amp; restored by callee
+* $gp: global pointer for static data (28)
+* $sp: stack pointer (29) - tip of stack
+* $fp: frame pointer (30) - base of current stack frame
+* ra: return address (31)
+
+
+Procedure Call Instructions:
+
+* jump and link - jal procedurelabel - address of following instruction put in $ra and changes program counter to target address
+* jr $ra - copies $ra to program counter
+
+
+Memory Layout:
+
+* stack --&gt; &lt;--- dynamic data, static data, text, reserved
+* text: program code
+* static data: global vars
+* dynamic data: heap
+* stack: automatic storage
+
+
+32 bit constants:
+
+* Most constants are small - therefore 16 bits usually good
+* lui rt, constant - copies constant into the upper 15 bits of the specified register (rt -&gt; register)
+* ori rt, rt const - copies 16 bit into lower portion of register
+
+
+Branch Instructions:
+
+* opcode, 2 registers, target address
+* most branch targets are near branch - therefore 16 bits usually suffice
+* Program Counter relative addressing: Target Address = PC + 4 + offset * 4 -&gt; stored as word address but must be multiplies by 4 -&gt; 4 * 8 = 32 as byte addressing used
+* Jump (j and jal) targets could go anywhere, 6 bits for opcode, 26 bits for address -&gt; also multiplied by 4 and top 4 bits come from pc</pre>
 </div>
 <div created="20191227170641254" modified="20191227174905602" tags="math [[real analysis]]" title="Integers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Axiomatic Definition:
