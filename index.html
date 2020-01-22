@@ -9756,8 +9756,8 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200120223505849" modified="20200122045140496" title="$:/state/showeditpreview" revision="4" bag="default">
-<pre>no</pre>
+<div created="20200122080341406" modified="20200122080341406" title="$:/state/showeditpreview" revision="1" bag="default">
+<pre>yes</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9771,7 +9771,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200120222657579" list="[[UCLA CS M151B - Computer Architecture]] [[Arithmetic for Computers]]" modified="20200122065224982" title="$:/StoryList" revision="41" bag="default">
+<div created="20200122080327634" list="[[Arithmetic for Computers]] Welcome [[How to Contribute?]]" modified="20200122080327634" title="$:/StoryList" revision="4" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9832,8 +9832,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200120222650977" modified="20200120222654665" title="$:/temp/search" revision="11" bag="default">
-<pre>cs m1</pre>
+<div created="20200122080321598" modified="20200122080323331" title="$:/temp/search" revision="7" bag="default">
+<pre>arith</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10002,7 +10002,7 @@ It is also unclear when something is fully defined because I think that implicit
 
 Another connected idea is Solomonoff induction but no clue what that is and seems to be more connected to prediction than definition.</pre>
 </div>
-<div created="20200122065241575" modified="20200122072416756" tags="[[computer architecture]]" title="Arithmetic for Computers" revision="2" bag="default">
+<div created="20200122065241575" modified="20200122080516925" tags="incomplete [[computer architecture]]" title="Arithmetic for Computers" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>Arithmetic for Computers:
 
 * Add &amp; Sub
@@ -10056,16 +10056,38 @@ Subtraction:
 * Add 1 - carry in of ALU 0 = 1, if negation required
 
 
-Overflow Detection:
-
-* N bit ALU: check most significant bit ALU's carry in and carry out and xor them -&gt; if xor = true then overflow
+Overflow Detection - N bit ALU: check most significant bit ALU's carry in and carry out and xor them -&gt; if xor = true then overflow
 
 
-Zero Detection:
+Zero Detection - If all results 0 -&gt; then zero of ALU is true = 1 else 0
 
-* If all results 0 -&gt; then zero of ALU is true = 1 else 0
-* 
-</pre>
+
+NOR - A Invert - identical to B invert - not followed by mux to select which one to use - allows and to be used to create a nor by notting both a and b and then anding them
+
+
+Set-On-Less-Than (SLT) R-type:
+
+* SLT produces a 1 rs &lt; rt and 0 otherwise - all but least significant bit
+ * use subtraction and set the lsb to the sign bit of rs - rt 
+* New input: Less
+* New output: Set
+
+SLT Implementation:
+
+* All but MSB - have Less come into mux at end and simply pass through i.e. if option 3 is selected then less is passed as the result
+* MSB - set is an additional output for this one only and it is the MSB 
+* Set of MSB is connected to Less of LSB and less of every other 
+* Therefore output of entire ALU is just the MSB
+
+'' Even though we are choosing a different op to be propagated out of the mux, the result of the add is still valid as all ops are actually carried out''
+
+
+Faster Adder:
+
+* 2N gate delays as 2 gates per Carry Out and N carry outs
+* Carry Lookahead Adder - generate - Bit i created new carry, $$ g_i = A_i \&amp; B_i$$
+
+3.3 - 3.6 pending</pre>
 </div>
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
@@ -10105,7 +10127,7 @@ Factors to consider:
 
 !!! Dividing Data into Training Set</pre>
 </div>
-<div created="20200115174257794" modified="20200122005433873" tags="[[computer architecture]]" title="Computer Abstractions and Technology" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<div created="20200115174257794" modified="20200122005434968" tags="[[computer architecture]]" title="Computer Abstractions and Technology" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Introduction__
 
 Moore's Law - doubling of transistor density with every generation -&gt; made modern computing possible
@@ -10382,7 +10404,7 @@ Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
 </div>
-<div created="20200122005428211" modified="20200122055333668" tags="[[computer architecture]]" title="Instructions: Language of the Computer" type="text/vnd.tiddlywiki" revision="10" bag="default">
+<div created="20200122005428211" modified="20200122080255599" tags="[[computer architecture]]" title="Instructions: Language of the Computer" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Instruction Set - repertoire of instructions of a computer
 
 
@@ -10691,7 +10713,7 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
-<div created="20200115032001461" modified="20200122055534253" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200115032001461" modified="20200122055535350" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
 # [[Computer Abstractions and Technology]]
 # [[Instructions: Language of the Computer]]
