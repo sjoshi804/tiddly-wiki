@@ -197,6 +197,8 @@ Error message and password prompt
 
 <li>A New Math for Learning Tasks (2)</li>
 
+<li>Arithmetic for Computers</li>
+
 <li>Auxiliary Tasks in Reinforcement Learning</li>
 
 <li>Bayesian Network</li>
@@ -9769,7 +9771,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200120222657579" list="[[UCLA CS M151B - Computer Architecture]] [[Instructions: Language of the Computer]]" modified="20200122005420176" title="$:/StoryList" revision="31" bag="default">
+<div created="20200120222657579" list="[[UCLA CS M151B - Computer Architecture]] [[Arithmetic for Computers]]" modified="20200122065224982" title="$:/StoryList" revision="41" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9999,6 +10001,71 @@ It is also unclear when something is fully defined because I think that implicit
 (Knuth notation) which keeps popping up.
 
 Another connected idea is Solomonoff induction but no clue what that is and seems to be more connected to prediction than definition.</pre>
+</div>
+<div created="20200122065241575" modified="20200122072416756" tags="[[computer architecture]]" title="Arithmetic for Computers" revision="2" bag="default">
+<pre>Arithmetic for Computers:
+
+* Add &amp; Sub
+* Multiplication and division
+* Dealing w overflow
+* Floating point - dealing w how to handle the representation
+
+
+Dealing with Overflow (prog language dependent):
+
+* C ignores therefore uses - MIPS addu, addui, subu - don't raise exception
+* Other require exception - save pc in exception program counter, jump to handler
+
+
+ALU Design: Instruction Fetch -&gt; Instruction Decode -&gt; Operand Fetch -&gt; Execute -&gt; Result Store -&gt; Next Instruction ---&gt; Next Instruction
+
+
+ALU outputs:
+
+* zero - used by conditional jumps
+* result 
+* overflow
+* carryout
+
+
+One Bit ALU (most basic unit of ALU design):
+
+* Performs AND, OR &amp; ADD on 1 bit operands
+* And gate, Or gate, 1-bit adder, multiplexor 
+* all operations are done (Add, Or, Add) and then multiplexor selects the one for result
+* Takes in carry in and gives carry out and result
+
+
+One Bit Full Adder (3,2 adder):
+
+* Half adder - doesn't take carry in
+* Outputs carry out and sum
+* Carry Out = (!a &amp; b &amp; Carry In) | (a &amp; !b &amp; Carry In) | (a &amp; b &amp; !Carry In) | (a &amp; b &amp; Carry In) = (b &amp; Carry In) | (a &amp; Carry In) | (a &amp; b)
+* Sum = (!a &amp; !b &amp; Carry In) | (!a &amp; b &amp; !Carry In) | (a &amp; !b &amp; !Carry In) | (a &amp; b &amp; Carry In)
+
+32-bit ALU - make a 32 bit ALU from 1 bit ALU - ripple carry ALU&quot;
+
+* ALU 0 ... ALU 31 and ALU 0's carry out -&gt; ALU 1's carry in and so on and so forth
+* 32 outputs i.e. the result bits, operation goes into each ALU and selects the correct version
+* Carry In of ALU is Carry In of ALU 0 and Carry Out of ALU is Carry Out of ALU 31
+
+
+Subtraction:
+
+* Complement - B invert - add a not gate followed by a multiplexor, if 0 take original value, if 1 take negated
+* Add 1 - carry in of ALU 0 = 1, if negation required
+
+
+Overflow Detection:
+
+* N bit ALU: check most significant bit ALU's carry in and carry out and xor them -&gt; if xor = true then overflow
+
+
+Zero Detection:
+
+* If all results 0 -&gt; then zero of ALU is true = 1 else 0
+* 
+</pre>
 </div>
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
@@ -10315,7 +10382,7 @@ Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
 </div>
-<div created="20200122005428211" modified="20200122054954348" tags="[[computer architecture]]" title="Instructions: Language of the Computer" type="text/vnd.tiddlywiki" revision="9" bag="default">
+<div created="20200122005428211" modified="20200122055333668" tags="[[computer architecture]]" title="Instructions: Language of the Computer" type="text/vnd.tiddlywiki" revision="10" bag="default">
 <pre>Instruction Set - repertoire of instructions of a computer
 
 
@@ -10500,7 +10567,14 @@ Branch Instructions:
 * opcode, 2 registers, target address
 * most branch targets are near branch - therefore 16 bits usually suffice
 * Program Counter relative addressing: Target Address = PC + 4 + offset * 4 -&gt; stored as word address but must be multiplies by 4 -&gt; 4 * 8 = 32 as byte addressing used
-* Jump (j and jal) targets could go anywhere, 6 bits for opcode, 26 bits for address -&gt; also multiplied by 4 and top 4 bits come from pc</pre>
+* Jump (j and jal) targets could go anywhere, 6 bits for opcode, 26 bits for address -&gt; also multiplied by 4 and top 4 bits come from pc
+
+
+Branching Far Away:
+
+* more than 16 bits - use bne in conjunction with j
+* more than 28 - load bits into register using lui and then jump ''UNCLEAR''
+</pre>
 </div>
 <div created="20191227170641254" modified="20191227174905602" tags="math [[real analysis]]" title="Integers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Axiomatic Definition:
@@ -10617,10 +10691,11 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
-<div created="20200115032001461" modified="20200122005418659" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200115032001461" modified="20200122055534253" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>!!! Syllabus
 # [[Computer Abstractions and Technology]]
-# [[Instructions: Language of the Computer]]</pre>
+# [[Instructions: Language of the Computer]]
+# [[Arithmetic for Computers]]</pre>
 </div>
 <div created="20191121010859851" modified="20191121011220661" tags="" title="UCLA CS M282A - Cryptography 1" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
