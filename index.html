@@ -9772,7 +9772,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200126061129377" list="[[Decision Trees]] Welcome [[How to Contribute?]]" modified="20200126061129377" title="$:/StoryList" revision="2" bag="default">
+<div created="20200126061129377" list="[[Decision Trees]] Welcome [[How to Contribute?]]" modified="20200126061129377" title="$:/StoryList" revision="20" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10320,7 +10320,7 @@ Can deal with this by:
 * Use a learning algorithm that can deal with missing features on its own
 * Using [[Data Imputation Techniques]]</pre>
 </div>
-<div created="20200126035727023" modified="20200126052835851" tags="[[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200126035727023" modified="20200126063016270" tags="[[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="9" bag="default">
 <pre>Setup:
 
 * Set of possible instances X - each $$x \in X$$ is a feature vector (e.g. humidity=low, wind=weak etc.)
@@ -10338,11 +10338,30 @@ Three things to learn: https://imgur.com/J0MQszx
 * The values for the leaves - the decision at the end of a path down the tree
 
 
-A possible decision tree: 
+A possible decision tree: https://imgur.com/FytsKp6
 
 * each internal node - test one feature
 * each edge - select a value of that feature
-* each label - predict class</pre>
+* each label - predict class
+
+
+Occam's Razor: simplest hypothesis probably true - form of inductive bias - NP Hard - therefore greedily attempt to do this
+
+
+Algorithm to learn structure: https://imgur.com/u5nBvPK
+
+* Divide and Conquer
+* Greedy if best feature chosen with local optimization techniques
+* first if statement obvious - no need to further split data 
+* second if statement - if no more features left then cannot further split data so take best 'guess'
+* recursive step - split data based on 'best' feature and recurse on left and right halves, also ensures no feature appears twice
+
+
+How to choose best feature:
+
+* Random 
+* Highest Accuracy - select feature with highest accuracy - ''WHAT DOES THIS MEAN?''
+* Max Gain - select feature with largest information gain</pre>
 </div>
 <div author="Siddharth Joshi, Tejas Ramdas" created="20191119182457568" modified="20191120062447902" tags="deepmind research [[intelligence project]] [[reinforcement learning]] [[machine learning]] incomplete [[needs formatting]]" title="Discovery of Useful Questions as Auxiliary Tasks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Link to Paper
