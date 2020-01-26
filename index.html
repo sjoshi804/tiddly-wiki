@@ -183,6 +183,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/search</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
@@ -208,6 +210,8 @@ Error message and password prompt
 <li>Data Imputation Techniques</li>
 
 <li>Dealing with Missing Features</li>
+
+<li>Decision Trees</li>
 
 <li>Discovery of Useful Questions as Auxiliary Tasks</li>
 
@@ -251,6 +255,8 @@ Error message and password prompt
 
 <li>One-Hot Encoding</li>
 
+<li>Overview of Machine Learning</li>
+
 <li>Persistent Homology</li>
 
 <li>Reinforcement Learning: Introduction</li>
@@ -260,6 +266,8 @@ Error message and password prompt
 <li>Standardization of Features</li>
 
 <li>The Hundred-Page Machine Learning Book by Andriy Burkov</li>
+
+<li>UCLA CS M146 - Machine Learning</li>
 
 <li>UCLA CS M151B - Computer Architecture</li>
 
@@ -9764,7 +9772,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Welcome [[How to Contribute?]]" title="$:/StoryList" revision="1" bag="default">
+<div created="20200126061129377" list="[[Decision Trees]] Welcome [[How to Contribute?]]" modified="20200126061129377" title="$:/StoryList" revision="2" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9812,11 +9820,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1440&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9824,6 +9832,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200126061127676" modified="20200126061128044" title="$:/temp/search" revision="3" bag="default">
+<pre>dec</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10309,6 +10320,30 @@ Can deal with this by:
 * Use a learning algorithm that can deal with missing features on its own
 * Using [[Data Imputation Techniques]]</pre>
 </div>
+<div created="20200126035727023" modified="20200126052835851" tags="[[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Setup:
+
+* Set of possible instances X - each $$x \in X$$ is a feature vector (e.g. humidity=low, wind=weak etc.)
+* Set of possible labels Y - Y is discrete valued
+* Unknown target function - f: X -&gt; Y
+* Model/Hypotheses - H = set of decision trees 
+
+Goal: Learn a function that maps instance to label
+
+
+Three things to learn: https://imgur.com/J0MQszx
+
+* Structure of the tree - what feature at node, what is the branching pattern etc.
+* Threshold values - what values will be the thresholds for going one way or the other
+* The values for the leaves - the decision at the end of a path down the tree
+
+
+A possible decision tree: 
+
+* each internal node - test one feature
+* each edge - select a value of that feature
+* each label - predict class</pre>
+</div>
 <div author="Siddharth Joshi, Tejas Ramdas" created="20191119182457568" modified="20191120062447902" tags="deepmind research [[intelligence project]] [[reinforcement learning]] [[machine learning]] incomplete [[needs formatting]]" title="Discovery of Useful Questions as Auxiliary Tasks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Link to Paper
 https://arxiv.org/pdf/1909.04607v1
@@ -10657,6 +10692,56 @@ see also: [[Standardization of Features]]</pre>
 
 e..g: Encoding what major a college student as many dimensional vector with 1 in the index corresponding to the student's major and 0 everywhere else instead of assigning numbers 1, 2, 3 ... to the majors and implying an ordering. </pre>
 </div>
+<div created="20200126032442520" modified="20200126035121411" tags="[[machine learning]]" title="Overview of Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Machine Learning - study of algorithms that improve their performance P, at some task T with experience E. Well-defined ML task given by &lt;P, T, E&gt;
+
+
+When do we use ML:
+
+* Human expertise doesn't exist (navigating Mars)
+* Humans cannot explain their expertise (speech recognition)
+* Algorithms must be customized (personalized medicine)
+* Data exists to acquire expertise (genomics)
+* Learning not always useful - no need to learn how to add numbers
+
+
+Types of Learning:
+
+* Supervised (inductive) - labeled training data -&gt; learn mapping that predicts label for test data
+* Unsupervised - unlabeled inputs -&gt; learn some intrinsic structure in inputs
+* Reinforcement - agent interacting in environment (set of states) -&gt; learn policy (state to action mapping) that maximizes reward
+
+
+Supervised:
+
+* Regression - learn a function f(x) where y is real-valued
+* Classification - learn a function f(x) where y is categorical
+
+
+Learning Problem:
+
+* Problem Setting - set of possible x, set of possible y labels, unknown target function from X to Y, set of hypotheses that map X to Y
+* Input - training data drawn from data generation distribution p
+* Output - hypothesis h that best approximates f - as measured by loss - formally h should have low expected loss - $$ \sum_{x, y} p(x, y) L(y, h(x))$$ - however, we do not know distribution p but are given samples from p - therefore approximate risk by training error (empirical risk) = $$ \frac{1}{n} \sum_{i = 1}^{n} L(y_i, h(x_i)) $$ - note this only works if training data and test data generated based on same distribution - challenge = can make error 0 by memorizing but need to generalize trends
+
+
+Example: Hypothesis space - degree m polynomials, can fit exactly any n samples but this is overfitting, really want the general trend that the data represents
+
+
+Key issues in ML:
+
+* Representation - choosing a hypothesis space - guided by prior knowledge
+* Optimization - finding the best hypothesis in chosen space - computational question
+* Evaluation - gauging the accuracy of a hypothesis on unseen testing data - can't simply do by minimizing training error - main question in learning theory
+
+
+ML in practice:
+
+* Understand domain, prior knowledge and goals
+* Data integration, selection, cleaning and pre-processing
+* Learn models
+* Interpret Results and tweak accordingly</pre>
+</div>
 <div author="Siddharth Joshi" created="20191124054140398" modified="20191124054454331" tags="incomplete [[intelligence project]] research math topology" title="Persistent Homology" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Persistent homology is a method for computing topological features of a space at different spatial resolutions. More persistent features are detected over a wide range of spatial scales and are deemed more likely to represent true features of the underlying space rather than artifacts of sampling, noise, or particular choice of parameters.
 
@@ -10712,7 +10797,12 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
-<div created="20200115032001461" modified="20200122055535350" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200126032331506" modified="20200126032430986" tags="ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! Syllabus
+# [[Overview of Machine Learning]]
+# [[Decision Trees]]</pre>
+</div>
+<div created="20200115032001461" modified="20200126032428194" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
 # [[Computer Abstractions and Technology]]
 # [[Instructions: Language of the Computer]]
