@@ -257,6 +257,8 @@ Error message and password prompt
 
 <li>One-Hot Encoding</li>
 
+<li>Overfitting</li>
+
 <li>Overview of Machine Learning</li>
 
 <li>Persistent Homology</li>
@@ -9762,8 +9764,8 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200127004654722" modified="20200127004654722" title="$:/state/showeditpreview" revision="1" bag="default">
-<pre>yes</pre>
+<div created="20200127004654722" modified="20200127010611609" title="$:/state/showeditpreview" revision="2" bag="default">
+<pre>no</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9777,7 +9779,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200126061129377" list="[[Decision Trees]] Welcome [[How to Contribute?]]" modified="20200126061129377" title="$:/StoryList" revision="34" bag="default">
+<div created="20200126061129377" list="[[Decision Trees]] Welcome [[How to Contribute?]]" modified="20200127012957326" title="$:/StoryList" revision="46" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9838,8 +9840,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200126061127676" modified="20200126061128044" title="$:/temp/search" revision="3" bag="default">
-<pre>dec</pre>
+<div created="20200126061127676" modified="20200127012946911" title="$:/temp/search" revision="14" bag="default">
+<pre>overfitting</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10325,7 +10327,7 @@ Can deal with this by:
 * Use a learning algorithm that can deal with missing features on its own
 * Using [[Data Imputation Techniques]]</pre>
 </div>
-<div created="20200126035727023" modified="20200127005106439" tags="[[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="16" bag="default">
+<div created="20200126035727023" modified="20200127012939352" tags="[[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="20" bag="default">
 <pre>Setup:
 
 * Set of possible instances X - each $$x \in X$$ is a feature vector (e.g. humidity=low, wind=weak etc.)
@@ -10369,7 +10371,7 @@ How to choose best feature:
 * Max Gain - select feature with largest information gain - ''ID3 Algorithm'' - think of this as minimizing uncertainty about a variable's outcome
 
 
-Entropy - measures the amount of uncertainty in the value that a random variable will take - 0 means no uncertainty so it is a constant and the higher it is the more uncertainty there is
+Entropy - measures the amount of uncertainty in the value that a random variable will take - 0 means no uncertainty so it is a constant and the higher it is the more uncertainty there is - max entropy = log S 
 
 Entropy = $$H(Y) = \sum_{k=1}^K P(X = x_k) log(P(X = x_k))$$ (unit is bit when log taken base 2)
 
@@ -10377,9 +10379,32 @@ Conditional Entropy = $$H(Y | X) = \sum_k P(X = a_k)H(Y | X = a_k)$$
 
 X = variable to split, Y = label
 
-If i told you the value of X, how much uncertainty in the value of Y?
+//If I told you the value of X, how much uncertainty in the value of Y?//
 
 Information Gain = $$H(Y) - H(Y|X)$$ only need to calculate second quantity to maximize gain - therefore choose attribute that minimizes conditional entropy
+
+//Favors variables that take many different values// - ''Why''
+
+Decision Tree Testing Algorithm - https://imgur.com/4MR4C1a
+
+
+Preferring shallow trees -  a form of inductive bias:
+
+* too deep -&gt; overfit -&gt; memorize the training data
+* too shallow -&gt; underfit -&gt; not learn enough
+* Max Depth is a hyperparameter - should be tuned by the data - a parameter that controls the other parameters of the tree
+
+
+{{Overfitting}}
+
+
+Avoiding Overfitting:
+
+* Get more data - not always possible
+* Remove irrelevant features
+* Force tree to be simple - prune while building (early stopping) - prune after building tree (post pruning)
+
+
 
 </pre>
 </div>
@@ -10730,6 +10755,28 @@ see also: [[Standardization of Features]]</pre>
 <pre> Increasing dimensionality of a feature to represent it in the feature vector rather than assigning arbitrary ordered values that might mislead the model. 
 
 e..g: Encoding what major a college student as many dimensional vector with 1 in the index corresponding to the student's major and 0 everywhere else instead of assigning numbers 1, 2, 3 ... to the majors and implying an ordering. </pre>
+</div>
+<div created="20200127012930899" modified="20200127013015084" tags="[[machine learning]]" title="Overfitting" revision="2" bag="default">
+<pre>Overfitting:
+
+* Noisy data - two instances have the same value but different class labels, some of the values recorded are incorrect
+* Some features are irrelevant to classification
+* Target variable is non-deterministic in the features - some randomness involved
+
+As model complexity increases, training error in decision trees can be driven to 0 but may not generalize well and perform worse on test data - https://imgur.com/ebkhEst
+
+
+How to detect overfitting - split data into training and test data - train on training data - compute accuracy on test data
+
+
+Cross Validation - no reason to choose one particular split of the data:
+
+* Split data into k folds
+* Choose each fold in turn as test and train on other folds
+* Average accuracy across folds
+* Leave 1 out - K = N thus test on just 1 point
+
+Visualizing Overfitting - learning curves - show performance v/s number of training instances - https://imgur.com/q8QFr8Z - shows that with less data overfits more, generalizes badly - eventually generalizes better but performs worse on training data but better on testing</pre>
 </div>
 <div created="20200126032442520" modified="20200126035121411" tags="[[machine learning]]" title="Overview of Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Machine Learning - study of algorithms that improve their performance P, at some task T with experience E. Well-defined ML task given by &lt;P, T, E&gt;
