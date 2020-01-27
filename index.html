@@ -171,6 +171,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -9760,6 +9762,9 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200127004654722" modified="20200127004654722" title="$:/state/showeditpreview" revision="1" bag="default">
+<pre>yes</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9772,7 +9777,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200126061129377" list="[[Decision Trees]] Welcome [[How to Contribute?]]" modified="20200126061129377" title="$:/StoryList" revision="20" bag="default">
+<div created="20200126061129377" list="[[Decision Trees]] Welcome [[How to Contribute?]]" modified="20200126061129377" title="$:/StoryList" revision="34" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10320,7 +10325,7 @@ Can deal with this by:
 * Use a learning algorithm that can deal with missing features on its own
 * Using [[Data Imputation Techniques]]</pre>
 </div>
-<div created="20200126035727023" modified="20200126063016270" tags="[[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="9" bag="default">
+<div created="20200126035727023" modified="20200127005106439" tags="[[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="16" bag="default">
 <pre>Setup:
 
 * Set of possible instances X - each $$x \in X$$ is a feature vector (e.g. humidity=low, wind=weak etc.)
@@ -10361,7 +10366,22 @@ How to choose best feature:
 
 * Random 
 * Highest Accuracy - select feature with highest accuracy - ''WHAT DOES THIS MEAN?''
-* Max Gain - select feature with largest information gain</pre>
+* Max Gain - select feature with largest information gain - ''ID3 Algorithm'' - think of this as minimizing uncertainty about a variable's outcome
+
+
+Entropy - measures the amount of uncertainty in the value that a random variable will take - 0 means no uncertainty so it is a constant and the higher it is the more uncertainty there is
+
+Entropy = $$H(Y) = \sum_{k=1}^K P(X = x_k) log(P(X = x_k))$$ (unit is bit when log taken base 2)
+
+Conditional Entropy = $$H(Y | X) = \sum_k P(X = a_k)H(Y | X = a_k)$$
+
+X = variable to split, Y = label
+
+If i told you the value of X, how much uncertainty in the value of Y?
+
+Information Gain = $$H(Y) - H(Y|X)$$ only need to calculate second quantity to maximize gain - therefore choose attribute that minimizes conditional entropy
+
+</pre>
 </div>
 <div author="Siddharth Joshi, Tejas Ramdas" created="20191119182457568" modified="20191120062447902" tags="deepmind research [[intelligence project]] [[reinforcement learning]] [[machine learning]] incomplete [[needs formatting]]" title="Discovery of Useful Questions as Auxiliary Tasks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Link to Paper
