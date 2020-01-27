@@ -9779,7 +9779,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200126061129377" list="[[Decision Trees]] Welcome [[How to Contribute?]]" modified="20200127012957326" title="$:/StoryList" revision="46" bag="default">
+<div created="20200126061129377" list="[[Decision Trees]] Welcome [[How to Contribute?]]" modified="20200127012957326" title="$:/StoryList" revision="52" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10327,7 +10327,7 @@ Can deal with this by:
 * Use a learning algorithm that can deal with missing features on its own
 * Using [[Data Imputation Techniques]]</pre>
 </div>
-<div created="20200126035727023" modified="20200127012939352" tags="[[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="20" bag="default">
+<div created="20200126035727023" modified="20200127023302502" tags="[[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="23" bag="default">
 <pre>Setup:
 
 * Set of possible instances X - each $$x \in X$$ is a feature vector (e.g. humidity=low, wind=weak etc.)
@@ -10373,9 +10373,11 @@ How to choose best feature:
 
 Entropy - measures the amount of uncertainty in the value that a random variable will take - 0 means no uncertainty so it is a constant and the higher it is the more uncertainty there is - max entropy = log S 
 
-Entropy = $$H(Y) = \sum_{k=1}^K P(X = x_k) log(P(X = x_k))$$ (unit is bit when log taken base 2)
+Entropy = $$H(X) = \sum_{k=1}^K P(X = x_k) log(P(X = x_k))$$ (unit is bit when log taken base 2)
 
-Conditional Entropy = $$H(Y | X) = \sum_k P(X = a_k)H(Y | X = a_k)$$
+Conditional Entropy = $$H(Y | X) = \sum_k P(X = a_k)H(Y | X = a_k)$$ 
+
+$$H(Y | X = a_k) = \sum_{k=1}^K P(Y = b_k | X = a_k) log(P(Y = b_k | X = a_k))$$
 
 X = variable to split, Y = label
 
