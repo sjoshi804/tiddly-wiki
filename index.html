@@ -9811,7 +9811,7 @@ Error message and password prompt
 <div created="20200131052606132" modified="20200131055059561" title="$:/state/showeditpreview" revision="11" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200131055056734" modified="20200131210207237" title="$:/state/sidebar" revision="10" bag="default">
+<div created="20200131055056734" modified="20200131232242690" title="$:/state/sidebar" revision="12" bag="default">
 <pre>yes</pre>
 </div>
 <div created="20200131071955492" modified="20200131155440900" title="$:/state/tab/sidebar--595412856" revision="4" bag="default">
@@ -9829,7 +9829,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200131001035174" list="[[Metric Spaces]] Compactness [[Continuous Functions]]" modified="20200131210639630" title="$:/StoryList" revision="150" bag="default">
+<div created="20200131001035174" list="[[Metric Spaces]] [[Open and Closed Sets]] Completeness Compactness [[Continuous Functions]]" modified="20200131213338454" title="$:/StoryList" revision="158" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10211,7 +10211,7 @@ Factors to consider:
 
 !!! Dividing Data into Training Set</pre>
 </div>
-<div created="20200131075725454" modified="20200131180401980" tags="[[metric spaces]] topology" title="Compactness" revision="5" bag="default">
+<div created="20200131075725454" modified="20200131212322757" tags="[[metric spaces]] topology" title="Compactness" revision="6" bag="default">
 <pre>Def: A space is totally bounded if $$\forall \epsilon &gt; 0$$, there exists a finite $$\epsilon$$-net for X i.e there exist $$x_1, ..., x_n$$ s.t. every point in X is within $$\epsilon$$ of some $$x_i$$, equivalently $$X = \cup_{i = 1}^n B(x_i, \epsilon)$$
 
 Def: X is bounded if $$\exists b &gt; 0, d(x, y) &lt; b, \forall x, y \in X$$
@@ -10234,7 +10234,7 @@ Thm 2: X is totally bounded and complete iff X is sequentially compact
 
 Proof: $$\implies$$ is trivial by previous thm and definition of completeness
 
-* ''sequentially compact -&gt; complete PENDING''
+* Suppose not complete, then can find a cauchy sequence that doesn't converge. CONTRADICTION as every sequence must have a convergent subsequence in a sequentially compact space. 
 * Suppose not totally bounded, construct a sequence that for a given $$\epsilon &gt; 0$$, construct a sequence s.t. every term is not contained in the union of the epsilon balls around all previous terms i.e. $$y_{k + 1} \notin \cup_{i = 1}^k B(y_i, \epsilon)$$ and can do so by construction as for any $$k \in \bf{N}$$, k epsilon balls cannot cover the whole space therefore there must exist at least one point not in the union of the k balls.
 * But then this sequence is not cauchy and if it had a convergent subsequence it would be cauchy, therefore no convergent subsequence exists and hence not sequentially compact.
 
@@ -10498,7 +10498,7 @@ Millions of Instructions Per Second = Instruction Count / Execution Time * 10^6 
 
 </pre>
 </div>
-<div created="20200131075742535" modified="20200131184113416" tags="topology [[metric spaces]]" title="Continuous Functions" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<div created="20200131075742535" modified="20200131212028137" tags="topology [[metric spaces]]" title="Continuous Functions" type="text/vnd.tiddlywiki" revision="5" bag="default">
 <pre>Def: Let (X, d) and (Y, p) be metric spaces. A function f: X -&gt; Y is continuous at $$x \in X$$ if whenever $$\{x_n\}_{n \in \bf{N}}$$ converges to x, $$\{f(x_n)\}_{n \in \bf{N}}$$ converges to f(x)
 
 Def: A function is continuous if it is continuous $$\forall x \in X$$
@@ -10528,7 +10528,14 @@ Def: A function f is uniformly continuous if $$\forall \epsilon &gt; 0, \exists 
 
 Thm 3: Let X and Y be metric spaces and suppose that X is compact then every continuous function from X to Y is uniformly continuous
 
-Proof: ''PENDING''</pre>
+Proof: Suppose f is not uniformly continuous (proof by contradiction)
+
+* Then $$\exists \epsilon &gt; 0$$, s.t. $$\forall \delta = 1/k$$ and points $$x_k, z_k \in X$$ s.t. $$d(x_k, z_k) \leq 1/k$$ while $$\rho(f(x_k), f(z_k)) \geq \epsilon$$
+* X is compact therefore sequentially compact therefore there exists a convergent subsequence $$\{x_{n_k}\}_{k \in \bf{N}}$$ that converges to $$x_0$$. Since $$d(x_k, z_k) \rightarrow 0$$, we get $$\{z_k\}_{k \in \bf{N}} \rightarrow x_0$$. Therefore $$f(x_k)$$ and $$f(z_k) \rightarrow f(x)$$ and thus $$\rho(f(x_k), f(z_k)) \leq \rho(f(x_k), f(x)) + \rho(f(x), f(z_k)) \rightarrow 0$$. CONTRADICTION.
+
+Def: A function f from one metric space to another is a homeomorphism if f is bijective and continuous and f^^-1^^ is continuous as well. Such a function is also bi-continuous.
+
+Fact: A homeomorphism preserves all properties of a metric space that are definable in terms of open sets only. </pre>
 </div>
 <div author="Siddharth Joshi" created="20191122022337773" modified="20191122024526637" tags="[[machine learning]] [[feature engineering]]" title="Data Imputation Techniques" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Techniques to impute a feature value when one is missing for a given example:
@@ -10994,12 +11001,12 @@ see also: [[Standardization of Features]]</pre>
 
 e..g: Encoding what major a college student as many dimensional vector with 1 in the index corresponding to the student's major and 0 everywhere else instead of assigning numbers 1, 2, 3 ... to the majors and implying an ordering. </pre>
 </div>
-<div created="20200131052738780" modified="20200131061119978" tags="[[metric spaces]] topology" title="Open and Closed Sets" revision="3" bag="default">
+<div created="20200131052738780" modified="20200131213350499" tags="[[metric spaces]] topology" title="Open and Closed Sets" revision="4" bag="default">
 <pre>Def: A metric is a real valued function with the following properties:
 
 * $$d(x, y) \geq 0, \forall x, y \in X$$
 * $$d(x, y) = 0 \iff x = y$$
-* $$d(x,y) = d(y,x)a$$
+* $$d(x,y) = d(y,x)$$
 * $$d(x,z) \leq d(x,y) + d(y,z)$$ (triangle inequality)
 
 Fact: Any set can be made into a discrete metric space by associating it with metric d defined by $$d(x,y) = 1, x \neq y$$ and $$d(x,y) = 0, x = y$$
