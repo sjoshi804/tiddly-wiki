@@ -173,9 +173,13 @@ Error message and password prompt
 
 <li>$:/state/Excise/--1675782876/type</li>
 
+<li>$:/state/Link/--848112581/search</li>
+
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -213,7 +217,13 @@ Error message and password prompt
 
 <li>Chapter 5 (The Hundred-Page Machine Learning Book)</li>
 
+<li>Compactness</li>
+
+<li>Completeness</li>
+
 <li>Computer Abstractions and Technology</li>
+
+<li>Continuous Functions</li>
 
 <li>Data Imputation Techniques</li>
 
@@ -224,8 +234,6 @@ Error message and password prompt
 <li>Discovery of Useful Questions as Auxiliary Tasks</li>
 
 <li>Do Calculus</li>
-
-<li>Draft of 'Completeness'</li>
 
 <li>Equivalence Relations</li>
 
@@ -279,7 +287,11 @@ Error message and password prompt
 
 <li>Persistent Homology</li>
 
+<li>Products of Metric Spaces</li>
+
 <li>Quantum Temporal Logic by Nengkun Yu</li>
+
+<li>Real Numbers</li>
 
 <li>Reinforcement Learning: Introduction</li>
 
@@ -288,6 +300,8 @@ Error message and password prompt
 <li>Standardization of Features</li>
 
 <li>The Hundred-Page Machine Learning Book by Andriy Burkov</li>
+
+<li>The Real Line</li>
 
 <li>Things I want to learn about in 2020</li>
 
@@ -9791,11 +9805,17 @@ Error message and password prompt
 <div created="20200131052719399" modified="20200131052719399" title="$:/state/Excise/--1675782876/type" revision="1" bag="default">
 <pre>link</pre>
 </div>
+<div created="20200131175313752" modified="20200131175314768" title="$:/state/Link/--848112581/search" revision="5" bag="default">
+<pre>Thm 1</pre>
+</div>
 <div created="20200131052606132" modified="20200131055059561" title="$:/state/showeditpreview" revision="11" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200131055056734" modified="20200131061217232" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20200131055056734" modified="20200131210207237" title="$:/state/sidebar" revision="10" bag="default">
 <pre>yes</pre>
+</div>
+<div created="20200131071955492" modified="20200131155440900" title="$:/state/tab/sidebar--595412856" revision="4" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9809,7 +9829,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200131001035174" list="[[Metric Spaces]] [[Draft of 'Completeness']]" modified="20200131061147387" title="$:/StoryList" revision="84" bag="default">
+<div created="20200131001035174" list="[[Metric Spaces]] [[Continuous Functions]]" modified="20200131180352531" title="$:/StoryList" revision="149" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10191,6 +10211,128 @@ Factors to consider:
 
 !!! Dividing Data into Training Set</pre>
 </div>
+<div created="20200131075725454" modified="20200131180401980" tags="[[metric spaces]] topology" title="Compactness" revision="5" bag="default">
+<pre>Def: A space is totally bounded if $$\forall \epsilon &gt; 0$$, there exists a finite $$\epsilon$$-net for X i.e there exist $$x_1, ..., x_n$$ s.t. every point in X is within $$\epsilon$$ of some $$x_i$$, equivalently $$X = \cup_{i = 1}^n B(x_i, \epsilon)$$
+
+Def: X is bounded if $$\exists b &gt; 0, d(x, y) &lt; b, \forall x, y \in X$$
+
+Lemma 1: A totally bounded space is bounded //(Hint: Set epsilon to 1 and $$ b = 2 + max_{i, j}(d(x_i, x_j)$$))//
+
+Lemma 2: A subspace of a totally bounded space is totally bounded //(Hint: Use epsilon / 2 net in X and triangle inequality and get new points in the intersection of subspace and original epsilon / 2 balls that form the new epsilon net)//
+
+Thm 1: In a totally bounded space, every sequence contains a cauchy subsequence
+
+Proof:
+
+* Given a sequence $$\{x_n\}_{n \in \bf{N}}$$, define a sequence of subsequences $$\{x^j_n\}_{j \in \bf{N}}$$ such that $$\{x^{j + 1}_n\}_{n \in \bf{N}}$$ is the subsequence of $$\{x^{j}_n\}_{n \in \bf{N}}$$ totally enclosed in some ball of radius $$b / j$$ where $$d(x,y) &lt; b, \forall x, y \in X$$. (This is possible since X is totally bounded)
+* Then pick the diagonal terms of the resulting table i.e. $$\{x^i_i\}_{i \in \bf{N}}$$ to form a new sequence (is a valid sequence due to construction of sequences as subsequences of preceding sequence)
+* $$\{x^i_i\}_{i \in \bf{N}}$$ is cauchy as for large enough N, all terms after it are contained in an $$b/j$$ ball (set $$b/j &lt; \epsilon$$)
+
+Def: X is sequentially compact if every sequence contains a convergent subsequence
+
+Thm 2: X is totally bounded and complete iff X is sequentially compact 
+
+Proof: $$\implies$$ is trivial by previous thm and definition of completeness
+
+* ''sequentially compact -&gt; complete PENDING''
+* Suppose not totally bounded, construct a sequence that for a given $$\epsilon &gt; 0$$, construct a sequence s.t. every term is not contained in the union of the epsilon balls around all previous terms i.e. $$y_{k + 1} \notin \cup_{i = 1}^k B(y_i, \epsilon)$$ and can do so by construction as for any $$k \in \bf{N}$$, k epsilon balls cannot cover the whole space therefore there must exist at least one point not in the union of the k balls.
+* But then this sequence is not cauchy and if it had a convergent subsequence it would be cauchy, therefore no convergent subsequence exists and hence not sequentially compact.
+
+Def: X is separable if it contains a countable dense subset $$\{x_n\}_{n \in \bf{N}}$$
+
+Thm 3: A subspace Y of a separable space X is separable
+
+Proof: Take points in intersection of 1/2n - ball around $$x_i$$ and Y. These points form a countable dense subset, can show using triangle inequality.
+
+Thm 4: A totally bounded space X is separable
+
+Proof: Y = $$\cup_{n \in \bf{N}} 1/n$$ - net for X is obviously dense and is the countable union of finite sets, therefore countable
+
+Def: A base of open sets of X is //''B''// = {U} s.t. every open set in X is a union of sets from ''//B//'' or equivalently $$\forall x \in U^{open}, \exists V \in B, x \in V \&amp; V \subseteq U$$
+
+Def: X is second countable if it has a countable base for its open sets
+
+Thm 5: X is second countable iff X is separable
+
+Proof: 
+
+* $$\impliedby$$ Take the dense set $$\{x_n\}_{n \in \bf{N}}$$ and construct base ''//B//'' = $$\{B(x_i, 1/n)\}$$ - countable as a countable union of countable sets and now simply show that $$\forall x \in U^{open} s.t. B(x, \epsilon) \subset U$$ choose n s.t. $$1/n &lt; \epsilon$$ and then select $$x_i$$ s.t. $$x \in B(x_i, 1/2n)$$ (can do as dense) and by triangle inequality can show that $$B(x_i, 1/2n) \subset B(x, \epsilon \subset U$$
+* $$\implies$$ Simply choose a point in every set of the base ''//B//'' and thus every open set contain at least one of the chosen points therefore dense
+
+Def: An open cover of X is a set of open subsets $$\{U_\alpha\}_ {\alpha \in A}$$such that $$X = \cup_{\alpha \in A} U_\alpha$$ and a subcover of that cover is $$\{U_\alpha\}_ {\alpha \in A' \subset A}$$ such that $$X = \cup_{\alpha \in A'} U_\alpha$$
+
+''Thm 6 Lindelof's Theorem:'' If X is second countable then every open cover has a countable subcover
+
+Proof:  Let ''//B//'' = $$\{V_n\}_{n \in \bf{N}}$$ be a countable basis and $$\{U_\alpha\}_ {\alpha \in A}$$ be a cover.
+
+*$$x \in U_\alpha \implies \exists V_n, x \in V_n \subset U_\alpha$$
+* Therefore, $$C = \{V_n \vert \exists \alpha, V_n \subset U_\alpha \} $$ is a countable cover
+* Therefore pick the subcover formed by the sets that have the $$V_n$$s as subsets
+
+Def: A metric space X is compact if every open cover has a finite subcover
+
+Thm 7: X is compact $$\implies$$ X is sequentially compact
+
+Proof: Suffices to show that $$\exists x_0 \forall \epsilon &gt; 0, B(x_0, \epsilon)$$ contains infinitely many terms of the sequence
+
+* Suppose $$x_0$$ doesn't exist then $$\forall x \in X, \exists \epsilon &gt; 0, B(x, \epsilon)$$ contains only finitely many terms of the sequence
+* But the union of epsilon balls around every point is obviously a cover of the space X, however, a finite subcover of that can then only contain a finite number of terms from the sequence. CONTRADICTION.
+
+Thm 8: X is totally bounded and complete $$\implies$$ X is compact
+
+Proof: 
+
+* Totally bounded $$\implies$$ second countable $$\implies$$ every cover has a countable subcover 
+* Suppose there isn't a finite subcover, then construct a sequence as follows: $$x_m \in X - \cup_{i=1}^{m-1}U_i$$
+* Must have a cauchy subsequence by thm 1 as totally bounded and that sequence must converge to $$x_0$$ due to completeness
+* $$\forall m \in \bf{N}$$ $$x_0$$ is adherent to $$X - \cup_{i=1}^{m-1}U_i$$ that is closed therefore $$\forall m \in \bf{N}, x_0 \in X - \cup_{i=1}^{m-1}U_i$$, therefore $$x_0 \in X - \cup_{i=1}^{\infty}U_i$$ contradiction as $$U_i$$ cover $$X$$
+
+Summary: The following statements are equivalent
+
+* X is compact
+* X is sequentially compact
+* X is totally bounded and complete
+</pre>
+</div>
+<div created="20200131061156893" modified="20200131161437869" tags="topology [[metric spaces]]" title="Completeness" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<pre>Def: A sequence $$\{x_n\}_{n \in \bf{N}}$$ in a metric space X is //Cauchy// if for all $$\epsilon &gt; 0, \exists N, d(x_n, x_m) &lt; \epsilon, \forall n, m \geq N$$
+
+Lemma 1: A convergent sequence is cauchy
+
+Lemma 2: If $$\{x_n\}_{n \in \bf{N}}$$ is a Cauchy sequence and it has a subsequence converging to x then $$\{x_n\}_{n \in \bf{N}}$$ converges to x
+
+Def: A metric space X is complete if every Cauchy sequence in X converges 
+
+Thm 3: A closed subspace of a complete metric space is complete
+ 
+Thm 4: A complete subspace Y of a metric space X is closed in X
+
+Def: Let $$\{f_n\}_{n \in \bf{N}}$$ be a sequence of functions from a set S to a metric space X and let f be a function from S to X, then $$\{f_n\}_{n \in \bf{N}}$$ ''converges uniformly'' if for all $$\epsilon &gt; 0, \exists N, d(f_n(s), f(s)) &lt; \epsilon, \forall n \geq N,\forall s \in S$$
+
+Def: A sequence $$\{f_n\}_{n \in \bf{N}}$$ of functions from S to X is a Cauchy sequence of functions if for all $$\epsilon &gt; 0, \exists N, d(f_n(s), f_m(s)) &lt; \epsilon, \forall n, m \geq N, \forall s \in S$$
+
+Thm 5: Let S be a set and X be a complete metric space. If  $$\{f_n\}_{n \in \bf{N}}$$ is cauchy then there exists f: S -&gt; X to which the sequence converges uniformly. 
+
+Proof: For each fixed point $$s \in S, f_n(s)$$ defines a sequence that is cauchy, therefore convergent in X. Thus define f(s) in this way. Then use the cauchy property of the sequence of functions and the triangle inequality to show $$d(f_n, f(s)) &lt; d(f_n(s), f_m(s)) + d(f_m(s), f(s))$$ and with m -&gt; infinity, $$d(f_n(s), f(s)) \leq \epsilon$$
+
+Def: A subset T of a metric space X is dense in X if clos(T) = X. Equivalently T is dense if every open ball in X intersects T.
+
+''Thm 6 - Baire Category Theorem'': Let  $$\{U_n\}_{n \in \bf{N}}$$ be a sequence of dense open subsets of a complete metric space X. Then  $$\cap_{n \in \bf{N}} U_n$$ is also dense in X
+
+Proof: For arbitrary $$x \in X$$ and $$\epsilon &gt; 0$$, it suffices to find $$y \in \cap_{n \in \bf{N}} U_n \cap B(x, \epsilon)$$
+
+* Since $$U_1$$ is dense, there exists $$y_1 \in U_1$$ s.t. $$d(x, y_1) &lt; \epsilon$$ and since $$U_1$$ is open, $$\exists r_1$$ s.t. $$B(y_1, r_1) \subset U_1$$. By shrinking $$r_1$$ we can ensure $$r_1 &lt; 1/1$$ and $$clos(B(y_1, r_1)) \subset U_1 \cap B(x, \epsilon)$$ cause the epsilon ball around X is an open set and thus $$y_1$$ must have some ball around it that fits in x's epsilon ball completely. 
+* Repeat this process inductively with the dense open sets to construct a sequence $$\{y_n\}_{n \in \bf{N}}$$ by nesting the balls. This sequence is obviously cauchy and since the space is complete, $$\exists y$$ that it converges to and thus $$y \in \cap_{n \in \bf{N}}$$ and by construction $$y \in B(x, \epsilon)$$ - the outermost ball in the nesting
+* Closing the ball is necessary to ensure that the sequence we construct has its limit inside the balls and closing the ball is trivial as if we have an open ball, then we can just halve the radius and have a closed ball that is a subset of the open ball
+
+Def: A subset Y of X is nowhere dense in X if $$int(\bar{Y}) = \emptyset$$ and evidently Y is nowhere dense iff X\clos(Y) is dense and open
+
+Corollary 7: Let $$\{E_n\}_{n \in \bf{N}}$$ be a sequence of nowhere dense subsets of a complete metric space X. Then $$\cup_{n \in \bf{N}} E_n$$ has empty interior //(Hint: Use Baire Category Theorem on complements of closure//
+
+Def: A subset of a metric space X is of the first category or meager if it is the countable union of nowhere dense subsets
+
+Remark: The complement of a set of the first category is dense in X. Sets of the first category are //small// and sets that are not of the first category are considered //not small// in the sense of having empty interior</pre>
+</div>
 <div created="20200115174257794" modified="20200122005434968" tags="[[computer architecture]]" title="Computer Abstractions and Technology" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Introduction__
 
@@ -10356,6 +10498,38 @@ Millions of Instructions Per Second = Instruction Count / Execution Time * 10^6 
 
 </pre>
 </div>
+<div created="20200131075742535" modified="20200131184113416" tags="topology [[metric spaces]]" title="Continuous Functions" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<pre>Def: Let (X, d) and (Y, p) be metric spaces. A function f: X -&gt; Y is continuous at $$x \in X$$ if whenever $$\{x_n\}_{n \in \bf{N}}$$ converges to x, $$\{f(x_n)\}_{n \in \bf{N}}$$ converges to f(x)
+
+Def: A function is continuous if it is continuous $$\forall x \in X$$
+
+Thm 1: The function f: X -&gt; Y is continuous at the point $$x \in X$$ iff $$\forall \epsilon &gt; 0, \exists \delta &gt; 0$$ s.t. $$d(x, z) &lt; \delta \implies \rho(f(x), f(z) &lt; \epsilon$$
+
+Proof: 
+
+* $$\implies$$ Suppose not, then $$\exists \epsilon &gt; 0$$ s..t $$\forall \delta &gt; 0, \exists z \in X$$ s.t. $$d(x, z) &lt; \delta$$ but  $$\rho(f(x), f(z) \geq \epsilon$$
+* Can construct a sequence $$\{z_k\}_{k \in \bf{N}}$$ s.t. $$d(x, z_k) &lt; 1/k$$
+* Obviously converges to x but $$\{f(z_k)\}_{k \in \bf{N}}$$ doesn't converge to f(x), therefore not continuous at x
+* $$\impliedby$$ Suppose f is not continuous so pick $$\{x_n\}_{n \in \bf{N}}$$ convergent to x s.t. $$\{f(x_n)\}_{n \in \bf{N}}$$ doesn't converge to f(x)
+* Pass to subsequence s.t. $$\rho(f(x), f(x_{n_k}) \geq \epsilon$$ for some $$\epsilon &gt; 0$$, therefore $$\forall \delta &gt; 0$$, this epsilon doesn't work
+
+Thm 2: The following are equivalent for a function f from a metric space (X,d) to a metric space (Y,p):
+
+# f is continuous
+# $$\forall x \in X, \forall \epsilon &gt; 0, \exists \delta &gt; 0$$ s.t. $$d(x, z) &lt; \delta \implies \rho(f(x), f(z) &lt; \epsilon$$
+# $$f^{-1}(V)$$ is an open subset of X for every open subset V of Y
+
+Proof: 1 &lt;-&gt; 2 is obvious from Thm 1, wts: 2 &lt;-&gt; 3
+
+* $$\implies$$ Let V be an open subset of Y and let $$x \in f^{-1}(V)$$. Choose $$\epsilon &gt; 0 $$ s.t. $$B(f(x), \epsilon) \subset V$$, therefore $$\exists \delta &gt; 0$$ s.t. $$B(x, \delta) \subset  f^{-1}(V)$$
+* $$\impliedby$$ Fix x and $$\epsilon$$, $$\exists \delta &gt; 0$$ s.t. $$B(x, \delta) \subset f^{-1}(B(f(x), \epsilon))$$ therefore $$f(B(x, \delta)) \subset B(f(x), \epsilon)$$
+
+Def: A function f is uniformly continuous if $$\forall \epsilon &gt; 0, \exists \delta &gt; 0$$ s.t. $$d(x, z) &lt; \delta \implies \rho(f(x), f(z) &lt; \epsilon$$. (Same as def of continuity except that delta must be chosen to work for all x, rather than have it depend on x since the for all x comes after choosing delta)
+
+Thm 3: Let X and Y be metric spaces and suppose that X is compact then every continuous function from X to Y is uniformly continuous
+
+Proof: ''PENDING''</pre>
+</div>
 <div author="Siddharth Joshi" created="20191122022337773" modified="20191122024526637" tags="[[machine learning]] [[feature engineering]]" title="Data Imputation Techniques" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Techniques to impute a feature value when one is missing for a given example:
 
@@ -10499,9 +10673,6 @@ tbd
 </div>
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
-</div>
-<div created="20200131061156893" draft.of="Completeness" draft.title="Completeness" modified="20200131061200892" tags="topology [[metric spaces]]" title="Draft of 'Completeness'" revision="3" bag="default">
-<pre></pre>
 </div>
 <div created="20191227170002568" modified="20191227170613995" tags="[[real analysis]] math [[discrete math]]" title="Equivalence Relations" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Relation on a set $$S$$ is a subset of $$S \times S$$
@@ -10776,11 +10947,12 @@ It is the fundamental basis for all functional programming languages. </pre>
 <div created="20191120053237171" modified="20191121010456596" tags="incomplete research [[intelligence project]] [[meta learning]]" title="Meta-Learning via Meta-Gradients" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20200131053010143" modified="20200131061210220" tags="topology [[metric spaces]]" title="Metric Spaces" revision="2" bag="default">
+<div created="20200131053010143" modified="20200131072905289" tags="topology [[metric spaces]]" title="Metric Spaces" revision="3" bag="default">
 <pre>* [[Open and Closed Sets]]
 * [[Completeness]]
 * [[The Real Line]]
 * [[Products of Metric Spaces]]
+* [[Compactness]]
 * [[Continuous Functions]]</pre>
 </div>
 <div author="Siddharth Joshi" created="20191126064803358" modified="20191126072901553" tags="incomplete philosophy logic" title="Model Theory" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -10955,6 +11127,27 @@ Useful Links:
 * https://towardsdatascience.com/from-tda-to-dl-d06f234f51d
 </pre>
 </div>
+<div created="20200131073056488" modified="20200131075604641" tags="topology [[metric spaces]]" title="Products of Metric Spaces" revision="2" bag="default">
+<pre>Property 1: A sequence $$\{x^{(j)}\}_{j \in \bf{N}}$$ converges to x = $$(x_1, ... , x_n) \in X = X_1 \times ... \times X_n$$ iff for each k the sequence of component entries $$\{x^{(j)}_k\}_{j \in \bf{N}}$$ converges to $$x_k$$ in $$X_k$$
+
+Thm 1: Suppose that d is a metric on $$X = X_1 \times ... \times X_n$$ that satisfies property 1, then the open sets in (X, d) are unions of product sets of the form $$U_1 \times ... \times U_n$$ where $$U_i$$ is an open subset of $$X_i$$
+
+Proof: 
+
+* First note that the product of closed sets is closed (obvious from property 1)
+* Therefore $$X_1 \times ... \times (X_k \ U_k) ... \times X_n$$ is closed in X
+* Thus, its complement $$V_k = X_1 \times ... \times U_k ... \times X_n$$ is open
+* $$\cap_{i = 1}^n V_k = U_1 \times ... \times U_n$$ is open (intersection of finite open sets)
+* Now must show $$\forall x \in U$$ that is open in X, $$x \in U_1 \times ... \times U_n$$ - prove by contradiction balls of size 1/m around the components of x that has atleast 1 point $$x_m$$ not in U and show that they imply component wise convergence of $$x_m$$ and thus convergence of $$x_m$$ to x by property 1 but X\U is closed therefore $$ x \notin U$$. CONTRADICTION.
+
+Property 2: $$d_k(x_k, y_k) \leq d(x, y) $$
+
+Thm 2: Let $$(X_1, d_1) ... (X_n, d_n)$$ be complete metric spaces. Let d be a metric on $$X = X_1 \times ... \times X_n$$ that satisfied properties 1 and 2 then (X, d) is a complete metric space. 
+
+Proof: Consider a cauchy sequence in the product space. Note that this implies cauchy sequences in the factor spaces by property 2, but the factor spaces are complete so cauchy implies convergent. Thus cauchy sequence in product space must converge to the vector formed by the component wise limits. 
+
+Corollary 3: $$\bf{R}^n$$ with the usual metric ($$l_2$$) is complete</pre>
+</div>
 <div created="20200131001522764" modified="20200131030521332" tags="[[needs formatting]] [[talk summary]] [[quantum computing]]" title="Quantum Temporal Logic by Nengkun Yu" revision="6" bag="default">
 <pre>Quantum Shock - Quantum computing can solve halting problem (Ji-Natarajan)
 
@@ -11059,6 +11252,9 @@ while m(p) = 1, do S od; M(p) = 1, measure p by (M0, M1)
 
 Decidability of QTL formula - programs without nondeterminism, </pre>
 </div>
+<div created="20200131072027431" modified="20200131072105639" tags="incomplete [[real analysis]]" title="Real Numbers" revision="2" bag="default">
+<pre></pre>
+</div>
 <div author="Siddharth Joshi" created="20191125022514242" modified="20191125022735084" tags="[[reinforcement learning]] [[machine learning]] incomplete" title="Reinforcement Learning: Introduction" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://skymind.ai/wiki/deep-reinforcement-learning</pre>
 </div>
@@ -11106,12 +11302,26 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
-<div created="20200131030723016" modified="20200131030941248" tags="" title="Things I want to learn about in 2020" revision="2" bag="default">
+<div created="20200131071610266" modified="20200131072832208" tags="topology [[metric spaces]]" title="The Real Line" revision="2" bag="default">
+<pre>$$\bf{R}$$ is an ordered field (discussed in [[Real Numbers]])
+
+Least Upper Bound Axiom: If S is a non-empty subset of $$\bf{R}$$ that is bounded above then S has a least upper bound (supremum)
+
+Thm 1: $$\bf{R}$$ is a complete metric space
+
+Proof: 
+
+* Take a cauchy sequence and fix epsilon &gt; 0.
+* Let S be the set of terms in that sequence that lie in the interval $$(s_N - \epsilon, s_N + \epsilon)$$ (all but finitely many terms are in this as the sequence is cauchy)
+* Therefore $$s_N + \epsilon$$ is an upper bound but then b the least upper bound must $$s_N - epsilon \leq b \leq s_N + \epsilon$$
+* But since epsilon is arbitrary can force convergence to b</pre>
+</div>
+<div created="20200131030723016" modified="20200131155508596" tags="" title="Things I want to learn about in 2020" revision="3" bag="default">
 <pre>* Machine Learning (in practice)
 * Reinforcement Learning
 * Bayesian Networks
 * Quantum Computing
-* Modern Cryptography
+* Modern Cryptography - https://www.microsoft.com/en-us/research/project/blockchain/, https://www.microsoft.com/en-us/research/project/multi-party-computation/
 * Research efforts in joining symbolic AI to Neural Networks</pre>
 </div>
 <div created="20200131000351410" modified="20200131051341597" tags="[[computer science]] ucla" title="UCLA CS 201 Winter 2020" revision="1" bag="default">
@@ -11142,7 +11352,7 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 # [[Diagonalization]]
 # [[Inner Products]]</pre>
 </div>
-<div created="20200131051404804" modified="20200131052953324" tags="incomplete topology math" title="UCLA Math 121 Topology" type="text/vnd.tiddlywiki" revision="9" bag="default">
+<div created="20200131051404804" modified="20200131072123228" tags="ongoing topology math" title="UCLA Math 121 Topology" type="text/vnd.tiddlywiki" revision="10" bag="default">
 <pre>Syllabus:
 
 # [[Metric Spaces]]
