@@ -141,6 +141,8 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>$:/config/Manager/Sort</li>
+
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/full-screen</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/palette</li>
@@ -148,6 +150,10 @@ Error message and password prompt
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/storyview</li>
 
 <li>$:/config/RelinkOnRename</li>
+
+<li>$:/config/shortcuts-mac/excise</li>
+
+<li>$:/config/shortcuts/excise</li>
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/export-tiddler</li>
 
@@ -171,9 +177,17 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/dropdown/keyboardshortcut/excise-286565879</li>
+
+<li>$:/state/new-shortcut/$:/config/shortcuts/excise-286565879</li>
+
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab--1498284803</li>
+
+<li>$:/state/tab-1749438307</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
 
@@ -211,6 +225,8 @@ Error message and password prompt
 
 <li>Binning</li>
 
+<li>Centrality Measures</li>
+
 <li>Chapter 5 (The Hundred-Page Machine Learning Book)</li>
 
 <li>Compactness</li>
@@ -240,6 +256,8 @@ Error message and password prompt
 <li>February Learning List</li>
 
 <li>For Every and There Exists</li>
+
+<li>Groups of Nodes</li>
 
 <li>GVF</li>
 
@@ -285,11 +303,15 @@ Error message and password prompt
 
 <li>Products of Metric Spaces</li>
 
+<li>Properties of Real World Networks</li>
+
 <li>Quantum Temporal Logic by Nengkun Yu</li>
 
 <li>Real Numbers</li>
 
 <li>Reinforcement Learning: Introduction</li>
+
+<li>Similarity Measures</li>
 
 <li>Slow Cooker Chicken Curry</li>
 
@@ -331,6 +353,9 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20200203062147877" modified="20200203062159595" title="$:/config/Manager/Sort" revision="3" bag="default">
+<pre>tags</pre>
+</div>
 <div created="20191121035130341" modified="20191121035240128" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/full-screen" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>hide</pre>
 </div>
@@ -342,6 +367,12 @@ Error message and password prompt
 </div>
 <div created="20191121010924297" modified="20191121010925327" title="$:/config/RelinkOnRename" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>yes</pre>
+</div>
+<div created="20200203063411328" modified="20200203063411328" title="$:/config/shortcuts-mac/excise" revision="1" bag="default">
+<pre>cmd-E</pre>
+</div>
+<div created="20200203062000486" modified="20200203063402214" title="$:/config/shortcuts/excise" revision="3" bag="default">
+<pre></pre>
 </div>
 <div created="20191121032312480" modified="20191121032313532" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/export-tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>show</pre>
@@ -9802,14 +9833,26 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200203061940303" modified="20200203061940303" title="$:/state/dropdown/keyboardshortcut/excise-286565879" revision="1" bag="default">
+<pre>open</pre>
+</div>
+<div created="20200203063347807" modified="20200203063358522" title="$:/state/new-shortcut/$:/config/shortcuts/excise-286565879" revision="9" bag="default">
+<pre>Backspace</pre>
+</div>
 <div created="20200203045558633" modified="20200203045558633" title="$:/state/showeditpreview" revision="1" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200203033851061" modified="20200203054007077" title="$:/state/sidebar" revision="6" bag="default">
+<div created="20200203033851061" modified="20200203075116816" title="$:/state/sidebar" revision="12" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200203033853231" modified="20200203033853231" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200203062042691" modified="20200203062045543" title="$:/state/tab--1498284803" revision="3" bag="default">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+</div>
+<div created="20200203061933173" modified="20200203061933173" title="$:/state/tab-1749438307" revision="1" bag="default">
+<pre>$:/core/ui/ControlPanel/KeyboardShortcuts</pre>
+</div>
+<div created="20200203033853231" modified="20200203063339893" title="$:/state/tab/sidebar--595412856" revision="13" bag="default">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9823,7 +9866,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200203033855730" list="" modified="20200203042652626" title="$:/StoryList" revision="20" bag="default">
+<div created="20200203033855730" list="[[UCLA Math 168 - Introduction to Networks]] [[Properties of Real World Networks]]" modified="20200203074427726" title="$:/StoryList" revision="74" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10285,6 +10328,70 @@ e.g. Grouping age in brackets such as 0-5, 5-10, 10-20 etc. to indicate to the m
 
 
 Opposite of [[One-Hot Encoding]] in a sense.</pre>
+</div>
+<div created="20200203054034875" modified="20200203070625122" tags="[[graph theory]]" title="Centrality Measures" revision="5" bag="default">
+<pre>Centrality - a way to quantify how important a node is to the network
+
+Degree Centrality - the degree of the node
+
+Betweenness Centrality - $$c_i = \sum_{st} n^i_{st}$$ where n^i_{st} = 1 if i lies on shortest path from s to t or 0 if not or there is no path
+
+* This def counts shortest path in each direction therefore for undirected network counts every shortest path twice
+* Includes path from itself to itself - thus increases each node's centrality by 1 but maintains ranking 
+* have definition where sum is over fraction of shortest paths from s to t that pass through node i 
+* have definition where normalized by dividing by $$n^2$$ to get centrality between 0 and 1
+
+Closeness Centrality:
+
+* Centrality of node i = inverse of average shortest distance to node i = $$\frac{n}{\sum_j d_{ij}}$$
+* Deal with issue if no path between nodes - if a network has a component containing most of the nodes, consider centrality only for this component 
+* However, doing this component wise calculation may lead nodes in smaller components to have higher centrality and hence to deal with this can define closeness in terms of harmonic mean = $$C_i = \frac{1}{n-1} \sum_{j \neq i} \frac{1}{d_{ij}}$$
+
+Eigenvector Centrality - idea is to have centrality to depend on centrality of neighbors (for undirected networks):
+
+* $$c_i = \alpha^{-1} \sum_{A_ij \neq 0} c_j = \alpha^{-1} \sum_{j = 1}^n A_{ij} c_j$$
+* Therefore, $$A \cdot c = \alpha \cdot c$$ where c is the vector containing centralities
+* Thus alpha is an eigenvalue for A and c is the eigenvector corresponding to alpha
+* For disconnected networks compute separately for block corresponding to each component
+
+Perron-Frobenius Theorem - for A the adjacency matrix of a connected undirected network, there is only 1 non-negative eigenvector (aka leading) and it corresponds to the largest eigenvalue
+
+For directed networks since matrix is not symmetric - right eigenvalue corresponds to in-degree and left eigenvalue corresponds to out-degree
+
+Problem with this definition for directed networks: A node with in-degree 0 that points to another node contributes nothing to its centrality and thus this can cascade and cause all nodes in a network to have centrality 0 - https://imgur.com/yJ4Y0rD
+
+Katz Centrality - deals with above problem by giving each node some centrality for 'free' i.e. minimum centrality is some value $$\beta$$
+
+* $$c_i = \alpha \sum_{j = 1}^n A_{ij} c_j  + \beta$$
+* Therefore (after setting $$\beta = 1$$), $$c = \beta (I_n - \alpha A) \bf{1} = (I_n - \alpha A) \bf{1} $$ where $$\bf{1}$$ is the vector of all 1s
+* If $$\alpha \rightarrow 0$$ then constant term dominates and every node has same centrality and if $$\alpha \rightarrow \frac{1}{eigenvalue}$$, $$c$$ diverges
+* First time c diverges is when $$\alpha \rightarrow 1/largest eigenvalue$$, therefore usually pick alpha very close to largest eigenvalue and thus very close to eigenvalue centrality 
+
+Page Rank Centrality (Used by Google to rank pages for search): In previous system, a node pointed to by an important node is automatically important but maybe it shouldn't be because on Internet Amazon is v. important but points to many places that are not so important
+
+* Divide contribution by out degree i.e. if node points to many other nodes then it doesn't contribute as much
+* $$c_i = \alpha \sum_{j = 1}^n A_{ij} \frac{c_j}{k_j^{out}}  + \beta$$ 
+* Deal with $$k_j^out = 0$$ and matrix form: $$D_{ii} = max\{k_i, 1\}$$ and $$c = \alpha A D^{-1} c + \beta \textbf{1}$$
+* Set $$\beta = 1$$, $$c = (I - \alpha A D^{-1}) \textbf{1}$$
+* Other applications of page rank - https://arxiv.org/abs/1407.5107
+* Set $$\alpha &lt; 1/\lambda_{largest}$$ where $$\lambda$$ is an eigenvalue of $$A D^{-1}$$
+* For undirected networks with $$\lambda = 1$$, as vector of all degrees is an eigenvector for it
+* For directed networks: varies but usually $$\lambda$$ ~ $$1$$ e.g. Google set to 0.85
+* Dropping constant term causes same issue for directed networks, but for undirected networks with $$\alpha = 1$$ returns degree centrality
+
+
+Summary:
+
+* Degree Centrality: $$c = A D^{-1} c $$ - no constant, divide by degree
+* Page Rank: $$c = {(I - \alpha A D^{-1})}^{-1} \textbf{1}$$ - constant term, divide by degree, proportionate to neighbors
+* Eigenvalue Centrality $$c = \alpha^{-1} A c$$ - no constant, proportionate to neighbors
+* Katz Centrality: $$c = {(I - \alpha A)}^{-1} \bf{1}$$ - constant, proportion to neighbors
+
+
+
+
+
+</pre>
 </div>
 <div author="Siddharth Joshi" created="20191122014205483" modified="20191122041509220" tags="[[machine learning]] [[book summary]]" title="Chapter 5 (The Hundred-Page Machine Learning Book)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Feature Engineering
@@ -10809,6 +10916,41 @@ e.g. [[Neural Networks]], [[Ensemble Models]] are hard to explain but very accur
 * Can swap the order of two adjacent for every or two adjacent there exists without changing logical meaning
 * Cannot swap the order of for every and there exists, in particular: There exists y such that for every x ... is stronger than for every x there exists y ...</pre>
 </div>
+<div created="20200203054844757" modified="20200203072125245" tags="[[graph theory]]" title="Groups of Nodes" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<pre>Cliques - maximal set of nodes where every 2 nodes have an edge between them - can overlap
+
+Relaxations of this notion follow.
+
+K-core - (typically maximal) set of nodes where every node is connected to at least k other members and the set of nodes induce a connected subnetwork
+
+Algorithm to find k-core: Delete all nodes with degree &lt; k and all the incident edges and repeat until no nodes with degree &lt; k left
+
+* Might get disconnected network at end where every component is a k-core
+* Every network is its own 0-core
+* Every component is a 1-core
+* Core-periphery interpretation - k-cores sometimes used as centrality measure
+* No k-cores exist if no node with degree k and the smallest such k is called the degeneracy of the network - tells us about the connectedness of the network
+
+Directed Generalization - A (k, l) d-core is a maximal set of nodes s.t each has in-degree at least k and out-degree at least l
+
+K-Components - generalization of component
+
+* A set of nodes such that any 2 nodes in the set can be connected by k node independent paths
+* The paths needn't go through the k-component (main reason for difference between k-core and k-component)
+* k-components are a measure of robustness and in a k-component deleting even k - 1 nodes cannot disconnect any 2 nodes
+* nodes in a k-component don't necessarily induce a connected subnetwork (they do for k = 1, 2 though)
+
+Remark: If the whole network is a k+1 clique (clique with k+1 nodes) then the whole network is a k-component and a k-core
+
+Properties of k-components:
+
+* For $$k \geq 3$$ don't necessarily induce a connected subgraph
+* a 1-component is a component
+* Nodes in a 2-component induced a connected subgraph
+
+Creating a network with 2 k-components and one k-core - take two copies of a k + 1 clique and then take k - 2 vertices from each k-clique and join pairs belonging to different k-components with at most k-2 edge - https://imgur.com/ZFhdyxH
+</pre>
+</div>
 <div author="Siddharth Joshi, Tejas Ramdas" created="20191119200401984" modified="20191121010432345" tags="incomplete [[machine learning]] [[reinforcement learning]] research [[intelligence project]]" title="GVF" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>General Value Function</pre>
 </div>
@@ -11256,6 +11398,9 @@ Proof: Consider a cauchy sequence in the product space. Note that this implies c
 
 Corollary 3: $$\bf{R}^n$$ with the usual metric ($$l_2$$) is complete</pre>
 </div>
+<div created="20200203074448591" modified="20200203074448591" tags="[[graph theory]]" title="Properties of Real World Networks" revision="1" bag="default">
+<pre></pre>
+</div>
 <div created="20200131001522764" modified="20200131030522424" tags="[[needs formatting]] [[talk summary]] [[quantum computing]]" title="Quantum Temporal Logic by Nengkun Yu" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Quantum Shock - Quantum computing can solve halting problem (Ji-Natarajan)
 
@@ -11365,6 +11510,26 @@ Decidability of QTL formula - programs without nondeterminism, </pre>
 </div>
 <div author="Siddharth Joshi" created="20191125022514242" modified="20191125022735084" tags="[[reinforcement learning]] [[machine learning]] incomplete" title="Reinforcement Learning: Introduction" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://skymind.ai/wiki/deep-reinforcement-learning</pre>
+</div>
+<div created="20200203072201259" modified="20200203074406651" tags="[[graph theory]]" title="Similarity Measures" revision="3" bag="default">
+<pre>Similarity Measures - to form groups of similar nodes on the basis of connectivity to other nodes, edges, types of edges etc.
+
+For Social Position Analysis, we want:
+
+* equivalence relation on the set of nodes (equivalent nodes are similar) - gives a partition of the nodes (a coloring)
+* a quantitative measure of equivalence
+
+Structural Equivalence: a ~ b is a and b have the same edge to and from all other nodes for all relations (https://imgur.com/6vOFuw4)
+
+Automorphic Equivalence - a ~ b if there is an automorphism (an isomorphism from the graph to itself) $$\tau$$ s.t $$\tau(a) = b$$ (more relaxed than previous one) - https://imgur.com/v5NYjwD
+
+Regular Equivalence - a ~ b iff for a -&gt; c there exists d s.t. d ~ c &amp; b -&gt; d, AND for c -&gt; a there exists d s.t. d -&gt; b &amp; d ~ c (note just need to point to or be pointed to one node from that class, doesn't require one for each copy otherwise would be equivalent to previous def) - https://imgur.com/occ5ZBC
+
+Measures of  (approximate) Structural Equivalence:
+
+* Simple measure - count # of common neighbors $$\sum_k A_{ik}A_{jk}$$ - however, lacks information as raw number doesn't tell us if it's a lot or little
+* Cosine Similarity: $$\sigma_{ij} = cos \theta = \frac{\sum_k A_{ik}A_{jk}} {\sqrt{\sum_k A_{ik}^2} \cdot \sqrt{\sum_k A_{jk}^2}}$$ - assuming graph is unweighted simple graph this simplifies to $$n_{ij} / \sqrt{k_i k_j}$$ where $$n_{ij}$$ is the number of common neighbors - technically undefined if either node has degree 0 but just set it to 0
+* Jacard Coeefficient - common neighbors / total num of neighbors (with no double counting) - $$J_{ij} = \frac{n_{ij}}{k_i + k_j - n_{ij}}$$ when i and j have no neighbors in common we get 0 and if all neighbors are common we get 1</pre>
 </div>
 <div author="Siddharth Joshi" created="20191119181730637" modified="20191119182440762" tags="recipe" title="Slow Cooker Chicken Curry" type="text/plain" revision="0" bag="default">
 <pre>Ingredients:
@@ -11489,14 +11654,17 @@ Proof:
 # [[Metric Topology]]
 # [[Complete Metric Spaces]]</pre>
 </div>
-<div created="20200203042433991" modified="20200203042650826" tags="[[discrete math]] math [[graph theory]]" title="UCLA Math 168 - Introduction to Networks" revision="1" bag="default">
+<div created="20200203042433991" modified="20200203074558185" tags="ongoing [[discrete math]] math [[graph theory]]" title="UCLA Math 168 - Introduction to Networks" revision="6" bag="default">
 <pre>Syllabus:
 
 # [[Basics of Network Theory]]
 # [[Centrality Measures]]
 # [[Groups of Nodes]]
 # [[Similarity Measures]]
-# [[Real World Networks]]</pre>
+# [[Properties of Real World Networks]]
+# [[Generalizations of Networks]]
+# [[Models of Networks]]
+</pre>
 </div>
 <div author="Siddharth Joshi" created="20191119180323660" modified="20191121034908978" tags="introduction" title="Welcome" type="text/plain" revision="0" bag="default">
 <pre>Hi, welcome to my TiddlyWiki!
