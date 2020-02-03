@@ -171,6 +171,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
+<li>$:/state/sidebar</li>
+
 <li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
@@ -200,6 +204,8 @@ Error message and password prompt
 <li>Arithmetic for Computers</li>
 
 <li>Auxiliary Tasks in Reinforcement Learning</li>
+
+<li>Basics of Network Theory</li>
 
 <li>Bayesian Network</li>
 
@@ -291,6 +297,8 @@ Error message and password prompt
 
 <li>The Hundred-Page Machine Learning Book by Andriy Burkov</li>
 
+<li>The Processor</li>
+
 <li>The Real Line</li>
 
 <li>Things I want to learn about in 2020</li>
@@ -308,6 +316,8 @@ Error message and password prompt
 <li>UCLA Math 121 Topology</li>
 
 <li>UCLA Math 131AH - Real Analysis</li>
+
+<li>UCLA Math 168 - Introduction to Networks</li>
 
 <li>Welcome</li>
 
@@ -9792,7 +9802,13 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200201055937320" modified="20200201055958408" title="$:/state/tab/sidebar--595412856" revision="4" bag="default">
+<div created="20200203045558633" modified="20200203045558633" title="$:/state/showeditpreview" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200203033851061" modified="20200203054007077" title="$:/state/sidebar" revision="6" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200203033853231" modified="20200203033853231" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
@@ -9807,7 +9823,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200201060004069" list="[[Metric Spaces]]" modified="20200201060008806" title="$:/StoryList" revision="10" bag="default">
+<div created="20200203033855730" list="" modified="20200203042652626" title="$:/StoryList" revision="20" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10052,7 +10068,7 @@ It is also unclear when something is fully defined because I think that implicit
 
 Another connected idea is Solomonoff induction but no clue what that is and seems to be more connected to prediction than definition.</pre>
 </div>
-<div created="20200122065241575" modified="20200122173629704" tags="incomplete [[computer architecture]]" title="Arithmetic for Computers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200122065241575" modified="20200203014712334" tags="[[computer architecture]]" title="Arithmetic for Computers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Arithmetic for Computers:
 
 * Add &amp; Sub
@@ -10060,15 +10076,12 @@ Another connected idea is Solomonoff induction but no clue what that is and seem
 * Dealing w overflow
 * Floating point - dealing w how to handle the representation
 
-
 Dealing with Overflow (prog language dependent):
 
 * C ignores therefore uses - MIPS addu, addui, subu - don't raise exception
 * Other require exception - save pc in exception program counter, jump to handler
 
-
 ALU Design: Instruction Fetch -&gt; Instruction Decode -&gt; Operand Fetch -&gt; Execute -&gt; Result Store -&gt; Next Instruction ---&gt; Next Instruction
-
 
 ALU outputs:
 
@@ -10077,14 +10090,12 @@ ALU outputs:
 * overflow
 * carryout
 
-
 One Bit ALU (most basic unit of ALU design):
 
 * Performs AND, OR &amp; ADD on 1 bit operands
 * And gate, Or gate, 1-bit adder, multiplexor 
 * all operations are done (Add, Or, Add) and then multiplexor selects the one for result
 * Takes in carry in and gives carry out and result
-
 
 One Bit Full Adder (3,2 adder):
 
@@ -10099,21 +10110,16 @@ One Bit Full Adder (3,2 adder):
 * 32 outputs i.e. the result bits, operation goes into each ALU and selects the correct version
 * Carry In of ALU is Carry In of ALU 0 and Carry Out of ALU is Carry Out of ALU 31
 
-
 Subtraction:
 
 * Complement - B invert - add a not gate followed by a multiplexor, if 0 take original value, if 1 take negated
 * Add 1 - carry in of ALU 0 = 1, if negation required
 
-
 Overflow Detection - N bit ALU: check most significant bit ALU's carry in and carry out and xor them -&gt; if xor = true then overflow
-
 
 Zero Detection - If all results 0 -&gt; then zero of ALU is true = 1 else 0
 
-
 NOR - A Invert - identical to B invert - not followed by mux to select which one to use - allows and to be used to create a nor by notting both a and b and then anding them
-
 
 Set-On-Less-Than (SLT) R-type:
 
@@ -10131,25 +10137,143 @@ SLT Implementation:
 
 '' Even though we are choosing a different op to be propagated out of the mux, the result of the add is still valid as all ops are actually carried out''
 
-
 Faster Adder:
 
-* 2N gate delays as 2 gates per Carry Out and N carry outs
+* 2N gate delays as 2 gates per Carry Out and N such carry outs (1 for each bit)
 * Carry Lookahead Adder - generate - Bit i created new carry, $$ g_i = A_i \&amp; B_i$$
 
-3.3 - 3.6 pending
+Carry Look Ahead Adder: https://imgur.com/n7KIAQR
 
-Lecture Notes:
-Carry Look Ahead (CLA):
-4 bit CLA:
-defining generators 
-think about delays
-HiCLA:
-use hierarchy as fan in might get crazy if you try to do all at once
-L</pre>
+* A &amp; B = 0 then no carry so kill
+* if A xor B then propagate whatever carry in
+* if A &amp; B = 1 then generate a new carry
+
+4 bit CLA - every adder has now additional Generate and Propagate signals&quot; - all g and p done in parallel - G = A &amp; B, P = A xor B
+
+* $$C_0 = C_in$$
+* $$C_1 = G_0 + C_0 \cdot P_0$$ - think of formula by thinking when a carry out is generated
+* $$C_2 = G_1 + G_0 \cdot P_1 + C_0 \cdot P_0 + C_0 \cdot P_0 \cdot P_1$$
+* $$C_3 = G_2 + G_1 \cdot P_2 + G_0 \cdot P_1 \cdot P_2 + C_0 \cdot P_0 \cdot P_1 \cdot P_2$$
+* $$C_4  = G_3 + G_2 \cdot P_3 + G_1 \cdot P_2 \cdot P_3 + G_0 \cdot P_1 \cdot P_2 \cdot P_3 + C_0 \cdot P_0 \cdot P_1 \cdot P_2 \cdot P_3$$
+
+Partial Carry Look Ahead Adder - Connect several N-bit look ahead adders in ripple carry form (or some other form)
+
+Hierarchical CLA: https://imgur.com/6UGBwAU
+
+* Generate and Propagate at second level of 4-bit CLA: $$G_\alpha = G_3 + G_2 \cdot P_3 + G_1 \cdot P_2 \cdot P_3 + G_0 \cdot P_1 \cdot P_2 \cdot P_3 + C_0 \cdot P_0 \cdot P_1 \cdot P_2 \cdot P_3$$
+* But if abstracted away then the 16 bit adder's G's and P's work together to create carries identically (all that changes is the formula for G and P itself)
+* Can continue hierarchy as far as desired but fan in might get too high to make the gates delay too high to be effective
+
+Carry Select Adder - https://imgur.com/wsw6KmY -  two adders - one that has 1 as carry in and the other 0, then at end output is muxed depending on actual carry in - both for the actual result and carry out
+
+Multiplication (standard) - multiplicand written out if multiplier's bit is 1 and not if 0 - contents are shifted and this is summed - num of bits = sum of operands - https://imgur.com/VgsbwvR - (sequence of adds and some shifts) - each step multiplicand shifted left, multiplier shifted right 
+
+Optimized Multiplier - at one point only care about 32 bits of multiplicand - hence use 32 bit ALU that points to higher order 32 bits of product product register and shift product right on each iteration (32 bit ALU much faster than 64 bit ALU) - store multiplier in lower order 32 bits of product register - 1 cycle per partial-product addition - https://imgur.com/uvnNLg2
+
+MIPS Multiplication:
+
+* two 32-bit registers for product - HI (most significant 32 bits), LO (least significant 32 bits)
+* Instructions - mult rs, rt - 64 bit product in Hi/LO
+* mfhi/mvlo - move from hi/lo to rd
+* mul rd, rs, rt - least significant 32 bits of product -&gt; rd
+
+Signed Multiplication - make both positive - remember to complement product when done - or use Booth's Algorithm
+
+Booth's Algorithm - replace a sequence of additions with a subtraction and an addition cause 14 = 2 + 4 + 8 = 16 - 2 so can multiply by 16 and subtract by multiplied by 2:
+
+* Add a bit to the right - current bit is least significant bit - bttr is previous lsb
+* current bit = 1, bttr = 0 -&gt; begins run of 1s -&gt; subtract
+* current bit = 1, bttr = 1 -&gt; middle of run of 1s - do nothing
+* current bit = 1, bttr = 0 -&gt; ends run of 1s -&gt; add
+* current bit = 0, bttr = 0 -&gt; middle of run of 0s -&gt; do nothing
+* originally for speed when shift was faster than add - at each step shift occurs as earlier, just adding or not etc. changes
+
+IEEE Floating Point Format - https://imgur.com/tOUGGo5 - S: signbit, Exp: exponent - 8 bits (single) 11 bits(double), Fraction: single (23 bits), double (52 bits):
+
+* Normalize Significand - basically scientific form in binary - always has a leading pre-binary-point 1 bit, so need to represent it explcitly
+* Bias: Single - 127, Double - 1203 exists to let exponent always be unsigned but still express negative values
+* x = $$-1^s \times (1 + Fraction) \times 2^{Exponent - Bias}$$
+
+Floating Point Addition: e.g. $$9.999 \cdot 10^1 + 1.610 \cdot  10^{-1}$$
+
+* Align decimal points - $$9.999 \cdot 10^1 + 0.0016  \cdot 10^1$$
+* Add significants - $$10.0015 \cdot 10^1$$
+* Normalize result and check for over/under flow - underflow in this case with $$1.0015 \cdot 10^1$$ as only up to 3 decimal places allowed
+* Round and renormalize if needed - $$1.002 \cdot 10^1$$
+
+Floating Point Hardware - https://imgur.com/hnfgAVy - very complex - usually many cycles - may be pipelined but always high latency</pre>
 </div>
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
+</div>
+<div created="20200203043659595" modified="20200203054002760" tags="[[graph theory]]" title="Basics of Network Theory" revision="5" bag="default">
+<pre>Simple graph - network with no self loops and no multi-edges
+
+Directed Graph - graph with edges that have direction, Undirected Graph - opposite
+
+Degree of a node - the number of edges a node has - (indegree, outdegree)
+
+Adjacency Matrix:
+
+* Undirected Simple Unweighted: $$A_{ij} = 1$$ if edge between node i and j else 0 (for weighted graphs this would be the weight of the edge, for Multi-graphs (graphs with multiple edges) the number of edges between the 2 nodes, for self loops - count it twice to allow for consistency in handshake lemma ($$\sum_v deg(v) = 2 \cdot m$$) where m is the number of edges
+* Directed Networks - $$A_{ij} = 1$$ if there is an edge from node j to node i - Rows denote edges to the node
+
+Tree - connected, undirected, acyclic graph
+
+Planar Networks - A graph that can be drawn on a plane without any edges crossing over each other - Kuratowski's Theorem - every non planar graph must contain either $$K_5$$ the complete graph on 5 nodes or $$K_{3, 3}$$ the bipartite graph. 
+
+Walks - a sequence of nodes s.t every consecutive pair is connected by an edge, Path - a walk that doesn't intersect itself (a.k.a. simple path)
+
+To calculate walks of length r:
+
+* To check if there is a path of length 2 from node j to node i via node k = $$A_{ik} \cdot A_{jk}$$
+* Hence number of paths from node j to node i = $$\sum_{k=1}^n A_{ik} \cdot A_{kj} = [ A^2]_{ij}$$
+* Inductively it is easy to see that this generalizes to walks of length r from node j to node i = $$ [A^r]_{ij}$$
+
+Shortest Paths (geodesic path) - Dijskta Algorithm
+
+Components - a maximal subset of the nodes of a network such that there exists at least one path from every member of the subset to every other member
+
+Components in directed networks:
+
+* Weakly connected components - two nodes in same component if there is a path between them (no matter the direction)
+* Strongly connected components - there is a path from every node to every other node
+
+Node Independent Paths - no nodes repeated, Edge Independent Paths - no edges repeated
+
+Edge Cut - a set of edges whose removal will disconnect a specific pair of nodes
+
+Min Cut - a minimal cut set that will disconnect two nodes - see also: Min Cut Max Flow (https://en.wikipedia.org/wiki/Max-flow_min-cut_theorem)
+
+Graph Laplacian: 
+
+* $$L_{ij} = k_i \delta_{ij} - A_{ij}$$ where $$k_i$$ is the degree of node i and $$\delta_{ij}$$ is the kronecker delta i.e. 1 if i = j, 0 otherwise
+*  $$L_{ij}$$ = deg(node i) if i = j, -1 if edge between i and j and 0 otherwise
+* $$L = D - A$$ where is the diagonal matrix with degrees of every node on diagonal entries
+
+Spectral Partitioning using Graph Laplacian: 
+
+* define $$s_i = 1$$ if node belongs to group 1 and $$s_1 = -1$$ if belongs to group 2
+* Then R (the cut size - number of edges running between group 1 and 2 = $$\frac{1}{4} s^T L s$$ where $$L$$ is the Graph Laplacian
+
+Graph Visualization using Graph Laplacian (1d simplification discussed here): https://imgur.com/mNl0NyF
+
+* One metric is to minimize length of edges: $$\Delta^2 = \frac{1}{2} \sum_{ij} A_{ij} (x_i - x_j)^2 = x^T L x $$ where x is the vector of positions of the nodes
+
+Random Walks: 
+
+* $$p_i(t) = \sum_j = \frac{A_{ij}}{k_i}p_j(t-1)$$ i.e. probability that walk is at node i at time t
+* as t turns to infinity, $$p = A D^{-1} p$$ or $$L D^{-1} p = 0$$
+
+Resistor Networks - a network of resistor where nodes are junctions between resistors (of equal resistance) and edges are resistors - can model this using Laplacian
+
+Properties of Graph Laplacian:
+
+* All the eigenvalues are non-negative
+* (1, 1, ...) is always an eigenvector - corresponding to the eigenvalue zero -&gt; doesn't have inverse as determinant is product of eigenvalues. This is easy to see as sum of all rows is all sum of all degrees minus sum of all edges twice
+* Multiplicity of zero corresponds thus to the number of connected components and each block induced in the Laplacian is the Laplacian of the component https://imgur.com/qk4g9eD
+* The second smallest eigenvalue of the Laplacian is called the algebraic connectivity of the network or the spectral gap
+</pre>
 </div>
 <div created="20191124073726690" modified="20191124073730343" tags="incomplete" title="Bayesian Network" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://towardsdatascience.com/introduction-to-bayesian-networks-81031eeed94e</pre>
@@ -10929,7 +11053,7 @@ It is the fundamental basis for all functional programming languages. </pre>
 <div created="20191120053237171" modified="20191121010456596" tags="incomplete research [[intelligence project]] [[meta learning]]" title="Meta-Learning via Meta-Gradients" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20200131053010143" modified="20200201060130483" tags="topology [[metric spaces]]" title="Metric Spaces" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200131053010143" modified="20200201060131547" tags="topology [[metric spaces]]" title="Metric Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A metric space is a set with a metric on it (a metric is like a distance function, rigorous definition in first link)
 
 * [[Open and Closed Sets]]
@@ -11286,6 +11410,9 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
+<div created="20200203014758261" modified="20200203014811846" tags="incomplete [[computer architecture]]" title="The Processor" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20200131071610266" modified="20200131072833285" tags="topology [[metric spaces]]" title="The Real Line" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$$\bf{R}$$ is an ordered field (discussed in [[Real Numbers]])
 
@@ -11319,11 +11446,12 @@ Proof:
 # [[Overview of Machine Learning]]
 # [[Decision Trees]]</pre>
 </div>
-<div created="20200115032001461" modified="20200126032428194" tags="ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200115032001461" modified="20200203014805243" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
 # [[Computer Abstractions and Technology]]
 # [[Instructions: Language of the Computer]]
-# [[Arithmetic for Computers]]</pre>
+# [[Arithmetic for Computers]]
+# [[The Processor]]</pre>
 </div>
 <div created="20191121010859851" modified="20191121011220661" tags="" title="UCLA CS M282A - Cryptography 1" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
@@ -11360,6 +11488,15 @@ Proof:
 # [[Cardinality]]
 # [[Metric Topology]]
 # [[Complete Metric Spaces]]</pre>
+</div>
+<div created="20200203042433991" modified="20200203042650826" tags="[[discrete math]] math [[graph theory]]" title="UCLA Math 168 - Introduction to Networks" revision="1" bag="default">
+<pre>Syllabus:
+
+# [[Basics of Network Theory]]
+# [[Centrality Measures]]
+# [[Groups of Nodes]]
+# [[Similarity Measures]]
+# [[Real World Networks]]</pre>
 </div>
 <div author="Siddharth Joshi" created="20191119180323660" modified="20191121034908978" tags="introduction" title="Welcome" type="text/plain" revision="0" bag="default">
 <pre>Hi, welcome to my TiddlyWiki!
