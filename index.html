@@ -177,6 +177,12 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/edit/references--679816975</li>
+
+<li>$:/state/edit/references-1169251825</li>
+
+<li>$:/state/sidebar</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -188,6 +194,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -313,7 +321,7 @@ Error message and password prompt
 
 <li>The Hundred-Page Machine Learning Book by Andriy Burkov</li>
 
-<li>The Processor</li>
+<li>The Processor (Single Cycle Data Paths)</li>
 
 <li>The Real Line</li>
 
@@ -359,7 +367,7 @@ Error message and password prompt
 <div created="20191121035135764" modified="20191121035137814" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/storyview" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>hide</pre>
 </div>
-<div created="20191121010924297" modified="20191121010925327" title="$:/config/RelinkOnRename" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20191121010924297" modified="20200204223613212" title="$:/config/RelinkOnRename" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>yes</pre>
 </div>
 <div created="20200203063411328" modified="20200203063412389" title="$:/config/shortcuts-mac/excise" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -9827,6 +9835,15 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200204215654664" modified="20200204215654664" title="$:/state/edit/references--679816975" revision="1" bag="default">
+<pre>show</pre>
+</div>
+<div created="20200204223609979" modified="20200204223609979" title="$:/state/edit/references-1169251825" revision="1" bag="default">
+<pre>show</pre>
+</div>
+<div created="20200204215345370" modified="20200204231055780" title="$:/state/sidebar" revision="6" bag="default">
+<pre>yes</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9839,7 +9856,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Welcome [[How to Contribute?]]" title="$:/StoryList" revision="1" bag="default">
+<div created="20200204215355862" list="[[The Processor (Single Cycle Data Paths)]]" modified="20200204223613840" title="$:/StoryList" revision="25" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9899,6 +9916,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200204215349699" modified="20200204215349991" title="$:/temp/search" revision="4" bag="default">
+<pre>ucla</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -11614,8 +11634,102 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
-<div created="20200203014758261" modified="20200203014811846" tags="incomplete [[computer architecture]]" title="The Processor" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre></pre>
+<div created="20200203014758261" modified="20200204231055011" tags="[[computer architecture]]" title="The Processor (Single Cycle Data Paths)" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<pre>Two MIPS Implementations:
+
+* A single cycle implementation
+* A pipelined version 
+
+Simple subset, shows most aspects:
+
+* Memory reference - lw, sw
+* Arithmetic/Logical - add, sub, and, or, slt
+* Control transfer - beq, j
+
+Questions on this would be adding a 10th instruction and having to extend the data path to handle new instruction as well
+
+Instruction Execution:
+
+* PC - fetch instruction
+* Register Numbers - read register
+* Depending on instruction class - use ALU to calculate: arithmetic result or memory address for load/store or branch target address
+* Access data memory load/store or PC &lt;- target address or PC &lt;- PC + 4
+
+CPU Overview - https://imgur.com/PIkENQG
+
+Control - data path in black, control path in blue -https://imgur.com/sixWGs8
+
+Logic Design Basics:
+
+* Information encoded in binary - 1 wire / bit, multi-bit data encoded on multi-wire buses (indicate with / to indicate how many bits on wire)
+* Combinational element - operate on data, output is a function of input - and gate, multiplexer, Adder, ALU
+* State elements - store information across cycle boundaries or stages in between a pipeline - register stores data in a circuit - edge triggered update when clock changes from 0 to 1 (flipflop)- https://imgur.com/k9P5i0W, only updates on clock edge when write control input is 1 (used when stored value is required later) 
+
+Clocking Methodology - combinational logic transforms data during clock cycles between clock edges, input from state elements output to state element - longest delay determine clock period
+
+Building a Datapath:
+
+* Datapath - elements that process data and addresses in the CPU - registers, ALUs, MUXs, memories
+* Building a MIPS datapath incrementally - refining overview design step by step
+
+Instruction Fetch: read happens immediately (read doesn't happen at end of cycle) - https://imgur.com/yC7320C
+
+R-Format Instructions - read two register operands, perform arithmetic/logical operation, write register result - 5 bit input to read/write registers specifies the register num and pushes the data to read data 1 - https://imgur.com/ZZ48DMQ (reg write will decide whether or not write done or not)- 4bit ALU Operation in decides what comes out of ALU mux
+
+Load Store Instructions (i format) - read register operands, calculate addresses using 16 bit offset (use ALU but sign extend offset - replicate MSB towards left 16 times) - address specifies where to read or write - read data pulls data out of memory - write data puts data into memory - MemWrite control line allows to put memory from write data wire into memory and MemRead control line allows to read memory and put on read data wire
+
+Branch Instructions - read register operands - compare operands (use ALU, subtract and check zero output) - calculate target address - sign extend displacement and shift left 2 places and add to pc + 4 or just go to pc + 4 - https://imgur.com/undefined
+
+Combining the Elements - first cut data path does an instruction in 1 clock cycle - each datapath element can only do one function at a time - hence we need separate instruction and data memory - use mux where alt data sources are used for different instructions
+
+R-Type / Load / Store Data Path - https://imgur.com/wmIUYq9
+
+Full Data Path - https://imgur.com/E0B7e2F
+
+ALU Used for:
+ 
+* Load/Store: F = add
+* Branch: F = subtract
+* R-type: F depends on func field
+
+ALU Control:
+
+* 0000 - AND
+* 0001 - OR
+* 0010 - add
+* 0110 - subtract
+* 0111 - set-on-less-than
+* 1100 - NOR
+
+ALU Control - assume 2-bit ALU Op derived from opcode - combinational logic derives ALU control (in main controller)
+
+* Main controller gets ALU Op and and ALU Function - https://imgur.com/TwF4ZiJ
+
+The Main Control Unit - control signals derived from instructions - https://imgur.com/jER9qMO
+
+Datapath with Control Diagram - https://imgur.com/fQRagKg
+
+R-Type - https://imgur.com/M2ldfBo
+
+Load  - https://imgur.com/kwrfmWD
+
+beq - https://imgur.com/CGHjs6v
+
+Controller - https://imgur.com/LuZmxX2 - don't care about the actual implementation in gates but do care about creating table
+
+Implementing Jumps:
+
+* Jump uses word address 
+* Update PC with concatenations of top 4 bits of old PC - 26 bit jump addresses
+* 00 at end
+* Need an extra control signal decoded from opcode
+
+Datapath with Jumps added: https://imgur.com/4VoRmOe
+
+Why is single cycle not fast enough:
+
+* control is relatively simple
+* branch instruction probably takes way less time than load but cycle time is required to be long enough for every instruction to complete</pre>
 </div>
 <div created="20200131071610266" modified="20200131072833285" tags="topology [[metric spaces]]" title="The Real Line" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$$\bf{R}$$ is an ordered field (discussed in [[Real Numbers]])
@@ -11650,12 +11764,12 @@ Proof:
 # [[Overview of Machine Learning]]
 # [[Decision Trees]]</pre>
 </div>
-<div created="20200115032001461" modified="20200203014805243" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200115032001461" modified="20200204223645458" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>!!! Syllabus
 # [[Computer Abstractions and Technology]]
 # [[Instructions: Language of the Computer]]
 # [[Arithmetic for Computers]]
-# [[The Processor]]</pre>
+# [[The Processor (Single Cycle Data Paths)]]</pre>
 </div>
 <div created="20191121010859851" modified="20191121011220661" tags="" title="UCLA CS M282A - Cryptography 1" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
