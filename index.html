@@ -177,11 +177,11 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/edit/references--679816975</li>
-
-<li>$:/state/edit/references-1169251825</li>
+<li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -307,9 +307,13 @@ Error message and password prompt
 
 <li>Real Numbers</li>
 
+<li>Reinforcement Learning with Langevin Dynamics</li>
+
 <li>Reinforcement Learning: Introduction</li>
 
 <li>SaaS</li>
+
+<li>Scalable, transparent, and post-quantum secure computational integrity</li>
 
 <li>Similarity Measures</li>
 
@@ -367,7 +371,7 @@ Error message and password prompt
 <div created="20191121035135764" modified="20191121035137814" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/storyview" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>hide</pre>
 </div>
-<div created="20191121010924297" modified="20200204223613212" title="$:/config/RelinkOnRename" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20191121010924297" modified="20200204223614728" title="$:/config/RelinkOnRename" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>yes</pre>
 </div>
 <div created="20200203063411328" modified="20200203063412389" title="$:/config/shortcuts-mac/excise" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -9835,14 +9839,14 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200204215654664" modified="20200204215654664" title="$:/state/edit/references--679816975" revision="1" bag="default">
-<pre>show</pre>
-</div>
-<div created="20200204223609979" modified="20200204223609979" title="$:/state/edit/references-1169251825" revision="1" bag="default">
-<pre>show</pre>
-</div>
-<div created="20200204215345370" modified="20200204231055780" title="$:/state/sidebar" revision="6" bag="default">
+<div created="20200206014304204" modified="20200206014304204" title="$:/state/showeditpreview" revision="1" bag="default">
 <pre>yes</pre>
+</div>
+<div created="20200206014252777" modified="20200206065222785" title="$:/state/sidebar" revision="2" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200206065226773" modified="20200206065226773" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9856,7 +9860,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200204215355862" list="[[The Processor (Single Cycle Data Paths)]]" modified="20200204223613840" title="$:/StoryList" revision="25" bag="default">
+<div created="20200205062237932" list="[[Scalable, transparent, and post-quantum secure computational integrity]]" modified="20200206070259035" title="$:/StoryList" revision="25" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9904,11 +9908,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1440&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9917,7 +9921,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200204215349699" modified="20200204215349991" title="$:/temp/search" revision="4" bag="default">
+<div created="20200205062231302" modified="20200205062232707" title="$:/temp/search" revision="8" bag="default">
 <pre>ucla</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
@@ -11561,11 +11565,109 @@ Decidability of QTL formula - programs without nondeterminism, </pre>
 <div created="20200131072027431" modified="20200131072106707" tags="incomplete [[real analysis]]" title="Real Numbers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div created="20200205001742305" modified="20200205014948019" tags="[[needs formatting]] [[reinforcement learning]]" title="Reinforcement Learning with Langevin Dynamics" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Environment: Markov Decision Process (MDP) $$M = (S, A, T, \gamma, P_0, R)$$
+
+Agent: Parametrized deterministic policy $$\mu_0 : S \rightarrow A$$ where $$\theta \in \Theta$$
+
+RL Game Model
+
+Exploration v/s Exploitation in RL - objective (non-concave) - want to maximize rewards (discounted rewards in infinite or finite)
+
+* Environment only reveals the rewards after actions
+* Exploitation - maximize objective by choosing appropriate action
+* Exploration - gather information on other actions - figure out what they might lead to
+
+An optimization interpretation:
+
+* Exploitation - progress in the gradient direction
+* Exploration - add //stochasticity// (what does this mean?) while collecting the episodes - noise injection in the action spaces (Silver et al 2014, Lillicrap et al. 2015), noise injection in the parameter space (Plappert et. al 2017)
+
+Deep RL - approximate policy by neural net and learn its parameters
+
+Reinforcement Learning via Langevin Dynamics:
+
+* maximize p in m(theta) expected value theta ~ p (j(theta) ''format''
+* model it as a distributional learning
+* Explore via infinite dimensional concave-problem (linear in p)
+* $$M(\Theta)$$ is the infinite dimensional space of all probability distributions on $$\Theta$$
+* there is a trivial solution put all your weight on the value that maximizes
+* Exploit via a well known entropy smoothing trick - old eq + beta * entropy of p
+* Use Langevin dynamics to draw samples
+
+A primer on First-order Sampling
+
+Setup: Given a target distribution du(X) = e^-V(x) (assume access to gradient of potential function)
+
+Powerful framework for first order sampling langevin dynamics
+
+discretize to derive frist order sampling algorithms
+
+rigorous guarantees when V is ocnvex and nice
+
+flexible and practical - one can use stochastic gradients 
+
+First appearance in large scale machine learning - welling and teh
+
+RL via ld
+
+actor update in the annealed langevin dynamics - draw policy parameters thera from p_t(theta) ~ exp (1/bt J(theta) with lim
+
+gradually converges to the optimal solution
+
+Experimental eval via ~MuJoCo 
+
+Think about it in terms of learning a distribution
+
+Robust Policies - robust RL - generalizing under environmental changes, computational costs as well as the difficulty of training
+
+Highlight - robust adversarial reinforcement learning - train an agent neural net, train an adversary neural net, setup a minimax game between the two(Pinto et Al)
+
+Two player zero sum markov game - enivornmet, agent, adversary - both players play and choose by solving a max min 
+
+practical changes in finding this optimum
+
+RARL - from pure to mixed Nash equilibrium - our mixed strategy via game theory 
+
+if you do this there exists a nash equilibrium 
+
+the problem becomes a bilinear matrix game -  caveat: infinite dimensions
+
+Entropic Mirror Descent Iterates in Infinite Dimension - negative shannon entropy and its fenchel dual
+
+infinite dimension entropic mirror descent
+
+theorem (convergence rates) 
+
+Reduction step 1 - take the algorithm and unroll its loops and write the distribution
+
+reduction step 2 - stochastic gradient langevin dynamics (SGLD) - instead of learning entire distribution just sample it instead
+
+implementable in entropic mirror descent - hsieh et al 2019
+</pre>
+</div>
 <div author="Siddharth Joshi" created="20191125022514242" modified="20191125022735084" tags="[[reinforcement learning]] [[machine learning]] incomplete" title="Reinforcement Learning: Introduction" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://skymind.ai/wiki/deep-reinforcement-learning</pre>
 </div>
 <div created="20200204064622667" modified="20200204064633242" tags="technology" title="SaaS" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Software as a service (SaaS) is a software distribution model in which a third-party provider hosts applications and makes them available to customers over the Internet. SaaS is one of three main categories of cloud computing, alongside infrastructure as a service (IaaS) and platform as a service (PaaS).</pre>
+</div>
+<div created="20200206012148916" modified="20200206173750763" tags="ongoing cryptography" title="Scalable, transparent, and post-quantum secure computational integrity" revision="6" bag="default">
+<pre>Problem to solve: The Police want to prove to the public that Presidential Candidate p's DNA Profile doesn't appear in DNA Database of the Country without revealing any information about the database or dna profile itself.
+
+Main Contribution of this paper: ZKStarks (based on [[PCP]]) that solve the above problem using public randomness and verification exponentially faster than the data size
+
+Methods:
+
+* Arithmetization - converting computational problems into algebraic problems that involve low degree polynomials in a finite field (degree &lt;&lt; field size)
+* Fast Reed-Solomon Interactive Oracle Proof of Proximity - For $$S \subset F$$ and rate parameter $$ρ \in (0, 1)$$, the Reed-Solomon code $$RS[F, S, ρ]$$ is the family of functions $$f : S \rightarrow F$$ that are evaluations of polynomials of degree &lt; ρ|S|. The RPT problem assumes a verifier is given oracle access to f, and to auxiliary information like a probabilistically checkable proof of proximity or an interactive oracle proof of proximity (IOPP); the verifier’s task is to distinguish with high probability and with a small number of queries to f and the auxiliary PCPP/IOPP oracle(s), between the case that $$f \in RS[F, S, ρ]$$ and the case that f is 0.1-far from (all members of) $$RS[F, S, ρ]$$ in relative Hamming distance. Finding solutions to the RPT problem (a special case of the “low-degree testing” problem) is a major bottleneck for transparent systems.
+* Arithmetization I — Algebraic Intermediate Representation (AIR) - The first phase of arithmetization is that of constructing an algebraic intermediate representation (AIR)of the program C. Informally, the AIR is a set 
+
+Take proof statement: alpha is the result of executing C for T steps on public input x and use arithmetization to convert into something that the fast reed solomon interactive oracle proof of propximity can manage
+
+
+First step construct an AIR:
+P = </pre>
 </div>
 <div created="20200203072201259" modified="20200203074407751" tags="[[graph theory]]" title="Similarity Measures" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Similarity Measures - to form groups of similar nodes on the basis of connectivity to other nodes, edges, types of edges etc.
@@ -11634,7 +11736,7 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
-<div created="20200203014758261" modified="20200204231055011" tags="[[computer architecture]]" title="The Processor (Single Cycle Data Paths)" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<div created="20200203014758261" modified="20200204231056108" tags="[[computer architecture]]" title="The Processor (Single Cycle Data Paths)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Two MIPS Implementations:
 
 * A single cycle implementation
@@ -11764,7 +11866,7 @@ Proof:
 # [[Overview of Machine Learning]]
 # [[Decision Trees]]</pre>
 </div>
-<div created="20200115032001461" modified="20200204223645458" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200115032001461" modified="20200204223646594" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
 # [[Computer Abstractions and Technology]]
 # [[Instructions: Language of the Computer]]
