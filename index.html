@@ -181,6 +181,8 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -272,6 +274,8 @@ Error message and password prompt
 <li>K Nearest Neighbors</li>
 
 <li>Lambda Calculus</li>
+
+<li>Logistic Regression</li>
 
 <li>Markov Decision Process</li>
 
@@ -9847,11 +9851,14 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200210034341141" modified="20200210034341141" title="$:/state/showeditpreview" revision="1" bag="default">
+<div created="20200210034341141" modified="20200210035210178" title="$:/state/showeditpreview" revision="2" bag="default">
+<pre>no</pre>
+</div>
+<div created="20200210034446641" modified="20200210042349279" title="$:/state/sidebar" revision="10" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200210034446641" modified="20200210034451874" title="$:/state/sidebar" revision="6" bag="default">
-<pre>yes</pre>
+<div created="20200210042147951" modified="20200210042147951" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9865,7 +9872,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200209193310080" list="[[UCLA CS M146 - Machine Learning]]" modified="20200209235317407" title="$:/StoryList" revision="64" bag="default">
+<div created="20200209193310080" list="[[UCLA CS M146 - Machine Learning]]" modified="20200210042151731" title="$:/StoryList" revision="91" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9926,8 +9933,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200209193316166" modified="20200209193837335" title="$:/temp/search" revision="42" bag="default">
-<pre>combinatorial</pre>
+<div created="20200209193316166" modified="20200210042150333" title="$:/temp/search" revision="51" bag="default">
+<pre>ucla cs </pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -11318,6 +11325,31 @@ Hyperparameters in NNC:
 <pre>Lambda calculus (also written as λ-calculus) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution. It is a universal model of computation that can be used to simulate any Turing machine.
 
 It is the fundamental basis for all functional programming languages. </pre>
+</div>
+<div created="20200210035150456" modified="20200210042140737" tags="[[machine learning]]" title="Logistic Regression" revision="9" bag="default">
+<pre>Setup for binary classification:
+
+* Hypotheses / Model: $$h_{w, b} (x) = p(y = 1 | x; b, w) = \sigma (a(x))$$ where $$a(x) = b + \sum_d w_d x_d = b + w^T x$$ and $$\sigma (\cdot)$$ is the sigmoid function $$ = \frac{1}{1 + e^{-a}}$$
+* Sigmoid function is close to 0 for large negative values, it is close to 1 for large positive values and range is $$(0, 1)$$ - https://imgur.com/GcvPexk
+* Linear or non-linear classifier - as sigmoid is nonlinear but a(x) is linear and thus the model is a linear classifier
+
+Likelihood Function: (Fundamental to Probabilistic Models - models that compute probability that x takes a certain value)
+
+* Let $$X_1, ... , X_n$$ be IID (independent &amp; identically distributed) random vars with PDF $$p(x|\theta)$$ i.e. the probability of seeing this data for a particular value of $$\theta$$
+* Therefore likelihood function = $$L(\theta) = p(X_1, ... , X_N ; \theta) \text{ joint probability of datapoints for a particular value of theta} = \prod_{i=1}^N p(X_i ; \theta)$$
+* We don't know theta, but we assume our data is representative of the dataset and thus very likely for the true value of theta and thus we try to find theta such that likelihood is maximized
+* Maximum Likelihood Estimator $$\hat{\theta} = argmax_\theta L(\theta)$$
+* Log likelihood (same argmax) used in practice due to the simplification of math expressions and numerical stability i.e. values don't vary as much 
+
+Probability of seeing a single training sample $$(x_n, y_n)$$, $$p(y_n | x_n; b, w) = h_{w, b}(x_n) = \sigma (b + w^T x_n)$$ if $$y_n = 1$$ and $$p(y_n | x_n; b, w) = 1 - h_{w, b}(x_n) = 1 - \sigma (b + w^T x_n)$$ if $$y_n = 0$$ 
+
+Therefore $$p(y_n | x_n; b, w) =  {(h_{w, b}(x_n))}^{y_n} {(1 - h_{w, b}(x_n))}^{1-y_n}$$ for a single term, for all terms simply multiply this as we assumed IIDs
+
+Thus log likelihood expression for all: $$l(w, b) = \sum_n y_n log h_{w, b} (x_n) + (1 - y_n) log(1 - h_{w, b} x_n)$$
+
+Therefore cost = $$J(\theta) = J(w, b) = -  \sum_n y_n log h_{w, b} (x_n) + (1 - y_n) log(1 - h_{w, b} x_n)$$
+
+</pre>
 </div>
 <div author="Siddharth Joshi" created="20191125022318215" modified="20191125023541160" tags="incomplete" title="Markov Decision Process" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://towardsdatascience.com/reinforcement-learning-demystified-markov-decision-processes-part-1-bf00dda41690</pre>
