@@ -241,6 +241,8 @@ Error message and password prompt
 
 <li>Do Calculus</li>
 
+<li>Draft of 'Regularization and Overfitting'</li>
+
 <li>Equivalence Relations</li>
 
 <li>Explainability of Model</li>
@@ -293,6 +295,8 @@ Error message and password prompt
 
 <li>Non-linearity of Data</li>
 
+<li>Nonlinear Basis Functions</li>
+
 <li>Normalization of Features</li>
 
 <li>Number of Features and Examples</li>
@@ -324,6 +328,8 @@ Error message and password prompt
 <li>Reinforcement Learning with Langevin Dynamics</li>
 
 <li>Reinforcement Learning: Introduction</li>
+
+<li>Ridge Regression</li>
 
 <li>SaaS</li>
 
@@ -9853,7 +9859,7 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200210174640426" modified="20200210174640426" title="$:/state/showeditpreview" revision="1" bag="default">
+<div created="20200210174640426" modified="20200210183729033" title="$:/state/showeditpreview" revision="3" bag="default">
 <pre>yes</pre>
 </div>
 <div created="20200210042601383" modified="20200210043540629" title="$:/state/sidebar" revision="2" bag="default">
@@ -9871,7 +9877,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200210042556691" list="[[UCLA CS M146 - Machine Learning]] [[Regularization and Overfitting]] [[Linear Regression]]" modified="20200210183212041" title="$:/StoryList" revision="32" bag="default">
+<div created="20200210042556691" list="[[UCLA CS M146 - Machine Learning]] [[Regularization and Overfitting]]" modified="20200210185244574" title="$:/StoryList" revision="71" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9932,8 +9938,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200210042552844" modified="20200210043545748" title="$:/temp/search" revision="16" bag="default">
-<pre>ucla cs</pre>
+<div created="20200210042552844" modified="20200210183945419" title="$:/temp/search" revision="42" bag="default">
+<pre>overfitting</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10934,6 +10940,9 @@ tbd
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
 </div>
+<div modified="20200210185950217" title="Draft of 'Regularization and Overfitting'" revision="972" bag="default">
+<pre></pre>
+</div>
 <div created="20191227170002568" modified="20191227170613995" tags="[[real analysis]] math [[discrete math]]" title="Equivalence Relations" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Relation on a set $$S$$ is a subset of $$S \times S$$
 
@@ -11325,7 +11334,7 @@ Hyperparameters in NNC:
 
 It is the fundamental basis for all functional programming languages. </pre>
 </div>
-<div created="20200210061141342" modified="20200210183226738" tags="[[machine learning]]" title="Linear Regression" revision="3" bag="default">
+<div created="20200210061141342" modified="20200210183521570" tags="[[machine learning]]" title="Linear Regression" revision="5" bag="default">
 <pre>Regression - predicting a real valued variable
 
 Key difference from classification - we can measure closeness of predictions and labels i.e. a guess of 11 as a shoe size for a true label 12 is better than a guess of 7
@@ -11386,9 +11395,7 @@ What if $$X^TX$$ is not invertible:
 * N &lt; D - there will always be some feature that can be written as a linear combination of other features - intuitively not enough data to estimate all the points
 * X columns are not linearly independent - intuitively two features that are perfectly correlated or one feature is actually a linear combination of other features
 
-Regularized Linear Regression:
-
-* </pre>
+Deal with these problems in [[Ridge Regression]]</pre>
 </div>
 <div created="20200210035150456" modified="20200210061025465" tags="[[machine learning]]" title="Logistic Regression" type="text/vnd.tiddlywiki" revision="4" bag="default">
 <pre>Setup for binary classification:
@@ -11487,6 +11494,19 @@ while others like:
 * [[Neural Networks]]
 * SVMs with non-linear kernel
 would be better if the data cannot be modeled by a linear model. </pre>
+</div>
+<div created="20200210184543035" modified="20200210185241062" tags="[[machine learning]]" title="Nonlinear Basis Functions" revision="2" bag="default">
+<pre>Apply transformations to the input to convert non-linearly separable data into something that is linearly separable
+
+Example 1: product of features is a good separator - https://imgur.com/BGOb4nz
+
+Example 2: radius is a good separator - https://imgur.com/RNkNhwg
+
+In general use non-linear mapping: $$\phi(x): x \in R^D \rightarrow z \in R^M$$ and then use linear methods on our new transformed dataset
+
+Example: make linear regression -&gt; polynomial regression $$\phi(x) = {(1, x, ..., x^M)}^T$$
+
+But it can be easy to get extremely complex features using this and overfit thus to avoid this</pre>
 </div>
 <div author="Siddharth Joshi" created="20191122020538393" modified="20191122021210115" tags="[[machine learning]] [[feature engineering]]" title="Normalization of Features" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Normalizing the dataset to map the entire range of values into the interval [0, 1] or [-1, 1].
@@ -11877,8 +11897,44 @@ Decidability of QTL formula - programs without nondeterminism, </pre>
 <div created="20200131072027431" modified="20200131072106707" tags="incomplete [[real analysis]]" title="Real Numbers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20200210183218722" modified="20200210183219667" tags="[[machine learning]]" title="Regularization and Overfitting" revision="1" bag="default">
-<pre></pre>
+<div created="20200210183218722" modified="20200210191627545" tags="[[machine learning]]" title="Regularization and Overfitting" type="text/vnd.tiddlywiki" revision="6" bag="default">
+<pre>Overfitting in polynomial regression: https://imgur.com/JlRPEc9
+
+Large weight values indicate undesired complexity as model is brittle i.e. small changes in sample can cause extremely different hypotheses being selected
+
+Dealing with Overfitting - add more data - https://imgur.com/l9HPOdz
+
+Regularization methods for a linear model of regression - identify simpler models
+
+Inductive Bias:
+
+* A simpler model is one where most of the weights are 0
+* A simpler model is one with smaller weights
+
+Why is this a valid assumption:
+
+* Simple functions are smoother - nearby values of x have similar outputs y
+* Two values x and x' that difffer by $$\epsilon$$ in the dth dimension, have their predictions differ by $$\epsilon w_d$$
+
+Regularized Linear Regression:
+
+* $$J(w, b) = \sum_n (y_n - wT x_n - b)^2 + \lambda\|w\|^2_2$$
+* Note we split $$\theta$$ into $$w, b$$ as we don't want to regularize bias term
+* if $$\lambda \rightarrow \infty$$, $$\hat{w} \rightarrow 0$$
+* if $$\lambda \rightarrow 0$$, trust data $$\hat{w} \rightarrow$$ regular Ordinary Least Squares solution
+* Closed form solution: $${(X^T X + \lambda I)} ^{-1} X^T y$$
+* Gradient Descent: $$\nabla J(w) = 2(X^T X w - X^T y + \lambda w)$$
+
+Overfitting in terms of hyperparameter $$\lambda$$: https://imgur.com/HLqQJGb - computational reasons to use regularization then to limit the polynomial degree etc. 
+
+$$\lambda$$ obviously hyperparameter as if we choose base it on training dataset as this will always give us the value of 0
+
+$$l_2$$ regularized logistic regression: https://imgur.com/7PdyAEZ
+
+Probabilistic Interpretation of Regularization - https://imgur.com/dqD7A6M, https://imgur.com/ChfCghm
+
+
+</pre>
 </div>
 <div created="20200205001742305" modified="20200205014948019" tags="[[needs formatting]] [[reinforcement learning]]" title="Reinforcement Learning with Langevin Dynamics" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Environment: Markov Decision Process (MDP) $$M = (S, A, T, \gamma, P_0, R)$$
@@ -11963,6 +12019,30 @@ implementable in entropic mirror descent - hsieh et al 2019
 </div>
 <div author="Siddharth Joshi" created="20191125022514242" modified="20191125022735084" tags="[[reinforcement learning]] [[machine learning]] incomplete" title="Reinforcement Learning: Introduction" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://skymind.ai/wiki/deep-reinforcement-learning</pre>
+</div>
+<div created="20200210183534008" modified="20200210184456930" tags="[[machine learning]]" title="Ridge Regression" revision="4" bag="default">
+<pre>$$l_2$$ regularized linear regression aka Ridge Regression
+
+Deals with issue of $$XX^T$$ not being invertible in [[Linear Regression]]
+
+Solution is now: $$\hat{\theta} = {(X^T X + \lambda I)}^{-1} X^T y$$
+
+This is equivalent to adding an extra term to $$J(\theta) = \| y - X\theta\|^2_2 + \lambda \sum_d \theta_d$$
+
+Called $$l_2$$ as it used $$l_2$$ norm to regularize the weights vector - penalty for complexity of model
+
+Why is this reasonable or what do we mean by doing this?
+
+Want to minimize training error and complexity of model (which we estimate by how large the weights vector is) - which is desired due to Occam's razor inductive bias - simplest hypothesis is probably true
+
+$$\lambda $$ is a new hyperparameter that we need to set using cross-validation etc.
+
+Mini Summary:
+
+* Helps avoid numerical instability that would lead to non-invertibility 
+* New hyperparameter introduced
+
+Refer to [[Regularization and Overfitting]] to understand more about why this is how we estimate complexity of the model</pre>
 </div>
 <div created="20200204064622667" modified="20200204064633242" tags="technology" title="SaaS" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Software as a service (SaaS) is a software distribution model in which a third-party provider hosts applications and makes them available to customers over the Internet. SaaS is one of three main categories of cloud computing, alongside infrastructure as a service (IaaS) and platform as a service (PaaS).</pre>
@@ -12176,7 +12256,7 @@ Proof:
 # [[Quantum Temporal Logic by Nengkun Yu]]
 </pre>
 </div>
-<div created="20200126032331506" modified="20200209230637129" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200126032331506" modified="20200210191752318" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="3" bag="default">
 <pre>!!! Syllabus
 # [[Overview of Machine Learning]]
 # [[Decision Trees]]
@@ -12186,7 +12266,10 @@ Proof:
 # [[Perceptron]]
 # [[Logistic Regression]]
 # [[Linear Regression]]
-# [[Regularization and Overfitting]]</pre>
+# [[Ridge Regression]]
+# [[Nonlinear Basis Functions]]
+# [[Regularization and Overfitting]]
+# [[Overview of Supervised Learning]]</pre>
 </div>
 <div created="20200115032001461" modified="20200204223646594" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
