@@ -181,8 +181,6 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
-<li>$:/state/tab/sidebar--595412856</li>
-
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -223,6 +221,8 @@ Error message and password prompt
 
 <li>Chapter 5 (The Hundred-Page Machine Learning Book)</li>
 
+<li>Combinatorial Optimization Algorithms for Clustering and Machine Learning by Dorith Hochbaum</li>
+
 <li>Compactness</li>
 
 <li>Completeness</li>
@@ -255,7 +255,11 @@ Error message and password prompt
 
 <li>GVF</li>
 
+<li>How to choose a ML Algorithm</li>
+
 <li>How to Contribute?</li>
+
+<li>Hyperparameters</li>
 
 <li>IaaS</li>
 
@@ -264,6 +268,8 @@ Error message and password prompt
 <li>Instructions: Language of the Computer</li>
 
 <li>Integers</li>
+
+<li>K Nearest Neighbors</li>
 
 <li>Lambda Calculus</li>
 
@@ -296,6 +302,8 @@ Error message and password prompt
 <li>Overview of Machine Learning</li>
 
 <li>PaaS</li>
+
+<li>Perceptron</li>
 
 <li>Persistent Homology</li>
 
@@ -9839,14 +9847,11 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200206014304204" modified="20200206014304204" title="$:/state/showeditpreview" revision="1" bag="default">
+<div created="20200210034341141" modified="20200210034341141" title="$:/state/showeditpreview" revision="1" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200206014252777" modified="20200206065222785" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20200210034446641" modified="20200210034451874" title="$:/state/sidebar" revision="6" bag="default">
 <pre>yes</pre>
-</div>
-<div created="20200206065226773" modified="20200206065226773" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
-<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9860,7 +9865,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200205062237932" list="[[Scalable, transparent, and post-quantum secure computational integrity]]" modified="20200206070259035" title="$:/StoryList" revision="25" bag="default">
+<div created="20200209193310080" list="[[UCLA CS M146 - Machine Learning]]" modified="20200209235317407" title="$:/StoryList" revision="64" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9908,11 +9913,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1440&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;900&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9921,8 +9926,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200205062231302" modified="20200205062232707" title="$:/temp/search" revision="8" bag="default">
-<pre>ucla</pre>
+<div created="20200209193316166" modified="20200209193837335" title="$:/temp/search" revision="42" bag="default">
+<pre>combinatorial</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10416,6 +10421,34 @@ Factors to consider:
 
 !!! Dividing Data into Training Set</pre>
 </div>
+<div created="20200207001535228" modified="20200209193852321" tags="incomplete [[theoretical computer science]] [[machine learning]]" title="Combinatorial Optimization Algorithms for Clustering and Machine Learning by Dorith Hochbaum" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre>Overview:
+
+* motivation: image segmentation, normalized cut
+* insights on how combinatorial optimization relates to spectral clustering
+* efficient poly time algorithms
+* power of using pairwise similarities
+* lessons from experimental studies on effectiveness for image segmentation and for machine learning &amp; data mining classification tasks
+
+Notation - https://imgur.com/wUbCL4y
+
+An intuitive clustering criterion based on pairwise similarities (Hoc 10):
+
+* Def 1: $$min_{S \subset V} \frac{C(S, \bar{S})} {C(S, S)}$$ or H-normalized cut
+* Def 2: $$min_{S \subset V} \ C(S, \bar{S}) - C(S, S)$$
+* Def 3: $$min_{S \subset V} \ C_1(S, \bar{S}) - C_2(S, S)$$ 
+
+Motivation for the HNC problem:
+
+* weighted degree = total weight adjacent to the nodes
+* NC, SHi and Malik 2001 normalized cut: $$min_{S \subset V} \ C(S, \bar{S}) / d(S)  + C(S, \bar{S}) / d(\bar{S})$$ - NP Hard
+
+HNC is poly time solvable: monotone IP3 (Hochbaum 2010) - need to avoid the case for empty set and whole set
+
+[GGT89][H08]
+
+</pre>
+</div>
 <div created="20200131075725454" modified="20200131212324049" tags="[[metric spaces]] topology" title="Compactness" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A space is totally bounded if $$\forall \epsilon &gt; 0$$, there exists a finite $$\epsilon$$-net for X i.e there exist $$x_1, ..., x_n$$ s.t. every point in X is within $$\epsilon$$ of some $$x_i$$, equivalently $$X = \cup_{i = 1}^n B(x_i, \epsilon)$$
 
@@ -10760,7 +10793,7 @@ Can deal with this by:
 * Use a learning algorithm that can deal with missing features on its own
 * Using [[Data Imputation Techniques]]</pre>
 </div>
-<div created="20200126035727023" modified="20200128054645981" tags="incomplete [[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200126035727023" modified="20200209230307299" tags="incomplete [[machine learning]]" title="Decision Trees" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>Setup:
 
 * Set of possible instances X - each $$x \in X$$ is a feature vector (e.g. humidity=low, wind=weak etc.)
@@ -10839,8 +10872,17 @@ Avoiding Overfitting:
 * Remove irrelevant features
 * Force tree to be simple - prune while building (early stopping) - prune after building tree (post pruning)
 
+Advantages of using tree:
 
+* Easily interpretable by humans,
+* computationally efficient to generate greedily
+* Handles both numerical and categorical data
 
+Disadvantages:
+
+* Training algorithms are heuristic as solving problem is NP-hard
+
+How to learn thresholds effectively when discretizing data - ''Question''
 </pre>
 </div>
 <div author="Siddharth Joshi, Tejas Ramdas" created="20191119182457568" modified="20191120062447902" tags="deepmind research [[intelligence project]] [[reinforcement learning]] [[machine learning]] incomplete [[needs formatting]]" title="Discovery of Useful Questions as Auxiliary Tasks" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -10953,6 +10995,14 @@ Creating a network with 2 k-components and one k-core - take two copies of a k +
 <div author="Siddharth Joshi, Tejas Ramdas" created="20191119200401984" modified="20191121010432345" tags="incomplete [[machine learning]] [[reinforcement learning]] research [[intelligence project]]" title="GVF" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>General Value Function</pre>
 </div>
+<div created="20200209230643105" modified="20200209230925073" tags="[[machine learning]]" title="How to choose a ML Algorithm" revision="1" bag="default">
+<pre>Visualize data to understand trends in the dataset - understand which features are useful and which aren't or what kind of relation there exists between the features and labels / values
+
+Which inductive bias seems most reasonable in the given context?
+
+* Decision Trees - small trees that can classify well will generalize well
+* KNN - points that are close together (euclidean space of dimension d = dim of feature vector) probably have same label</pre>
+</div>
 <div author="Siddharth Joshi" created="20191119211052677" modified="20200204071039639" tags="introduction" title="How to Contribute?" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>To contribute, simply click on the + button on the left panel -&gt; this creates a new 'tiddler'
 
@@ -10969,6 +11019,25 @@ You can also:
 and many more things that you can look up by googling tiddlywiki
 
 Thanks for contributing!</pre>
+</div>
+<div created="20200209224536916" modified="20200209225559891" tags="[[machine learning]]" title="Hyperparameters" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre>Hyperparameter in Decision Tree: Max Depth of decision tree - critical to prevent overfitting, based on empirical studies
+
+Hyperparameter selections (tuning) by using a validation set - split data into train to learn h the hypothesis that is the best ($$D^{Train}$$), test  - evaluate model for unseen values (($$D^{Test}$$)) and validation data - values used to optimize hyperparameters ($$D^{Dev}$$)
+
+Recipe:
+
+* For each possible value of hyperparameter - train on ($$D^{Train}$$), test on ($$D^{Dev}$$) and pick model with best performance . on ($$D^{Dev}$$) and then test finally on ($$D^{Test}$$)
+
+Cross-Validation = split training data into k equal parts (fold / splits), each fold is used as a validation set once with the rest as training data (K = N - LOOCV)
+
+Recipe:
+
+* For every possible value of the hyperparameter, for every k in 1 ... num folds, train a model using training data - kth fold, validate on kth fold
+* Average performance metrics across all folds
+* Pick best hyperparameter to train a model on the full training dataset
+
+</pre>
 </div>
 <div created="20200204064724736" modified="20200204064742039" tags="technology" title="IaaS" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Infrastructure as a service (IaaS) are online services that provide high-level APIs used to dereference various low-level details of underlying network infrastructure like physical computing resources, location, data partitioning, scaling, security, backup etc. A hypervisor, such as Xen, Oracle ~VirtualBox, Oracle VM, KVM, VMware ESX/ESXi, or Hyper-V, LXD, runs the virtual machines as guests. Pools of hypervisors within the cloud operational system can support large numbers of virtual machines and the ability to scale services up and down according to customers' varying requirements.</pre>
@@ -11180,6 +11249,71 @@ Branching Far Away:
 <pre>Axiomatic Definition:
 </pre>
 </div>
+<div created="20200209225659588" modified="20200210034423173" tags="[[machine learning]]" title="K Nearest Neighbors" revision="4" bag="default">
+<pre>https://imgur.com/JcQUkEa
+
+Premise / Inductive Bias: Label of an instance is similar to labels of nearby points
+
+Multi-class Classification Problem Setup:
+
+* Instance (feature vectors) $$x \in R^D$$
+* Label: $$y \in [C] = \{1, ... , C\}$$
+* Learning goal: y = h(x)
+
+Training Data:
+
+* N Samples - $$D^{TRAIN} = \{(x_1, y_1), ... , (x_n, y_n)\}$$
+* Used for learning $$h(\cdot)$$
+
+Test Data:
+
+* M samples/instances - $$D^{TEST} = \{ (x_1, y_1), ... , (x_M, y_M)\}$$
+* Used for assessing how well we expect the model to perform on data that it hasn't seen before
+
+Nearest Neighbor Classification:
+
+* Training - Store the entire dataset (size N)
+* Testing - $$x(1) = x_{nn(x)}$$ where $$nn(x) = argmin_{n \in \{1, ... N\}} \| x - x_n \|^2_2 = argmin_{n \in \{1, ... N\}} \sum_{d=1}^D {(x_d - x_{nd})}^2$$ 
+* Classification rule: $$y = h(x) = y_{nn(x)}$$
+
+Can use any distance metric: typically use euclidean but often also use $$L_1$$ norm or the manhattan distance
+
+How to compute distances with binary features (use 0 1 and proceed identically), categorical features with V values - could possibly encode e.g. red = 0, blue = 1, green = 2 but this implies an order between them that red is closer to blue than it is to green
+
+Avoid this by using one-hot encoding - categorical features with V values becomes -&gt; V-binary features - is it Value 1? and so on and so forth
+
+Haven't considered yet different weightage of features if some features are more important than others - currently distance metrics discussed imply equal weightage
+
+Decision Boundary - for every points in the space determines its label using the NNC rule which gives us a partition of the space into different regions - https://imgur.com/h5s7TYA - can compare to the rectangular decision boundary induced by decision trees
+
+Can define k-th nearest neighbor as $$x(k) = nn_k(x) = argmin_{n \in \{1, ... N\} - \cup_{i=1}^{k-1} \{nn_i(x)\}} \| x - x_n \|^2_2$$
+
+Aggregate everyone's votes: $$v_c = \sum_{n \in knn(x)} Indicator(y_n == c) \forall c \in [C]$$
+
+Label with majority: $$y = h(x) = argmax_{c \in [C]} v_c$$
+
+Could possible weight the votes of nearer neighbors
+
+As number of nearest neighbors increases, decision boundary becomes smoother: https://imgur.com/vKNar3w
+
+Advantages of NNC: 
+
+* Computationally, simple and easy to implement - just distance compute
+
+Disadvantages:
+
+* Computationally intensive for large scale problems: O(ND) for labelling a data point
+* Need to 'carry' training data around as need whole set to classify - ''nonparametric'' model
+* Choosing right distance measure and right number of neighbors can be invovled
+* Assumes all features are equally important - can fix this to some degree by normalizing in each dimension - https://imgur.com/ozh2Dpp
+
+Hyperparameters in NNC:
+
+* Choosing K i.e. the number of nearest neighbors (default is 1)
+* Choosing the most appropriate distance metric (difficult is euclidean), for example from the set of p-norms (not specified by algorithm, resolving these issues are task specific)
+
+</pre>
+</div>
 <div created="20191124070525772" modified="20191126073015986" tags="incomplete [[theoretical computer science]] math" title="Lambda Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Lambda calculus (also written as λ-calculus) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution. It is a universal model of computation that can be used to simulate any Turing machine.
 
@@ -11377,6 +11511,59 @@ ML in practice:
 In April 2008, Google launched App Engine, with a free trial version limited to 10,000 developers.[16] This was said to have &quot;turned the Internet cloud computing space into a fully-fledged industry virtually overnight.&quot;[17]
 
 The original intent of PaaS was to simplify the code-writing process for developers, with the infrastructure and operations handled by the PaaS provider. Originally, all ~PaaSes were in the public cloud. Because many companies did not want to have everything in the public cloud, private and hybrid PaaS options (managed by internal IT departments) were created.</pre>
+</div>
+<div created="20200209235233023" modified="20200210034534561" tags="[[machine learning]]" title="Perceptron" revision="7" bag="default">
+<pre>Example of a Linear Classifier - produces a linear decision boundary
+
+Binary Classification Problem:
+* Instance: $$x \in R^D$$
+* Label: $$y \in \{-1, 1\}$$
+* Model / Hypotheses: $$ H = \{h | h: X \rightarrow Y, h(x) = sign(\sum_{d=1}^D w_dx_d + b)\}$$
+* Learning goal: $$\hat{y} = h(x)$$ - learn $$w_1, ..., w_d, b$$, weights and bias
+
+Perceptron Predict:
+
+* $$\alpha = w^T \cdot x + b$$
+* $$\alpha$$ is called the activation, and prediction = sign of $$\alpha$$
+
+Hyperplanes through the origins: 
+* consider x that satisfies $$g(x) = w^T \cdot x + b = 0$$, these x define a hyperplane in d dimensions, and can rewrite this as a hyperplane passing through the origin in D + 1 dimensions
+* $$\hat{w} = (b, w_1, ... , w_D)$$
+* $$\hat(x) = (1, x_1, ...., x_D)^T$$
+* $$\hat(g)(\hat(x)) = \hat{w}^T\hat{x} = g(x)$$
+- To allow us to switch between a plane through the origin and one with intercept = b, thus can always set b = 0
+
+Perceptron Learning: (Consider we only have one training example $$(x_n, y_n)$$:
+
+* $$\alpha = w^T x_n$$
+* if $$y_n \alpha &gt; 0$$, prediction correct -&gt; do nothing
+* if $$y_n \alpha \leq 0$$, prediction wrong -&gt; $$w^{NEW} \leftarrow w^{OLD} + y_n x_n$$ - move towards the vector $$x_n$$ or away from it
+
+Why does this work: consider case when update is made
+
+* if $$y_n \alpha \leq 0$$, then $$y_n(w^T x_n) \leq 0$$
+* but if we update as follows $$w^{NEW} \leftarrow w^{OLD} + y_n x_n$$
+* not guaranteed to correctly classify but will be more likely as: $$y_n ((w^{OLD} + y_n x_n)^T x_n) = y_n w^T x_n + y_n^2 x_n^T x_n$$
+* ''Intuition behind adding x_n'' as opposed to any arbitrary vector with sign determined by $$y_n$$ - look at convergence proof linked below - convergence defined as pass through data with no updates made
+
+Design Decisions:
+
+* ~MaxIter - Hyperparameters
+* How to loop over data - constant - visit each order in serial order, permute once - first permute then visit in same order, permute every iteration - permute every iteration
+
+Why does order of visiting points matter - time to converge - helps deal with the pathologically bad case when data is ordered by label and you learn about one label initially and thus weight vector takes a while to converge - often in practice permute just once and run in same order as rept. permutations are expensive
+
+Perceptron Learning:  
+
+* If data is linearly separable this converges, if not it doesn't - link to proof - http://www.cs.columbia.edu/~mcollins/courses/6998-2012/notes/perc.converge.pdf
+* Online algorithm - looks at one instance at a time - unlike knn
+* Convergence time - depends on the difficulty of the problem
+* Extensions - voting, averaging
+* Limitations - linear separability
+* Helps interpret importance of features as $$w_d$$ tells us how important $$x_d$$ is
+
+
+</pre>
 </div>
 <div author="Siddharth Joshi" created="20191124054140398" modified="20191124054454331" tags="incomplete [[intelligence project]] research math topology" title="Persistent Homology" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Persistent homology is a method for computing topological features of a space at different spatial resolutions. More persistent features are detected over a wide range of spatial scales and are deemed more likely to represent true features of the underlying space rather than artifacts of sampling, noise, or particular choice of parameters.
@@ -11652,7 +11839,7 @@ implementable in entropic mirror descent - hsieh et al 2019
 <div created="20200204064622667" modified="20200204064633242" tags="technology" title="SaaS" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Software as a service (SaaS) is a software distribution model in which a third-party provider hosts applications and makes them available to customers over the Internet. SaaS is one of three main categories of cloud computing, alongside infrastructure as a service (IaaS) and platform as a service (PaaS).</pre>
 </div>
-<div created="20200206012148916" modified="20200206173750763" tags="ongoing cryptography" title="Scalable, transparent, and post-quantum secure computational integrity" revision="6" bag="default">
+<div created="20200206012148916" modified="20200206173751864" tags="ongoing cryptography" title="Scalable, transparent, and post-quantum secure computational integrity" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Problem to solve: The Police want to prove to the public that Presidential Candidate p's DNA Profile doesn't appear in DNA Database of the Country without revealing any information about the database or dna profile itself.
 
 Main Contribution of this paper: ZKStarks (based on [[PCP]]) that solve the above problem using public randomness and verification exponentially faster than the data size
@@ -11861,10 +12048,17 @@ Proof:
 # [[Quantum Temporal Logic by Nengkun Yu]]
 </pre>
 </div>
-<div created="20200126032331506" modified="20200126032430986" tags="ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200126032331506" modified="20200209230636019" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="3" bag="default">
 <pre>!!! Syllabus
 # [[Overview of Machine Learning]]
-# [[Decision Trees]]</pre>
+# [[Decision Trees]]
+# [[Hyperparameters]]
+# [[How to choose a ML Algorithm]]
+# [[K Nearest Neighbors]]
+# [[Perceptron]]
+# [[Logistic Regression]]
+# [[Linear Regression]]
+# [[Regularization and Overfitting]]</pre>
 </div>
 <div created="20200115032001461" modified="20200204223646594" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
