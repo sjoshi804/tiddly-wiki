@@ -177,6 +177,12 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/edit/references-1647093741</li>
+
+<li>$:/state/Excise/--1557913451/type</li>
+
+<li>$:/state/sidebar</li>
+
 <li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
@@ -269,6 +275,8 @@ Error message and password prompt
 
 <li>Integers</li>
 
+<li>Introduction to Reinforcement Learning</li>
+
 <li>K Nearest Neighbors</li>
 
 <li>Lambda Calculus</li>
@@ -321,11 +329,13 @@ Error message and password prompt
 
 <li>Real Numbers</li>
 
+<li>Recurrent Neural Network</li>
+
 <li>Regularization and Overfitting</li>
 
 <li>Reinforcement Learning with Langevin Dynamics</li>
 
-<li>Reinforcement Learning: Introduction</li>
+<li>Reinforcement Learning: David Silver Course</li>
 
 <li>Ridge Regression</li>
 
@@ -9857,8 +9867,17 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200211175853129" modified="20200211175853129" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
-<pre>$:/core/ui/SideBar/More</pre>
+<div created="20200211210740335" modified="20200211210740335" title="$:/state/edit/references-1647093741" revision="1" bag="default">
+<pre>show</pre>
+</div>
+<div created="20200211210134776" modified="20200211210134776" title="$:/state/Excise/--1557913451/type" revision="1" bag="default">
+<pre>link</pre>
+</div>
+<div created="20200211210018543" modified="20200211210041518" title="$:/state/sidebar" revision="2" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200211175853129" modified="20200211210043560" title="$:/state/tab/sidebar--595412856" revision="2" bag="default">
+<pre>$:/core/ui/SideBar/Tools</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9872,7 +9891,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200211174514590" list="Welcome [[How to Contribute?]]" modified="20200211175943657" title="$:/StoryList" revision="29" bag="default">
+<div created="20200211174514590" list="[[Introduction to Reinforcement Learning]]" modified="20200211214527578" title="$:/StoryList" revision="66" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9933,8 +9952,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200211174511621" modified="20200211174629153" title="$:/temp/search" revision="15" bag="default">
-<pre></pre>
+<div created="20200211174511621" modified="20200211205330770" title="$:/temp/search" revision="41" bag="default">
+<pre>reinforcement learning</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -11259,6 +11278,80 @@ Branching Far Away:
 <pre>Axiomatic Definition:
 </pre>
 </div>
+<div created="20200211210217680" modified="20200211215041733" tags="incomplete [[reinforcement learning]]" title="Introduction to Reinforcement Learning" revision="6" bag="default">
+<pre>Science of Decision Making similar to problems studied in many other fields:
+
+* Operations Research - Math
+* Dopamine Reward System - Neuroscience - very similar to RL
+
+RL v/s Supervised Learning:
+
+* no supervisor, only a reward signal
+* Feedback delayed, not instantaneous - might realize much later that a decision was bad - very realistic
+* Time really matters (sequential, non i.i.d. data)
+* Agent's actions affect the subsequent data it receives
+
+Tasks that RL has performed well on:
+
+* Defeat world champion at Backgammon - reward based on winning / losing a game
+* Make robot walk - reward based on forward motion and falling over
+* Manage an investment portfolio - +ve reward for each $ in bank
+
+Rewards:
+
+* A reward $$R_t$$ is a scalar feedback signal 
+* Indicates how well agent is doing at time step t
+* The agent's job is to maximize cumulative reward
+* Reward Hypothesis - All goals can be described by the maximization of expected cumulative reward - i.e. this reward definition is sufficient for every goal possible
+
+Is it possible to have different goals and a scalar reward limiting you - assumption is that to finally make a decision you have to be able to compare the rewards in the context of the two goals which implies a scalar (some sort of weighted combination of the vector that would have been)
+
+Sequential Decision Making:
+
+* Goal - select actions to maximize total future reward
+* Actions may have long term consequences and rewards may be delayed (give up immediate reward to gain more long term)
+
+Agent and Environment: https://imgur.com/ogYC4I6, At each step t 
+
+* the agent: executes action $$A_t$$, receives observation $$O_t$$, receives scalar reward $$R_t$$
+* the environment: receives action $$A_t$$, emits observation $$O_{t+1}$$, Emits scalar reward $$R_{t+1}$$
+
+History and State:
+
+* history is the sequence of observations, actions and rewards - $$H_t = A_1, O_1, R_1, ..., A_t, O_t, R_t$$
+* i.e. all observable variables up to time t 
+* What happens next depends on history - agent selects actions, environment selects observations/rewards
+
+But this is inefficient as history can grow to be very long, hence we introduce state a way to summarize the history
+
+Formally, $$S_t = f(H_t)$$
+
+Three Different Definitions:
+
+* Environment State: $$S^e_t$$ is the environment's private representation - some state that will produce next observation, reward etc. (think of environment as a machine) - not usually visible to agent, even if available lots may be irrelevant - formalism that helps understand what exactly the environment is, not in building actual RL agent
+* Agent State: $$S_t^a$$ is the agent's internal representation - whatever info uses to pick next action - $$S^a_t = f(H_t)$$
+* Information State (a.k.a Markov State) contains all useful information from the history i.e. ''A state $$S_t$$ is Markov iff and only if $$P[S_{t+1} | S_t] = P[S_{t+1} | S_1, ..., S_t]$$ '' - the future is independent of the past given the present - state is a //sufficient statistic// of the future - e.g. for helicopter - position, fuel, velocity is a possible markov state
+* $$S^e_t$$ is Markov by definition as it fully characterizes what will happen next in the environment
+* $$H_t$$ is Markov by definition
+
+https://imgur.com/h8CSwmr - illustrates what we believe will happen next depends on agent state - case 1: electrocution, case 2: cheese, case 3: insufficient info
+
+Fully Observable Environments: agent directly observes environment state - $$O_t = S^a_t = S^e_T$$ - formally this is  Markov Decision Process (MDP) 
+
+Partially Observable Environments - indirectly observes environment (e.g. poker playing agent knows only common cards and its own), $$S^a+t \neq S^e_t$$ - POMDP - thus need to define a meaningful agent state representation:
+
+* Complete History - trivial solution
+* Beliefs on Environment State (Bayesian Approach) - a probability distribution characterizing how likely it is to be in a particular environment state - $$S_t^a = (P(S^e_t = s^1), ..., P(S^e_t = s^n))$$
+* [[Recurrent Neural Network]]: linear transformation of previous state and current observation with some non-linearity around it to determine current state - S^a_t = \sigma(S^a_{t-1} W_s + O_t W_o)
+
+
+
+
+
+
+
+</pre>
+</div>
 <div created="20200209225659588" modified="20200210034424331" tags="[[machine learning]]" title="K Nearest Neighbors" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://imgur.com/JcQUkEa
 
@@ -11894,6 +11987,9 @@ Decidability of QTL formula - programs without nondeterminism, </pre>
 <div created="20200131072027431" modified="20200131072106707" tags="incomplete [[real analysis]]" title="Real Numbers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div created="20200211214548512" modified="20200211215032307" tags="incomplete [[machine learning]]" title="Recurrent Neural Network" revision="3" bag="default">
+<pre>https://towardsdatascience.com/recurrent-neural-networks-rnn-explained-the-eli5-way-3956887e8b75</pre>
+</div>
 <div created="20200210183218722" modified="20200210191628670" tags="[[machine learning]]" title="Regularization and Overfitting" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Overfitting in polynomial regression: https://imgur.com/JlRPEc9
 
@@ -12014,8 +12110,8 @@ reduction step 2 - stochastic gradient langevin dynamics (SGLD) - instead of lea
 implementable in entropic mirror descent - hsieh et al 2019
 </pre>
 </div>
-<div author="Siddharth Joshi" created="20191125022514242" modified="20191125022735084" tags="[[reinforcement learning]] [[machine learning]] incomplete" title="Reinforcement Learning: Introduction" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>https://skymind.ai/wiki/deep-reinforcement-learning</pre>
+<div author="Siddharth Joshi" created="20191125022514242" modified="20200211210815357" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<pre># [[Introduction to Reinforcement Learning]]</pre>
 </div>
 <div created="20200210183534008" modified="20200210184458014" tags="[[machine learning]]" title="Ridge Regression" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$$l_2$$ regularized linear regression aka Ridge Regression
