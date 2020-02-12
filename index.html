@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/state/edit/references-1647093741</li>
 
+<li>$:/state/Excise/--1548415466/tagnew</li>
+
 <li>$:/state/Excise/--1557913451/type</li>
 
 <li>$:/state/sidebar</li>
@@ -210,6 +212,8 @@ Error message and password prompt
 <li>A New Math for Learning Tasks (1)</li>
 
 <li>A New Math for Learning Tasks (2)</li>
+
+<li>About Reinforcement Learning</li>
 
 <li>Arithmetic for Computers</li>
 
@@ -271,6 +275,8 @@ Error message and password prompt
 
 <li>Induction</li>
 
+<li>Inside a RL Agent</li>
+
 <li>Instructions: Language of the Computer</li>
 
 <li>Integers</li>
@@ -321,6 +327,8 @@ Error message and password prompt
 
 <li>Persistent Homology</li>
 
+<li>Problems that RL needs to solve</li>
+
 <li>Products of Metric Spaces</li>
 
 <li>Properties of Real World Networks</li>
@@ -356,6 +364,8 @@ Error message and password prompt
 <li>The Processor (Single Cycle Data Paths)</li>
 
 <li>The Real Line</li>
+
+<li>The Reinforcement Learning Problem Set Up</li>
 
 <li>Things I want to learn about in 2020</li>
 
@@ -9870,14 +9880,17 @@ Error message and password prompt
 <div created="20200211210740335" modified="20200211210740335" title="$:/state/edit/references-1647093741" revision="1" bag="default">
 <pre>show</pre>
 </div>
+<div created="20200212005218168" modified="20200212005218168" title="$:/state/Excise/--1548415466/tagnew" revision="1" bag="default">
+<pre>yes</pre>
+</div>
 <div created="20200211210134776" modified="20200211210134776" title="$:/state/Excise/--1557913451/type" revision="1" bag="default">
 <pre>link</pre>
 </div>
 <div created="20200211210018543" modified="20200211210041518" title="$:/state/sidebar" revision="2" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200211175853129" modified="20200211210043560" title="$:/state/tab/sidebar--595412856" revision="2" bag="default">
-<pre>$:/core/ui/SideBar/Tools</pre>
+<div created="20200211175853129" modified="20200212013044167" title="$:/state/tab/sidebar--595412856" revision="3" bag="default">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9891,7 +9904,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200211174514590" list="[[Reinforcement Learning: David Silver Course]] [[Introduction to Reinforcement Learning]]" modified="20200211215137187" title="$:/StoryList" revision="73" bag="default">
+<div created="20200211174514590" list="[[Reinforcement Learning: David Silver Course]]" modified="20200212013343409" title="$:/StoryList" revision="102" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9952,8 +9965,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200211174511621" modified="20200211205330770" title="$:/temp/search" revision="41" bag="default">
-<pre>reinforcement learning</pre>
+<div created="20200211174511621" modified="20200212005338144" title="$:/temp/search" revision="79" bag="default">
+<pre>about </pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10138,6 +10151,26 @@ It is also unclear when something is fully defined because I think that implicit
 (Knuth notation) which keeps popping up.
 
 Another connected idea is Solomonoff induction but no clue what that is and seems to be more connected to prediction than definition.</pre>
+</div>
+<div created="20200212005411759" modified="20200212013110067" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="About Reinforcement Learning" revision="2" bag="default">
+<pre>Science of Decision Making similar to problems studied in many other fields:
+
+* Operations Research - Math
+* Dopamine Reward System - Neuroscience - very similar to RL
+
+RL v/s Supervised Learning:
+
+* no supervisor, only a reward signal
+* Feedback delayed, not instantaneous - might realize much later that a decision was bad - very realistic
+* Time really matters (sequential, non i.i.d. data)
+* Agent's actions affect the subsequent data it receives
+
+Tasks that RL has performed well on:
+
+* Defeat world champion at Backgammon - reward based on winning / losing a game
+* Make robot walk - reward based on forward motion and falling over
+* Manage an investment portfolio - +ve reward for each $ in bank
+</pre>
 </div>
 <div created="20200122065241575" modified="20200203014712334" tags="[[computer architecture]]" title="Arithmetic for Computers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Arithmetic for Computers:
@@ -11080,6 +11113,38 @@ Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
 </div>
+<div created="20200212012131650" modified="20200212013148430" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="Inside a RL Agent" revision="2" bag="default">
+<pre>Major Components of a RL Agent:
+
+* Policy - agent's behavior function - how agent decides actions - from state to decision
+* Value function - how good is it to be in a state or take an action in a particular state
+* Model - agent's representation of the environment
+
+Policy - a map from state to action:
+
+* Deterministic: $$a = \pi(s)$$
+* Stochastic: $$pi(a | s) = P(A = a | S = s)$$
+
+Value function - prediction of expected future reward:
+
+* $$V_\pi(s) = E_\pi[R_t + \gamma R_{t+1} + \gamma^2 R_{t + 2} + .... | S_t = s]$$ - discounted sum, things in future matter less than things in present
+* Example: when mothership appears in shooting game -&gt; value function spikes due to possibility of shooting it and gaining lots of points, if it misses value function goes down again and if it shoots, value function also goes down as it only looks at ''future'' reward and it is unlikely that the mothership comes again immediately
+
+Model - predicts what the environment do next - optional:
+
+* Transitions: $$P$$ predicts the next state (dynamics of the environment) - helicopter at position a w speed b will be in pos c at next time step - $$P^a_{ss'} = \textbf{P}[S_{t+1} = s' | S_t = s, A_t = a]$$
+* Rewards: $$R$$ predicts the next immediate rewards - $$R^a_s = \textbf{E}[R_{t+1} | S_t = s, A_t = a]$$
+
+Example of these in concrete terms: https://imgur.com/zbTzG0E, https://imgur.com/i1IBJq6, https://imgur.com/oQzMFjV, https://imgur.com/atoBB3r (-1 everywhere as -1 reward for any action in any state - to incentivize fastest solution)
+
+Categorizing RL Agents:
+
+* Value Based - No Policy (Implicit), Value-Function (example maze - just greedily pick action based on value function)
+* Policy Based - Policy, No Value Function
+* Actor Critic - Policy and Value Function
+* Model Free - Policy and/or Value Function
+* Model Based - Policy and/or Value Function, Model</pre>
+</div>
 <div created="20200122005428211" modified="20200122080255599" tags="[[computer architecture]]" title="Instructions: Language of the Computer" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Instruction Set - repertoire of instructions of a computer
 
@@ -11278,78 +11343,14 @@ Branching Far Away:
 <pre>Axiomatic Definition:
 </pre>
 </div>
-<div created="20200211210217680" modified="20200211215041733" tags="incomplete [[reinforcement learning]]" title="Introduction to Reinforcement Learning" revision="6" bag="default">
-<pre>Science of Decision Making similar to problems studied in many other fields:
+<div created="20200211210217680" modified="20200212013038176" tags="[[reinforcement learning]]" title="Introduction to Reinforcement Learning" revision="9" bag="default">
+<pre>{{About Reinforcement Learning}}
 
-* Operations Research - Math
-* Dopamine Reward System - Neuroscience - very similar to RL
+{{The Reinforcement Learning Problem Set Up}}
 
-RL v/s Supervised Learning:
+{{Inside a RL Agent}}
 
-* no supervisor, only a reward signal
-* Feedback delayed, not instantaneous - might realize much later that a decision was bad - very realistic
-* Time really matters (sequential, non i.i.d. data)
-* Agent's actions affect the subsequent data it receives
-
-Tasks that RL has performed well on:
-
-* Defeat world champion at Backgammon - reward based on winning / losing a game
-* Make robot walk - reward based on forward motion and falling over
-* Manage an investment portfolio - +ve reward for each $ in bank
-
-Rewards:
-
-* A reward $$R_t$$ is a scalar feedback signal 
-* Indicates how well agent is doing at time step t
-* The agent's job is to maximize cumulative reward
-* Reward Hypothesis - All goals can be described by the maximization of expected cumulative reward - i.e. this reward definition is sufficient for every goal possible
-
-Is it possible to have different goals and a scalar reward limiting you - assumption is that to finally make a decision you have to be able to compare the rewards in the context of the two goals which implies a scalar (some sort of weighted combination of the vector that would have been)
-
-Sequential Decision Making:
-
-* Goal - select actions to maximize total future reward
-* Actions may have long term consequences and rewards may be delayed (give up immediate reward to gain more long term)
-
-Agent and Environment: https://imgur.com/ogYC4I6, At each step t 
-
-* the agent: executes action $$A_t$$, receives observation $$O_t$$, receives scalar reward $$R_t$$
-* the environment: receives action $$A_t$$, emits observation $$O_{t+1}$$, Emits scalar reward $$R_{t+1}$$
-
-History and State:
-
-* history is the sequence of observations, actions and rewards - $$H_t = A_1, O_1, R_1, ..., A_t, O_t, R_t$$
-* i.e. all observable variables up to time t 
-* What happens next depends on history - agent selects actions, environment selects observations/rewards
-
-But this is inefficient as history can grow to be very long, hence we introduce state a way to summarize the history
-
-Formally, $$S_t = f(H_t)$$
-
-Three Different Definitions:
-
-* Environment State: $$S^e_t$$ is the environment's private representation - some state that will produce next observation, reward etc. (think of environment as a machine) - not usually visible to agent, even if available lots may be irrelevant - formalism that helps understand what exactly the environment is, not in building actual RL agent
-* Agent State: $$S_t^a$$ is the agent's internal representation - whatever info uses to pick next action - $$S^a_t = f(H_t)$$
-* Information State (a.k.a Markov State) contains all useful information from the history i.e. ''A state $$S_t$$ is Markov iff and only if $$P[S_{t+1} | S_t] = P[S_{t+1} | S_1, ..., S_t]$$ '' - the future is independent of the past given the present - state is a //sufficient statistic// of the future - e.g. for helicopter - position, fuel, velocity is a possible markov state
-* $$S^e_t$$ is Markov by definition as it fully characterizes what will happen next in the environment
-* $$H_t$$ is Markov by definition
-
-https://imgur.com/h8CSwmr - illustrates what we believe will happen next depends on agent state - case 1: electrocution, case 2: cheese, case 3: insufficient info
-
-Fully Observable Environments: agent directly observes environment state - $$O_t = S^a_t = S^e_T$$ - formally this is  Markov Decision Process (MDP) 
-
-Partially Observable Environments - indirectly observes environment (e.g. poker playing agent knows only common cards and its own), $$S^a+t \neq S^e_t$$ - POMDP - thus need to define a meaningful agent state representation:
-
-* Complete History - trivial solution
-* Beliefs on Environment State (Bayesian Approach) - a probability distribution characterizing how likely it is to be in a particular environment state - $$S_t^a = (P(S^e_t = s^1), ..., P(S^e_t = s^n))$$
-* [[Recurrent Neural Network]]: linear transformation of previous state and current observation with some non-linearity around it to determine current state - S^a_t = \sigma(S^a_{t-1} W_s + O_t W_o)
-
-
-
-
-
-
-
+{{Problems that RL needs to solve}}
 </pre>
 </div>
 <div created="20200209225659588" modified="20200210034424331" tags="[[machine learning]]" title="K Nearest Neighbors" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11808,6 +11809,24 @@ Useful Links:
 * https://towardsdatascience.com/from-tda-to-dl-d06f234f51d
 </pre>
 </div>
+<div created="20200212013035576" modified="20200212013204352" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="Problems that RL needs to solve" revision="2" bag="default">
+<pre>Two fundamental problems in sequential decision making:
+
+* Reinforcement Learning - environment is initially known, agent interacts w environment, improves policy
+* Planning - model of environment known, agent performs computations with model (without any external interaction), agent improves its policy (aka deliberation, introspection)
+
+https://imgur.com/iv4sKgB, https://imgur.com/KYRkdBg
+
+Exploration v/s Exploitation - need to balance this
+
+* Exploration finds more information about the environment
+* Exploitation exploits known information to maximize reward
+
+Prediction and Control:
+
+* Prediction - evaluate the future given a policy
+* Control - optimize the future, find the best policy </pre>
+</div>
 <div created="20200131073056488" modified="20200131075605791" tags="topology [[metric spaces]]" title="Products of Metric Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Property 1: A sequence $$\{x^{(j)}\}_{j \in \bf{N}}$$ converges to x = $$(x_1, ... , x_n) \in X = X_1 \times ... \times X_n$$ iff for each k the sequence of component entries $$\{x^{(j)}_k\}_{j \in \bf{N}}$$ converges to $$x_k$$ in $$X_k$$
 
@@ -12110,8 +12129,12 @@ reduction step 2 - stochastic gradient langevin dynamics (SGLD) - instead of lea
 implementable in entropic mirror descent - hsieh et al 2019
 </pre>
 </div>
-<div author="Siddharth Joshi" created="20191125022514242" modified="20200211215245051" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="7" bag="default">
-<pre># [[Introduction to Reinforcement Learning]]
+<div author="Siddharth Joshi" created="20191125022514242" modified="20200212013318038" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="8" bag="default">
+<pre>Part 1: Elementary Reinforcement Learning
+
+# [[Introduction to Reinforcement Learning]]
+
+Part 2: Reinforcement Learning in Practice
 
 Link to videos: https://www.youtube.com/watch?v=2pWv7GOvuf0&amp;list=PLzuuYNsE1EZAXYR4FJ75jcJseBmo4KQ9-&amp;fbclid=IwAR0lD-SDq5vtgIlUwb4IQryt6USHNndwB2eI0j7cpyfsPkeESv4Rok5YGhY
 
@@ -12338,6 +12361,55 @@ Proof:
 * Let S be the set of terms in that sequence that lie in the interval $$(s_N - \epsilon, s_N + \epsilon)$$ (all but finitely many terms are in this as the sequence is cauchy)
 * Therefore $$s_N + \epsilon$$ is an upper bound but then b the least upper bound must $$s_N - epsilon \leq b \leq s_N + \epsilon$$
 * But since epsilon is arbitrary can force convergence to b</pre>
+</div>
+<div created="20200212005448175" modified="20200212013136295" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="The Reinforcement Learning Problem Set Up" revision="2" bag="default">
+<pre>Rewards:
+
+* A reward $$R_t$$ is a scalar feedback signal 
+* Indicates how well agent is doing at time step t
+* The agent's job is to maximize cumulative reward
+* Reward Hypothesis - All goals can be described by the maximization of expected cumulative reward - i.e. this reward definition is sufficient for every goal possible
+
+Is it possible to have different goals and a scalar reward limiting you - assumption is that to finally make a decision you have to be able to compare the rewards in the context of the two goals which implies a scalar (some sort of weighted combination of the vector that would have been)
+
+Sequential Decision Making:
+
+* Goal - select actions to maximize total future reward
+* Actions may have long term consequences and rewards may be delayed (give up immediate reward to gain more long term)
+
+Agent and Environment: https://imgur.com/ogYC4I6, At each step t 
+
+* the agent: executes action $$A_t$$, receives observation $$O_t$$, receives scalar reward $$R_t$$
+* the environment: receives action $$A_t$$, emits observation $$O_{t+1}$$, Emits scalar reward $$R_{t+1}$$
+
+History and State:
+
+* history is the sequence of observations, actions and rewards - $$H_t = A_1, O_1, R_1, ..., A_t, O_t, R_t$$
+* i.e. all observable variables up to time t 
+* What happens next depends on history - agent selects actions, environment selects observations/rewards
+
+But this is inefficient as history can grow to be very long, hence we introduce state a way to summarize the history
+
+Formally, $$S_t = f(H_t)$$
+
+Three Different Definitions:
+
+* Environment State: $$S^e_t$$ is the environment's private representation - some state that will produce next observation, reward etc. (think of environment as a machine) - not usually visible to agent, even if available lots may be irrelevant - formalism that helps understand what exactly the environment is, not in building actual RL agent
+* Agent State: $$S_t^a$$ is the agent's internal representation - whatever info uses to pick next action - $$S^a_t = f(H_t)$$
+* Information State (a.k.a Markov State) contains all useful information from the history i.e. ''A state $$S_t$$ is Markov iff and only if $$P[S_{t+1} | S_t] = P[S_{t+1} | S_1, ..., S_t]$$ '' - the future is independent of the past given the present - state is a //sufficient statistic// of the future - e.g. for helicopter - position, fuel, velocity is a possible markov state
+* $$S^e_t$$ is Markov by definition as it fully characterizes what will happen next in the environment
+* $$H_t$$ is Markov by definition
+
+https://imgur.com/h8CSwmr - illustrates what we believe will happen next depends on agent state - case 1: electrocution, case 2: cheese, case 3: insufficient info
+
+Fully Observable Environments: agent directly observes environment state - $$O_t = S^a_t = S^e_T$$ - formally this is  Markov Decision Process (MDP) 
+
+Partially Observable Environments - indirectly observes environment (e.g. poker playing agent knows only common cards and its own), $$S^a+t \neq S^e_t$$ - POMDP - thus need to define a meaningful agent state representation:
+
+* Complete History - trivial solution
+* Beliefs on Environment State (Bayesian Approach) - a probability distribution characterizing how likely it is to be in a particular environment state - $$S_t^a = (P(S^e_t = s^1), ..., P(S^e_t = s^n))$$
+* [[Recurrent Neural Network]]: linear transformation of previous state and current observation with some non-linearity around it to determine current state - S^a_t = \sigma(S^a_{t-1} W_s + O_t W_o)
+</pre>
 </div>
 <div created="20200131030723016" modified="20200131155509679" tags="" title="Things I want to learn about in 2020" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Machine Learning (in practice)
