@@ -233,6 +233,8 @@ Error message and password prompt
 
 <li>Continuous Functions</li>
 
+<li>Contraction Mapping Theorem (and application to RL)</li>
+
 <li>Data Imputation Techniques</li>
 
 <li>Dealing with Missing Features</li>
@@ -9896,8 +9898,8 @@ Error message and password prompt
 <div created="20200214192936556" modified="20200214192936556" title="$:/state/Excise/--1527866894/tagnew" revision="1" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200214194501559" modified="20200214205705852" title="$:/state/showeditpreview" revision="4" bag="default">
-<pre>no</pre>
+<div created="20200214194501559" modified="20200214211133107" title="$:/state/showeditpreview" revision="5" bag="default">
+<pre>yes</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9911,7 +9913,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200212181902886" list="[[Reinforcement Learning: David Silver Course]] [[Planning by Dynamic Programming]]" modified="20200214210331471" title="$:/StoryList" revision="58" bag="default">
+<div created="20200212181902886" list="[[Reinforcement Learning: David Silver Course]]" modified="20200214210608410" title="$:/StoryList" revision="77" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10840,6 +10842,27 @@ Proof: Suppose f is not uniformly continuous (proof by contradiction)
 Def: A function f from one metric space to another is a homeomorphism if f is bijective and continuous and f^^-1^^ is continuous as well. Such a function is also bi-continuous.
 
 Fact: A homeomorphism preserves all properties of a metric space that are definable in terms of open sets only. </pre>
+</div>
+<div created="20200214210559373" modified="20200214211903729" tags="[[Planning by Dynamic Programming]] [[reinforcement learning]]" title="Contraction Mapping Theorem (and application to RL)" revision="7" bag="default">
+<pre>Value Function Space: 
+
+* Consider the metric space V over value functions has $$|S|$$ dimensions
+* each point in this space fully specifies a value function v(s)
+* To prove convergence we will show that a bellman backup brings points in this space closer therefore they will converge at a unique solution
+* Use $$\infty$$-norm i.e. $$|\ u - v\|_\infty = max_{s \in S}|u(s) - v(s)|$$
+
+Prove that Bellman Expectation Backup is a contraction:
+
+* $$T^\pi(v) = R^\pi + \gamma P^\pi v$$
+* $$\| T^\pi(u) - T^\pi(v) \|_\infty = \| (R^pi + \gamma P^\pi u) - (R^\pi + \gamma P^\pi v) \| = \| \gamma P^\pi(u - v) \| \leq \| \gamma P^\pi \|u - v\|_\infty \|_\infty \leq \gamma \|u - v\|_\infty$$
+* Therefore T is a $$\gamma$$ contraction
+
+''Contraction Mapping Theorem'': For any metric space V that is complete (i.e. closed) under an operator T(v), where T is a $$\gamma$$-contraction:
+
+* T converges to a unique fixed point
+* At a linear convergence rate of $$\gamma$$
+
+By this theorem and by similar proof of contraction we can show that policy evaluation, policy iteration and value iteration (need to prove for Bellman optimality equation) all converge to optimal points</pre>
 </div>
 <div author="Siddharth Joshi" created="20191122022337773" modified="20191122024526637" tags="[[machine learning]] [[feature engineering]]" title="Data Imputation Techniques" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Techniques to impute a feature value when one is missing for a given example:
@@ -12024,7 +12047,7 @@ Useful Links:
 * https://towardsdatascience.com/from-tda-to-dl-d06f234f51d
 </pre>
 </div>
-<div created="20200214185454778" modified="20200214210227555" tags="[[reinforcement learning]]" title="Planning by Dynamic Programming" revision="11" bag="default">
+<div created="20200214185454778" modified="20200214210600900" tags="[[reinforcement learning]]" title="Planning by Dynamic Programming" revision="12" bag="default">
 <pre>Planning $$\neq$$ Reinforcement Learning because we are given the dynamics of the system - we know the MDP completely
 
 MDP - satisfy optimal substructure and overlapping subproblems - seen through bellman optimality and expected equation
@@ -12034,23 +12057,25 @@ Dynamic Programming assumes full knowledge of the MDP (used for planning in MDP)
 * For prediction: input - MDP and policy $$\pi$$ or MRP, output - value function $$v_\pi$$
 * For control: input - MDP, output - $$v_*$$ and $$\pi_*$$
 
+__[[Policy Evaluation]]__
+
 {{Policy Evaluation}}
+
+__[[Policy Iteration]]__
 
 {{Policy Iteration}}
 
+__[[Value Iteration]]__
+
 {{Value Iteration}}
+
+__[[Extensions to Dynamic Programming (in RL context)]]__
 
 {{Extensions to Dynamic Programming (in RL context)}}
 
-Value Function Space: 
+__[[Contraction Mapping Theorem (and application to RL)]]__
 
-* Consider the metric space V over value functions has $$|S|$$ dimensions
-* each point in this space fully specifies a value function v(s)
-* To prove convergence we will show that a bellman backup brings points in this space closer therefore they will converge at a unique solution
-* Use $$\infty$$-norm i.e. $$|\ u - v\|_\infty = max_{s \in S}|u(s) - v(s)|$$
-
-Prove that Bellman Expectation Backup
-</pre>
+{{Contraction Mapping Theorem (and application to RL)}}</pre>
 </div>
 <div created="20200214202109282" modified="20200214210311938" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Policy Evaluation" revision="4" bag="default">
 <pre>Iterative Policy Evaluation: 
@@ -12410,7 +12435,7 @@ reduction step 2 - stochastic gradient langevin dynamics (SGLD) - instead of lea
 implementable in entropic mirror descent - hsieh et al 2019
 </pre>
 </div>
-<div author="Siddharth Joshi" created="20191125022514242" modified="20200214185433406" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div author="Siddharth Joshi" created="20191125022514242" modified="20200214210407879" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>Part 1: Elementary Reinforcement Learning
 
 # [[Introduction to Reinforcement Learning]]
