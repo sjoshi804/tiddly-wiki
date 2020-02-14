@@ -177,6 +177,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/Excise/--1527866894/tagnew</li>
+
+<li>$:/state/showeditpreview</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -188,6 +192,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -244,6 +250,8 @@ Error message and password prompt
 <li>Explainability of Model</li>
 
 <li>Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney</li>
+
+<li>Extensions to Dynamic Programming (in RL context)</li>
 
 <li>February Learning List</li>
 
@@ -323,6 +331,12 @@ Error message and password prompt
 
 <li>Persistent Homology</li>
 
+<li>Planning by Dynamic Programming</li>
+
+<li>Policy Evaluation</li>
+
+<li>Policy Iteration</li>
+
 <li>Problems that RL needs to solve</li>
 
 <li>Products of Metric Spaces</li>
@@ -382,6 +396,8 @@ Error message and password prompt
 <li>UCLA Math 131AH - Real Analysis</li>
 
 <li>UCLA Math 168 - Introduction to Networks</li>
+
+<li>Value Iteration</li>
 
 <li>Welcome</li>
 
@@ -9877,6 +9893,12 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200214192936556" modified="20200214192936556" title="$:/state/Excise/--1527866894/tagnew" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200214194501559" modified="20200214205705852" title="$:/state/showeditpreview" revision="4" bag="default">
+<pre>no</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9889,7 +9911,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200212181902886" list="ZKStarks Welcome [[How to Contribute?]]" modified="20200212181902887" title="$:/StoryList" revision="5" bag="default">
+<div created="20200212181902886" list="[[Reinforcement Learning: David Silver Course]] [[Planning by Dynamic Programming]]" modified="20200214210331471" title="$:/StoryList" revision="58" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9949,6 +9971,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200214185311337" modified="20200214210205627" title="$:/temp/search" revision="46" bag="default">
+<pre>extensions</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10992,6 +11017,29 @@ e.g. [[Neural Networks]], [[Ensemble Models]] are hard to explain but very accur
 <div created="20200131001053606" modified="20200131002052629" tags="xai [[artificial intelligence]] [[talk summary]]" title="Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://www.cal.cs.ucla.edu/cgi-bin/webevent.cgi?cmd=showevent&amp;ncmd=calmonth&amp;cal=cal2&amp;id=1578079202-22878-1&amp;ncals=&amp;y=2020&amp;m=01&amp;d=14&amp;token=&amp;sb=0&amp;cf=cal&amp;lc=calmonth&amp;swe=1&amp;set=1&amp;sa=0&amp;sort=e,m,t&amp;ws=0&amp;sib=1&amp;de=1&amp;tf=0</pre>
 </div>
+<div created="20200214205649421" modified="20200214210302002" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Extensions to Dynamic Programming (in RL context)" revision="2" bag="default">
+<pre>Asynchronous Dynamic Programming - back up states individually, for each selected state, apply the appropriate backup, can significantly reduce computation - guaranteed to converge if for all states continue to be selected
+
+In Place Dynamic Programming - can do without two copies of value functions to reduce space requirements - do not differentiate between v old and v new - this can allow us to way more efficient if we order our state computations correctly
+
+Prioritized Sweeping - use magnitude of bellman error to guide state selection:
+
+* $$ | max_{a \in A} (R^a_s + \gamma \sum_{s' \in S} P^a_{ss'} v(s') ) - v(s) |$$ and backup the state with largest remaining bellman error
+* can be implemented efficiently with a priority queue
+* requires knowledge of predecessor states
+
+Real-Time Dynamic Programming - only deal with states that are relevant to agent, use agent's experience to guide selection of states:
+
+* For timestep t, we have $$S_t, A_t, R_{t+1}$$
+* Backup state $$S_t$$, $$v(S_t) \leftarrow max_{a \in A} (R^a_{S_t} + \gamma \sum_{s' \in S} P^a_{S_ts'} v(s'))$$
+
+Full-width Backups - for each backup every successor state and action is considered:
+
+* suffers from curse of dimensionality for large problems as number of states grows exponentially with number of state variables and need to know the dynamics of the system
+* Even one backup could be too expensive
+* Sample backups are an alternative and the advantages are that this is model-free and makes up the cost of backup is constant
+* This is how we convert from Planning to Reinforcement Learning</pre>
+</div>
 <div created="20200131031737678" modified="20200131051255569" tags="" title="February Learning List" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>- Bayesian Network Course from Youtube
 - </pre>
@@ -11976,6 +12024,72 @@ Useful Links:
 * https://towardsdatascience.com/from-tda-to-dl-d06f234f51d
 </pre>
 </div>
+<div created="20200214185454778" modified="20200214210227555" tags="[[reinforcement learning]]" title="Planning by Dynamic Programming" revision="11" bag="default">
+<pre>Planning $$\neq$$ Reinforcement Learning because we are given the dynamics of the system - we know the MDP completely
+
+MDP - satisfy optimal substructure and overlapping subproblems - seen through bellman optimality and expected equation
+
+Dynamic Programming assumes full knowledge of the MDP (used for planning in MDP):
+
+* For prediction: input - MDP and policy $$\pi$$ or MRP, output - value function $$v_\pi$$
+* For control: input - MDP, output - $$v_*$$ and $$\pi_*$$
+
+{{Policy Evaluation}}
+
+{{Policy Iteration}}
+
+{{Value Iteration}}
+
+{{Extensions to Dynamic Programming (in RL context)}}
+
+Value Function Space: 
+
+* Consider the metric space V over value functions has $$|S|$$ dimensions
+* each point in this space fully specifies a value function v(s)
+* To prove convergence we will show that a bellman backup brings points in this space closer therefore they will converge at a unique solution
+* Use $$\infty$$-norm i.e. $$|\ u - v\|_\infty = max_{s \in S}|u(s) - v(s)|$$
+
+Prove that Bellman Expectation Backup
+</pre>
+</div>
+<div created="20200214202109282" modified="20200214210311938" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Policy Evaluation" revision="4" bag="default">
+<pre>Iterative Policy Evaluation: 
+
+* Problem: evaluate a given policy $$\pi$$
+* Solution: iterative application of Bellman equation backup
+* $$v_1 \rightarrow v_2 \rightarrow ... v_\pi$$ - start with arbitrary value and incrementally improve
+* Using synchronous backups - consider all states at every step - for all states s, update $$v_{k+1}(s)$$ from $$v_k(s')$$ where s' is the successor state
+
+Use the bellman expectation equation - https://imgur.com/1xnlKmN and use the values from the previous iteration as the values at the leaves - convergence proof covered in [[Contraction Mapping Theorem]]
+
+Small Grid-world Example: https://imgur.com/rAdbMUM, https://imgur.com/ZduqlSZ, https://imgur.com/lNm7S5N - intuition is how just computing a random policy's value function can give us a better policy and in this case the greedy policy based on the value function gives us the optimal policy after just 3 iterations</pre>
+</div>
+<div created="20200214202202626" modified="20200214210326723" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Policy Iteration" revision="4" bag="default">
+<pre>How to improve a policy - how to take any policy and make it better:
+
+* Evaluate the policy $$\pi$$ - like we did in [[Policy Evaluation]]
+* Improve the policy by acting greedily with respect to the $$v_\pi$$ - $$\pi' = greedy(v_\pi)$$
+* In general, may need many iterations of improvement and evaluation but eventually will converge to optimal policy - start with policy, improve, then evaluate new policy, improve and so on until you get the optimal policy (a search of the deterministic policies is sufficient due to theorem that there exists a deterministic optimal policy for every MDP) - https://imgur.com/EgUOewY
+
+Intuition for the fact that the greedy policy based on the value function will always do better than original policy is that the value function of the policy you start with takes into consideration the common pitfalls of greedy approaches i.e. local optimal strategy that hurts you in the long run (as it is the expectation of the value of being in a particular state given the policy - and by construction is based on considering the entire future from this state with respect to this policy)
+
+Policy Improvement:
+
+* Consider a deterministic policy, $$a = \pi(s)$$
+* We can improve the policy by acting greedily: $$\pi'(s) = argmax_{a \in A} q_\pi(s, a)$$
+* This has to improve value from any state s over one step: $$q_\pi(s, \pi'(s))$$ (i.e. follow new greedy policy for one step then follow regular policy afterwards) = $$max_{a \in A}q_\pi(s, a) \geq q_\pi(s, \pi(s) = v_\pi(s)$$ (Hence we have proved now that is better to follow the greedy policy for one step and revert back to regular than to just follow regular)
+* First inequality given by previous step then simply expand definition of $$q_\pi$$ that we have from bellman equation and then reapply above inequality and continue approach infinitely to show that the greedy policy is overall better (not just better if you follow for 1 step and revert back to regular)
+
+Convergence:
+
+* If improvement stops: $$q_\pi(s, \pi'(s)) = max_{a \in A}q_\pi(s, a) = q_\pi(s, \pi(s)) = v_\pi(s)$$
+* Therefore $$v_\pi(s) = max_{a \in A} q_\pi(s, a)$$ and this is the bellman optimality equation so we know our value function is now optimal, therefore $$\pi$$ must be our optimal policy
+
+Extensions to Policy Iteration:
+
+* Modifying Policy Iteration - consider epsilon convergence of value function? or simply stop after k iterations of iterative policy evaluation?, basic idea is to stop early as we may not need to know the value function to complete accuracy (and in the most extreme case just stop after k = 1, update policy every iteration - equivalent to - [[Value Iteration]])
+* Generalized Policy Iteration - https://imgur.com/cfEMFw0</pre>
+</div>
 <div created="20200212013035576" modified="20200212013205444" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="Problems that RL needs to solve" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Two fundamental problems in sequential decision making:
 
@@ -12296,11 +12410,12 @@ reduction step 2 - stochastic gradient langevin dynamics (SGLD) - instead of lea
 implementable in entropic mirror descent - hsieh et al 2019
 </pre>
 </div>
-<div author="Siddharth Joshi" created="20191125022514242" modified="20200212023304074" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="Siddharth Joshi" created="20191125022514242" modified="20200214185433406" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>Part 1: Elementary Reinforcement Learning
 
 # [[Introduction to Reinforcement Learning]]
 # [[Markov Decision Processes from scratch]]
+# [[Planning by Dynamic Programming]]
 
 Part 2: Reinforcement Learning in Practice
 
@@ -12664,6 +12779,23 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Generalizations of Networks]]
 # [[Models of Networks]]
 </pre>
+</div>
+<div created="20200214203422346" modified="20200214210338379" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Value Iteration" revision="2" bag="default">
+<pre>Principle of Optimality - an optimal policy is an optimal action and an optimal policy from successor state S':
+
+* Thm:  A policy $$\pi(a|s)$$ achieves the optimal value from any state s i.e. $$v_\pi(s) = v_*(s)$$ iff for any state s' reachable from s, $$\pi$$ achieves the optimal value from state s' i.e. $$v_pi(s') = v_*(s)$$
+
+Intuition - like dynamic programming, start with final rewards and work backwards, but since we need to be able with the fact that the dependency graph may not be acyclic we update in this manner:
+
+* $$v_{k+1}(s) \leftarrow max_{a \in A} R^a_s + \gamma \sum_{s' \in S} P^a_{ss'} v_{k}(s')$$ and as $$k \rightarrow \infty$$ this converges and we will get the optimal value function
+* $$v_{k+1} = max_{a \in A}R^a + \gamma P^a v_k$$
+* This is in some sense a more generalized version of Dynamic Programming that works with cycles etc. (thus letting us deal with loopy, stochastic MDPs) 
+* No explicit policy 
+* Some intermediate values may not be the value function for any actual policy (but you could base a greedy policy based on a intermediate value function and do decently well)
+
+https://www.cs.ubc.ca/~poole/demos/mdp/vi.html - link to play around with value iteration
+
+Summary - https://imgur.com/kAutPIf</pre>
 </div>
 <div author="Siddharth Joshi" created="20191119180323660" modified="20200211182518465" tags="introduction" title="Welcome" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Hi, welcome to my ~TiddlyWiki!
