@@ -177,6 +177,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
+<li>$:/state/sidebar</li>
+
 <li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
@@ -250,6 +254,8 @@ Error message and password prompt
 <li>Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney</li>
 
 <li>Extensions to Dynamic Programming (in RL context)</li>
+
+<li>Extreme Classification: Algorithms &amp; Evaluation by Yashoteja Prabhu</li>
 
 <li>February Learning List</li>
 
@@ -9899,6 +9905,12 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200219001746069" modified="20200219001746069" title="$:/state/showeditpreview" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200219001741882" modified="20200219011322526" title="$:/state/sidebar" revision="2" bag="default">
+<pre>yes</pre>
+</div>
 <div created="20200217194619581" modified="20200217194619582" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
@@ -9914,7 +9926,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200217194620663" list="" modified="20200217194620663" title="$:/StoryList" revision="5" bag="default">
+<div created="20200217194620663" list="[[Extreme Classification: Algorithms &amp; Evaluation by Yashoteja Prabhu]]" modified="20200217194620663" title="$:/StoryList" revision="11" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -11060,6 +11072,78 @@ Full-width Backups - for each backup every successor state and action is conside
 * Even one backup could be too expensive
 * Sample backups are an alternative and the advantages are that this is model-free and makes up the cost of backup is constant
 * This is how we convert from Planning to Reinforcement Learning</pre>
+</div>
+<div created="20200219001609341" modified="20200219010932182" tags="[[machine learning]]" title="Extreme Classification: Algorithms &amp; Evaluation by Yashoteja Prabhu" revision="3" bag="default">
+<pre>New area of ML - many large scale ranking &amp; recommendation problem can be reduced to extreme classification
+
+__Introduction to Extreme Classification__
+
+Predict the most relevant subset of labels to a data point from mullions of labels
+
+$$f: X \rightarrow 2^Y $$
+
+Motivation: Ad is datapoint and bing query is a label, need to find small subset of labels for which this ad would be relevant
+
+Prior to this, the approach was such, a binary classification problem on each phrase: h(ad, phrase) = 1 if phrase appears in ad
+
+Another use case: item to item recommendation (similar items) - low dimensional factorization of a rating matrix - collaborative filtering algorithms - https://medium.com/sfu-big-data/recommendation-systems-user-based-collaborative-filtering-using-n-nearest-neighbors-bf7361dc24e0
+
+Other applications:
+
+* Information Retrieval - web search
+* Recommender system
+
+Performance Evaluation: precision@k - the number of relevant results in k recommendations
+
+Approaches to Extreme Classification: 1 v/s All (accurate but not efficient), Trees (not accurate but efficient), Parabel (accurate and efficient)
+
+__Parabel: A Log-Time Extreme Classification__
+
+Efficient Training ~ Log(L) and Prediction ~ 1ms
+
+3 stages: Learn Label Tree, Train Classifiers, Predict
+
+Learn a Label Tree:
+
+* Labels are represented by their average training point
+* Labels with similar points have similar representation
+* Time to compute representation = O(~NDlogL) due to label sparsity - as every datapoint is usually associated with only logarithmically many labels 
+* Recursive hierarchical clustering using balanced k-means (k=2)
+* Similar labels (similar in a very relevant manner - similar with respect to data points) end up in same leaf node
+* Time to create tree = O(LDLog(L))
+
+Training Probabilistic Models at internal nodes to split into children:
+
+* Train a linear classifier for each child node independently and send a user to one/both children based on classifier scores
+* Train a separate linear classifier for every item in the the leaf nodes
+* A point only participates in O(log L) classifiers (path down the tree) and training time is ~ O(ND log L)
+
+MAP  -// maximum a posterior probability (MAP) estimate is an estimate of an unknown quantity, that equals the mode of the posterior distribution// - estimation of Parabel parameters, while allowing us to train the classifiers in parallel completely independent of each other - refer to paper for more theoretical justificaiton
+
+Prediction is efficient as unlikely paths are pruned away
+
+Much faster training and prediction with similar accuracy, as well as small model size
+
+__Extreme Regression: An improved paradigm__
+
+Dynamic Search Ads: Queries can be relevant to an ad to different extents, Click to Rate $$\in [0, 1]$$ captures these non-binary relevant values - in a sense probabilistic interpretation of how relevant an ad is
+
+The problem is not to predict how relevant ''each'' label is to a data point
+
+$$f: X \rightarrow (0, \infty)^Y$$
+
+Extreme Regression with Missing Labels - learn unbiased relevances in terms of inverse propensities i.e. rarer tags are actually more relevant than tags that are common to many data points
+
+Advantages of Extreme Regression:
+
+* Faster than pairwise rankers for top k recommendations - measure accuracy by relevance-weighted precision@k
+* Can use relevance-based thresholding - show all ads that are 50% relevant or more
+* Can use label re-ranking to improve prediction quality in future
+
+Extreme Regression Metrics - error at the most likely labels more relevant than that of other points - XMAD@k - looks at k largest errors and this evaluates ranking performance more accurately
+
+Modification Regressor Algorithms - Simple extension of Parabel to non-binary relevances - use linear regressors rather than classifiers - normalize relevance values to [0, 1]
+</pre>
 </div>
 <div created="20200131031737678" modified="20200131051255569" tags="" title="February Learning List" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>- Bayesian Network Course from Youtube
