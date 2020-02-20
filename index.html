@@ -9957,7 +9957,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200220012731687" list="[[Off Policy Learning]]" modified="20200220031713543" title="$:/StoryList" revision="61" bag="default">
+<div created="20200220012731687" list="[[Off Policy Learning]]" modified="20200220031713543" title="$:/StoryList" revision="63" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -12252,7 +12252,7 @@ see also: [[Standardization of Features]]</pre>
 <div author="Siddharth Joshi" created="20191122040546770" modified="20191122040907778" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Number of Features and Examples" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Some models like [[Neural Networks]] and [[Gradient Boosting Algorithms]] can handle large datasets with millions of features even whereas others like [[SVMs |Support Vector Machine]] have a much lower capacity. </pre>
 </div>
-<div created="20200220031706696" modified="20200220033553043" tags="[[Model-Free Control]]" title="Off Policy Learning" revision="3" bag="default">
+<div created="20200220031706696" modified="20200220034055661" tags="[[Model-Free Control]]" title="Off Policy Learning" revision="4" bag="default">
 <pre>* Evaluate target policy $$\pi(a | s)$$ to compute $$v_\pi(s)$$ or $$q_\pi(s, a)$$
 * While following behavior policy $$\mu(a | s)$$
 * Learn from observing humans or other agents
@@ -12262,7 +12262,7 @@ see also: [[Standardization of Features]]</pre>
 
 Importance Sampling  - estimate the expectation of a different distribution
 
-* E_{X \sim P}[f(X)] = \sum P(X) f(X) = \sum Q(X) \frac{P(X)}{Q(X)} f(X) = E_{X~Q}  \frac{P(X)}{Q(X)} f(X) 
+* $$E_{X \sim P}[f(X)] = \sum P(X) f(X) = \sum Q(X) \frac{P(X)}{Q(X)} f(X) = E_{X~Q}  \frac{P(X)}{Q(X)} f(X) $$
 
 Importance Sampling for Off-Policy Monte-Carlo - uses return generated from $$\mu$$ to evaluate $$\pi$$ by weighting return $$G_t$$ according to the similarity between policies
 
