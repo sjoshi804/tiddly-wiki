@@ -331,8 +331,6 @@ Error message and password prompt
 
 <li>Natural Numbers</li>
 
-<li>New Excision</li>
-
 <li>Non-linearity of Data</li>
 
 <li>Nonlinear Basis Functions</li>
@@ -9957,7 +9955,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200220012731687" list="[[Off Policy Learning]]" modified="20200220031713543" title="$:/StoryList" revision="63" bag="default">
+<div created="20200220012731687" list="[[Model-Free Control]]" modified="20200220034133042" title="$:/StoryList" revision="68" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -12181,41 +12179,6 @@ Incremental Monte-Carlo Updates:
 * if $$ 1 \in S $$ and $$ f(x) \in S, \forall x \in S $$ then $$ S = \mathbb{N} $$
 
 We 'represent' f by +1 and we define 1+1 as 2 and so on and so forth.</pre>
-</div>
-<div created="20200220025323977" modified="20200220025323977" tags="[[Model-Free Control]]" title="New Excision" revision="1" bag="default">
-<pre>Advantages of TD - lower variance, online, deal with incomplete sequences
-
-SARSA updates - policy evaluation method - apply TD to Q(S, A), use epsilon-greedy policy improvement and update every time step: https://imgur.com/5aXcCrC
-
-On-Policy Control with Sarsa - Sarsa for policy evaluate update and use epsilon-greedy policy improvement (policy implicitly represented by action value function): https://imgur.com/4kajsK7
-
-Convergence of Sarsa converges to the optimal action-value function, $$Q(s, a) \rightarrow q_*(s, a)$$ under the following conditions: 
-
-* GLIE sequence of policies $$\pi_t(a | s)$$
-* Robbins-Monro sequence of step sizes, $$\sum_{t=1}^\infty a_t = \infty$$ (large enough step size to move value around) and $$\sum_{t=1}^\infty a_t^2 &lt; \infty$$ (eventually action value function stabilizes)
-
-Windy Gridworld Example: https://imgur.com/cqm4tQR, https://imgur.com/WIRNjYA
-
-Define n-step Q-return: $$q_t^{(n)} = R_{t+1} + ... + \gamma^{n-1}R_{t + n} + \gamma^n Q(S_{t+n}, A_{t+n})$$ and update identically by incrementing by alpha times error with respect to n-step return 
-
-Forward-view $$Sarsa(\lambda)$$ - as earlier average over all n-step returns:
-
-* $$\lambda$$-return, $$q^\lambda_t =  (1 - \lambda) \sum_{n=1}^\infty \lambda^{n-1} q_t^{(n)}$$
-
-Backward-View $$Sarsa(\lambda)$$, use an eligibility traces for each state-action pair:
-
-* $$E_0(s, a) = 0$$, $$E_t(s, a) = \gamma \lambda E_{t - 1}(s, a) + Indicator(S_t = s, A_t = a)$$
-* Q(s, a) is updated for every state s and action a
-* $$\delta_t = R_{t + 1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)$$
-* $$Q(s, a) \leftarrow Q(s, a) + \alpha \delta_t E_t(s, a)$$
-
-Pseudocode for $$Sarsa(\lambda)$$: https://imgur.com/Q18y2mi
-
-$$Sarsa(\lambda)$$ gridworld examples showing using arrows how much state-action pairs are updated using one-step Sarsa vs $$Sarsa(\lambda)$$: https://imgur.com/qHqtAcW
-
-* One-step Sarsa - information propagates back only one step every episode
-* But in $$Sarsa(\lambda)$$ by the end of the episode the entire path's state action pairs value are increased
-* $$\lambda$$ overcomes tyranny of time step by allowing us to propagate information as fast as we'd like depending on $$\lambda$$</pre>
 </div>
 <div author="Siddharth Joshi" created="20191122040921452" modified="20191122041302705" tags="[[learning algorithm selection]] [[machine learning]]" title="Non-linearity of Data" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Linearly separable data can be handled well by:
