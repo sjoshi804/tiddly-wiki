@@ -177,6 +177,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
+<li>$:/state/sidebar</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -188,6 +192,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -9927,6 +9933,12 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200221065435835" modified="20200221065435835" title="$:/state/showeditpreview" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200221065431227" modified="20200221072955161" title="$:/state/sidebar" revision="2" bag="default">
+<pre>yes</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9939,7 +9951,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200221064523101" list="[[Separation Axioms]] Welcome [[How to Contribute?]]" modified="20200221064523101" title="$:/StoryList" revision="3" bag="default">
+<div created="20200221064523101" list="" modified="20200221065426590" title="$:/StoryList" revision="12" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9999,6 +10011,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200221065422737" modified="20200221072957171" title="$:/temp/search" revision="7" bag="default">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10767,8 +10782,62 @@ Summary: The following statements are equivalent
 * X is totally bounded and complete
 </pre>
 </div>
-<div created="20200219061300673" modified="20200219061303401" tags="topology" title="Compactness of Topological Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre></pre>
+<div created="20200219061300673" modified="20200221072953402" tags="topology" title="Compactness of Topological Spaces" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<pre>Def: A topological space is compact if every open cover has a finite subcover. 
+
+Fact: Compactness is a topological property i.e. preserved by homeomorphisms.
+
+Def: A subset S of a topological space X is a compact subset of X if S is compact in the relative topology it inherits from X. This occurs iff for every family of open sets that covers S, there is a finite subfamily that also covers S.
+
+Thm 1: Any finite union of compact subspaces is compact. 
+
+Proof: Union all the finite subfamilies
+
+Thm 2: A closed subspace of a compact topological space is compact. 
+
+Proof: 
+
+* Let $$\{U_a\}_{a \in A}$$ be a family of open subsets of the space X that covers the closed subset S.
+* Then $$\{U_a \cup (X \setminus S) \}_{a \in A}$$ is a cover for X, therefore there exists a finite subfamily of this that covers X. 
+* The finite subfamily of $$\{U_a\}_{a \in A}$$ corresponding to the aforementioned subfamily is a finite subcover of S. 
+
+Lemma 3: Let S be a compact subset of a Hausdorff space X. For each $$x \in X \setminus S$$, $$\exists$$ disjoint neighborhoods $$U$$ of $$x$$ and $$V$$ of $$S$$
+
+Proof: 
+
+* For each $$y \in S$$, $$\exists U_y, V_y$$ disjoint open neighborhoods of x and y respectively (due to Hausdorff property)
+* Since S is compact, there exists a finite subcover of $$\{V_y\}_{y \in S}$$ and the corresponding finite sets' intersection $$U U_{y_1} \cap ... \cap U_{y_n}$$ is open (finite intersection of open sets) and is disjoint from $$V = V_{y_1} \cup ... \cup V_{y_n}$$ by construction
+
+Corollary 4: A compact subset of Hausdorff space is closed 
+
+Reasoning: $$X \setminus S$$ is open, seen by taking a union of all the open neighborhoods of x that are disjoint from respective Vs, and thus disjoint from S
+
+Thm 5: A compact Hausdorff space is a normal space
+
+Proof: 
+
+* Let S and T be disjoint closed subsets of compact Hausdorff space X, by thm 2, S and T are compact
+* By Lemma 3, for each $$x \in T$$ we can find disjoint open neighborhoods of $$U_x$$ of x and $$V_x$$ of S. A finite subfamily of  $$U = \{U_x\}_{x \in T}$$ must cover T as it is compact. 
+* Therefore the corresponding $$V_x$$ intersected make $$V$$ that is an open neighborhood of $$S$$ that is disjoint from $$U$$ by construction 
+
+Thm 6: Let f be a continuous function from a compact space X to a topological space Y. Then f(X) is a compact subset of Y.
+
+Proof:
+
+*  Let $$\{U_a\}_{a \in A}$$ be a family of open sets of Y that covers $$f(X)$$, then $$\{f^{-1}(U_a)\}_{a \in A}$$ is family of open subsets of X that covers X.
+* Therefore there exists a finite subcover of this.
+* The images of the sets in the finite subcover i.e. $$\{U_n\}_{n \in [1, N] \cap Z}$$ therefore must cover $$f(X$$ and thus it is compact.
+
+
+Thm 7: Let f be a continuous function from a compact space X to a topological space Y. If f is one-to-one then it is a homeomorphism from X to f(X)
+
+Proof: Suffices to prove $$f(U)$$ is relatively open in $$f(X)$$ when U is open in X
+
+* By Thm 2, $$X \setminus U$$ is compact. 
+* By Thm 6 $$f(X \setminus U) = f(X) \setminus f(U)$$ is a compact subset of $$f(X)$$
+* By Corollary 4, $$f(X \setminus U) = f(X) \setminus f(U)$$ is closed in $$f(X)$$
+* Therefore $$f(U)$$ is open (as it is the complement of a closed set) in $$f(X)$$
+</pre>
 </div>
 <div created="20200131061156893" modified="20200131161439072" tags="topology [[metric spaces]]" title="Completeness" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A sequence $$\{x_n\}_{n \in \bf{N}}$$ in a metric space X is //Cauchy// if for all $$\epsilon &gt; 0, \exists N, d(x_n, x_m) &lt; \epsilon, \forall n, m \geq N$$
