@@ -177,10 +177,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/showeditpreview</li>
-
-<li>$:/state/sidebar</li>
-
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -9933,12 +9929,6 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200221065435835" modified="20200221065435835" title="$:/state/showeditpreview" revision="1" bag="default">
-<pre>yes</pre>
-</div>
-<div created="20200221065431227" modified="20200221072955161" title="$:/state/sidebar" revision="2" bag="default">
-<pre>yes</pre>
-</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9951,7 +9941,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200221064523101" list="" modified="20200221065426590" title="$:/StoryList" revision="12" bag="default">
+<div created="20200221191922866" list="[[UCLA Math 121 Topology]] [[Topological Spaces]] [[Continuous Functions in Topological Spaces]] Welcome [[How to Contribute?]]" modified="20200221191926098" title="$:/StoryList" revision="6" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -9999,11 +9989,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1440&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10012,8 +10002,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200221065422737" modified="20200221072957171" title="$:/temp/search" revision="7" bag="default">
-<pre></pre>
+<div created="20200221191919756" modified="20200221191921986" title="$:/temp/search" revision="7" bag="default">
+<pre>121</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -10782,7 +10772,7 @@ Summary: The following statements are equivalent
 * X is totally bounded and complete
 </pre>
 </div>
-<div created="20200219061300673" modified="20200221072953402" tags="topology" title="Compactness of Topological Spaces" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200219061300673" modified="20200221072954509" tags="topology" title="Compactness of Topological Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A topological space is compact if every open cover has a finite subcover. 
 
 Fact: Compactness is a topological property i.e. preserved by homeomorphisms.
@@ -11082,7 +11072,7 @@ Def: A function f from one metric space to another is a homeomorphism if f is bi
 
 Fact: A homeomorphism preserves all properties of a metric space that are definable in terms of open sets only. </pre>
 </div>
-<div created="20200219043249498" modified="20200219071843355" tags="topology" title="Continuous Functions in Topological Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200219043249498" modified="20200221191939243" tags="topology" title="Continuous Functions in Topological Spaces" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>Def (Uniform Continuity): A function f from one topological space X to another Y is continuous if $$f^{-1}(V)$$ is open in X whenever V is open in Y
 
 Def: A continuous function from one topological space to another is often called a map.
@@ -11119,7 +11109,7 @@ Proof:
 * $$\implies$$: Let $$V = B_Y(f(x), \epsilon)$$ is an open set in Y containing $$f(x)$$, therefore by point-wise continuity $$\exists U^{open}$$ s.t. $$x \in U$$ and $$f(U) \subset V$$
 * $$\impliedby$$: $$f(x) \in V^{open}$$, therefore $$\exists \epsilon &gt; 0, B_Y(x, \epsilon) \subset V$$ and $$\exists U^{open}, x \in U, f(U) \subset B_Y(x, \epsilon) \subset V$$ (by hypothesis)
 
-Thm 4: Suppose the sequence of functions $${\{f_n\}}_{n \in \textbf{N}}$$ from a topological space X tot a metric space Y converges uniformly to $$f: X \rightarrow Y$$ then if each $$f_n$$ is continuous at $$x \in X$$ then so is $$f$$
+Thm 4: Suppose the sequence of functions $${\{f_n\}}_{n \in \textbf{N}}$$ from a topological space X to a metric space Y converges uniformly to $$f: X \rightarrow Y$$ then if each $$f_n$$ is continuous at $$x \in X$$ then so is $$f$$
 
 Proof:
 
@@ -13118,7 +13108,7 @@ Take proof statement: alpha is the result of executing C for T steps on public i
 First step construct an AIR:
 P = </pre>
 </div>
-<div created="20200219061250949" modified="20200221065359462" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200219061250949" modified="20200221065400964" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>''Intuition:'' To identify topological spaces with enough structure i.e. they do not have too few open sets - this is best characterized by separation axioms that are some form of requirements that pairs of disjoint subsets are contained in disjoint open sets. To require this in full generality though is not helpful either as it requires every set to be open. 
 
 Def: A topological space X is a 
