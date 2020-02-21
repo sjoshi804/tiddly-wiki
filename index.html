@@ -177,6 +177,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/sidebar</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -9929,6 +9931,9 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200221192617495" modified="20200221194719058" title="$:/state/sidebar" revision="2" bag="default">
+<pre>yes</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9941,7 +9946,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200221191922866" list="[[UCLA Math 121 Topology]] [[Topological Spaces]] [[Continuous Functions in Topological Spaces]] Welcome [[How to Contribute?]]" modified="20200221191926098" title="$:/StoryList" revision="8" bag="default">
+<div created="20200221191922866" list="[[UCLA Math 121 Topology]] [[Topological Spaces]] [[Separation Axioms]] Welcome [[How to Contribute?]]" modified="20200221193453890" title="$:/StoryList" revision="34" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10347,19 +10352,20 @@ Floating Point Hardware - https://imgur.com/hnfgAVy - very complex - usually man
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20200219061236768" modified="20200219080520230" tags="topology" title="Base for a Topology" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>Def: A family of open subsets ''B'' in X is called a base for the topology of X is every open subset of X is a union of sets in ''B''
+<div created="20200219061236768" modified="20200221192847311" tags="topology" title="Base for a Topology" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<pre>Def: A family of open subsets ''B'' in X is called a base for the topology of X if every open subset of X is a union of sets in ''B''
 
-Thm 1: a family ''B'' of open subsets of X is a base for the topology of X iff for each $$x \in X$$ and U a neighborhood of x, $$\exists V \in \textbf{B}$$ s..t $$x \in V$$ and $$V \subset U$$
+Thm 1: A family ''B'' of open subsets of X is a base for the topology of X iff for each $$x \in X$$ and U a neighborhood of x, $$\exists V \in \textbf{B}$$ s..t $$x \in V$$ and $$V \subset U$$
 
-Thm 2: A family ''B'' of open subsets of a set X is a base for a topology of X iff ''B'' has the following two properties&quot;:
+Thm 2: A family ''B'' of open subsets of a set X is a base for a topology of X iff ''B'' has the following two properties:
 
 # Each $$x \in X$$ lies in at least one set in ''B''
 # If $$U, V \in \textbf{B}$$ and $$x \in U \cap V$$, then there exists $$W \in \textbf{B}$$ s.t $$x \in W$$ and $$W \subset U \cap V$$
 
 Proof:  $$\implies$$ is trivial by need for X to itself be an open set and the intersection of finitely many open sets to be open
 
-* Let T be the set of all unions of sets in ''B''. Suffices to show that T is a topology. Assume empty set part of it (union of no sets), X must also be part of it by taking the union of all $$U_x$$ that make property 1 true. Any union of sets in the set in T is by construction in T. 
+* Let T be the set of all unions of sets in ''B''. Suffices to show that T is a topology. 
+* Assume empty set part of it (union of no sets), X must also be part of it by taking the union of all $$U_x$$ that make property 1 true. Any union of sets in the set in T is by construction in T. 
 * Finally must show that the finite intersection of sets in T belongs to T. 
 * Suppose $$U, V \subset T$$ and let $$x \in U \cap V$$, since U and V are unions of sets from ''B'', $$\exists U' \subset U$$ and $$\exists V' \subset V$$ that both contain $$x$$ and are members of ''B''. Thus, $$\exists W_x \subset U' \cap V' \subset U \cap V$$ and thus $$U \cap V = \cup_{x \in U \cap V} W_x$$ and therefore $$U \cap V \in T$$, by induction generalizes to any finite intersection
 
@@ -10689,7 +10695,7 @@ HNC is poly time solvable: monotone IP3 (Hochbaum 2010) - need to avoid the case
 
 </pre>
 </div>
-<div created="20200131075725454" modified="20200219040655047" tags="[[metric spaces]] topology" title="Compactness of Metric Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200131075725454" modified="20200221193054669" tags="[[metric spaces]] topology" title="Compactness of Metric Spaces" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>Def: A space is totally bounded if $$\forall \epsilon &gt; 0$$, there exists a finite $$\epsilon$$-net for X i.e there exist $$x_1, ..., x_n$$ s.t. every point in X is within $$\epsilon$$ of some $$x_i$$, equivalently $$X = \cup_{i = 1}^n B(x_i, \epsilon)$$
 
 Def: X is bounded if $$\exists b &gt; 0, d(x, y) &lt; b, \forall x, y \in X$$
@@ -10741,7 +10747,7 @@ Def: An open cover of X is a set of open subsets $$\{U_\alpha\}_ {\alpha \in A}$
 
 ''Thm 6 Lindelof's Theorem:'' If X is second countable then every open cover has a countable subcover
 
-Proof:  Let ''//B//'' = $$\{V_n\}_{n \in \bf{N}}$$ be a countable basis and $$\{U_\alpha\}_ {\alpha \in A}$$ be a cover.
+Proof:  Let ''//B//'' = $$\{V_n\}_{n \in \bf{N}}$$ be a countable base and $$\{U_\alpha\}_ {\alpha \in A}$$ be a cover.
 
 *$$x \in U_\alpha \implies \exists V_n, x \in V_n \subset U_\alpha$$
 * Therefore, $$C = \{V_n \vert \exists \alpha, V_n \subset U_\alpha \} $$ is a countable cover
@@ -13108,17 +13114,17 @@ Take proof statement: alpha is the result of executing C for T steps on public i
 First step construct an AIR:
 P = </pre>
 </div>
-<div created="20200219061250949" modified="20200221065400964" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200219061250949" modified="20200221194416429" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="5" bag="default">
 <pre>''Intuition:'' To identify topological spaces with enough structure i.e. they do not have too few open sets - this is best characterized by separation axioms that are some form of requirements that pairs of disjoint subsets are contained in disjoint open sets. To require this in full generality though is not helpful either as it requires every set to be open. 
 
 Def: A topological space X is a 
 
-* T1-space: if for each  pair of distinct points $$x, y \in X$$, there exists an open set U containing y s.t $$x \notin U$$. In this case, complement of $$\{x\}$$
+* T1-space: if for each  pair of distinct points $$x, y \in X$$, there exists an open set U containing y s.t $$x \notin U$$. In this case, complement of $$\{x\}$$ is open. 
 * T2-space (''Hausdorff''):  If for every pair of distinct points $$x, y \in X$$, $$\exists U, V$$ open sets s.t. $$x \in U$$ and $$y \in V$$ and $$U \cap V = \emptyset$$
-* Regular space: if for each closed subset E of X and each point $$x \in X \setdiff E$$, $$\exists U, V$$ disjoint open sets s.t. $$E \subset U$$ and $$x \in V$$. A Regular T-1 space is a T-3 space.
+* Regular space: if for each closed subset E of X and each point $$x \in X \setminus E$$, $$\exists U, V$$ disjoint open sets s.t. $$E \subset U$$ and $$x \in V$$. A Regular T-1 space is a T-3 space.
 * Normal space: if for each pair of closed subsets E and F, $$\exists U, V$$ disjoint open sets s.t. $$E \subset U$$ and $$F \subset V$$. A Normal T-1 space is a T-4 space.
 
-Fact: T4 $$\implies$$ T3 $$\implies$$ T2 $$\implies$$ T1
+Fact: T4 $$\implies$$ T3 $$\implies$$ T2 $$\implies$$ T1 (https://imgur.com/D2Ee1km)
 
 Thm 1: Every metric space is T-4
 
@@ -13131,7 +13137,7 @@ Lemma 2: $$X$$ is normal iff for each closed subset $$E$$ of $$X$$ and each open
 
 Proof:
 
-* $$\implies$$: E and X \ W are closed sets, therefore $$\exists U, V$$ open and disjoint s.t. U contains E and V contains X \ W. Therefore $$U \subseteq X \setminus V \subseteq W$$
+* $$\implies$$: E and X \ W are closed sets, therefore $$\exists U, V$$ open and disjoint s.t. U contains E and V contains X \ W. Therefore $$\bar{U} \subseteq X \setminus V \subseteq W$$ and $$\bar{U} \subset X \setminus V$$ because if not then there exists $$x \in V$$ s.t. every open neighborhood of $$x$$ intersects $$U$$, but $$V$$ is an open neighborhood of $$x$$ that is disjoint from $$U$$ -&gt; contradiction
 * $$\impliedby$$: let E and F be disjoint sets, let $$W = X \setminus F$$ is open, therefore $$\exists U$$ i.e open containing E and $$X \setminus  \bar{U}$$ i.e. open containing F
 
 Intuition: Bump Functions - a continuous function that is 1 near a point and 0 far away from it. Useful in many applications. The following result is the idea that bump functions exist around every closed set in a normal space
