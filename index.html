@@ -177,13 +177,11 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/Excise/-1335067159/tagnew</li>
+<li>$:/state/Excise/--157874264/tagnew</li>
 
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
-
-<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -222,6 +220,8 @@ Error message and password prompt
 <li>Basics of Network Theory</li>
 
 <li>Basics of Topological Spaces</li>
+
+<li>Batch Methods of Value Function Approximation</li>
 
 <li>Bayesian Network</li>
 
@@ -286,6 +286,8 @@ Error message and password prompt
 <li>Hyperparameters</li>
 
 <li>IaaS</li>
+
+<li>Incremental Methods of Value Function Approximation</li>
 
 <li>Induction</li>
 
@@ -434,6 +436,8 @@ Error message and password prompt
 <li>UCLA Math 131AH - Real Analysis</li>
 
 <li>UCLA Math 168 - Introduction to Networks</li>
+
+<li>Value Function Approximation</li>
 
 <li>Value Iteration</li>
 
@@ -9931,17 +9935,14 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200220021439711" modified="20200220021439711" title="$:/state/Excise/-1335067159/tagnew" revision="1" bag="default">
+<div created="20200221000543819" modified="20200221000543819" title="$:/state/Excise/--157874264/tagnew" revision="1" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200220023524830" modified="20200220031617016" title="$:/state/showeditpreview" revision="3" bag="default">
-<pre>yes</pre>
+<div created="20200220225911292" modified="20200221000753893" title="$:/state/showeditpreview" revision="2" bag="default">
+<pre>no</pre>
 </div>
-<div created="20200220013703265" modified="20200220033626928" title="$:/state/sidebar" revision="4" bag="default">
+<div created="20200220233312049" modified="20200221024203529" title="$:/state/sidebar" revision="4" bag="default">
 <pre>yes</pre>
-</div>
-<div created="20200220023426620" modified="20200220023426620" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
-<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9955,7 +9956,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200220012731687" list="[[Model-Free Control]]" modified="20200220034133042" title="$:/StoryList" revision="68" bag="default">
+<div created="20200220224621315" list="" modified="20200221024121408" title="$:/StoryList" revision="27" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10016,7 +10017,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200220012727913" modified="20200220033628843" title="$:/temp/search" revision="14" bag="default">
+<div created="20200220225157631" modified="20200220233315640" title="$:/temp/search" revision="32" bag="default">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
@@ -10543,6 +10544,38 @@ Proof:
 * Consider the later case, $$U_x \cap (X \setminus S) \neq \emptyset$$ as if not then $$U_x$$ is a neighborhood of x entirely in S therefore $$x \in int(S)$$ -&gt; contradiction
 * Therefore $$x \in clos(X \setminus S)$$ and then by above fact $$x \in \delta S$$
 * Hence $$x \in \bar{S}$$ implies $$x \in int(S)$$ or $$x \in \delta S$$</pre>
+</div>
+<div created="20200221024102392" modified="20200221024138939" tags="[[Value Function Approximation]]" title="Batch Methods of Value Function Approximation" revision="3" bag="default">
+<pre>Batch methods seek to find the best fitting value function given the agent's whole experience
+
+Least Squares Prediction:
+
+* Experience D = $$\{ (s_1, v_1^\pi), ..., (s_T, v_T^\pi) \}$$
+* Which parameters ''w'' give the best fitting value function $$\hat{v}(s, ''w'')$$ - essentially a curve of best fit in higher dimensions (runs into issues of [[Overfitting]] that can be dealt with the techniques mentioned here [[Regularization and Overfitting]]
+* Minimize function that is the expected value of the sum of squares of error
+
+Stochastic Gradient Descent with Experience Replay:
+
+* Sample state, value function from experience: $$&lt;s, v^\pi&gt; \sim D$$
+* Apply stochastic gradient descent update
+* Repeat until convergence to the least squares solution
+
+Experience Replay in Deep Q-Networks (DQN): DQN uses ''experience replay'' and ''fixed Q-targets'' - Q learning targets:
+
+* Take action $$a_t$$ according to $$\epsilon$$-greedy policy
+* Store transition in $$(s_t, a_t, r_{t+1}, s_{t+1})$$ in replay memory $$D$$
+* Sample random min-batch of transitions (~ 64) from $$D$$
+* Compute Q-learning targets w.r.t old, fixed parameters 
+* Optimize Mean Squared Errors between Q-network and Q-learning targets
+* Using variant of stochastic gradient descent 
+* ''Experience replay'' - randomizes the order, therefore removes the correlation that was causing the blowup of weights we saw earlier and allowing stability in neural networks
+* ''Fixed Q-targets'': Use two networks and have the old network be the target function (instead of bootstrapping to the network we are using) - this lets the update be more stable rather than every update moving the target and causing potentially a lot of instability
+
+DQN architecture Atari: https://imgur.com/wp4jD18
+
+Linear Least Squares Prediction - can compute least squares solution analytically - https://imgur.com/Rh54bOT, again can plug in whatever target we want instead of the oracle that we don't actually have access to - must converge but only valid for linear function approximators 
+
+Least Squares Policy Iteration: policy evaluation using least squares Q-learning and Greedy policy iteration</pre>
 </div>
 <div created="20191124073726690" modified="20191124073730343" tags="incomplete" title="Bayesian Network" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://towardsdatascience.com/introduction-to-bayesian-networks-81031eeed94e</pre>
@@ -11463,6 +11496,46 @@ Recipe:
 <div created="20200204064724736" modified="20200204064742039" tags="technology" title="IaaS" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Infrastructure as a service (IaaS) are online services that provide high-level APIs used to dereference various low-level details of underlying network infrastructure like physical computing resources, location, data partitioning, scaling, security, backup etc. A hypervisor, such as Xen, Oracle ~VirtualBox, Oracle VM, KVM, VMware ESX/ESXi, or Hyper-V, LXD, runs the virtual machines as guests. Pools of hypervisors within the cloud operational system can support large numbers of virtual machines and the ability to scale services up and down according to customers' varying requirements.</pre>
 </div>
+<div created="20200221000607901" modified="20200221000607901" tags="[[Value Function Approximation]]" title="Incremental Methods of Value Function Approximation" revision="1" bag="default">
+<pre>Gradient Descent: https://imgur.com/tixxGz3, can also refer to [[Logistic Regression]], [[Regularization and Overfitting]] for a discussion of this
+
+Value Function Approximation by Stochastic Gradient Descent: https://imgur.com/tixxGz3
+
+* Goal find parameter vector ''w'' minimizing mean-squared error between the approximate value and the true value
+* Gradient descent finds local minimum
+* Stochastic gradient descent - samples the gradient 
+* Expected update is equal to full gradient update
+
+Feature Vectors: $$x(S) = (x_1(S), ... ,x_n(S))$$ - example: robots - relative distance of robot from landmarks, piece and pawn configurations in chess
+
+Linear Value Function Approximation: 
+
+* Represent value function by $$\hat{v}(S, w) = x(S)^T w$$
+* Objective function: $$J(w) = E_\pi[(v_\pi(S) - x(S)^Tw)^2]$$
+* Stochastic gradient descent converges on global optimum
+* $$\nabla_w\hat{v}(S, w) = x(S)$$ and $$\Delta w = \alpha(v_\pi(S) - \hat{v}(S, w))x(s)$$
+* Update = step size * prediction error * feature value
+
+Table Lookup is a special case of linear value function approximation - where feature vector is just a one-hot encoding indicating which state we are in and weights vector is just the value of being in a state
+
+Incremental Prediction Algorithms: need to substitute oracle call to $$v_\pi(s)$$, replace with target
+
+* For MC: the target is the return G_t - apply supervised learning to training data (our experience): $$(&lt;S_1, G_1&gt;, ..., &lt;S_T, G_T&gt;)$$ where $$G_t$$s are the true values - SGD converges, MC converges therefore must converge - https://imgur.com/3fs6qgo
+* For TD(0): target is $$R_{t+1} + \gamma \hat{v}(S_{t+1}, w)$$ - training data is now $$(&lt;S_1, R_2 + \lambda \hat{v}(S_2, w)&gt;, ... ,&lt;S_{T - 1}, R_T&gt;)$$ - https://imgur.com/CBWUhAi
+* For TD($$\lambda$$): the target is $$\lambda$$-return $$G_t^\lambda$$ - https://imgur.com/KTTmkl6
+
+Control with Value Function Approximation: https://imgur.com/3ApaTYe
+
+Do everything we did earlier with action-value function: https://imgur.com/mxXHmmP, https://imgur.com/R2IvOeM, https://imgur.com/e3lC02z
+
+Study of $$\lambda$$: Should we bootstrap? -https://imgur.com/yJnlamQ
+
+Do they converge? Baird's Counterexample: https://imgur.com/dykU9xc, https://imgur.com/JxzFR5X, https://imgur.com/jPtyirY
+
+Gradient TD follows true gradient of projected Bellman error and Emphatic TD also attempts to solve the issue of convergence
+
+Convergence of Control Algorithms: https://imgur.com/O0q8meQ</pre>
+</div>
 <div created="20191227165419740" modified="20191227165949790" tags="[[real analysis]] math" title="Induction" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Proof for Induction based on [[Natural Numbers]] axiomatic definition.
 
@@ -12078,7 +12151,7 @@ Bellman equation can be expressed concisely using matrices: https://imgur.com/n1
 <div author="Siddharth Joshi" created="20191126064803358" modified="20191126072901553" tags="incomplete philosophy logic" title="Model Theory" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://plato.stanford.edu/entries/model-theory/</pre>
 </div>
-<div created="20200220012759393" modified="20200220031710505" tags="[[reinforcement learning]]" title="Model-Free Control" revision="15" bag="default">
+<div created="20200220012759393" modified="20200220031711693" tags="[[reinforcement learning]]" title="Model-Free Control" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Recap of [[Reinforcement Learning: David Silver Course]]:__
 
 * Last Lecture: [[Model-Free Prediction]] - estimate the value function of an unknown MDP
@@ -12109,7 +12182,7 @@ __[[Off Policy Learning]]__
 
 </pre>
 </div>
-<div created="20200215211354531" modified="20200220023435360" tags="[[reinforcement learning]]" title="Model-Free Prediction" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200215211354531" modified="20200220023436568" tags="[[reinforcement learning]]" title="Model-Free Prediction" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Recap of [[Reinforcement Learning: David Silver Course]] so far:
 
 * [[Planning by Dynamic Programming]] - solve a known MDP by first doing prediction then control
@@ -12215,7 +12288,7 @@ see also: [[Standardization of Features]]</pre>
 <div author="Siddharth Joshi" created="20191122040546770" modified="20191122040907778" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Number of Features and Examples" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Some models like [[Neural Networks]] and [[Gradient Boosting Algorithms]] can handle large datasets with millions of features even whereas others like [[SVMs |Support Vector Machine]] have a much lower capacity. </pre>
 </div>
-<div created="20200220031706696" modified="20200220034055661" tags="[[Model-Free Control]]" title="Off Policy Learning" revision="4" bag="default">
+<div created="20200220031706696" modified="20200220034057014" tags="[[Model-Free Control]]" title="Off Policy Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Evaluate target policy $$\pi(a | s)$$ to compute $$v_\pi(s)$$ or $$q_\pi(s, a)$$
 * While following behavior policy $$\mu(a | s)$$
 * Learn from observing humans or other agents
@@ -12258,7 +12331,7 @@ Pseudocode Q-Learning: https://imgur.com/MRhKFU0
 
 Relationship between DP and TD: https://imgur.com/TfJ7v20, https://imgur.com/vc3IyVF</pre>
 </div>
-<div created="20200220021452920" modified="20200220021452920" tags="[[Model-Free Control]]" title="On-Policy Monte-Carlo Control" revision="1" bag="default">
+<div created="20200220021452920" modified="20200220021453999" tags="[[Model-Free Control]]" title="On-Policy Monte-Carlo Control" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Main idea is generalized policy iteration - evaluate policy and then improve policy: https://imgur.com/cfEMFw0
 
 One possible attempt: evaluate policy using Monte-Carlo and improve greedily, problems with this:
@@ -12309,7 +12382,7 @@ Note: for this particular algorithm, the initial value doesn't really matter as 
 Example - optimal policy for blackjack: https://imgur.com/JxWwG9r
 </pre>
 </div>
-<div created="20200220025338942" modified="20200220025338942" tags="[[Model-Free Control]]" title="On-Policy TD Learning" revision="1" bag="default">
+<div created="20200220025338942" modified="20200220025340015" tags="[[Model-Free Control]]" title="On-Policy TD Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Advantages of TD - lower variance, online, deal with incomplete sequences
 
 SARSA updates - policy evaluation method - apply TD to Q(S, A), use epsilon-greedy policy improvement and update every time step: https://imgur.com/5aXcCrC
@@ -12934,7 +13007,7 @@ reduction step 2 - stochastic gradient langevin dynamics (SGLD) - instead of lea
 implementable in entropic mirror descent - hsieh et al 2019
 </pre>
 </div>
-<div author="Siddharth Joshi" created="20191125022514242" modified="20200220012746868" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div author="Siddharth Joshi" created="20191125022514242" modified="20200220222323193" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Part 1: Elementary Reinforcement Learning
 
 # [[Introduction to Reinforcement Learning]]
@@ -12944,6 +13017,8 @@ implementable in entropic mirror descent - hsieh et al 2019
 # [[Model-Free Control]]
 
 Part 2: Reinforcement Learning in Practice
+
+# [[Value Function Approximation]]
 
 Link to videos: https://www.youtube.com/watch?v=2pWv7GOvuf0&amp;list=PLzuuYNsE1EZAXYR4FJ75jcJseBmo4KQ9-&amp;fbclid=IwAR0lD-SDq5vtgIlUwb4IQryt6USHNndwB2eI0j7cpyfsPkeESv4Rok5YGhY
 
@@ -12993,8 +13068,14 @@ Take proof statement: alpha is the result of executing C for T steps on public i
 First step construct an AIR:
 P = </pre>
 </div>
-<div created="20200219061250949" modified="20200219061253611" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre></pre>
+<div created="20200219061250949" modified="20200220213656988" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>''Intuition:'' To identify topological spaces with enough structure i.e. they do not have too few open sets - this is best characterized by separation axioms that are some form of requirements that pairs of disjoint subsets are contained in disjoint open sets. To require this in full generality though is not helpful either as it requires every set to be open. 
+
+Def: A topological space X is a 
+
+* T1-space: if for each  pair of distinct points $$x, y \in X$$, there exists an open set U containing y s.t $$x \notin U$$. In this case, complement of $$\{x\}$
+* T2-space (''Hausdorff''):  
+</pre>
 </div>
 <div created="20200203072201259" modified="20200203074407751" tags="[[graph theory]]" title="Similarity Measures" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Similarity Measures - to form groups of similar nodes on the basis of connectivity to other nodes, edges, types of edges etc.
@@ -13068,7 +13149,7 @@ Thm 2: Let S be a subspace of T and let E be a subset of S, then the relative cl
 
 Proof: $$x \in S$$ then x is in the relative closure of E ''iff'' every relatively open neighborhood of E in S intersects E ''iff'' the intersection of S with every open neighborhood of x in X intersects E ''iff'' every open neighborhood of x in X intersects E (as E is a subset of S, intersecting with S is unnecessary) ''iff'' x is in closure of E in X and in S</pre>
 </div>
-<div created="20200217003158071" modified="20200220023508159" tags="[[reinforcement learning]] [[Model-Free Prediction]]" title="TD(lamda) Learning" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200217003158071" modified="20200220023509365" tags="[[reinforcement learning]] [[Model-Free Prediction]]" title="TD(lamda) Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>n-step Prediction - https://imgur.com/QU5Yfkh - instead of taking one real step and then using estimate, use n-steps (as n turns to infinity approaches Monte-Carlo)
 
 n-step return: $$G_t^{(n)} = R_{t+1} + \gamma R_{t+2} + ... + \gamma^n V(S_{t+n})$$
@@ -13434,6 +13515,49 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Generalizations of Networks]]
 # [[Models of Networks]]
 </pre>
+</div>
+<div created="20200220222338216" modified="20200221024118506" tags="[[reinforcement learning]]" title="Value Function Approximation" type="text/vnd.tiddlywiki" revision="7" bag="default">
+<pre>__Why do we need to approximate the value function - deal with large scale RL programs:__
+
+* Backgammon: $$10^{20}$$ states
+* Computer Go: $$10^{170}$$ states
+* Helicopter: continuous state space -&gt; uncountably infinite state space
+
+Intuitively value of being in a position v/s 0.00001 mm away from the position for the helicopter is exactly the same
+
+How can we scale up the [[Model-Free Prediction]] and [[Model-Free Control]] from last 2 lectures
+
+Problem with large MDPs:
+
+* too many states and/or actions to store in memory
+* too slow to learn the value of each state individually
+
+Solution - estimate using value function approximation:
+
+* $$\hat{v}(s, w) \approx v_\pi(s)$$
+* $$\hat{q}(s, a, w) \approx q_\pi(s)(s, a)$$
+* w is a parameter of the function that is tuned to achieve accuracy in approximation, much smaller than in dimensionality than the number of states
+* Will also generalize from seen states to unseen states
+
+Types of Value Function Approximation: Blackbox method - takes in state / state-action - converts to parameter w and then output  approximate value - https://imgur.com/rmHYwUE
+
+Which Function Approximator? - will focus on differentiable function approx.
+
+* ''Linear combo - differentiable''
+* ''Neural Network - differentiable ''
+* Decision Trees
+* Nearest Neighbors
+* Fourier / wavelet bases
+
+Also need a training method that is suitable for non-stationary, non-iid data
+
+__[[Incremental Methods of Value Function Approximation]]__
+
+{{Incremental Methods of Value Function Approximation}}
+
+__[[Batch Methods of Value Function Approximation]]__
+
+{{Batch Methods of Value Function Approximation}}</pre>
 </div>
 <div created="20200214203422346" modified="20200214210339518" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Value Iteration" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Principle of Optimality - an optimal policy is an optimal action and an optimal policy from successor state S':
