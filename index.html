@@ -177,8 +177,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/sidebar</li>
-
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -190,8 +188,6 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
-
-<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -9931,9 +9927,6 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200221042806535" modified="20200221042807106" title="$:/state/sidebar" revision="2" bag="default">
-<pre>yes</pre>
-</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9946,7 +9939,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200221042407741" list="[[UCLA Math 121 Topology]] [[Topological Spaces]] [[Separation Axioms]]" modified="20200221042808183" title="$:/StoryList" revision="10" bag="default">
+<div created="20200221064523101" list="[[Separation Axioms]] Welcome [[How to Contribute?]]" modified="20200221064523101" title="$:/StoryList" revision="3" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10006,9 +9999,6 @@ Error message and password prompt
         }
     }
 }</pre>
-</div>
-<div created="20200221042401711" modified="20200221042812001" title="$:/temp/search" revision="19" bag="default">
-<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -13059,14 +13049,62 @@ Take proof statement: alpha is the result of executing C for T steps on public i
 First step construct an AIR:
 P = </pre>
 </div>
-<div created="20200219061250949" modified="20200221042816241" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200219061250949" modified="20200221065359462" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>''Intuition:'' To identify topological spaces with enough structure i.e. they do not have too few open sets - this is best characterized by separation axioms that are some form of requirements that pairs of disjoint subsets are contained in disjoint open sets. To require this in full generality though is not helpful either as it requires every set to be open. 
 
 Def: A topological space X is a 
 
 * T1-space: if for each  pair of distinct points $$x, y \in X$$, there exists an open set U containing y s.t $$x \notin U$$. In this case, complement of $$\{x\}$$
-* T2-space (''Hausdorff''):  If for every pair of distinct points $$x, y \in X$$, $$\exists U, V$$ open sets s.t. $$x \in U$$ and $$y in V$$ and $$U \cap V = \emptyset$$
-</pre>
+* T2-space (''Hausdorff''):  If for every pair of distinct points $$x, y \in X$$, $$\exists U, V$$ open sets s.t. $$x \in U$$ and $$y \in V$$ and $$U \cap V = \emptyset$$
+* Regular space: if for each closed subset E of X and each point $$x \in X \setdiff E$$, $$\exists U, V$$ disjoint open sets s.t. $$E \subset U$$ and $$x \in V$$. A Regular T-1 space is a T-3 space.
+* Normal space: if for each pair of closed subsets E and F, $$\exists U, V$$ disjoint open sets s.t. $$E \subset U$$ and $$F \subset V$$. A Normal T-1 space is a T-4 space.
+
+Fact: T4 $$\implies$$ T3 $$\implies$$ T2 $$\implies$$ T1
+
+Thm 1: Every metric space is T-4
+
+Proof: 
+
+* Show it is T1: consider the ball of radius $$\frac{d(x, y)}{2}$$ around y
+* Show it is normal: Consider two closed sets E and F, let $$x \in E$$, then since F is closed and $$x \notin F$$,  $$\exists r(x) &gt; 0$$ s.t. the ball with that radius doesn't intersect F. Similarly consider the same for $$y \in F$$. Now consider $$U = \cup_{x \in E} B(x, r(x)/2)$$ and V constructed similarly. Assume they intersect, then $$\exists z \in U \cap V$$ and $$d(x, y) \leq d(x, z) + d(y, z) \leq (r(x) + r(y))/2 \leq max(r(x), r(y)$$ -&gt; wlog assume $$r(x)$$ is bigger -&gt; contradiction due to construction of $$r(x)$$ 
+
+Lemma 2: $$X$$ is normal iff for each closed subset $$E$$ of $$X$$ and each open set $$W$$ containing $$E$$, there exists an open set $$U$$ containing $$E$$ s.t. $$\bar{U} \subset W$$
+
+Proof:
+
+* $$\implies$$: E and X \ W are closed sets, therefore $$\exists U, V$$ open and disjoint s.t. U contains E and V contains X \ W. Therefore $$U \subseteq X \setminus V \subseteq W$$
+* $$\impliedby$$: let E and F be disjoint sets, let $$W = X \setminus F$$ is open, therefore $$\exists U$$ i.e open containing E and $$X \setminus  \bar{U}$$ i.e. open containing F
+
+Intuition: Bump Functions - a continuous function that is 1 near a point and 0 far away from it. Useful in many applications. The following result is the idea that bump functions exist around every closed set in a normal space
+
+Reminder: Dyadic Rational Numbers are numbers of the form $$\frac{p}{2^n}$$ where p and n are integers and the this set is dense in ''//R//'' (therefore also in $$[0, 1]$$)
+
+Thm 3 (''Ursyohn's Lemma''): Let E and F be disjoint closed subsets of a normal topological space. Then there exists a continuous function f from X to the unit interval $$[0, 1]$$ s.t. $$f = 0$$ on E and $$f = 1$$ on F
+
+Proof:
+
+* Set $$V = X \setminus F$$, an open set containing E. By lemma 2, $$\exists U_{1/2}$$ s.t. $$E \subset U_{1/2} \subset \bar{U}_{1/2} \subset V$$. 
+* Applying Lemma 2 again now to $$U_{1/2}$$ containing $$E$$ and $$V$$ containing $$\bar{U}_{1/2}$$, we can get open sets $$U_{1/4}$$ and $$U_{3/4}$$ s.t. $$E \subset U_{1/4} \subset \bar{U}_{1/4} \subset U_{1/2} \subset \bar{U}_{1/2} \subset  U_{3/4} \subset \bar{U}_{3/4} \subset V$$
+* Repeating this we get for each dyadic rational in $$(0, 1)$$, an open set $$U_r$$ s.t. ''1)'' $$\bar{U_r} \subset U_s, \forall r,s:  0 &lt; r &lt; s &lt; 1$$; ''2)'' $$E \subset U_r, \forall r \in (0, 1)$$; 3) $$U_r \subset V \forall r \in (0, 1)$$
+* Define f s.t. $$\delta U_r$$ - the boundaries are the level sets of f on which f assumes the value r. $$f(x) = sup\{r: x \notin U_r\}$$
+* Evidently f = 0 on E and f = 1 on F
+* Need to show continuity now
+* Let $$x \in X$$ and $$\epsilon &gt; 0$$, pick $$r, s$$ s.t. $$0 &lt; r &lt; s &lt; 1$$ and $$f(x) - \epsilon &lt; r &lt; f(x) &lt; s &lt; f(x) + \epsilon$$. Then $$x \notin U_t$$ for dyadic rationals between r and f(x), therefore by ''1)'' $$x \notin \bar{U_r}$$, but $$x \in U_s$$, therefore let $$W = U_s \ \bar{U_r}$$ is an open neighborhood of x and $$f(W) \subset B(f(x), \epsilon)$$, thus f is continuous at x
+
+Thm 4: Let X be a normal topological space, let Y be a closed subset of X and let f be a bounded continuous real-valued function on Y. Then there exists a bounded continuous real-valued function h on X s.t. h = f on Y.
+
+Proof: Construct h iteratively
+
+* $$c_0 = \{sup|f(y)|: y \in Y\}$$
+* $$E_0 = \{y \in Y: f(y) \leq -c_0/3\}$$
+* $$F_0 = \{y in Y: f(y) \geq c_0 / 3\}$$
+* $$E_0, F_0$$ - obviously disjoint and closed (due to continuity)
+* By taking a linear combination of the function in Urysohn's Lemma: $$g_0$$ - real-valued s.t. $$|g_0| \leq c_0 / 3$$, $$g_0 = -c_0 / 3$$ on $$E_0$$ and $$g_0 = c_0/3$$ on $$F_0$$. 
+* Therefore $$|g_0| \leq c_0 / 3$$ and $$|f - g_0| \leq 2c_0/3$$ on Y
+* Inductively construct a sequence of such functions $$g_i$$ by setting $$c_{n - 1} = sup\{|f(y) - g_0 - ... - g_{n - 1}|: y \in Y\}$$, repeat above process with $$c_{n - 1}$$
+* $$c_{n - 1} \leq 2^n c_0 / 3^n$$ and $$h_n = g_0 + ... + g_n$$
+* therefore for $$n \geq m$$, $$|h_n - h_m| = |g_{m+1} + ... + g_n| \leq |((\frac{2}{3})^{m+1} + ... + (\frac{2}{3})^n)c_0 / 3$$ and by sum to infinity of g.p. $$\leq (\frac{2}{3})^{m+1} c_0$$
+* Therefore the sequence is cauchy and thus there exists a continuous function h that the sequence converges to uniformly </pre>
 </div>
 <div created="20200203072201259" modified="20200203074407751" tags="[[graph theory]]" title="Similarity Measures" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Similarity Measures - to form groups of similar nodes on the basis of connectivity to other nodes, edges, types of edges etc.
