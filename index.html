@@ -177,7 +177,7 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/sidebar</li>
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -206,6 +206,8 @@ Error message and password prompt
 <li>A New Math for Learning Tasks (2)</li>
 
 <li>About Reinforcement Learning</li>
+
+<li>Actor-Critic Policy Gradient</li>
 
 <li>Arithmetic for Computers</li>
 
@@ -253,6 +255,8 @@ Error message and password prompt
 
 <li>Do Calculus</li>
 
+<li>Draft of 'Finite Difference Policy Gradient'</li>
+
 <li>Draft of 'Regularization and Overfitting'</li>
 
 <li>Equivalence Relations</li>
@@ -266,6 +270,8 @@ Error message and password prompt
 <li>Extreme Classification: Algorithms &amp; Evaluation by Yashoteja Prabhu</li>
 
 <li>February Learning List</li>
+
+<li>Finite Difference Policy Gradient</li>
 
 <li>For Every and There Exists</li>
 
@@ -325,6 +331,8 @@ Error message and password prompt
 
 <li>Model-Free Prediction</li>
 
+<li>Monte-Carlo Policy Gradient</li>
+
 <li>Monte-Carlo Reinforcement Learning</li>
 
 <li>Natural Numbers</li>
@@ -360,6 +368,8 @@ Error message and password prompt
 <li>Planning by Dynamic Programming</li>
 
 <li>Policy Evaluation</li>
+
+<li>Policy Gradient Methods</li>
 
 <li>Policy Iteration</li>
 
@@ -438,6 +448,8 @@ Error message and password prompt
 <li>Value Iteration</li>
 
 <li>Welcome</li>
+
+<li>Why we need Value Function Approximation</li>
 
 <li>ZKStarks</li>
 
@@ -9931,8 +9943,8 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200221192617495" modified="20200221194719058" title="$:/state/sidebar" revision="2" bag="default">
-<pre>yes</pre>
+<div created="20200223193258661" modified="20200223193258661" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9946,7 +9958,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200221191922866" list="[[UCLA Math 121 Topology]] [[Topological Spaces]] [[Separation Axioms]] Welcome [[How to Contribute?]]" modified="20200221193453890" title="$:/StoryList" revision="34" bag="default">
+<div list="Welcome [[How to Contribute?]]" title="$:/StoryList" revision="1" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10007,7 +10019,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200221191919756" modified="20200221192245614" title="$:/temp/search" revision="8" bag="default">
+<div created="20200223193255529" modified="20200223193257067" title="$:/temp/search" revision="8" bag="default">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
@@ -10214,6 +10226,48 @@ Tasks that RL has performed well on:
 * Manage an investment portfolio - +ve reward for each $ in bank
 </pre>
 </div>
+<div created="20200223053809512" modified="20200223091457652" tags="[[reinforcement learning]] [[Policy Gradient Methods]]" title="Actor-Critic Policy Gradient" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Reducing Variance using a critic:
+
+* monte-carlo has high variance dependent on many real world actions and rewards
+* critic - estimates the action-value function $$Q_w(s, a) \approx Q^{\pi_\theta}(s, a)$$
+* Actor-critic - two sets of parameters: critic - updates action-value function parameters w, actor - updates policy parameters $$\theta$$ in direction suggested by critic
+* Actor critic algorithms follow an approximate policy gradient: $$\nabla_\theta J(\theta) \approx E_{\pi_\theta}[\nabla_\theta log \pi_\theta (s, a) Q_w (s, a)]$$ and $$\Delta \theta = \alpha \nabla_\theta log \pi_\theta (s, a) Q_w (s, a)$$
+
+Estimate the Action Value Function:
+
+* using methods learned in [[Value Function Approximation]], [[Model-Free Prediction]], [[Model-Free Control]]
+
+Action-Value Actor-Critic Algorithm using linear TD(0):  https://imgur.com/4PBH09a
+
+The idea is very similar to regular policy iteration, evaluate using critic and agent improves policy by gradient ascent rather than greedy
+
+Step size makes you greedy or not, step size of 1 could be make greedy
+
+Bias in Actor-Critic Algorithms:
+
+* Approximating policy gradient introduces bias - may not find right solution
+* Can avoid introducing any bias by using correct value function approximation technique
+
+Compatible Function Approximation: https://imgur.com/sD8g9vR, https://imgur.com/D4fLclf
+
+Reducing Variance Using a Baseline:
+
+* Subtract baseline B(s) from the policy gradient - reduces variance as the size of value being used is smaller
+* Can do this without changing expectation by using any function that is dependent only on state not on action $$E_{\pi_\theta}[\nabla_\theta log \pi_\theta(s, a) B(s)] = \sum_{s \in S} d^{\pi_\theta}(s) \sum_a \nabla_\theta \pi_\theta(s, a) B(s) = \sum_{s \in S}d^{\pi_\theta} B(s)$$ can pull out gradient and B(s) as they do not depend on action a , hence $$ = \nabla_\theta \sum d^{\pi_\theta}(s) B(s) \nabla_\theta \sum_a \pi_\theta(s, a)$$ as $$\pi_\theta(s, a)$$ is a probability distribution, sums to 1, thus $$= \nabla_\theta \sum d^{\pi_\theta}(s) B(s) \nabla_\theta (1) = 0$$
+* Therefore expectation of this term is 0 and hence is doesn't alter the expectation if we subtract it
+* Thus rewrite the policy gradient as the advantage function $$A^{\pi_\theta}(s, a)  = Q^{\pi_\theta}(s, a) - V^{\pi_\theta}(s)$$; $$\nabla_\theta J(\theta) = E_{\pi_\theta}[\nabla_\theta log \pi_\theta(s, a) A^{\pi_\theta}(s, a)]$$
+* How much better than usual is an action a -&gt; pushes policy parameters towards situations where you do better than usual
+
+Estimating the Advantage Function (since it has lesser variance) - Can estimate by estimating both State and Action Value Function of the policy using two function approximators
+
+Easier way to do this:
+
+* For the true value function, the TD error is equal to $$\delta^{\pi_\theta} = r + \gamma V^{\pi_\theta}(s') - V^{\pi_\theta}(s)$$ and hence it is an unbiased estimate of the advantage function
+* 
+
+</pre>
+</div>
 <div created="20200122065241575" modified="20200203014712334" tags="[[computer architecture]]" title="Arithmetic for Computers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Arithmetic for Computers:
 
@@ -10352,7 +10406,7 @@ Floating Point Hardware - https://imgur.com/hnfgAVy - very complex - usually man
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20200219061236768" modified="20200221192847311" tags="topology" title="Base for a Topology" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<div created="20200219061236768" modified="20200221192848408" tags="topology" title="Base for a Topology" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A family of open subsets ''B'' in X is called a base for the topology of X if every open subset of X is a union of sets in ''B''
 
 Thm 1: A family ''B'' of open subsets of X is a base for the topology of X iff for each $$x \in X$$ and U a neighborhood of x, $$\exists V \in \textbf{B}$$ s..t $$x \in V$$ and $$V \subset U$$
@@ -10695,7 +10749,7 @@ HNC is poly time solvable: monotone IP3 (Hochbaum 2010) - need to avoid the case
 
 </pre>
 </div>
-<div created="20200131075725454" modified="20200221193054669" tags="[[metric spaces]] topology" title="Compactness of Metric Spaces" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200131075725454" modified="20200221193055861" tags="[[metric spaces]] topology" title="Compactness of Metric Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A space is totally bounded if $$\forall \epsilon &gt; 0$$, there exists a finite $$\epsilon$$-net for X i.e there exist $$x_1, ..., x_n$$ s.t. every point in X is within $$\epsilon$$ of some $$x_i$$, equivalently $$X = \cup_{i = 1}^n B(x_i, \epsilon)$$
 
 Def: X is bounded if $$\exists b &gt; 0, d(x, y) &lt; b, \forall x, y \in X$$
@@ -10778,7 +10832,7 @@ Summary: The following statements are equivalent
 * X is totally bounded and complete
 </pre>
 </div>
-<div created="20200219061300673" modified="20200221072954509" tags="topology" title="Compactness of Topological Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200219061300673" modified="20200221200858325" tags="topology" title="Compactness of Topological Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A topological space is compact if every open cover has a finite subcover. 
 
 Fact: Compactness is a topological property i.e. preserved by homeomorphisms.
@@ -10802,7 +10856,7 @@ Lemma 3: Let S be a compact subset of a Hausdorff space X. For each $$x \in X \s
 Proof: 
 
 * For each $$y \in S$$, $$\exists U_y, V_y$$ disjoint open neighborhoods of x and y respectively (due to Hausdorff property)
-* Since S is compact, there exists a finite subcover of $$\{V_y\}_{y \in S}$$ and the corresponding finite sets' intersection $$U U_{y_1} \cap ... \cap U_{y_n}$$ is open (finite intersection of open sets) and is disjoint from $$V = V_{y_1} \cup ... \cup V_{y_n}$$ by construction
+* Since S is compact, there exists a finite subcover of $$\{V_y\}_{y \in S}$$ and the corresponding finite sets' intersection $$U =  U_{y_1} \cap ... \cap U_{y_n}$$ is open (finite intersection of open sets) and is disjoint from $$V = V_{y_1} \cup ... \cup V_{y_n}$$ by construction
 
 Corollary 4: A compact subset of Hausdorff space is closed 
 
@@ -10822,16 +10876,16 @@ Proof:
 
 *  Let $$\{U_a\}_{a \in A}$$ be a family of open sets of Y that covers $$f(X)$$, then $$\{f^{-1}(U_a)\}_{a \in A}$$ is family of open subsets of X that covers X.
 * Therefore there exists a finite subcover of this.
-* The images of the sets in the finite subcover i.e. $$\{U_n\}_{n \in [1, N] \cap Z}$$ therefore must cover $$f(X$$ and thus it is compact.
+* The images of the sets in the finite subcover i.e. $$\{U_n\}_{n \in [1, N] \cap Z}$$ therefore must cover $$f(X)$$ and thus it is compact.
 
 
-Thm 7: Let f be a continuous function from a compact space X to a topological space Y. If f is one-to-one then it is a homeomorphism from X to f(X)
+Thm 7: Let f be a continuous function from a compact space $$X$$ to a topological space $$Y$$. If f is one-to-one then it is a homeomorphism from $$X$$ to $$f(X)$$
 
-Proof: Suffices to prove $$f(U)$$ is relatively open in $$f(X)$$ when U is open in X
+Proof: Suffices to prove $$f(U)$$ is relatively open in $$f(X)$$ when $$U$$ is open in $$X$$
 
 * By Thm 2, $$X \setminus U$$ is compact. 
 * By Thm 6 $$f(X \setminus U) = f(X) \setminus f(U)$$ is a compact subset of $$f(X)$$
-* By Corollary 4, $$f(X \setminus U) = f(X) \setminus f(U)$$ is closed in $$f(X)$$
+* By Corollary 4, $$f(X) \setminus f(U)$$ is closed in $$f(X)$$
 * Therefore $$f(U)$$ is open (as it is the complement of a closed set) in $$f(X)$$
 </pre>
 </div>
@@ -11078,7 +11132,7 @@ Def: A function f from one metric space to another is a homeomorphism if f is bi
 
 Fact: A homeomorphism preserves all properties of a metric space that are definable in terms of open sets only. </pre>
 </div>
-<div created="20200219043249498" modified="20200221192242405" tags="topology" title="Continuous Functions in Topological Spaces" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200219043249498" modified="20200221192243603" tags="topology" title="Continuous Functions in Topological Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def (Uniform Continuity): A function f from one topological space X to another Y is continuous if $$f^{-1}(V)$$ is open in X whenever V is open in Y
 
 Def: A continuous function from one topological space to another is often called a map.
@@ -11300,6 +11354,9 @@ tbd
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
 </div>
+<div created="20200223045219447" modified="20200223045219447" title="Draft of 'Finite Difference Policy Gradient'" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
+</div>
 <div created="20200210185952238" modified="20200210185952238" title="Draft of 'Regularization and Overfitting'" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
@@ -11421,6 +11478,22 @@ Modification Regressor Algorithms - Simple extension of Parabel to non-binary re
 <div created="20200131031737678" modified="20200131051255569" tags="" title="February Learning List" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>- Bayesian Network Course from Youtube
 - </pre>
+</div>
+<div created="20200223044759050" modified="20200223045219438" tags="[[Policy Gradient Methods]]" title="Finite Difference Policy Gradient" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>$$\Delta \theta = \alpha \nabla_\theta J(\theta)$$ where $$\nabla_\theta J(\theta)$$ is the policy gradient and $$\alpha$$ is a step-size parameter
+
+Compute gradient (for each dimension): $$\frac{\delta J(\theta)}{\delta \theta_k} \approx \frac{J(\theta + \epsilon \mu_k) - J(\theta)}{\epsilon}$$
+
+* n evals to compute policy gradient in n dimensions
+* simple but noisy and potentially inefficient
+* works even if policy is not differentiable
+
+Example: Training AIBO to walk by Finite Difference Policy Gradient (AIBO walk policy is controlled by 12 numbers - parameters) - evaluated performance by field traversal time
+
+
+
+
+</pre>
 </div>
 <div created="20191227164059875" modified="20191227164351343" tags="math logic [[real analysis]]" title="For Every and There Exists" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Negation of a for every x, proposition is true is there exists x such that proposition is false
@@ -11590,7 +11663,7 @@ Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
 </div>
-<div created="20200212012131650" modified="20200212013149585" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="Inside a RL Agent" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200212012131650" modified="20200222063819535" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="Inside a RL Agent" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Major Components of a RL Agent:
 
 * Policy - agent's behavior function - how agent decides actions - from state to decision
@@ -11600,7 +11673,7 @@ By axiom, S = N</pre>
 Policy - a map from state to action:
 
 * Deterministic: $$a = \pi(s)$$
-* Stochastic: $$pi(a | s) = P(A = a | S = s)$$
+* Stochastic: $$\pi(a | s) = P(A = a | S = s)$$
 
 Value function - prediction of expected future reward:
 
@@ -11820,15 +11893,22 @@ Branching Far Away:
 <pre>Axiomatic Definition:
 </pre>
 </div>
-<div created="20200211210217680" modified="20200212021853004" tags="[[reinforcement learning]]" title="Introduction to Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>{{About Reinforcement Learning}}
+<div created="20200211210217680" modified="20200222063802153" tags="[[reinforcement learning]]" title="Introduction to Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>__[[About Reinforcement Learning]]__
+
+{{About Reinforcement Learning}}
+
+__[[The Reinforcement Learning Problem Set Up]]__
 
 {{The Reinforcement Learning Problem Set Up}}
 
+__[[Inside a RL Agent]]__
+
 {{Inside a RL Agent}}
 
-{{Problems that RL needs to solve}}
-</pre>
+__[[Problems that RL needs to solve]]__
+
+{{Problems that RL needs to solve}}</pre>
 </div>
 <div created="20200209225659588" modified="20200210034424331" tags="[[machine learning]]" title="K Nearest Neighbors" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://imgur.com/JcQUkEa
@@ -12095,10 +12175,16 @@ Risk-sensitive MDP - considering variance of the reward rather than just expecte
 
 How do you represent a very large MDP: typically there is a convenient function to help us do this</pre>
 </div>
-<div created="20200212013453949" modified="20200212060205305" tags="[[reinforcement learning]]" title="Markov Decision Processes from scratch" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>{{Markov Processes}}
+<div created="20200212013453949" modified="20200222064133643" tags="[[reinforcement learning]]" title="Markov Decision Processes from scratch" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>__[[Markov Processes]]__
+
+{{Markov Processes}}
+
+__[[Markov Reward Processes]]__
 
 {{Markov Reward Processes}}
+
+__[[Markov Decision Processes]]__
 
 {{Markov Decision Processes}}
 
@@ -12133,7 +12219,7 @@ Example: https://imgur.com/JSGaogc, https://imgur.com/9VuO5oP
 
 Q - how to deal with non-fixed probability - non-stationary MDPs, augment MDP to represent it (w possible infinite states)</pre>
 </div>
-<div created="20200212022712329" modified="20200212023143392" tags="[[Markov Decision Processes from scratch]]" title="Markov Reward Processes" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200212022712329" modified="20200222064146679" tags="[[Markov Decision Processes from scratch]]" title="Markov Reward Processes" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>A Markov reward process is a Markov chain with value judgement:
 
 * $$&lt;S, P, R, \gamma&gt;$$
@@ -12162,7 +12248,7 @@ Example: https://imgur.com/DbMqGW7, https://imgur.com/51NMM5l, https://imgur.com
 
 Bellman Equation for MRPs - value function can be decomposed into two parts: immediate reward $$R_{t+1} + \gamma v(S_{t+1})$$
 
-$$v(s) = E[G_t | S_t = s] = E [R_{t+1} + \gamma R_{t+2} + ... | S_t = s] =  E [R_{t+1} + \gamma G_{t+1} | S_t = s]$$ and by law of iterated expectations i.e. expectation of expectation is expectation $$=  E [R_{t+1} + \gamma v(S_{t+1} + ... )| S_t = s]$$
+$$v(s) = E[G_t | S_t = s] = E [R_{t+1} + \gamma R_{t+2} + ... | S_t = s] =  E [R_{t+1} + \gamma G_{t+1} | S_t = s]$$ and by law of iterated expectations i.e. expectation of expectation is expectation $$=  E [R_{t+1} + \gamma v(S_{t+1})| S_t = s]$$
 
 Note: $$R_{t+1}$$ used here to indicate that the reward comes after $$S_t$$ and action taken
 
@@ -12196,7 +12282,7 @@ Bellman equation can be expressed concisely using matrices: https://imgur.com/n1
 <div author="Siddharth Joshi" created="20191126064803358" modified="20191126072901553" tags="incomplete philosophy logic" title="Model Theory" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://plato.stanford.edu/entries/model-theory/</pre>
 </div>
-<div created="20200220012759393" modified="20200220031711693" tags="[[reinforcement learning]]" title="Model-Free Control" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200220012759393" modified="20200222070339473" tags="[[reinforcement learning]]" title="Model-Free Control" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Recap of [[Reinforcement Learning: David Silver Course]]:__
 
 * Last Lecture: [[Model-Free Prediction]] - estimate the value function of an unknown MDP
@@ -12227,7 +12313,7 @@ __[[Off Policy Learning]]__
 
 </pre>
 </div>
-<div created="20200215211354531" modified="20200220023436568" tags="[[reinforcement learning]]" title="Model-Free Prediction" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200215211354531" modified="20200222065147243" tags="[[reinforcement learning]]" title="Model-Free Prediction" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Recap of [[Reinforcement Learning: David Silver Course]] so far:
 
 * [[Planning by Dynamic Programming]] - solve a known MDP by first doing prediction then control
@@ -12248,11 +12334,59 @@ __[[TD(lamda) Learning]]__
 
 </pre>
 </div>
-<div created="20200216220055858" modified="20200216220056950" tags="[[Model-Free Prediction]]" title="Monte-Carlo Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200223051617443" modified="20200223053500802" tags="[[reinforcement learning]] [[Policy Gradient Methods]]" title="Monte-Carlo Policy Gradient" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Score function:
+
+* Compute gradient analytically (assume policy is differentiable whenever non-zero) and $$\nabla_\theta \pi_\theta(s, a)$$
+* Likelihood ratios exploit the following identity: $$\nabla_\theta \pi_\theta(s, a) = \pi_\theta(s, a) \frac{\nabla_\theta \pi_\theta (s, a)}{\pi_\theta(s, a)} = \pi_\theta(s, a) \nabla_\theta log \pi_\theta (s, a)$$
+* Score function is $$\nabla_\theta log \pi_\theta(s, a)$$ - tells us how to increase likelihood of action a 
+
+Example: Linear Softmax Policy (alternative to epsilon greedy etc.)
+
+* weight actions using lin combos of features 
+* probability of action is proportional to exponential weight $$\pi_\theta (s, a) \sim e^{\phi(s, a)^T \theta}$$
+* score function is $$\nabla_\theta log \pi_\theta(s, a) = \phi(s, a) - E_{\pi_\theta}[\phi(s, \cdot)]$$
+* intuition: imagine in Atari game, you can go left or right in a particular state, the feature vector scores higher would be chosen, the one with the higher lin combo would be that one
+* if a feature occurs more than usual and gets a good reward, then adjust policy to do more of that thing
+
+Gaussian Policy
+
+* continuous action spaces, gaussian is natural
+* mean is lin combo of state features $$\mu(s) = \phi(s)^T \theta$$
+* variance may be fixed or parametrized as well
+* Policy is $$a \sim Normal(\mu(s), \sigma^2)$$$
+* Score function: $$\nabla_\theta log \pi_\theta(s, a) = \frac{(a - \mu(s))\phi(s)}{\sigma^2}$$ - how much more than usual am I doing something
+
+One step MDPs (a type of contextual bandit):
+
+* Consider a simple class of one-step MDP
+* Starts in state $$s \sim d(s)$$
+* Take 1 step, get 1 reward and episode then terminates
+* Use likelihood ratio 
+* $$J(\theta) = E_{\pi_\theta}[r] = \sum_{s \in S} d(S) \sum_{a \in A} \pi_\theta(s, a) R_{s, a}$$
+* $$\nabla_\theta J(\theta) = \sum_{s \in S} d(S) \sum_{a \in A} \pi_\theta(s, a) \nabla_\theta log \pi_\theta(s, a) log R_{s, a} = E_{\pi_\theta}[\nabla_\theta log \pi_\theta(s, a) r]$$
+* r is the observed reward and $$R_{s, a}$$ is the actual MDP reward
+
+Policy Gradient Theorem: 
+
+* generalizes the likelihood ratio to multi-step MDPs
+* Replaces instantaneous reward r with long-term value $$Q^\pi(s, a)$$
+* theorem applies to all the objectives discussed in [[Policy Gradient Methods]]
+* Thm : For any differentiable policy, policy gradient is $$\nabla_\theta J(\theta) = E_{\pi_\theta}[\nabla_\theta log \pi_\theta(s, a) Q^{\pi_\theta}(s, a)]$$
+ 
+Monte-Carlo Policy Gradient (''REINFORCE''):  https://imgur.com/zC7IAyo - sample returns and stochastic gradient ascent
+
+Puck World Example: https://imgur.com/XMAsMbL - 100 million iterations to converge - looks at complete return and then uses that to estimate gradient and then ascent 
+
+
+
+</pre>
+</div>
+<div created="20200216220055858" modified="20200222065238300" tags="[[Model-Free Prediction]]" title="Monte-Carlo Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Overview:
 
 * Learn directly from episodes of experience (without MDP transitions and rewards knowledge)
-* Learns from complete episodes - no bootstrapping - ''expand on this idea''
+* Learns from complete episodes - no bootstrapping i.e. uses actual values rather than computing some value and then using some estimator (bootstrapping from some estimator)
 * Value = mean return
 * Can only apply MC to episodic MDPs i.e. episodes must terminate
 
@@ -12333,7 +12467,7 @@ see also: [[Standardization of Features]]</pre>
 <div author="Siddharth Joshi" created="20191122040546770" modified="20191122040907778" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Number of Features and Examples" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Some models like [[Neural Networks]] and [[Gradient Boosting Algorithms]] can handle large datasets with millions of features even whereas others like [[SVMs |Support Vector Machine]] have a much lower capacity. </pre>
 </div>
-<div created="20200220031706696" modified="20200220034057014" tags="[[Model-Free Control]]" title="Off Policy Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200220031706696" modified="20200222070930626" tags="[[Model-Free Control]]" title="Off Policy Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Evaluate target policy $$\pi(a | s)$$ to compute $$v_\pi(s)$$ or $$q_\pi(s, a)$$
 * While following behavior policy $$\mu(a | s)$$
 * Learn from observing humans or other agents
@@ -12343,7 +12477,7 @@ see also: [[Standardization of Features]]</pre>
 
 Importance Sampling  - estimate the expectation of a different distribution
 
-* $$E_{X \sim P}[f(X)] = \sum P(X) f(X) = \sum Q(X) \frac{P(X)}{Q(X)} f(X) = E_{X~Q}  \frac{P(X)}{Q(X)} f(X) $$
+* $$E_{X \sim P}[f(X)] = \sum P(X) f(X) = \sum Q(X) \frac{P(X)}{Q(X)} f(X) = E_{X \sim Q}[\frac{P(X)}{Q(X)} f(X)] $$
 
 Importance Sampling for Off-Policy Monte-Carlo - uses return generated from $$\mu$$ to evaluate $$\pi$$ by weighting return $$G_t$$ according to the similarity between policies
 
@@ -12376,7 +12510,7 @@ Pseudocode Q-Learning: https://imgur.com/MRhKFU0
 
 Relationship between DP and TD: https://imgur.com/TfJ7v20, https://imgur.com/vc3IyVF</pre>
 </div>
-<div created="20200220021452920" modified="20200220021453999" tags="[[Model-Free Control]]" title="On-Policy Monte-Carlo Control" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200220021452920" modified="20200222070407604" tags="[[Model-Free Control]]" title="On-Policy Monte-Carlo Control" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Main idea is generalized policy iteration - evaluate policy and then improve policy: https://imgur.com/cfEMFw0
 
 One possible attempt: evaluate policy using Monte-Carlo and improve greedily, problems with this:
@@ -12418,7 +12552,7 @@ GLIE Monte-Carlo Control:
 
 * Sample kth episode using $$\pi$$ 
 * For each state $$S_t$$ and action $$A_t$$ in the episode: increment number of times this state action pair has been visited and increment the action value function for this combination by the error / number of times this state action pair has been visited
-* $$\epsilon \leftarrow k$$ and $$\pi \leftarrow \epsilon-greedy(Q)$$
+* $$\epsilon \leftarrow \frac{1}{k}$$ and $$\pi \leftarrow \epsilon-greedy(Q)$$
 
 Thm: GLIE Monte-Carlo control converges to the optimal action-value function
 
@@ -12427,7 +12561,7 @@ Note: for this particular algorithm, the initial value doesn't really matter as 
 Example - optimal policy for blackjack: https://imgur.com/JxWwG9r
 </pre>
 </div>
-<div created="20200220025338942" modified="20200220025340015" tags="[[Model-Free Control]]" title="On-Policy TD Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200220025338942" modified="20200222070622054" tags="[[Model-Free Control]]" title="On-Policy TD Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Advantages of TD - lower variance, online, deal with incomplete sequences
 
 SARSA updates - policy evaluation method - apply TD to Q(S, A), use epsilon-greedy policy improvement and update every time step: https://imgur.com/5aXcCrC
@@ -12437,7 +12571,7 @@ On-Policy Control with Sarsa - Sarsa for policy evaluate update and use epsilon-
 Convergence of Sarsa converges to the optimal action-value function, $$Q(s, a) \rightarrow q_*(s, a)$$ under the following conditions: 
 
 * GLIE sequence of policies $$\pi_t(a | s)$$
-* Robbins-Monro sequence of step sizes, $$\sum_{t=1}^\infty a_t = \infty$$ (large enough step size to move value around) and $$\sum_{t=1}^\infty a_t^2 &lt; \infty$$ (eventually action value function stabilizes)
+* Robbins-Monro sequence of step sizes $$\alpha$$, $$\sum_{t=1}^\infty a_t = \infty$$ (large enough step size to move value around) and $$\sum_{t=1}^\infty a_t^2 &lt; \infty$$ (eventually action value function stabilizes)
 
 Windy Gridworld Example: https://imgur.com/cqm4tQR, https://imgur.com/WIRNjYA
 
@@ -12450,7 +12584,7 @@ Forward-view $$Sarsa(\lambda)$$ - as earlier average over all n-step returns:
 Backward-View $$Sarsa(\lambda)$$, use an eligibility traces for each state-action pair:
 
 * $$E_0(s, a) = 0$$, $$E_t(s, a) = \gamma \lambda E_{t - 1}(s, a) + Indicator(S_t = s, A_t = a)$$
-* Q(s, a) is updated for every state s and action a
+* $$Q(s, a)$$ is updated for every state $$s$$ and action $$a$$
 * $$\delta_t = R_{t + 1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)$$
 * $$Q(s, a) \leftarrow Q(s, a) + \alpha \delta_t E_t(s, a)$$
 
@@ -12664,7 +12798,7 @@ Useful Links:
 * https://towardsdatascience.com/from-tda-to-dl-d06f234f51d
 </pre>
 </div>
-<div created="20200214185454778" modified="20200214210602140" tags="[[reinforcement learning]]" title="Planning by Dynamic Programming" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200214185454778" modified="20200222064508681" tags="[[reinforcement learning]]" title="Planning by Dynamic Programming" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Planning $$\neq$$ Reinforcement Learning because we are given the dynamics of the system - we know the MDP completely
 
 MDP - satisfy optimal substructure and overlapping subproblems - seen through bellman optimality and expected equation
@@ -12694,7 +12828,7 @@ __[[Contraction Mapping Theorem (and application to RL)]]__
 
 {{Contraction Mapping Theorem (and application to RL)}}</pre>
 </div>
-<div created="20200214202109282" modified="20200214210313051" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Policy Evaluation" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200214202109282" modified="20200222064523880" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Policy Evaluation" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Iterative Policy Evaluation: 
 
 * Problem: evaluate a given policy $$\pi$$
@@ -12702,11 +12836,72 @@ __[[Contraction Mapping Theorem (and application to RL)]]__
 * $$v_1 \rightarrow v_2 \rightarrow ... v_\pi$$ - start with arbitrary value and incrementally improve
 * Using synchronous backups - consider all states at every step - for all states s, update $$v_{k+1}(s)$$ from $$v_k(s')$$ where s' is the successor state
 
-Use the bellman expectation equation - https://imgur.com/1xnlKmN and use the values from the previous iteration as the values at the leaves - convergence proof covered in [[Contraction Mapping Theorem]]
+Use the bellman expectation equation - https://imgur.com/1xnlKmN and use the values from the previous iteration as the values at the leaves - convergence proof covered in [[Contraction Mapping Theorem (and application to RL)]]
 
 Small Grid-world Example: https://imgur.com/rAdbMUM, https://imgur.com/ZduqlSZ, https://imgur.com/lNm7S5N - intuition is how just computing a random policy's value function can give us a better policy and in this case the greedy policy based on the value function gives us the optimal policy after just 3 iterations</pre>
 </div>
-<div created="20200214202202626" modified="20200214210327881" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Policy Iteration" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200222213336891" modified="20200223053813687" tags="[[reinforcement learning]]" title="Policy Gradient Methods" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>[[Value Function Approximation]] discussed approximating both state and action-value function using parameters $$\theta$$ and policy generated directly from value function 
+
+Here, we will directly parametrize the policy: $$\pi_\theta(s, a) = P[a | s, \theta]$$ - can again think of as an arbitrary function approximator. A probability distribution conditioned both on state and parameters. 
+
+Motivation is scaling again (same as [[Value Function Approximation]])
+
+Value-Based RL - learn value function, implicit policy; Policy-based - no value function, learn policy; Actor-Critic - learns both: https://imgur.com/IB87ot7
+
+Why can Policy-Based methods be better?
+
+* More efficient to represent the policy then the value function (e.g. Atari Game: the value function might be tricky to approximate but in a brick-breaker style game to move right when ball comes down is pretty easy)
+* Better convergence properties - just following policy gradient converges at least to local optimum
+* Effective in high-dimensional or continuous action spaces (don't have to solve for max at every step rather incrementally figures it out)
+* Can learn ''stochastic policies''
+
+Disadvantages:
+
+* Typically converge to a local rather than the global optimum
+* Evaluating a policy is typically efficient and high variance
+
+Why would you want a stochastic policy - since you want to choose the optimal action:
+
+* Rock, Paper, Scissor - any deterministic policy is exploited and the uniform random policy is optimal
+* State-Aliasing - Partially observed so agent doesn't know definitely which state it is in (the theorem regarding the deterministic policy being optimal doesn't hold because state-aliasing implied a partially observed mdp rather than a regular mdp for which this theorem is true)
+
+Example: Aliased Gridworld: https://imgur.com/FEuLa4e
+
+* Features of the form (wall to N, E, S, W) and move (to N, E, S, W)
+* Compare value-based RL using an approximate value function: $$Q_\theta(s, a) = f(\phi (s, a), \theta)$$
+* To policy based RL: using a parametrized policy: $$\pi_\theta(s, a) = g(\phi(s, a), \theta)$$
+* Can't tell the difference between the two grey squares from the features we have
+* Under aliasing an optimal deterministic policy will either move W in both grey states or E in both grey states: greedy may never find the solution and epsilon-greedy would take really long
+* Will reach treasure in few steps with high probability: https://imgur.com/yjX2ySf
+
+Policy Objective Functions:
+
+* Given policy $$\pi_\theta(s, a)$$ with parameters $$\theta)$$ find best $$\theta$$
+* Episodic environments can use $$J_1(\theta) = V^{\pi_\theta}(s_1) = E_{\pi_\theta}[v_1]$$ - where $$s_1$$ is the start state (can also work with a distribution over start states)
+* In continuing environments, can use average value $$J_{average val}(\theta) = \sum_s d^{\pi_\theta}(s)V^{\pi_\theta}(s)$$ . Probability we are in some state (based on policy?) times of value of being in a state. 
+* Average Reward per Time step: $$J_{average reward}(\theta) = \sum_s d^{\pi_\theta}(s) \sum_a \pi_\theta(s)(s, a) R^a_s$$ where $$d^{\pi_\theta}(s)$$ is the stationary distribution of Markov chain for $$\pi_\theta$$
+* All are essentially just rescaling of each other, gradient is same direction for all - same method will work for all
+
+Policy Optimization - find $$\theta$$ maximizes $$J(\theta)$$
+
+* Gradient free method - hill climbing, amoeba, Genetic Algorithms
+* Greater efficiency using gradient - gradient descent, conjugate gradient, quasi-newton (just going to work with gradient descent but same idea generalizes to the others)
+* focus on methods that exploit sequential structure - do not wait till end of lifetime of agent like a genetic algorithm instead see how well it has done till a particular time step potentially
+
+__[[Finite Difference Policy Gradient]]__
+
+{{Finite Difference Policy Gradient}}
+
+__[[Monte-Carlo Policy Gradient]]__
+
+{{Monte-Carlo Policy Gradient}}
+
+__[[Actor-Critic Policy Gradient]]__
+
+{{Actor-Critic Policy Gradient}}</pre>
+</div>
+<div created="20200214202202626" modified="20200222064820663" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Policy Iteration" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>How to improve a policy - how to take any policy and make it better:
 
 * Evaluate the policy $$\pi$$ - like we did in [[Policy Evaluation]]
@@ -13114,7 +13309,7 @@ Take proof statement: alpha is the result of executing C for T steps on public i
 First step construct an AIR:
 P = </pre>
 </div>
-<div created="20200219061250949" modified="20200221194416429" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="5" bag="default">
+<div created="20200219061250949" modified="20200221195947287" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>''Intuition:'' To identify topological spaces with enough structure i.e. they do not have too few open sets - this is best characterized by separation axioms that are some form of requirements that pairs of disjoint subsets are contained in disjoint open sets. To require this in full generality though is not helpful either as it requires every set to be open. 
 
 Def: A topological space X is a 
@@ -13154,7 +13349,7 @@ Proof:
 * Define f s.t. $$\delta U_r$$ - the boundaries are the level sets of f on which f assumes the value r. $$f(x) = sup\{r: x \notin U_r\}$$
 * Evidently f = 0 on E and f = 1 on F
 * Need to show continuity now
-* Let $$x \in X$$ and $$\epsilon &gt; 0$$, pick $$r, s$$ s.t. $$0 &lt; r &lt; s &lt; 1$$ and $$f(x) - \epsilon &lt; r &lt; f(x) &lt; s &lt; f(x) + \epsilon$$. Then $$x \notin U_t$$ for dyadic rationals between r and f(x), therefore by ''1)'' $$x \notin \bar{U_r}$$, but $$x \in U_s$$, therefore let $$W = U_s \ \bar{U_r}$$ is an open neighborhood of x and $$f(W) \subset B(f(x), \epsilon)$$, thus f is continuous at x
+* Let $$x \in X$$ and $$\epsilon &gt; 0$$, pick $$r, s$$ s.t. $$0 &lt; r &lt; s &lt; 1$$ and $$f(x) - \epsilon &lt; r &lt; f(x) &lt; s &lt; f(x) + \epsilon$$. Then $$x \notin U_t$$ for dyadic rationals between r and f(x), therefore by ''1)'' $$x \notin \bar{U_r}$$, but $$x \in U_s$$, therefore let $$W = U_s \setminus \bar{U_r}$$ is an open neighborhood of x and $$f(W) \subset B(f(x), \epsilon)$$, thus f is continuous at x
 
 Thm 4: Let X be a normal topological space, let Y be a closed subset of X and let f be a bounded continuous real-valued function on Y. Then there exists a bounded continuous real-valued function h on X s.t. h = f on Y.
 
@@ -13162,14 +13357,15 @@ Proof: Construct h iteratively
 
 * $$c_0 = \{sup|f(y)|: y \in Y\}$$
 * $$E_0 = \{y \in Y: f(y) \leq -c_0/3\}$$
-* $$F_0 = \{y in Y: f(y) \geq c_0 / 3\}$$
+* $$F_0 = \{y \in Y: f(y) \geq c_0 / 3\}$$
 * $$E_0, F_0$$ - obviously disjoint and closed (due to continuity)
 * By taking a linear combination of the function in Urysohn's Lemma: $$g_0$$ - real-valued s.t. $$|g_0| \leq c_0 / 3$$, $$g_0 = -c_0 / 3$$ on $$E_0$$ and $$g_0 = c_0/3$$ on $$F_0$$. 
 * Therefore $$|g_0| \leq c_0 / 3$$ and $$|f - g_0| \leq 2c_0/3$$ on Y
-* Inductively construct a sequence of such functions $$g_i$$ by setting $$c_{n - 1} = sup\{|f(y) - g_0 - ... - g_{n - 1}|: y \in Y\}$$, repeat above process with $$c_{n - 1}$$
+* Inductively construct a sequence of such functions $$g_i$$ by setting $$c_{n - 1} = sup\{|f(y) - g_0(y) - ... - g_{n - 1}(y)|: y \in Y\}$$, repeat above process with $$c_{n - 1}$$
 * $$c_{n - 1} \leq 2^n c_0 / 3^n$$ and $$h_n = g_0 + ... + g_n$$
-* therefore for $$n \geq m$$, $$|h_n - h_m| = |g_{m+1} + ... + g_n| \leq |((\frac{2}{3})^{m+1} + ... + (\frac{2}{3})^n)c_0 / 3$$ and by sum to infinity of g.p. $$\leq (\frac{2}{3})^{m+1} c_0$$
-* Therefore the sequence is cauchy and thus there exists a continuous function h that the sequence converges to uniformly </pre>
+* therefore for $$n \geq m$$, $$|h_n - h_m| = |g_{m+1} + ... + g_n| \leq |((\frac{2}{3})^{m+1} + ... + (\frac{2}{3})^n)c_0 / 3 |$$ and by sum to infinity of g.p. $$\leq |(\frac{2}{3})^{m+1} c_0|$$
+* Therefore the sequence is cauchy and thus there exists a continuous function h that the sequence converges to uniformly 
+* h converges to f on Y as the difference between $$h_n(y)$$ and  $$f(y)$$ for arbitrary y turns to 0 as n turns to infinity</pre>
 </div>
 <div created="20200203072201259" modified="20200203074407751" tags="[[graph theory]]" title="Similarity Measures" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Similarity Measures - to form groups of similar nodes on the basis of connectivity to other nodes, edges, types of edges etc.
@@ -13290,7 +13486,7 @@ $$\sum_{t=1}^T \alpha \delta_t E_t(s) = \sum_{t=1}^T \alpha(G^\lambda_t -V(S_t))
 
 </pre>
 </div>
-<div created="20200217001417966" modified="20200217002007781" tags="[[Model-Free Prediction]]" title="Temporal-Difference Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200217001417966" modified="20200222065618344" tags="[[Model-Free Prediction]]" title="Temporal-Difference Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Overview: 
 
 * Learn directly form experience (model-free)
@@ -13312,7 +13508,7 @@ Advantages of TD:
 * TD can learn online after every step but MC needs to wait until end of episode before return is known
 * TD can learn from incomplete sequences or non-terminating environments whereas MC can't
 
-Bias/Variance Trade Off:
+Bias/Variance Trade Off: (Biased estimator is an estimator whose expected value is not the true value)
 
 * Return is an unbiased estimate of the value function $$G_t = R_{t + 1} + \gamma R_{t+2} + ... + \gamma ^{T -1} R_T$$
 * True TD Target i.e. using oracle access to actual value function is also an unbiased estimate: $$R_{t + 1} + \gamma v_\pi(S_{t+1})$$ of the value function
@@ -13321,7 +13517,7 @@ Bias/Variance Trade Off:
 
 MC has high variance, 0 bias - Good convergence properties and not very sensitive to initial value, simple
 
-TD has low variance, some bias - more efficient, TD(0) does converge to v_\pi(s), more sensitive to initial value (as it estimates off itself)
+TD has low variance, some bias - more efficient, $$TD(0)$$ does converge to $$v_\pi(s)$$, more sensitive to initial value (as it estimates off itself)
 
 AB Example: https://imgur.com/9HjvnqA
 
@@ -13610,8 +13806,43 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Models of Networks]]
 </pre>
 </div>
-<div created="20200220222338216" modified="20200221024119660" tags="[[reinforcement learning]]" title="Value Function Approximation" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>__Why do we need to approximate the value function - deal with large scale RL programs:__
+<div created="20200220222338216" modified="20200222071649293" tags="[[reinforcement learning]]" title="Value Function Approximation" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>__[[Why we need Value Function Approximation]]__
+
+{{Why we need Value Function Approximation}}
+
+__[[Incremental Methods of Value Function Approximation]]__
+
+{{Incremental Methods of Value Function Approximation}}
+
+__[[Batch Methods of Value Function Approximation]]__
+
+{{Batch Methods of Value Function Approximation}}</pre>
+</div>
+<div created="20200214203422346" modified="20200222064920427" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Value Iteration" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Principle of Optimality - an optimal policy is an optimal action and an optimal policy from successor state S':
+
+* Thm:  A policy $$\pi(a|s)$$ achieves the optimal value from any state s i.e. $$v_\pi(s) = v_*(s)$$ iff for any state s' reachable from s, $$\pi$$ achieves the optimal value from state s' i.e. $$v_\pi(s') = v_*(s)$$
+
+Intuition - like dynamic programming, start with final rewards and work backwards, but since we need to be able with the fact that the dependency graph may not be acyclic we update in this manner:
+
+* $$v_{k+1}(s) \leftarrow max_{a \in A} R^a_s + \gamma \sum_{s' \in S} P^a_{ss'} v_{k}(s')$$ and as $$k \rightarrow \infty$$ this converges and we will get the optimal value function
+* $$v_{k+1} = max_{a \in A}R^a + \gamma P^a v_k$$
+* This is in some sense a more generalized version of Dynamic Programming that works with cycles etc. (thus letting us deal with loopy, stochastic MDPs) 
+* No explicit policy 
+* Some intermediate values may not be the value function for any actual policy (but you could base a greedy policy based on a intermediate value function and do decently well)
+
+https://www.cs.ubc.ca/~poole/demos/mdp/vi.html - link to play around with value iteration
+
+Summary - https://imgur.com/kAutPIf</pre>
+</div>
+<div author="Siddharth Joshi" created="20191119180323660" modified="20200211182518465" tags="introduction" title="Welcome" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Hi, welcome to my ~TiddlyWiki!
+This is a collection of notes on a wide variety of topics compiled from my personal work.
+Enjoy!</pre>
+</div>
+<div created="20200222071610837" modified="20200222071733411" tags="[[Value Function Approximation]]" title="Why we need Value Function Approximation" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>In a nutshell, to deal with very large MDPs.
 
 * Backgammon: $$10^{20}$$ states
 * Computer Go: $$10^{170}$$ states
@@ -13633,7 +13864,7 @@ Solution - estimate using value function approximation:
 * w is a parameter of the function that is tuned to achieve accuracy in approximation, much smaller than in dimensionality than the number of states
 * Will also generalize from seen states to unseen states
 
-Types of Value Function Approximation: Blackbox method - takes in state / state-action - converts to parameter w and then output  approximate value - https://imgur.com/rmHYwUE
+Types of Value Function Approximation: Blackbox method - takes in state / state-action - using parameter w and the feature vector for state / state-action and then outputs  approximate value - https://imgur.com/rmHYwUE
 
 Which Function Approximator? - will focus on differentiable function approx.
 
@@ -13643,37 +13874,7 @@ Which Function Approximator? - will focus on differentiable function approx.
 * Nearest Neighbors
 * Fourier / wavelet bases
 
-Also need a training method that is suitable for non-stationary, non-iid data
-
-__[[Incremental Methods of Value Function Approximation]]__
-
-{{Incremental Methods of Value Function Approximation}}
-
-__[[Batch Methods of Value Function Approximation]]__
-
-{{Batch Methods of Value Function Approximation}}</pre>
-</div>
-<div created="20200214203422346" modified="20200214210339518" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Value Iteration" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>Principle of Optimality - an optimal policy is an optimal action and an optimal policy from successor state S':
-
-* Thm:  A policy $$\pi(a|s)$$ achieves the optimal value from any state s i.e. $$v_\pi(s) = v_*(s)$$ iff for any state s' reachable from s, $$\pi$$ achieves the optimal value from state s' i.e. $$v_pi(s') = v_*(s)$$
-
-Intuition - like dynamic programming, start with final rewards and work backwards, but since we need to be able with the fact that the dependency graph may not be acyclic we update in this manner:
-
-* $$v_{k+1}(s) \leftarrow max_{a \in A} R^a_s + \gamma \sum_{s' \in S} P^a_{ss'} v_{k}(s')$$ and as $$k \rightarrow \infty$$ this converges and we will get the optimal value function
-* $$v_{k+1} = max_{a \in A}R^a + \gamma P^a v_k$$
-* This is in some sense a more generalized version of Dynamic Programming that works with cycles etc. (thus letting us deal with loopy, stochastic MDPs) 
-* No explicit policy 
-* Some intermediate values may not be the value function for any actual policy (but you could base a greedy policy based on a intermediate value function and do decently well)
-
-https://www.cs.ubc.ca/~poole/demos/mdp/vi.html - link to play around with value iteration
-
-Summary - https://imgur.com/kAutPIf</pre>
-</div>
-<div author="Siddharth Joshi" created="20191119180323660" modified="20200211182518465" tags="introduction" title="Welcome" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>Hi, welcome to my ~TiddlyWiki!
-This is a collection of notes on a wide variety of topics compiled from my personal work.
-Enjoy!</pre>
+Also need a training method that is suitable for non-stationary, non-iid data</pre>
 </div>
 <div created="20200212181429701" modified="20200213180859127" tags="cryptography" title="ZKStarks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://eprint.iacr.org/2018/046.pdf
