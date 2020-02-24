@@ -177,6 +177,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/Excise/-1396623470/tagnew</li>
+
+<li>$:/state/sidebar</li>
+
 <li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
@@ -257,6 +261,8 @@ Error message and password prompt
 
 <li>Draft of 'Finite Difference Policy Gradient'</li>
 
+<li>Draft of 'Integrating Learning and Planning'</li>
+
 <li>Draft of 'Regularization and Overfitting'</li>
 
 <li>Equivalence Relations</li>
@@ -299,6 +305,10 @@ Error message and password prompt
 
 <li>Integers</li>
 
+<li>Integrated Architectures of Model-Based RL and Model-Free RL</li>
+
+<li>Integrating Learning and Planning</li>
+
 <li>Introduction to Reinforcement Learning</li>
 
 <li>K Nearest Neighbors</li>
@@ -326,6 +336,8 @@ Error message and password prompt
 <li>Metric Spaces</li>
 
 <li>Model Theory</li>
+
+<li>Model-Based Reinforcement Learning</li>
 
 <li>Model-Free Control</li>
 
@@ -9943,8 +9955,14 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200223193258661" modified="20200223193258661" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200224023332434" modified="20200224023332434" title="$:/state/Excise/-1396623470/tagnew" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200224053540839" modified="20200224060537451" title="$:/state/sidebar" revision="2" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200224023240551" modified="20200224023240551" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Tools</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9958,7 +9976,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Welcome [[How to Contribute?]]" title="$:/StoryList" revision="1" bag="default">
+<div created="20200224023216414" list="[[Integrating Learning and Planning]] Welcome [[How to Contribute?]]" modified="20200224023216414" title="$:/StoryList" revision="19" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10019,7 +10037,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200223193255529" modified="20200223193257067" title="$:/temp/search" revision="8" bag="default">
+<div created="20200224023214748" modified="20200224060540178" title="$:/temp/search" revision="7" bag="default">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
@@ -10226,7 +10244,7 @@ Tasks that RL has performed well on:
 * Manage an investment portfolio - +ve reward for each $ in bank
 </pre>
 </div>
-<div created="20200223053809512" modified="20200223091457652" tags="[[reinforcement learning]] [[Policy Gradient Methods]]" title="Actor-Critic Policy Gradient" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200223053809512" modified="20200223205411413" tags="[[reinforcement learning]] [[Policy Gradient Methods]]" title="Actor-Critic Policy Gradient" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Reducing Variance using a critic:
 
 * monte-carlo has high variance dependent on many real world actions and rewards
@@ -10249,7 +10267,7 @@ Bias in Actor-Critic Algorithms:
 * Approximating policy gradient introduces bias - may not find right solution
 * Can avoid introducing any bias by using correct value function approximation technique
 
-Compatible Function Approximation: https://imgur.com/sD8g9vR, https://imgur.com/D4fLclf
+Compatible Function Approximation: https://imgur.com/sD8g9vR, https://imgur.com/D4fLclf: use features that are themselves the score function, use linear combination of this guarantees that we don't affect gradient direction
 
 Reducing Variance Using a Baseline:
 
@@ -10259,13 +10277,33 @@ Reducing Variance Using a Baseline:
 * Thus rewrite the policy gradient as the advantage function $$A^{\pi_\theta}(s, a)  = Q^{\pi_\theta}(s, a) - V^{\pi_\theta}(s)$$; $$\nabla_\theta J(\theta) = E_{\pi_\theta}[\nabla_\theta log \pi_\theta(s, a) A^{\pi_\theta}(s, a)]$$
 * How much better than usual is an action a -&gt; pushes policy parameters towards situations where you do better than usual
 
-Estimating the Advantage Function (since it has lesser variance) - Can estimate by estimating both State and Action Value Function of the policy using two function approximators
+Estimating the Advantage Function (since it has lesser variance) - Can estimate by estimating both State and Action Value Function of the policy using two function approximators and two sets of parameters
 
 Easier way to do this:
 
-* For the true value function, the TD error is equal to $$\delta^{\pi_\theta} = r + \gamma V^{\pi_\theta}(s') - V^{\pi_\theta}(s)$$ and hence it is an unbiased estimate of the advantage function
-* 
+* For the true value function, the TD error is equal to $$\delta^{\pi_\theta} = r + \gamma V^{\pi_\theta}(s') - V^{\pi_\theta}(s)$$ and hence TD error is an unbiased estimate of the advantage function
+* $$E_{\pi_\theta}[d^{\pi_\theta} | s, a] = E_{\pi_\theta}[r + \gamma V^{\pi_\theta}(s')| s, a] = V^{\pi_\theta}(s) = Q^{\pi_\theta(s, a)} - V^{\pi_\theta}(s) = A^{\pi_\theta}(s, a)$$
+* Compute policy gradient with TD error $$\nabla_\theta J(\theta) = E_{\pi_\theta}[\nabla_\theta log \pi_\theta(s, a) \delta^{\pi_\theta}]$$
+* Uses only one set of critic parameters
 
+Critics at different time-scales (different targets) - can replace the target with MC, TD(0) or TD($$\lambda$$) forward or backward view target
+
+Actors at different time scales:
+
+* MC: $$\Delta \theta = \alpha(v_t - V_w(s_t)) \nabla_\theta log \pi_\theta(s_t, a_t)$$ - high variance, low bias
+* TD(0): $$\Delta \theta = \alpha(r + \gamma V_w(s_{t+ 1}) - V_w(s_t)) \nabla_\theta log \pi_\theta(s_t, a_t)$$ - low variance, some bias
+* Can again extend to TD($$\lambda$$) forward view and then make backward view by using eligibility traces: $$\delta = r_{t+1} + \gamma V_w(s_{t + 1}) - V_w(s_t)$$; $$e_{t+1} = \lambda e_t + \nabla_\theta log \pi_\theta (s, a)$$; $$\Delta \theta = \alpha \cdot \delta \cdot e_t$$
+* Eligibility trace explanation: eligibility is now an eligibility based on score, move in the direction where scores have been largest most recently and frequently (instead of just an indicator - think of how this function is recursively constructed and the equivalence will become apparent)
+
+Deterministic Policy Gradient Theorem: (scales better than Stochastic Policy Gradient in the case of continuous action spaces): ''Look this up and add to it''
+
+Natural Policy Gradient - parametrization independent
+
+* Finds ascent that is closest to vanilla gradient when changing the policy by a small fixed amount
+* $$\nabla^{nat}_\theta \pi_\theta(s, a) = G_\theta^{-1} \nabla_\theta \pi_\theta(s, a)$$
+* $$G_\theta = E_{\pi_\theta}[\nabla_\theta log \pi_\theta(s, a) \nabla_\theta log \pi_\theta (s, a)^T]$$
+
+Summary: https://imgur.com/JOMKK7m
 </pre>
 </div>
 <div created="20200122065241575" modified="20200203014712334" tags="[[computer architecture]]" title="Arithmetic for Computers" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11357,6 +11395,9 @@ tbd
 <div created="20200223045219447" modified="20200223045219447" title="Draft of 'Finite Difference Policy Gradient'" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div modified="20200224055953366" title="Draft of 'Integrating Learning and Planning'" revision="2677" bag="default">
+<pre></pre>
+</div>
 <div created="20200210185952238" modified="20200210185952238" title="Draft of 'Regularization and Overfitting'" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
@@ -11893,6 +11934,77 @@ Branching Far Away:
 <pre>Axiomatic Definition:
 </pre>
 </div>
+<div created="20200224053557372" modified="20200224053557372" tags="[[Integrating Learning and Planning]]" title="Integrated Architectures of Model-Based RL and Model-Free RL" revision="1" bag="default">
+<pre>Two sources of experience: 
+
+* Real Experience: Sampled from Environment (true MDP)
+* Simulated Experience: Sampled from model (approximate MDP)
+
+Integrating Learning and Planning:
+
+* Model-Free RL - no model, learn value function (from experience)
+* Model-Based RL -l learn a model from real experience, plan value function (and/or policy) from simulated experience
+* Dyna - learn a model from real expereince, learn and plan a value function from real &amp; simulated experience - https://imgur.com/yMFhFS8
+
+Dyna-Q on a Simple Maze (shows efficiency): https://imgur.com/MjqaJdH
+
+Kind of like imagining what would happen if you take certain actions - much like humans
+
+Possible if you get reward before terminating that Dyna-Q could help even in just 1 episode
+
+Dyna-Q with an Inaccurate Model: need to make sure we continue to explore (put bonus on states never seen before or seen for a while) - struggle for a bit when environment 'changes' cause you struggle with it - https://imgur.com/xoiREJe, https://imgur.com/K53y2VE</pre>
+</div>
+<div created="20200223202242009" modified="20200224060533594" tags="[[reinforcement learning]]" title="Integrating Learning and Planning" type="text/vnd.tiddlywiki" revision="8" bag="default">
+<pre>Model-Based RL:
+
+* [[Policy Gradient Methods]] - learn policy directly from experience
+* [[Model-Free Control]], [[Model-Free Prediction]], [[Value Function Approximation]] - learn value function from experience
+* This lecture: learn ''model'' directly from experience to construct a value function or policy by planning - integrate learning and planning into a single architecture
+
+Model - describes agent's understanding of the environment or the MDP
+
+Model-Based v/s Model-Free RL:
+
+* Model-Free: No model -&gt; ''Learn value function from experience''
+* Model-Based:''Learn a model from experience'' -&gt; plan value function (and/or policy) from model
+
+__[[Model-Based Reinforcement Learning]]__
+
+{{Model-Based Reinforcement Learning}}
+
+__[[Integrated Architectures of Model-Based RL and Model-Free RL]]__
+
+{{Integrated Architectures of Model-Based RL and Model-Free RL}}
+
+__[[Simulation-Based Search]]__
+
+Forward Search (instead of randomly sampling state actions from experience rather focus on stuff likely to happen next i.e. what happens now? $$S_t$$) - https://imgur.com/X7KPCaS
+
+* select best action by lookahead
+* build a search tree with current state $$s_t$$ at root
+* can solve just the sub-MDP starting from now
+
+Simulation-Based Search - forward search paradigm using sample-based planning i.e. simulate episodes of experience from now with model (from now to termination) and apply model-free RL to the simulated episodes
+
+* simulate episodes of experience from ''now'' with the model
+* $$\{s^k_t, A^k_t, R^k_{t + 1}, ..., S^k_T\}^K_{k = 1} \sim M$$ i.e. K episodes in total sampled from our model
+* Can use any model-free RL algorithm and learn from this
+
+Simple Monte-Carlo Search:
+
+* Given a model M and a simulation policy $$\pi$$
+* Simulate K episodes from current state
+* Evaluate state actions by mean return (gives us the true value function by law of large numbers) - but only looking at actions from root node
+* select current (real) action with maximum value 
+
+Monte-Carlo Tree Search (Evaluation) - SOTA in 2015 - used in Alpha Go (maybe??)
+
+* Given a model $$M_v$$, simulate K episodes and simulation policy $$\pi$$
+* Build a search tree for ''all'' states and actions
+* Evaluate value function at state-action pair by mean return of episodes from (s, a)
+* after search is finished, select current (real) action (from current state) w max value in search tree
+</pre>
+</div>
 <div created="20200211210217680" modified="20200222063802153" tags="[[reinforcement learning]]" title="Introduction to Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__[[About Reinforcement Learning]]__
 
@@ -12281,6 +12393,73 @@ Bellman equation can be expressed concisely using matrices: https://imgur.com/n1
 </div>
 <div author="Siddharth Joshi" created="20191126064803358" modified="20191126072901553" tags="incomplete philosophy logic" title="Model Theory" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://plato.stanford.edu/entries/model-theory/</pre>
+</div>
+<div created="20200224023338022" modified="20200224023338022" tags="[[Integrating Learning and Planning]]" title="Model-Based Reinforcement Learning" revision="1" bag="default">
+<pre>https://imgur.com/fcyASWH - learn model, plan, act, evaluate policy and evaluate policy &amp; improve model
+
+Advantages of Model-Based RL:
+
+* Can be helpful in cases when value function is volatile and estimating it from experience could be hard e.g. chess, but model is more compact and useful information of the environment - then use tree search etc. 
+* Can efficiently learn model by supervised learning methods
+* Can reason about model uncertainty
+
+Disadvantages:
+
+* More work - learn model and value function
+* Two sources of approximation error
+
+What a model?
+
+* A model is a representation of an MDP $$&lt;S, A, P, R&gt;$$ parametrized by $$\eta$$
+* Assume state space S and action space A learned
+* Model $$M = &lt;P_\eta, R_\eta&gt;$$ represents state transitions and rewards
+* One-step mode: $$S_{t+1} \sim P_\eta(S_{t + 1} | S_t, A_t}$$ and $$R_{t + 1} = R_\eta(R_{t + 1} | S_t, A_t)$$
+* Is learning about reward same as learning value function (in chess)? No, reward is just 0 if you lose, 1 if you win - just learn about checkmate position, rather than assigning a value to each state which is harder
+* Typically assume conditional independence between state transition and reward $$P[S_{t + 1}, R_{t + 1} | S_t, A_t] = P[S_{t + 1} | S_t, A_t]P[R_{t + 1} | S_t, A_t]$$
+
+Model Learning:
+
+* Goal: estimate model $$M_\eta$$ from experience {$$S_1, A_1, R_2, ..., S_T$$}
+* Supervised Learning Problem: $$S_1, A_1 \rightarrow R_2, S_2$$, $$S_2, A_2 \rightarrow R_3, S_3$$
+* Regression problem: $$s, a \rightarrow r$$
+* Density Estimation Problem (in a stochastic environment): $$s, a \rightarrow s'$$ want to learn the probability distribution for s'
+* Pick appropriate loss functions
+* Find parameters $$\eta$$ that minimize empirical loss
+
+Examples of Models (Supervised Learning methods): 
+
+* Table Lookup Model
+* Linear Expectation Model
+* Linear Gaussian Model 
+* Gaussian Process Model 
+* Deep Belief Network Model
+* ...
+
+Table Lookup Model:
+
+* Model is an explicit MDP
+* Count visits $$N(s, a)$$ to each state action pair: $$\hat{P}^a_{ss'} = \frac{1}{N(s, a)} \sum_{t=1}^T Indicator(S_t, A_t, S_{t + 1} = s, a, s')$$ and $$\hat{R}^a_s = \frac{1}{N(s, a)} \sum_{t=1}^T Indicator(S_t, A_t = s, a) \cdot R_t$$
+* Alternatively, at each timestep t, record experience and sample model by randomly picking a tuple from experience
+
+Planning with a Model:
+
+* Given a Model, solve the MDP 
+* Can use any planning algorithm: value iteration, policy iteration (DP methods), tree search
+
+Sample-Based Planning - use the model only to generate samples (simple but most powerful from empirical results)
+
+* Sample experience from Model: $$S_{t + 1} \sim P_\eta(S_{t + 1} | S_t, A_t)$$, $$R_{t + 1} = R_\eta(R_{t + 1} | S_t, A_t)$$
+* Apply model-free RL to samples e.g. Monte-Carlo, Sarsa, Q-learning
+* Sample based planning methods are often more efficient
+
+AB Example with Sampling: model is good cause it gives us in some sense infinite data, https://imgur.com/InNtH3x
+
+Planning with an Inaccurate Model:
+
+* Given an imperfect model: $$&lt;P_\eta, R_\eta&gt; \neq &lt;P, R&gt;$$
+* Performance of model-based RL is limited to optimal policy for approximate MDP $$&lt;S, A, P_\eta, R_\eta&gt;$$
+* Solution 1: when model is wrong, use model-free RL
+* Solution 2: reason explicitly about model uncertainty (Bayesian Model-Based RL lets you deal with uncertainty in model learnt)</pre>
 </div>
 <div created="20200220012759393" modified="20200222070339473" tags="[[reinforcement learning]]" title="Model-Free Control" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Recap of [[Reinforcement Learning: David Silver Course]]:__
@@ -13247,7 +13426,7 @@ reduction step 2 - stochastic gradient langevin dynamics (SGLD) - instead of lea
 implementable in entropic mirror descent - hsieh et al 2019
 </pre>
 </div>
-<div author="Siddharth Joshi" created="20191125022514242" modified="20200221024250114" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="Siddharth Joshi" created="20191125022514242" modified="20200223205601792" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Part 1: Elementary Reinforcement Learning
 
 # [[Introduction to Reinforcement Learning]]
@@ -13260,6 +13439,7 @@ Part 2: Reinforcement Learning in Practice
 
 # [[Value Function Approximation]]
 # [[Policy Gradient Methods]]
+# [[Integrating Learning and Planning]]
 
 Link to videos: https://www.youtube.com/watch?v=2pWv7GOvuf0&amp;list=PLzuuYNsE1EZAXYR4FJ75jcJseBmo4KQ9-&amp;fbclid=IwAR0lD-SDq5vtgIlUwb4IQryt6USHNndwB2eI0j7cpyfsPkeESv4Rok5YGhY
 
