@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -190,8 +192,6 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
-
-<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -9955,8 +9955,11 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200225061800118" modified="20200225062250349" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20200225072011342" modified="20200225085016048" title="$:/state/sidebar" revision="2" bag="default">
 <pre>yes</pre>
+</div>
+<div created="20200225071910626" modified="20200225071910626" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -9970,7 +9973,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200225052703779" list="[[UCLA CS M151B - Computer Architecture]] [[The Processor (Pipelining)]]" modified="20200225053647842" title="$:/StoryList" revision="23" bag="default">
+<div created="20200225071904262" list="" modified="20200225071904262" title="$:/StoryList" revision="26" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10030,9 +10033,6 @@ Error message and password prompt
         }
     }
 }</pre>
-</div>
-<div created="20200225052654444" modified="20200225052706247" title="$:/temp/search" revision="35" bag="default">
-<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -13810,7 +13810,7 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
-<div created="20200225052828231" modified="20200225062248363" tags="[[computer architecture]]" title="The Processor (Pipelining)" revision="6" bag="default">
+<div created="20200225052828231" modified="20200225085009975" tags="[[computer architecture]]" title="The Processor (Pipelining)" type="text/vnd.tiddlywiki" revision="11" bag="default">
 <pre>__Basics: Idealized View__
 
 Performance Issues - longest delay determines clock period:
@@ -13877,11 +13877,169 @@ Structure Hazards:
 * Pipeline Bubble - a gap when there is no instruction injected
 * Pipelined instructions require separate instruction / data memory (or caches at least) - otherwise ID and MEM can't occur together 
 
+__Data Hazards__
+
 Data Hazards - an instruction depends on completion of data access by a previous instruction
 
 * need to keep injecting bubbles to ensure consistency
 * Extent of issue: https://imgur.com/hjJ2kpf
-* Transparent Latches: first half of cycle writes occur, second half of cycle can have reads (this is why add instruction also doesn't have an issue in the above diagram)</pre>
+* Transparent Latches: first half of cycle writes occur, second half of cycle can have reads (this is why add instruction also doesn't have an issue in the above diagram)
+
+Dealing with Data Hazards:
+
+* In Software - insert no-ops (or ideally independent instructions determined by the compiler) - 
+* In Hardware - using bubbles and data forwarding
+
+Software Solutions to Data Hazards:
+
+* insert no ops
+* can ruin portability, but easier to do and test etc.
+* CPI and Cycle time remain the same but # of instructions goes up (w no-ops)
+* can ideally do reordering using independent instructions and execute meaningful tasks instead of no-ops that doesn't cause a data hazard
+
+Hardware Solutions to Data Hazards:
+
+* can independently stop executing in pipe stages (need to stop all before the stage, but those that occur after can keep going)
+* Example: https://imgur.com/HIeoKWZ
+* Pipeline Stalls - to ensure proper pipeline execution in light of register dependences: detect hazard &amp; stall stages - prevent IF and ID from making progress (ID so instructions don't pile up and IF so we don't lose instructions)
+* Assume instructions that may have a dependency, thus to determine whether or not to stall ID stage: Need to check if Reg Dst is same as Reg Src 1 or 2 and Write Back is enabled and potentially the type of the second instruction to see if it even uses Reg Src 2 if it is the one matching Reg Dst and WB enabled
+* Affecting a Stall - prevent IF and ID stages from proceeding - don't write to PC (PCWrite = 0) and don't rewrite to IF/ID Register (Latch) (IF/IDWrite = 0) and need to insert nops / bubble - set all control signals propagating to EX/MEM/WB to zero
+
+Forwarding (Bypassing) as a solution to Data-Hazards:
+
+* Use result when its computed rather than waiting for it to be computed -&gt; requires more connections in data path
+* Helps avoid aligning write back with the dependency and lets directly use the value
+* Red Lines showing what needs to be forwarded - https://imgur.com/LizS7lY
+* Need to be able to forward not just form EX/MEM latch but also MEM/WB latch
+
+Data Hazards when:
+
+* EX/MEM.Register Rd = ID/EX.Register Rs or ID/EX.Register Rt - forward from EX/MEM latch
+* MEM/WB.Register Rd = ID/EX.Register Rs or ID/EX.Register Rt - forward from MEM/WB latch
+* But also need to check if anything being written so need to check EX/MEM.Reg Write and MEM/WB.Reg Write and only if Rd for that instruction is not $zero (to preserve contents of register zero)
+
+Forwarding Conditions: Datapath with Forwarding - https://imgur.com/LetuByp
+
+* EX (technically when it is in mem stage) Hazard: If (EX/MEM.Reg Write &amp; (EX/MEM.Reg Rd $$\neq$$ 0) &amp; (EX/MEM.Reg Rd == ID/Ex.Reg RS) then do Forward A = EX/MEM latch input (and the exact same thing with register RT that would forward to Forward B)
+* MEM (technically when it is in WB stage) - keeping same as EX (with MEM/WB) could result in double data hazard when both if statements evaluate true but we know that we want to use most recent
+* So MEM Hazard only if EX Hazard not true
+
+Forwarding doesn't solve all issues - consider lw followed by r-type, value needed ready only by end of 4th cycle and needed in 3rd cycle but the r-type - would still need a stall
+
+Load-Use Hazard Detection: ID/EX.Mem Read &amp; (ID/EX.Reg RT = IF/ID. Reg RS or IF/ID Reg RT)
+
+Force Control Values in ID/EX register to 0 to create no op and prevent update of PC and IF/ID register
+
+Full Datapath with Hazard Detection: https://imgur.com/rJ0W0h1 - forwarding and this stall deal with all data hazards
+
+__Control Hazards__
+
+Big Picture of Hazard Detection - stalls reduce performance but done in h/w (dynamic optimization) and compiler can arrange code to avoid but reduces portability by requiring compiler to know the pipeline structure (static optimization) 
+
+Control Hazards occur when:
+
+* fetching next instruction depends on branch outcome
+* pipeline can't always fetch correct instruction
+* In MIPS pipeline - need to compare registers and compute target early in the pipeline - add h/w in ID stage
+
+Dealing with Branch Instructions in Hardware:
+
+* Stall until which direction branch goes
+* Guess which direction - guess which direction and start executing chosen path and be prepared to undo any mistakes - static branch prediction (base guess on instruction type) or dynamic branch prediction (base guess on execution history)
+* Reduce branch delay
+
+Stall on Branch - wait until branch outcome determined before fetching next instruction -&gt; stall penalty can become a lot for longer pipelines where you can't determine branch outcome early
+
+Easiest prediction strategy: Predict Not Taken as instruction is just in PC + 4, need to flush - convert existing instructions into no ops - penalty shouldn't be too much so that this strategy actually helps
+
+More realistic branch prediction:
+
+* Static - based on typical branch behavior - if statement - typically have a forward branch taken - loop - typically backward branch taken as most instructions in a program are loops
+* Dynamic Branch Prediction - h/w measures actual branch behavior and assume future behavior will continue the trend
+
+Branch Hazards -  if outcome determined in MEM - flush instructions that were incorrectly fetched by setting control values to 0
+
+* what about what happens before we converted to no ops - earliest instruction also doesn't affect the processor state as this only occurs in memory or write back stage
+
+Reducing Branch Delay:
+
+* move hardware to determine outcome to ID stage (can definitely move it to EX stage) - target address adder and register comparator
+
+Moving this to ID stage could result in Data Hazards if comparison register is the destination of 2nd or 3rd preceding ALU instruction:
+
+* could use forwarding to ID - fixed for 3rd preceding
+* for 2nd preceding - would need to add 1 stall cycle at least
+* for the special case of load followed by r-type data hazard - up to 2 cycles
+
+Dynamic Branch Prediction:
+
+* in deeper pipelines, branch penalty is more significant - can't be dealt with as easily as this
+* Branch Prediction Buffer (aka branch history table(
+* Indexed by recent branch instruction addresses
+* Stores outcomes (taken / not taken)
+* To execute branch - check table, expect same outcome, start fetching from fall-through or target and if wrong flush pipeline and flip prediction
+
+1-bit Predictor: if taken last time and if not taken last time don't take
+
+* Mispredict as taken on last iteration of inner loop
+* Then mispredict as not taken on first iteration of inner loop next time around
+* consider pathological case of if statement dependent on evenness of value that is incremented every step - will mispredict every time 
+
+2-bit Predictor (only change prediction on two successive mispredictions): https://imgur.com/7ot7QZN - strongly biased states 00 and 11 and 01 10 are the weakly biased states
+
+Calculating the Branch Target: 
+
+* 1-cycle penalty for a taken branch to calculate
+* Branch target buffer - cache target addresses, indexed by PC when instruction fetched - if hit and instruction is branch predicted taken then can fetch target immediately
+
+Exceptions and Interrupts - requiring change in flow of control
+
+* Exception: Arises within CPU - undefined opcode, overflow, syscall
+* Interrupt: from an external I/O controller 
+
+Handling Exceptions: in MIPS
+
+* exceptions managed by a System Control Co-processor (CP0)
+* Save PC of offending (or interrupted) instruction - stored in Exception Progam Counter for MIPS
+* Save indication of the problem: Cause Register for MIPS, assume just 1 bit for now - 0 for undefined opcode and 1 for overflow
+* Jump to handler at 8000 00180
+* Vectored Interrupts - handler address determined by cause
+* Two levels of handler - deal with interrupt or jump to real handler with additional context of why the exception occured
+
+Handler Actions:
+
+* Read cause -&gt; transfer to relevant handler
+* Determine action required
+* If restartable - take corrective action and use EPC to return to program
+* Otherwise - terminate program and report error with EPC
+
+Exceptions in a Pipeline - consider overflow on add in EX stage
+
+* want to prevent register from being overwritten by junk
+* complete previous instructions
+* flush add and subsequent instructions
+* Set Cause and EPC register values
+* Transfer control to handler
+
+Pipeline with Exceptions: https://imgur.com/6Ti4aeO
+
+Exception Properties:
+
+* Restartable - pipeline can flush the instruction and then return to instruction
+* PC + 4 saved in EPC register - handler must adjust accordingly 
+
+Multiple Exceptions:
+
+* Pipelining could resutl in multiple exceptions at once
+* Simple approach - deal with exception from earliest instruciton and flush subsequent - ''Precise'' exceptions
+* Complex pipelines - multiple instructions each cycle, out of order completion, maintaining precise exceptions becomes difficult
+
+Imprecise Exceptions:
+
+* Just stop pipeline and save state and include it in exception cause
+* Let handler work out which instruction had exceptions and which to complete or flush
+* Simplifies hardware but more complex handler software
+* Not feasible for complex multiple-issue out-of-order pipelines</pre>
 </div>
 <div created="20200203014758261" modified="20200204231056108" tags="[[computer architecture]]" title="The Processor (Single Cycle Data Paths)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Two MIPS Implementations:
@@ -14087,7 +14245,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Regularization and Overfitting]]
 # [[Overview of Supervised Learning]]</pre>
 </div>
-<div created="20200115032001461" modified="20200225052821112" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200115032001461" modified="20200225052822179" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
 # [[Computer Abstractions and Technology]]
 # [[Instructions: Language of the Computer]]
