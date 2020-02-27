@@ -177,6 +177,12 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/sidebar</li>
+
+<li>$:/state/tab/moresidebar-1850697562</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -188,6 +194,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -305,6 +313,8 @@ Error message and password prompt
 
 <li>Lambda Calculus</li>
 
+<li>Large and Fast: Exploiting Memory Hierarchy</li>
+
 <li>Linear Regression</li>
 
 <li>Logistic Regression</li>
@@ -420,6 +430,8 @@ Error message and password prompt
 <li>Temporal-Difference Learning</li>
 
 <li>The Hundred-Page Machine Learning Book by Andriy Burkov</li>
+
+<li>The Processor (Advanced Pipelining)</li>
 
 <li>The Processor (Pipelining)</li>
 
@@ -9951,6 +9963,15 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200225203736281" modified="20200227023531624" title="$:/state/sidebar" revision="6" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200225203555491" modified="20200225203556719" title="$:/state/tab/moresidebar-1850697562" revision="2" bag="default">
+<pre>$:/core/ui/MoreSideBar/All</pre>
+</div>
+<div created="20200225195428222" modified="20200225203552289" title="$:/state/tab/sidebar--595412856" revision="3" bag="default">
+<pre>$:/core/ui/SideBar/More</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -9963,7 +9984,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Welcome [[How to Contribute?]]" title="$:/StoryList" revision="1" bag="default">
+<div created="20200225195434903" list="[[UCLA CS M151B - Computer Architecture]]" modified="20200225221802762" title="$:/StoryList" revision="59" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10023,6 +10044,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200225221732697" modified="20200227023534536" title="$:/temp/search" revision="13" bag="default">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21" revision="0" bag="default">
 <pre>{
@@ -11939,10 +11963,8 @@ Possible if you get reward before terminating that Dyna-Q could help even in jus
 
 Dyna-Q with an Inaccurate Model: need to make sure we continue to explore (put bonus on states never seen before or seen for a while) - struggle for a bit when environment 'changes' cause you struggle with it - https://imgur.com/xoiREJe, https://imgur.com/K53y2VE</pre>
 </div>
-<div created="20200223202242009" modified="20200224065815073" tags="[[reinforcement learning]]" title="Integrating Learning and Planning" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>Model-Based RL:
-
-* [[Policy Gradient Methods]] - learn policy directly from experience
+<div created="20200223202242009" model-based="" modified="20200224065815073" rl="" tags="[[reinforcement learning]]" title="Integrating Learning and Planning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* [[Policy Gradient Methods]] - learn policy directly from experience
 * [[Model-Free Control]], [[Model-Free Prediction]], [[Value Function Approximation]] - learn value function from experience
 * This lecture: learn ''model'' directly from experience to construct a value function or policy by planning - integrate learning and planning into a single architecture
 
@@ -12051,6 +12073,235 @@ Hyperparameters in NNC:
 <pre>Lambda calculus (also written as λ-calculus) is a formal system in mathematical logic for expressing computation based on function abstraction and application using variable binding and substitution. It is a universal model of computation that can be used to simulate any Turing machine.
 
 It is the fundamental basis for all functional programming languages. </pre>
+</div>
+<div created="20200225221832828" modified="20200227023456210" tags="[[computer architecture]]" title="Large and Fast: Exploiting Memory Hierarchy" revision="13" bag="default">
+<pre>Memory Technology:
+
+* SRAM - usually used in cache - 0.5ns - 2.5ns - $2000-$5000 per GB
+* DRAM - usually used in main memory - 50ns - 70ns, $20-$75 per GB
+* Magnetic Disk - 5ms-20ms, $0.2-$2 per GB
+* Ideal Memory - access time of SRAM but cost of Disk
+
+DRAM Technology: 
+
+* Data stored as a charge in a capacitor - 1 bit per capacitor
+* Volatile - lose power -&gt; lose data
+* Must be periodically
+
+DRAM - speed has not increased much in a while
+
+Flash Storage - non volatile - doesn't lose data if power cut
+
+* 100 - 1000x faster than disk
+* Smaller, lower power more robust
+* But more expensive than Disk
+
+Disk Storage - nonvolatile, rotating magnetic storage - mechanical parts of read heads etc. contributed to latency - large capacity for cheap
+
+Principle of Locality - programs access a small proportion of their address space at any time:
+
+* Temporal Locality - items accessed recently are likely to be accessed again soon
+* Spatial Locality - items near those accessed recently are likely to be accessed soon
+
+Take advantage of Locality - memory hierarchy - store everything on disk, copy most recently accessed in DRAM, copy even more recently accessed in SRAM caches
+
+Memory Hierarchy Levels: 
+
+* Block (aka line) - unit of copying - usually multiple words
+* If accessed data is present in upper level - hit - hit ratio = hits / accesses
+* If accessed data absent - miss - then accessed data brought in from lower level and then supplied
+
+Cache Memory - level of memory hierarchy closest to the CPU - usually 3 levels of cache (L1 - L3)
+
+Direct Mapped Cache - location determined by address- lowest overhead search
+
+* Block address modulo blocks in cache === use lower bits 
+
+Tags and Valid Bits: https://imgur.com/F0OTuyD
+
+* how do we know which block is stored in a cache location - store block address as well (only high order bits), called the tag
+* what if there is no data in a location - valid bit: 1 = present, 0 = present
+
+Address Subdivision: https://imgur.com/JJ3HTQL
+
+* byte offset - specifies block size = log(block size)
+* Index - next set of bits - based on number of entries in the cache
+* Tag - upper order bits - remaining bits - comparator checks if this matches our data request - anded with valid bit to check if this is valid information
+
+Tradeoff - Larger Block Size:
+
+* helps exploit more locality
+* but may limit how many 'miss' streams you can deal with as fewer blocks would fit in cache -&gt; lead to pollution if you can't fit what you need in the cache and have other stuff instead
+* larger miss penalty - takes longer to pull in the entire block to service the request
+
+Cache Misses - may need to stall CPU pipeline to fetch block from next level of hierarchy - on instruction cache miss - stall IF - data cache miss - complete data access
+
+Write Through: 
+
+* writing just to cache could cause memory to be inconsistent
+* write through - also update memory - but it takes much longer
+* solution - write buffer - hold data waiting to be written to memory - CPU can continue immediately and only stall on write if write buffer is already full
+
+Write Back:
+
+* dirty bit indicates cache content changed on data write
+* when a dirty block replaced, write back to memory
+
+Write Allocation - write miss - tried to write to cache but block not in cache:
+
+* allocate on miss - fetch the block
+* write around - don't fetch the block - write through can opt for this 
+* for write back usually fetch the block - most useful when you have high store spatial locality - write back is usually write allocate
+
+Measuring Cache Performance:
+
+* Components of CPU time  - program execution cycles - includes cache hit time and memory stall cycles (mainly from cache misses)
+* With simplifying assumptions $$MemoryAccesses / Program \times MissRate \times MissPenalty = Instructions / Program \times Miss / Instruction \times MissPenalty$$ - little more subtle than earlier since different cache misses have different penalty
+
+Cache Performance Example: https://imgur.com/hu4QnsU
+
+Average Memory Access Time (AMAT):
+
+* $$Hit Time + Miss Rate \times Miss Penalty$$ as hit time also affects performance
+* Example: CPU with 1ns clock, hit time = 1 cycle, miss penalty = 20 cycles, I-cache miss rate = 5%, therefore 1 + 0.05 * 20 = 2ns - 2 cycles per instruction
+
+Performance Summary:
+
+* CPU faster -&gt; miss penalty becomes more significant
+* Decreasing Base CPI -&gt; more proportion of time spent on memory stalls
+* Increasing Clock Rate -&gt; memory stalls make up more CPU cycles
+* Evaluating System performance must include this as it has very significant effect
+
+__Cache Associativity__
+
+Associative Caches: https://imgur.com/V7KVW5M
+
+* Fully associative - allow a given block to go in any cache entry and require all entries to be searched at once - comparator per entry
+* n-way set associative - each set contains n entries, block number determines which set - $$block number (mod \ sets in cache)$$ - search all entries in a given set at one - n comparators
+
+Associativity Example: Cache with 4 block entries where mapping is by $$block number (mod \ sets in cache)$$
+
+* Access Pattern: 0, 8, 0, 6, 8
+* 1-way associative - direct mapped - 0 and 8 compete for same block - cache thrashing - miss miss miss miss miss
+* 2-way associative - miss miss hit miss hit
+* 4-way associative (fully associative) - miss miss hit miss hit
+* Hits go up with associative but diminishing returns
+
+Set Associative Cache Organization - https://imgur.com/d5ETAM4
+
+* The 4 V, Tag, Data indicate the 4 ways of the sets
+* the 8 bits of index select a row and then the rest of the tag bits of the 4 entries in the row are compared and if it matches, multiplexor returns data and OR gate indicates hit
+
+Replacement Policy - more important when cache has low associativity
+
+* Direct Mapped - no choice - only 1 spot for each block
+* Set associate - prefer non-valid entry if there is one but there might not be
+* LRU - Least Recently Used - choose the one unused for the longest time - simple for 2-way, manageable for 40way too hard beyond that
+* Random - gives approximately the same performance as LRU for high associativity
+* FIFO
+
+__Multi-Level Caches__
+
+Example:
+
+* Primary Cache only - CPU base CPI = 1, clock rate = 4GHz -&gt; cycle time = 0.25 ns, miss rate / instruction - 2% - main memory access time - 100ns = 400 cycles, therefore effective CPI = 1 + 0.02 * 400 = 9
+* Primary + L2: L2 access time = 5ns, miss rate = 10% of queries that reach till there, Penalty = 5ns / 0.25 ns = 20 cycles, therefore $$CPI = 1 + 0.02 \times 20 + 0.02 \times 0.10 \times 400 = 1 + 0.02 (20  + 0.10 \times 400)$$ =  Base CPI + L1 Miss L2 Hit + L1 &amp; L2 Miss = 2.2 cycles -&gt; 4x improvement
+
+Multilevel Cache considerations:
+
+* Primary cache - focus on minimal hit time
+* L2 cache - focus on low miss rate to avoid main memory access and hit time doesn't make much of an ipact
+* L1 cache smaller and L1-block size usually smaller than L2
+
+Interactions with Advanced CPUs:
+
+* Out of order CPUs can execute instructions during cache miss - pending store stays in load/store unit - ''Lock-Up Free Cache'' - independent instructions can continue
+* Cache miss effect depends on program data flow - much harder to analyze - need system simulation
+
+Interactions with Software - depends on memory access pattern - using tiling or blocking to deal with blocks that can fit entirely in cache
+
+__Virtual Memory__
+
+VM:
+
+* each program get virtual address space and thinks it has the whole address space and thus keeps it protected from other programs
+* CPU and OS translate virtual addresses to physical addresses - vm block is called a page and vm miss is called a page fault
+
+Address Translation - https://imgur.com/zH1gi3r - Fixed-size pages (e.g. 4K):
+
+* Page offset - analogous to block offset
+* Translation - virtual page number to physical page number - but offset remains unchanged
+
+Page Fault Penalty:
+
+* Page Fault - page must be fetched - millions of cycles - Handled by OS Code
+* Try to minimize page fault rate - fully associative replacement - smart replacement algorithms
+
+Page Tables:
+
+* Stores placement information - array of Page Table entries - indexed by virtual page number - page table register in CPU points to page table in physical memory
+* if page in memory -&gt; PTE stores physical page number so we translate
+* page not present - PTE may refer to location in swap space on disk
+
+Translation using a page table (resident in memory and handled by the OS) - https://imgur.com/77xDIGB - https://imgur.com/vWeHJA8
+
+Replacement and Writes:
+
+* to reduce Page Fault rate - LRU - reference bit in PTE set to 1 on access and reset periodically to 0 by OS
+* Write through is impractical cause disk write can take millions of cycles - use write back and dirty bit in PTE when page is written - write in small bursts
+
+Fast Translation using a Translation Look-Aside Buffer - cache of page table
+
+* Would need 2+ memory accesses - one to access PTE and one to actual memory access
+* Huge Locality to exploit with page table
+* Separate Special Cache for PTEs - TLB - 16-512 PTEs - 0.5 - 1 cycle for hit, 10-100 cycles for miss - 0.01%-1% - misses could be handled by hardware or software
+* TLB hit helps avoid going to memory to get translation
+* TLB Miss - If page in memory - load the PTE from memory and retry - could be handled in hardware (page table walker) or software
+* TLB Miss - if page fault - OS handles - restart faulting instruction 
+
+TLB Miss Handler:
+
+* TLB miss needs to indicate Page Present, but PTE not in TLB, Page not present
+* Must recognize TLB miss before destination register overwritten - raise an exception
+* Handler copies PTE to TLB and restarts
+
+TLB and Cache Interaction:
+
+* Cache could use purely physical addressing - needs translation before access
+* Cache could use purely virtual addressing - issues due to aliasing - different virtual addresses for shared physical address
+* Hybrid - use translation for tag comparison as tag is physical but index is virtual 
+
+__Summary of Memory Hierarchy__
+
+Block Placement - determined by associativity - higher associativity reduces miss rate but increased complexity, cost and access time 
+
+Finding a Block - tag comparisons - 1 for direct mapped, n-way - n comparisons - virtual memory makes full associativity feasible if used with full table look up - no comparisons - 0 tag comparisons - but if TLB used then since TLB is cache there will be tag comparison
+
+Replacement:
+
+* LRU - complex and costly hardware for higher associativity - temporal locality exploitation
+* Random - closer to LRU - easier to implement
+* Virtual Memory - LRU approximation with hardware support using reference bit
+
+Write Policy:
+
+* Write through - update both upper and lower levels - simplifies replacements but may require buffer
+* Write back - update upper level only - update lower level when block is replaced - need to keep more state 
+* Virtual memory - only write back feasible since disk write too expensive
+
+Sources of Misses:
+
+* Compulsory Misses - cold start misses - first access to a block
+* Capacity Misses - due to finite cache size - replaced block accessed again later
+* Conflict Misses - space exists but there is a conflict - only in non-fully associative cache - competition by many blocks for same index 
+
+Cache Design Trade-offs:
+
+* Increase Cache Size - decrease capacity misses - may increase access time - more power, cost
+* Increase associativity - decrease conflict misses - may increase access time - more power due to more tag comparisons
+* Increase block size - decrease compulsory misses as increase spatial locality and more likely for compulsory miss to be avoided - increase miss penalty due to larger movement of data - may increase miss rate due to pollution (unnecessary data in cache)
+
+Conclusion: Cache helps give illusion of fast large memory - locality principle - memory hierarchy - memory system design critical for multiprocessors - larger amounts of memory and more complexity for correctness</pre>
 </div>
 <div created="20200210061141342" modified="20200210183522727" tags="[[machine learning]]" title="Linear Regression" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Regression - predicting a real valued variable
@@ -13800,6 +14051,108 @@ This is a chapter by chapter summary of the topics covered in The Hundred-Page M
 * [[Chapter 4 |Chapter 4 (The Hundred-Page Machine Learning Book)]]
 * [[Chapter 5 |Chapter 5 (The Hundred-Page Machine Learning Book)]]</pre>
 </div>
+<div created="20200225203417564" modified="20200225220237478" tags="[[computer architecture]]" title="The Processor (Advanced Pipelining)" revision="9" bag="default">
+<pre>Instruction-Level Parallelism:
+
+* Pipelining - executing multiple instructions in parallel
+* To increase ILP: deeper pipeline -&gt; shorter clock cycles (may have have more hazards); multiple issue (superscalar) - replicate pipeline stages -&gt; multiple pipelines, start multiple instructions per clock cycle (but dependencies reduce this in practice)
+
+Multiple Issue: (Resource issues - how to fetch more than 1 instruction in a cycle etc.) 
+
+* Static multiple issues - compiler groups instructions to be issued together and package them into 'issue slots' - compiler handles avoid hazards - but loses portability 
+* Dynamic Multiple Issue: CPU examines instruction stream and chooses instruction to issue each cycle, compiler can help by reordering but adds a lot of complexity
+
+Speculation - guess what to do:
+
+* Speculate on branch outcome - different from earlier branch prediction as we let it affect processor state - rollback if path taken is different e.g. a speculative store may have to be undone (remove from memory) if it was wrong
+* Speculate on load - what the operands would be
+
+Compiler / Hardware Speculation:
+
+* Compiler can reorder instructions e.g move load before branch; can include 'fix-up' instructions to recover
+* Hardware can look ahead for instructions to execute, buffer results until it determines they are needed and if not flush the buffer
+
+Speculation and Exceptions:
+
+* Static: if speculative instruction causes exception - can be dealt with by ISA support for deferred exceptions
+* Dynamic: can buffer exceptions until instruction completion and flush if never done
+
+Static Multiple Issue:
+
+* Compiler groups instructions into issue packets - group of instructions that can be issued on a single cycle - determined by pipeline resources required (the instructions that can be grouped together depend on the processor)
+* Very Long Instruction Word Architecture - issue packet is just like a very long instruction and use no-ops to pad when no independent instructions can be found
+
+Compiler must remove all hazards - no dependencies within a packet
+
+MIPS with Static Dual Issue:
+
+* Two issue packets - one ALU/branch instruction and one load/store instruction
+* 64 bit aligned
+* Specialize path - have an adder to the load / store computation rather than a full ALU - cheaper - if we just doubled all resources wouldn't need to have this specialization
+* Example of Datapath: https://imgur.com/57tqVpi
+* Main issue is often supporting the high number of register ports
+
+Hazards in Dual Issue:
+
+* EX Data Hazards - ALU result cannot be used in load/store in same packet - data forwarding within a packet is not possible 
+* Load-use hazard - two instructions stalled rather than just one, since it is more costly to have a stage idle
+* More aggressive scheduling required
+
+Scheduling Example: https://imgur.com/Jk6fbTb - change sw address to make correct and can do this because value being added known apriori (since addi uses an immediate) - lets us put sw after addi
+
+Loop Unrolling:
+
+* Replicate loop body to expose more parallelism - reduces loop control overhead
+* Use different register names so as to not create new artificial dependencies
+
+How to decide how many times the loop is unrolled:
+
+* Knowing how many times loop will execute - exactly or know that it is a multiple of something
+* Depending on how much parallelism can be extracted
+* Depending on how many registers used - need enough registers to allow for register renaming
+
+Loop Unrolling (2) - Simplifying number of instructions - calculate sw and lw displacements accordingly and do the addi at the end instead right before it is used by the bne
+
+Loop Unrolling (3) - register renaming - to avoid overwriting when load words used in parallel - https://imgur.com/dz0Gal1 - trade space for time 
+
+Loop Unrolling (4) - despite complete parallelism with load words still only 1 slot for load instruction (structural hazard if two data transfer instructions at same time) - https://imgur.com/IT2hplO - moving addi to top requires all displacements to be adjusted
+
+Resulting IPC = 14 / 8 = 1.75, closer to 2 but at cost of register and code size that must be stored in instruction cache - may result in more cache misses
+
+Dynamic Multiple Issues - superscalar processors
+
+* CPU needs to decide how many instructions to issue and deal with structural and data hazards
+* Better for short-distance optimization, but static better for long distance optimization and depedency analysis. 
+
+Dynamically Scheduled CPU - https://imgur.com/VALOFZv:
+
+* In-order issue - getting instructions and decoding
+* Out-of-order execute - hold pending operands, functional units are where execution occurs - instructions wait in reservations station wait until their operands are ready - eventually notifies everyone waiting on it 
+* In-order commit - put in program order and 'committed' to processor architecture state
+
+Register Renaming - more logical registers and physical mapping to physical registers: (''not entirely clear about this'')
+
+* On instruction issue to reservation station if operand available in register file or reorder buffer - no longer required in register and thus can be overwritten
+* if operand not yet available - will be provided directly by a function unit - register update may not be required at all
+
+Speculation:
+
+* Predict branch and don't commit until branch determined
+* Avoid load and cache miss delay - predict effective address, predict loaded value, load before completing outstanding stores, bypass stored values to load unit - don't commit until speculation cleared
+
+Why do dynamic scheduling:
+
+* Not all stalls are predictable - cache misses etc.
+* Can't always schedule around branches
+* Different implementations of an ISA have different latencies and hazards - portability affected
+
+Does multiple issue work?
+ 
+* Yes but not as much as you'd like
+* Some dependencies hard to eliminate - pointer aliasing - limited window size during instruction issue doesn't expose all parallelism
+* Memory delays and limited bandwidth make it had to keep pipelines full all the time 
+* Hence moved to multi-core and multi-processor design</pre>
+</div>
 <div created="20200225052828231" modified="20200225085011081" tags="[[computer architecture]]" title="The Processor (Pipelining)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Basics: Idealized View__
 
@@ -14235,14 +14588,15 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Regularization and Overfitting]]
 # [[Overview of Supervised Learning]]</pre>
 </div>
-<div created="20200115032001461" modified="20200225085125925" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200115032001461" modified="20200225221801002" tags="[[computer architecture]] ucla" title="UCLA CS M151B - Computer Architecture" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>!!! Syllabus
 # [[Computer Abstractions and Technology]]
 # [[Instructions: Language of the Computer]]
 # [[Arithmetic for Computers]]
 # [[The Processor (Single Cycle Data Paths)]]
 # [[The Processor (Pipelining)]]
-# [[The Processor (Advanced Pipelining)]]</pre>
+# [[The Processor (Advanced Pipelining)]]
+# [[Large and Fast: Exploiting Memory Hierarchy]]</pre>
 </div>
 <div created="20191121010859851" modified="20191121011220661" tags="" title="UCLA CS M282A - Cryptography 1" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
