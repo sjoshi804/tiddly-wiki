@@ -177,6 +177,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/Excise/-972264986/tagnew</li>
+
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/sidebar</li>
 
 <li>$:/status/IsAnonymous</li>
@@ -243,6 +247,8 @@ Error message and password prompt
 
 <li>Connectedness</li>
 
+<li>Contextual Bandits</li>
+
 <li>Continuous Functions in Metric Spaces</li>
 
 <li>Continuous Functions in Topological Spaces</li>
@@ -274,6 +280,8 @@ Error message and password prompt
 <li>Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney</li>
 
 <li>Exploration and Exploitation</li>
+
+<li>Exploration and Exploitation in MDPs</li>
 
 <li>Extensions to Dynamic Programming (in RL context)</li>
 
@@ -356,6 +364,8 @@ Error message and password prompt
 <li>Monte-Carlo Policy Gradient</li>
 
 <li>Monte-Carlo Reinforcement Learning</li>
+
+<li>Multi-Armed Bandits</li>
 
 <li>Natural Numbers</li>
 
@@ -9979,7 +9989,13 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200227062221298" modified="20200227080351493" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20200227191403895" modified="20200227191403895" title="$:/state/Excise/-972264986/tagnew" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200227181455207" modified="20200227181455207" title="$:/state/showeditpreview" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200227062221298" modified="20200227194238787" title="$:/state/sidebar" revision="4" bag="default">
 <pre>yes</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
@@ -9994,7 +10010,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200227062151970" list="" modified="20200227080345967" title="$:/StoryList" revision="54" bag="default">
+<div created="20200227062151970" list="" modified="20200227191922992" title="$:/StoryList" revision="97" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10055,7 +10071,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200227062151050" modified="20200227080353510" title="$:/temp/search" revision="8" bag="default">
+<div created="20200227062151050" modified="20200227175213119" title="$:/temp/search" revision="38" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11193,6 +11209,24 @@ Proof: Any interval is homeomorphic to one of $$[0, 1], [0, 1), (0, 1)$$
 * Thus every compact interval of $$R$$ is connected 
 * Since $$[0, 1)$$ and $$(0, 1)$$ can be expressed as the union of sequences of compact intervals, each element in these sequence is connected and thus by Thm 2, the sets are connected. </pre>
 </div>
+<div created="20200227192844166" modified="20200227192844166" tags="[[Exploration and Exploitation]]" title="Contextual Bandits" revision="1" bag="default">
+<pre>* A contextual bandit is a tuple $$&lt;A, S, R&gt;$$
+* A is a known set of actions
+* $$S = P[S]$$ is an unknown distribution over states 
+* $$R^a_s = P[R = r | S = s, A = a]$$
+* At time step t, $$S_t \sim S$$ and agent selections action and can gets reward $$R_t \sim R^{A_t}_{S_t}$$
+* Goal is to maximize cumulative reward
+
+Linear Regression:
+
+* Action-value function is expected reward for state s and action a: $$Q(s, a) = E[r | s, a]$$
+* $$Q_\theta(s, a) = \phi(s, a)^T \theta \approx Q(s, a)$$ - estimate with linear function approximator
+* Estimate parameters by least squares regression: $$A_t = \sum_{T = 1}^t \phi(s_T, a_T) \phi(s_T, a_T)^T$$, $$b_t = \sum_{T = 1}^t \phi(s_T, a_T) r_T$$ and $$\theta_t = A_t^{-1}b_t$$
+
+Linear UCB: use the least squares regression to estimate variance of action-value and define UCB to be c std deviations above mean and add bonus for uncertainty $$U_\theta(s, a) = c \sigma$$
+
+Algorithm: https://imgur.com/0eLgRXN</pre>
+</div>
 <div created="20200131075742535" modified="20200219040607249" tags="topology [[metric spaces]]" title="Continuous Functions in Metric Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: Let (X, d) and (Y, p) be metric spaces. A function f: X -&gt; Y is continuous at $$x \in X$$ if whenever $$\{x_n\}_{n \in \bf{N}}$$ converges to x, $$\{f(x_n)\}_{n \in \bf{N}}$$ converges to f(x)
 
@@ -11496,12 +11530,55 @@ e.g. [[Neural Networks]], [[Ensemble Models]] are hard to explain but very accur
 <div created="20200131001053606" modified="20200131002052629" tags="xai [[artificial intelligence]] [[talk summary]]" title="Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://www.cal.cs.ucla.edu/cgi-bin/webevent.cgi?cmd=showevent&amp;ncmd=calmonth&amp;cal=cal2&amp;id=1578079202-22878-1&amp;ncals=&amp;y=2020&amp;m=01&amp;d=14&amp;token=&amp;sb=0&amp;cf=cal&amp;lc=calmonth&amp;swe=1&amp;set=1&amp;sa=0&amp;sort=e,m,t&amp;ws=0&amp;sib=1&amp;de=1&amp;tf=0</pre>
 </div>
-<div created="20200224070942655" modified="20200224072228016" tags="[[reinforcement learning]]" title="Exploration and Exploitation" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200224070942655" modified="20200227194223003" tags="[[reinforcement learning]]" title="Exploration and Exploitation" type="text/vnd.tiddlywiki" revision="13" bag="default">
 <pre>__[[Overview of Exploration v/s Exploitation]]__
 
 {{Overview of Exploration v/s Exploitation}}
 
-</pre>
+__[[Multi-Armed Bandits]]__
+
+{{Multi-Armed Bandits}}
+
+__[[Contextual Bandits]]__
+
+{{Contextual Bandits}}
+
+__[[Exploration and Exploitation in MDPs]]__
+
+{{Exploration and Exploitation in MDPs}}</pre>
+</div>
+<div created="20200227194209143" modified="20200227194209143" tags="[[Exploration and Exploitation]]" title="Exploration and Exploitation in MDPs" revision="1" bag="default">
+<pre>Principles discussed in [[Multi-Armed Bandits]] apply to MDPs
+
+Optimistic Initialization with Model-Free RL: 
+
+* Initialize Q(s, a) to $$\frac{r_max}{1 - \gamma}$$
+* Run any model-free RL algorithm, encourages exploration of states and actions
+
+Optimistic Initialization with Model-Based RL: 
+
+* Construct optimistic model of the MDP with transitions that go to heaven i.e transition to terminal state with maximum reward
+* Solve optimistic MDP using planning, while updating model based on experience
+*$$R_max$$ algorithm
+
+Upper Confidence Bounds with Model-Free RL:
+
+* Maximize UCB on action-value function $$Q^\pi(s, a)$$
+and then $$a_t = argmax_{a \in A} Q(s_t, a) + U(s_t, a)$$
+* Maximize UCB on optimal action-value function $$Q^*(s, a)$$ and $$a_t = argmax_{a \in A} Q(s_t, a) + U_1(s_t, a) + U_2(s, a)$$ - needs to estimate uncertainty in policy evaluation - same as above and uncertainty from policy improvement which is hard to do
+
+Bayesian Model-Based RL:
+
+* Maintain posterior distribution over MDP models
+* Estimate both transitions and rewards $$p[P, R | h_t]$$ 
+* Use posterior to guide exploration: UCB (Bayesian UCB) and Probability Matching (Thompson Sampling - sample an MDP from posterior, solve and select optimal actions according to it and then revise posterior and repeat)
+
+Information State Space:
+
+* Augmented State Space that incorporates information state
+* Bayes-adaptive approach does so with a posterior model for the transition probabilities and rewards for every augmented state
+*  Solving this MDP gives optimal trade-off but usually too big to solve (effective in smaller contexts)
+* Monte-Carlo tree search has been effective in this setting </pre>
 </div>
 <div created="20200214205649421" modified="20200214210303147" tags="[[reinforcement learning]] [[Planning by Dynamic Programming]]" title="Extensions to Dynamic Programming (in RL context)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Asynchronous Dynamic Programming - back up states individually, for each selected state, apply the appropriate backup, can significantly reduce computation - guaranteed to converge if for all states continue to be selected
@@ -12936,6 +13013,141 @@ Incremental Monte-Carlo Updates:
 * For non-stationary problems, useful to track running mean i.e. forget old episodes -&gt; $$V(S_t) \leftarrow V(S_t) + \alpha (G_t - V(S_t))$$ - exponential forgetting rate from the constant $$\alpha$$
 </pre>
 </div>
+<div created="20200227191404666" modified="20200227191820736" tags="[[Exploration and Exploitation]]" title="Multi-Armed Bandits" revision="2" bag="default">
+<pre>* A tuple &lt;A, R&gt; where A is a known set of actions (arms) and $$R^a(r) = P[r | a]$$ is an unknown probability distribution over rewards
+* Every action 'corresponds' to 'one machine' - https://imgur.com/sCmUFhu
+* At each step t the agent selects an action $$a_t \in A$$ and the environment generates a reward $$r_t \sim R^{a_t}$$
+* Goal: maximize cumulative reward $$\sum_{t = 1}^T r_t$$
+
+Regret - opportunity loss:
+
+* Action-value is the mean reward for action a $$q(a) = E[R | A=a]$$
+* Optimal value $$v_*$$ is $$v_* = q(a*) = max_{a \in A} q(a)$$
+* Regret is then how much worse we do then $$v_*$$, therefore regret for one step $$l_t = E[V* - Q(a_t]$$
+* Total Regret: $$L_t = E[\sum_{t = 1}^T V* - Q(a_t)$$
+* Maximize cumulative reward = minimize total regret 
+
+Counting Regret:
+
+* Count is the number of times action a is selected till time t: $$N_t(a)$$
+* $$\Delta_a = V* - Q(a)$$
+* Thus $$L_t = E[sum_{t = 1}^T V* - Q(a_t)] = \sum_{a \in A}E[N_t(a)](V* - Q(a)) = \sum_{a \in A}E[N_t(a)] \Delta_a$$
+* Pick arms with high gap infrequently and low gap frequently and gaps are not known 
+
+Linear or Sub-linear Regret: https://imgur.com/sQZotT7
+
+* If an algorithm never explores, linear regret -&gt; pick the wrong action
+* If an algorithm always explores, linear regret -&gt; small fixed probability at every stage of random action selection thus linear regret
+
+Greedy: (estimate action value as an average of rewards)
+
+* $$\hat{Q}_t(a) = \frac{1}{N_t(a)}\sum_{t = 1}^T r_t Indicator(a_t = a)$$
+* In theory, you could do the wrong this forever, therefore in expectation you could do this, thus linear regret
+* $$a^*_t = argmax_{a \in A}\hat{Q_t(a)}$$
+
+Greedy Algorithm with Optimistic Initialization:
+
+* Initial values to maximum possible $$Q(a) = r_max$$ - assume best and initialize $$N(a)$$ to a some value greater than 0 (a confidence in this initial value)
+* Then act greedily, $$A_t = argmax_{a \in A}Q_t(a)$$
+* $$\hat{Q}_t(a_t) = \hat{Q}_{t - 1}(a_t) + \frac{1}{N_t(a_t)} (r_t - \hat{Q}_{t - 1}a_t)$$
+* Encourages exploration of unknown values - but a few unlucky samples could lock out optimal action forever
+* Linear Regret
+
+$$\epsilon$$-Greedy Algorithm (with constant epsilon)
+
+* Constant epsilon ensures minimum regret $$l_t \geq \frac{\epsilon}{|A|} \sum_{a \in A} \Delta_a$$
+* Therefore linear regret, similarly for softmax exploration
+* even with optimistic initialization has linear regret due to similar reasoning
+
+Decaying $$\epsilon$$-Greedy:
+
+* Pick a decay schedule: $$c &gt; 0$$, $$d = min_{a | \Delta_a &gt; 0}\Delta_i$$, $$\epsilon_t = min \{1, \frac{c |A|}{d^2 t} \}$$
+* Logarithmic asymptotic total regret
+* Goal: find an algorithm with sublinear regret without reward knowledge
+
+Lower Bound on Regret:
+
+* Performance of any algorithm is determined by similarity between optimal arm and other arms - harder problems have similar-looking arms with different means - noise makes it seem like they are very similar and hard to tell which is actually better
+* This is described by the gap $$\Delta_a$$ and the similarity in the distributions $$KL(R^a || R^{a_*})$$ - KL divergence
+* Thm (Lai and Robbins): $$lim_{t \rightarrow \infty} L_t \sum_{a | \Delta_a &gt; 0} \frac{\Delta_a}{KL(R^a || R^{a_*})}$$
+
+Optimism in the face of Uncertainty: https://imgur.com/R2AeX3i, after picking blue action a few times, less uncertain about therefore more likely to pick another action: https://imgur.com/PjeXKMN
+
+* More uncertain we are in a certain action-value, more we explore the action as it could be the best action
+* The sharper peaks indicates more confidence in the value whereas softer smoother peaks indicate uncertainty
+
+Upper Confidence Bounds:
+
+* estimate ucb for $$\hat{U}_t(a)$$ for each action value s.t $$Q(a) \leq \hat{Q}_t(a) + \hat{U}_t(a)$$ with high probability e.g. 95% confidence interval's upper bound
+* Depends on $$N(a)$$, more times the action is tried $$\hat{U}_t(a)$$ - is smaller and vice-a-versa
+* After infinite visits, no uncertainty and thus just use mean to maximize
+* UCB algorithm: $$a_t = argmax_{a \in A} \hat{Q}_t(a) + \hat{U}_t (a)$$
+
+Hoeffding's Inequality:
+
+* Thm: Let $$X_1, ... , X_t$$ be iids in $$[0, 1]$$ and let $$\bar{X}_t = \frac{1}{T} \sum_{t = 1}^T X_t$$, then $$P[E[X] &gt; \bar{X}_t + u] \leq e^{-2tu^2}$$
+* Lowkey assumption that you know an upper bound on reward so that you can scale, but there is a version that doesn't require the range assumption
+* Therefore $$P[Q(a) &gt;  \hat{Q}_t(a) + \hat{U}_t (a)] \leq e^{2N_t(a){ \hat{U}_t (a)}^2}$$
+* Thus pick a probability p that true values exceeds UCB and solve for $$ \hat{U}_t (a)$$
+*  $$\hat{U}_t (a) = \sqrt{\frac{-logp}{2N_t(a)}}$$
+* Reduce p as we observe more rewards to help converge to optimal action - requires our algorithms to be surer as time goes on, therefore pick a schedule that decays with 
+* $$U_t(a) = \sqrt{\frac{clogt}{2N_t(a)}}$$ for $$p = t^{-c}$$
+
+Thus we get UCB1 Algorithm:
+
+* $$A_t = argmax_{a \in A} Q_t(a) + \sqrt{\frac{2logt}{2N_t(a)}}$$
+
+Performance: https://imgur.com/rhbmvf5
+
+* UCB does well without any sort of assumptions
+* $$\epsilon$$-Greedy does really well if $$\epsilon$$ schedule chosen well 
+
+The UCB method is a general approach to creating an algorithm and can plug in other UCB by integrating prior knowledge about the distributions
+
+Bayesian Bandits:
+
+* Exploit prior knowledge about rewards
+* Start of with a distribution $$P[Q | w]$$ over action-value function with parameter $$w$$ - e.g. w has means and variances of each of our arms and our prior knowledge is the fact that the distributions are independent gaussian)
+* Bayesian methods compute posterior distribution over $$w$$, use $$p[w | h_t]$$ where $$h_t$$ is the history 
+* Example: https://imgur.com/Yt58jXg
+
+Probability Matching selects action a according to probability that a is the optimal action
+
+* $$\pi(a) = P[Q(a) = max_{a'}Q(a') | R_1, ..., R_{t - 1}]$$
+* Automatically manifests the principle: Optimism in the face of uncertainty
+
+Thompson Sampling - sample-based probability matching
+
+* $$\pi(a) = E[Indicator(Q(a) = max_{a'}Q(a') | R_1, ... , R_{t - 1}]$$
+* Sample from the posterior distribution and then pick action with highest value from the samples
+* Correct distribution based on reward received
+* Actually achieves Thompson sampling achieves Lai and Robbins lower bound on regret
+
+What happens when there is a budget - a limit to how much exploration can we do?
+
+Value of Information:
+
+* Useful as it gains information 
+* Quantify the value of information -&gt; can make perfect decision with regards to exploration and exploitation
+* Information gain is higher in uncertain situations
+* Compare long term gain of information v/s immediate reward
+
+Solving Information State Space Bandits:
+
+* Each step transitions us to a new information state 
+* Each action a causes a transition to a new information state (by adding information) with probability $$\tilde{P^a_{\tilde{s}\tilde{s}'}}$$
+* MDP defined by this = $$&lt;\tilde{S}, A, \tilde{P}, R, \gamma&gt;$$
+
+Example: Characterizing our information space with a posterior distribution -&gt; Bayes-Adaptive MDP: consider this for Bernoulli Random Bandit - https://imgur.com/lx71n0W, https://imgur.com/DzB4vqQ
+
+Can solve MDP using reinforcement learning or Bayesian model-based reinforcement learning (Gittins index - using dynamic programming) 
+
+Summary:
+
+* Random Exploration: $$\epsilon$$-greedy, Softmax, Gaussian noise
+* Optimism in the face of uncertainty: Optimistic Initialization, UCB, Thompson Sampling (not best for MDP as it doesn't take into consideration sequential decision making) - this method can be problematic due to very large action spaces and due to the risk of certain actions having really bad values (crashing helicopter etc.)
+* Information state space: Gittins indices and Bayes-adaptive MDPs</pre>
+</div>
 <div author="Siddharth Joshi" created="20191227164459504" modified="20191227165219221" tags="[[real analysis]] math" title="Natural Numbers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Defining the natural numbers axiomatically:
 
@@ -13418,7 +13630,7 @@ Use the bellman expectation equation - https://imgur.com/1xnlKmN and use the val
 
 Small Grid-world Example: https://imgur.com/rAdbMUM, https://imgur.com/ZduqlSZ, https://imgur.com/lNm7S5N - intuition is how just computing a random policy's value function can give us a better policy and in this case the greedy policy based on the value function gives us the optimal policy after just 3 iterations</pre>
 </div>
-<div created="20200222213336891" modified="20200223053813687" tags="[[reinforcement learning]]" title="Policy Gradient Methods" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200222213336891" modified="20200227175035967" tags="[[reinforcement learning]]" title="Policy Gradient Methods" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>[[Value Function Approximation]] discussed approximating both state and action-value function using parameters $$\theta$$ and policy generated directly from value function 
 
 Here, we will directly parametrize the policy: $$\pi_\theta(s, a) = P[a | s, \theta]$$ - can again think of as an arbitrary function approximator. A probability distribution conditioned both on state and parameters. 
@@ -13455,7 +13667,7 @@ Example: Aliased Gridworld: https://imgur.com/FEuLa4e
 
 Policy Objective Functions:
 
-* Given policy $$\pi_\theta(s, a)$$ with parameters $$\theta)$$ find best $$\theta$$
+* Given policy $$\pi_\theta(s, a)$$ with parameters $$\theta$$ find best $$\theta$$
 * Episodic environments can use $$J_1(\theta) = V^{\pi_\theta}(s_1) = E_{\pi_\theta}[v_1]$$ - where $$s_1$$ is the start state (can also work with a distribution over start states)
 * In continuing environments, can use average value $$J_{average val}(\theta) = \sum_s d^{\pi_\theta}(s)V^{\pi_\theta}(s)$$ . Probability we are in some state (based on policy?) times of value of being in a state. 
 * Average Reward per Time step: $$J_{average reward}(\theta) = \sum_s d^{\pi_\theta}(s) \sum_a \pi_\theta(s)(s, a) R^a_s$$ where $$d^{\pi_\theta}(s)$$ is the stationary distribution of Markov chain for $$\pi_\theta$$
