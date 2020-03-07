@@ -189,6 +189,8 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/search</li>
+
 <li>$:/theme</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
@@ -241,6 +243,8 @@ Error message and password prompt
 
 <li>Connectedness</li>
 
+<li>Contagion Models</li>
+
 <li>Contextual Bandits</li>
 
 <li>Continuous Functions in Metric Spaces</li>
@@ -250,6 +254,8 @@ Error message and password prompt
 <li>Contraction Mapping Theorem (and application to RL)</li>
 
 <li>Convolutional Neural Networks</li>
+
+<li>Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning</li>
 
 <li>Data Imputation Techniques</li>
 
@@ -10001,7 +10007,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="[[Papers on Hierarchical Reinforcement Learning]] Welcome [[How to Contribute?]]" title="$:/StoryList" revision="3" bag="default">
+<div created="20200307235351120" list="[[Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning]] Welcome [[How to Contribute?]]" modified="20200307235549424" title="$:/StoryList" revision="18" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10049,11 +10055,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1440&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10061,6 +10067,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200307235346827" modified="20200307235645276" title="$:/temp/search" revision="33" bag="default">
+<pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -11328,6 +11337,29 @@ Proof: Any interval is homeomorphic to one of $$[0, 1], [0, 1), (0, 1)$$
 * Thus every compact interval of $$R$$ is connected 
 * Since $$[0, 1)$$ and $$(0, 1)$$ can be expressed as the union of sequences of compact intervals, each element in these sequence is connected and thus by Thm 2, the sets are connected. </pre>
 </div>
+<div created="20200302190348920" modified="20200302200436089" tags="" title="Contagion Models" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Si(t) = probability that node i is susceptible at time t
+Xi(t) = probability that node i is infected at time t
+TO become infected, node i needs to be susceptible and has to catch the disease froma neighbor node
+
+q s_i(t) x_j(t)
+
+d(x_i(t))/dt = q sum Aij s_(t) x_j(t)
+
+similarly 
+
+d(s_i(t))/dt = -q sum Aij s_i(t) x_j(t)
+
+These are related by s_i(t) + x_i(t) = 1
+
+Initial Conditions
+
+x_i(0) = c / n, c &lt;&lt; n
+
+s_i(0) = 1 - c_n
+
+We had dervied x(t) </pre>
+</div>
 <div created="20200227192844166" modified="20200227192845427" tags="[[Exploration and Exploitation]]" title="Contextual Bandits" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* A contextual bandit is a tuple $$&lt;A, S, R&gt;$$
 * A is a known set of actions
@@ -11456,6 +11488,36 @@ By this theorem and by similar proof of contraction we can show that policy eval
 </div>
 <div created="20200227061423420" modified="20200227061428919" tags="[[deep learning]]" title="Convolutional Neural Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks</pre>
+</div>
+<div created="20200307221145996" modified="20200307235625620" tags="research [[reinforcement learning]]" title="Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="6" bag="default">
+<pre>__Background:__ [[Papers on Hierarchical Reinforcement Learning]]
+
+__Motivation__
+
+Table 1 Summary of key principles of hierarchical control: https://www.nature.com/articles/s41467-019-13239-6/tables/1
+
+Common Temporal Motifs are Abstracted - current methodology doesn't seem to exploit this in the multi task setting by leveraging the commonality across tasks, rather if it does attempt to harness the common temporal motifs, it only does so in the one task setting. 
+The distinction is between learning common sub policies that appear frequently in solving one task (this is what current methods do) and learning sub policies that appear frequently across tasks.
+
+While the second may be done to some extent by default since a key idea behind HRL is also generalization, this is not done in a truly hierarchical manner. A truly hierarchical utilization of the idea that there exist some common skills across tasks (at various temporal granularities i.e. various different hierarchical levels) should involve hierarchical decomposition and composition of the skills to develop a rich hierarchy of policies rather than a simple two level hierarchy. Intuitively, it seems that this richer hierarchy would offer more generalizing ability to the agent. 
+
+Example: Consider the tasks of playing racquet sports. Take a HRL agent that learns how to play squash and in this process learns the skills of forehand and backhand. This agent is then asked to play tennis and struggles with the use of the same skills due to subtle distinctions, thus through existing sub policy adaptation methods, the forehand and backhand is now fine-tuned for tennis - and for example's sake - assume this modification is the addition of the idea of adding top spin to shots. Now when the agent moves to a third task of say table tennis - it struggles again due to the different dynamics of the environment and the skills while helpful don't hold up very well. The agent could very well retune the skill and achieve better performance but this could be fairly sample intensive. Alternatively, if the agent was able to decompose the tennis forehand into some core forehand skill, the skill of hitting with the right power for tennis, the skill of hitting a ball with topspin then the table tennis agent could quickly learn the game's dynamics to adjust power differently but recompose to form a new skill by reusing the core forehand and topspin idea as is. 
+
+Through the example, it seems that this sort of adaptation where skills are decomposed into  more fundamental parts and recomposed to make new skills, seems to allow for the creation of more generally applicable skills and thus should help with sample efficiency in the context of multi-task learning. 
+
+__How do we do this?__
+
+Idea 1: 
+
+Go ahead with other sub-policy adaptation techniques but have a module that compares the original skill and the new adapted skill once they have been learned, to determine common parts and break the common part into one skill and the uncommon parts into separate skills. 
+
+Issues with Idea 1: Not sure how to detect common parts, not necessarily that the fine-tuning is specifically sub-skill 1 followed by sub-skill 2 in original vs/ sub-skill 1 followed by sub-skill 3. For example, the fine-tuning (for a stochastic policy) could be potentially a change in the distribution. 
+
+Investigate this by actually implementing HRL and seeing what the skills i.e. sub policies look like before and after the fine-tuning step. 
+
+__Computational Challenges__
+
+Expect to deal with challenge of instability since the master policy and sub-policies are being changed continuously. </pre>
 </div>
 <div author="Siddharth Joshi" created="20191122022337773" modified="20191122024526637" tags="[[machine learning]] [[feature engineering]]" title="Data Imputation Techniques" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Techniques to impute a feature value when one is missing for a given example:
@@ -13711,7 +13773,7 @@ In April 2008, Google launched App Engine, with a free trial version limited to 
 
 The original intent of PaaS was to simplify the code-writing process for developers, with the infrastructure and operations handled by the PaaS provider. Originally, all ~PaaSes were in the public cloud. Because many companies did not want to have everything in the public cloud, private and hybrid PaaS options (managed by internal IT departments) were created.</pre>
 </div>
-<div created="20200229034825603" modified="20200229040124762" tags="[[reinforcement learning]]" title="Papers on Hierarchical Reinforcement Learning" revision="1" bag="default">
+<div created="20200229034825603" modified="20200307235552972" tags="[[reinforcement learning]]" title="Papers on Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>* Overview of the field (March 2019): https://thegradient.pub/the-promise-of-hierarchical-reinforcement-learning/ 
 
 * Hierarchical Reinforcement and Imitation Learning (June 2018): https://arxiv.org/pdf/1803.00590.pdf
@@ -13726,7 +13788,9 @@ The original intent of PaaS was to simplify the code-writing process for develop
 
 * Near-Optimal Representation Learning for Hierarchical Reinforcement Learning (January 2019): https://arxiv.org/pdf/1810.01257.pdf
 
-* Why does Hierarchy (sometimes) work so well in Reinforcement Learning? (December 2020): https://arxiv.org/pdf/1909.10618.pdf</pre>
+* Why does Hierarchy (sometimes) work so well in Reinforcement Learning? (December 2020): https://arxiv.org/pdf/1909.10618.pdf
+
+* Planning with Abstract Markov Decision Processes (2016): https://h2r.cs.brown.edu/wp-content/uploads/2016/05/gopalan16.pdf</pre>
 </div>
 <div created="20200227075022683" modified="20200227080320938" tags="topology" title="Path Connectedness" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Intuition: A formalism of the idea that a geometric figure is all one piece if it is possible to go from any point to any other point via a curve that never leaves the figure
