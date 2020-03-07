@@ -10007,7 +10007,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200307235351120" list="[[Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning]] Welcome [[How to Contribute?]]" modified="20200307235549424" title="$:/StoryList" revision="18" bag="default">
+<div created="20200307235351120" list="[[Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning]] Welcome [[How to Contribute?]]" modified="20200307235549424" title="$:/StoryList" revision="20" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -11489,7 +11489,7 @@ By this theorem and by similar proof of contraction we can show that policy eval
 <div created="20200227061423420" modified="20200227061428919" tags="[[deep learning]]" title="Convolutional Neural Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks</pre>
 </div>
-<div created="20200307221145996" modified="20200307235625620" tags="research [[reinforcement learning]]" title="Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="6" bag="default">
+<div created="20200307221145996" modified="20200307235801325" tags="research [[reinforcement learning]]" title="Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="7" bag="default">
 <pre>__Background:__ [[Papers on Hierarchical Reinforcement Learning]]
 
 __Motivation__
@@ -11504,6 +11504,8 @@ While the second may be done to some extent by default since a key idea behind H
 Example: Consider the tasks of playing racquet sports. Take a HRL agent that learns how to play squash and in this process learns the skills of forehand and backhand. This agent is then asked to play tennis and struggles with the use of the same skills due to subtle distinctions, thus through existing sub policy adaptation methods, the forehand and backhand is now fine-tuned for tennis - and for example's sake - assume this modification is the addition of the idea of adding top spin to shots. Now when the agent moves to a third task of say table tennis - it struggles again due to the different dynamics of the environment and the skills while helpful don't hold up very well. The agent could very well retune the skill and achieve better performance but this could be fairly sample intensive. Alternatively, if the agent was able to decompose the tennis forehand into some core forehand skill, the skill of hitting with the right power for tennis, the skill of hitting a ball with topspin then the table tennis agent could quickly learn the game's dynamics to adjust power differently but recompose to form a new skill by reusing the core forehand and topspin idea as is. 
 
 Through the example, it seems that this sort of adaptation where skills are decomposed into  more fundamental parts and recomposed to make new skills, seems to allow for the creation of more generally applicable skills and thus should help with sample efficiency in the context of multi-task learning. 
+
+''Would like to find evidence for such a phenomenon occurring when humans generalize across tasks to make the motivation very grounded in reality.''
 
 __How do we do this?__
 
