@@ -177,6 +177,14 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/Excise/-896989314/tagnew</li>
+
+<li>$:/state/showeditpreview</li>
+
+<li>$:/state/sidebar</li>
+
+<li>$:/state/tab--1498284803</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -186,6 +194,8 @@ Error message and password prompt
 <li>$:/status/UserName</li>
 
 <li>$:/StoryList</li>
+
+<li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
 
@@ -233,6 +243,8 @@ Error message and password prompt
 
 <li>Combinatorial Optimization Algorithms for Clustering and Machine Learning by Dorith Hochbaum</li>
 
+<li>Community Detection Methods</li>
+
 <li>Compactness of Metric Spaces</li>
 
 <li>Compactness of Topological Spaces</li>
@@ -240,6 +252,8 @@ Error message and password prompt
 <li>Completeness</li>
 
 <li>Computer Abstractions and Technology</li>
+
+<li>Configuration Model (Random Graph Model)</li>
 
 <li>Connectedness</li>
 
@@ -275,7 +289,11 @@ Error message and password prompt
 
 <li>Draft of 'Integrating Learning and Planning'</li>
 
+<li>Epidemics on Networks</li>
+
 <li>Equivalence Relations</li>
+
+<li>Erdos-Renyi Random Graph Model</li>
 
 <li>Explainability of Model</li>
 
@@ -294,6 +312,8 @@ Error message and password prompt
 <li>Finite Difference Policy Gradient</li>
 
 <li>For Every and There Exists</li>
+
+<li>Generalizations of Networks</li>
 
 <li>Groups of Nodes</li>
 
@@ -362,6 +382,8 @@ Error message and password prompt
 <li>Model-Free Control</li>
 
 <li>Model-Free Prediction</li>
+
+<li>Models of Networks</li>
 
 <li>Monte-Carlo Policy Gradient</li>
 
@@ -9995,6 +10017,18 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200309004454962" modified="20200309004454962" title="$:/state/Excise/-896989314/tagnew" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200308215418985" modified="20200309040907635" title="$:/state/showeditpreview" revision="10" bag="default">
+<pre>no</pre>
+</div>
+<div created="20200308222200417" modified="20200309041244479" title="$:/state/sidebar" revision="10" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200309034416386" modified="20200309034416386" title="$:/state/tab--1498284803" revision="1" bag="default">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -10007,8 +10041,11 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200308000121523" list="[[Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning]] [[Papers on Hierarchical Reinforcement Learning]] Welcome [[How to Contribute?]]" modified="20200308005929049" title="$:/StoryList" revision="11" bag="default">
+<div created="20200308212825119" list="[[UCLA Math 168 - Introduction to Networks]] [[Epidemics on Networks]]" modified="20200309040855778" title="$:/StoryList" revision="91" bag="default">
 <pre></pre>
+</div>
+<div created="20200309034416386" modified="20200309034416386" title="$:/temp/advancedsearch" revision="1" bag="default">
+<pre>[tags[]sort[title]]</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
 <pre>{
@@ -10055,11 +10092,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1440&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;900&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10068,7 +10105,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200308000120356" modified="20200308043559211" title="$:/temp/search" revision="10" bag="default">
+<div created="20200308212819826" modified="20200309034408787" title="$:/temp/search" revision="13" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -10952,6 +10989,50 @@ HNC is poly time solvable: monotone IP3 (Hochbaum 2010) - need to avoid the case
 
 </pre>
 </div>
+<div created="20200309034356041" modified="20200309040816084" tags="[[graph theory]]" title="Community Detection Methods" revision="4" bag="default">
+<pre>Three different levels of network study:
+
+* microscopic - properties of nodes - centrality etc.
+* mesoscopic - properties of groups of nodes
+* macroscopic - properties of whole network
+
+Communities are a mesoscopic structure - nodes that are densely interconnected within the group but sparsely connected outside
+
+Types of Community Detection Methods:
+
+* Optimization method - given a measure of how good a partition is, try to find a partition that maximizes it
+* Local methods - k-cliques percolation etc. 
+
+Optimization Methods - given a partition of the set of nodes, f(Partition) is high if partition is good and low if bad
+
+Modularity:
+
+* Score of a partition is fraction of nodes within a block - fraction of nodes within the block had edges been placed at random
+* Kronecker delta $$\delta g_i$$ correspond to group i
+* # of edges between nodes in the same block $$\frac{1}{2} \sum A_{ij} \delta g_i \delta g_j$$
+* Expected number of edges if placed at random according to config model = $$\frac{1}{2} \sum_{jk} \frac{k_i k_j}{2m}\delta g_i \delta g_j$$
+* Modularity: $$Q = \frac{1}{2m} \sum A_{ij} \delta g_i \delta g_j - \frac{1}{2m}  \sum_{jk} \frac{k_i k_j}{2m}\delta g_i \delta g_j$$, $$Q \in [-1, 1]$$
+
+NP Hard, thus want a good poly time approximation
+
+Louvain Algorithm - Hierarchical Clustering
+
+* Every block contains just 1 node
+* For ever every block, consider the change in modularity of adding to another block and make the move that would increase modularity the most (none if no moves achieve this)
+* Coalesce partitions into nodes
+* Repeat until convergence
+
+Measuring Performance of Community Detection:
+
+* Speed
+* Quality - real world networks where there are ground truth communities (but hard to find) or synthetic networks with built in community structure
+
+Real World Benchmarks - karate-club network, dolphin, football
+
+Synthetic Benchmarks - fractal networks - self-similar networks, stochastic block model- a variant of where nodes divided into blocks and probability of having edge between block is modeled 
+
+</pre>
+</div>
 <div created="20200131075725454" modified="20200221193055861" tags="[[metric spaces]] topology" title="Compactness of Metric Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A space is totally bounded if $$\forall \epsilon &gt; 0$$, there exists a finite $$\epsilon$$-net for X i.e there exist $$x_1, ..., x_n$$ s.t. every point in X is within $$\epsilon$$ of some $$x_i$$, equivalently $$X = \cup_{i = 1}^n B(x_i, \epsilon)$$
 
@@ -11296,6 +11377,64 @@ Millions of Instructions Per Second = Instruction Count / Execution Time * 10^6 
 
 </pre>
 </div>
+<div created="20200309013140710" modified="20200309034247685" tags="[[Models of Networks]]" title="Configuration Model (Random Graph Model)" revision="8" bag="default">
+<pre>Configuration Model - specified by n nodes and a degree sequence
+
+* Need the sum of the degrees to be an even number, since edges = 1/2 sum of degree
+* Can have multi-edges and self-edges - need to allow this to allow the efficient matching process with all matchings have uniform distribution
+* As n turns to infinity, probability of multi-self edges goes to 0
+* In the absence of self-edges and multi-edges, every network appears with same probability
+* $$\prod_{i = 1}^n k_i!$$ matchings correspond to the same network
+* # of matchings depends only on number of edges = $$\frac{(2m!)}{2^n m!}$$
+* Ensemble of networks with n nodes and $$\sum k_i / 2$$ edges specified using a degree sequence where every matching of half-edges is equally likely
+
+Friendship Paradox:
+
+* Probability that one of the half edges of u is attached to a specific node with degree k = $$\frac{k}{2m - 1} \approx \frac{k}{2m}$$
+* number of nodes with degree k = $$n \cdot p_k$$, therefore probability of being connected to a node with degree k = $$\frac{n}{2m} k p_k = \frac{1}{&lt;k&gt;} k p_k$$
+* Average degree on node attached to half edge of a node = $$\sum_{k \in N} \frac{k p_k}{&lt;k&gt;} = \frac{1}{&lt;k&gt;} \sum_k k^2 p_k = \frac{&lt;k^2&gt;}{&lt;k&gt;}$$
+* $$\frac{&lt;k^2&gt;}{&lt;k&gt;} - &lt;k&gt; = \frac{&lt;k^2&gt; - &lt;k&gt;^2}{&lt;k&gt;} = \frac{\sigma_k^2}{&lt;k&gt;}$$ and this value is greater than 0 unless all nodes have same degree, therefore the conclusion is that typically your friends have more friends than you
+* Generalized Friendship paradox: for any property correlated with degree e.g friends have more followers, virality: friends receive more viral content etc.
+
+Clustering Coefficient:
+
+* Excess degree of a node i reached through a half edge from a random node u is the # of the edges different from the edge we arrived from 
+* Degree distribution for excess degree is $$\frac{(k + 1)p_{k + 1}}{&lt;k&gt;}$$
+* If $$k_i \neq 0$$, excess degree of i is $$k_i - 1 = \hat{k_i}$$
+* Probability of having an edge between i and j is $$\frac{\hat{k_i} \hat{k_j}}{2m - 2} \approx \frac{\hat{k_i} \hat{k_j}}{2m}$$
+* $$\sum_{\hat{k_i} \hat{k_j}} q \hat{k_i} q \hat{k_j}  \frac{\hat{k_i} \hat{k_j}}{2m} = \frac{1}{n &lt;k&gt;^3} {(&lt;k&gt;^2 - &lt;k&gt;)}^2$$, this also fails to be accurate in terms of clustering coefficient as it vanishes as n turns to infinity
+
+Random Graphs with Clustering (2009):
+
+* Each node has half edges and corners of triangles
+* n nodes
+* for each node i, $$t_i$$ - number of triangles in which the node participates, $$s_i$$ - number of half edges different from the one in the corners
+* now choose pairs of edges uniformly at random and triples of corners uniformly at random
+* clustering coefficient doesn't vanish as $$n \rightarrow \infty$$
+
+__Locally Tree-Like__
+
+* Consider subnetwork of nodes within distance d of a given node
+* Probability of having an edge between node i and j $$\approx \frac{\hat{k_i}\hat{k_j}}{2m}$$ 
+* But since nodes arrived at by following edges, the degree actually follows the excess degree distribution and thus if $$\frac{&lt;k&gt;^2 - &lt;k&gt;}{&lt;k&gt;}$$ remains constant
+
+In some sense a generalization of the notion that the clustering coefficient goes to 0 as the n turns to infinity
+
+Average number of second neighbors
+
+$$c2=⟨k⟩\frac{⟨k2⟩−⟨k⟩}{⟨k⟩}=⟨k^2⟩−⟨k⟩$$
+
+Therefore, average excess degree = $$\frac{\text{avg num of second neighbors}}{\text{avg num of neighbors = mean degree}}$$
+
+Diameter: 
+
+* consider nodes within distance s from i (called u) and nodes within distance t from j (called v)
+* Probability of having an edge between u and v averaged over the whole network gives us essentially (by considering the probability of every excess degree value times  = $${(\frac{c_2}{c_1})}^2$$ 
+* Using this we can make an argument for the probability of the distance from i to j being greater than s + t, and show that as n turns to infinity this probability shrinks exponentially
+* As a result diameter in this model: $$\approx \frac{log(n)}{log(\frac{c_2}{c_1})}$$
+
+Therefore Configuration model also exhibits the small-world phenomenon</pre>
+</div>
 <div created="20200227071853237" modified="20200227080338589" tags="topology" title="Connectedness" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Intuition: We want to study topological spaces that cannot be decomposed into disjoint topological spaces as the subspaces could be studied separately more effectively. 
 
@@ -11489,7 +11628,7 @@ By this theorem and by similar proof of contraction we can show that policy eval
 <div created="20200227061423420" modified="20200227061428919" tags="[[deep learning]]" title="Convolutional Neural Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks</pre>
 </div>
-<div created="20200307221145996" modified="20200308010543443" tags="research [[reinforcement learning]]" title="Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200307221145996" modified="20200308010544519" tags="research [[reinforcement learning]]" title="Current Research: Sub-Policy Adaptation using Dynamic Abstraction for Multi-Task Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Background:__ [[Papers on Hierarchical Reinforcement Learning]]
 
 __Motivation__
@@ -11791,6 +11930,22 @@ TreeStrap: updates search values towards deeper search values
 <div created="20200224055954562" modified="20200224055954562" title="Draft of 'Integrating Learning and Planning'" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div created="20200309040928771" modified="20200309041236108" tags="[[graph theory]]" title="Epidemics on Networks" revision="1" bag="default">
+<pre>Idea of compartmentalization:
+
+* Every individual is in exactly one of a possible set of states at any time t
+* Three states typically covered are susceptible (S), infected (I), recovered / removed (R)
+
+SI Model: S -&gt; I (once infected, stays infected forever)
+
+SIS Model: S -&gt; I -&gt; back to S (once infected individuals become susceptible again)
+
+SIR Model: S -&gt; I (once infected individual either dies or becomes immune)
+
+SIRS Model: S -&gt; I -&gt; R -&gt; back to S
+
+Mass-action Approximation - full mixing - assumption that every individual </pre>
+</div>
 <div created="20191227170002568" modified="20191227170613995" tags="[[real analysis]] math [[discrete math]]" title="Equivalence Relations" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Relation on a set $$S$$ is a subset of $$S \times S$$
 
@@ -11802,6 +11957,88 @@ For a relation to be an equivalence relation:
 
 If the relation is non-empty then symmetric and transitive imply reflexive. 
 </pre>
+</div>
+<div created="20200309004455699" modified="20200309004455699" tags="[[Models of Networks]]" title="Erdos-Renyi Random Graph Model" revision="1" bag="default">
+<pre>Erdos-Renyi Model:
+
+* n nodes, probability p of any edge existing independent of other edges
+* Probability of a specific graph G existing = $$p^m {(1-p)}^{{n \choose 2} - m}$$ where m is the number of edges
+* Probability that any graph with m edges exists = $${{n \choose 2} \choose m} p^m {(1-p)}^{{n \choose 2} - m}$$
+* Expected number of edges = $$&lt;m&gt; = sum_{m = 0}^{{n \choose 2}} m \cdot P(\text{G has m edges})$$
+* Expected mean degree by handshake lemma = $$&lt;k&gt; = &lt;\frac{2 |E|}{n}&gt; = \frac{2&lt;m&gt;}{n}$$
+* Degree Distribution is binomial: $${n - 1 \choose k} p^k {(1 - p)}^{n - 1 - k}$$ = probability a node has degree k
+* Using this can recover mean degree as above is binomial distribution with n - 1 trials and probability of success p therefore $$&lt;k&gt; = (n - 1) p$$
+* Standard deviation of ER binomial degree distribution is $$\sigma = \sqrt{p(1 - p)(n - 1)}$$
+* Thresholding function p = 0 - all components of size 1 and p = 1 one component of size n
+* Giant component - component whose size increases linearly in n 
+* Monotone property - a property that still holds if we add more edges to the graph
+* In the ER model, for any monotone property P, there is a number $$p_0(n)$$ s.t. $$P[\text{G has property P}]$$ as n turns to infinity, turns to $$0$$ if $$p/p_0(n) \rightarrow 0$$ and $$1$$ otherwise
+* Clustering coefficient is simply p as all edges are independent of other edges and occur with probability p
+
+ER model also known as Poisson:
+
+* assume $$n \rightarrow \infty$$ and $$p \rightarrow 0$$ as mean degree is kept constant then $$Binom(n, p) \approx Poisson (np)$$ and $$P(\text{node has degree k}) = \frac{{(np)}^k \cdot e^{-np}}{k!}$$
+Kernel of the Laplacian: Eigen-basis for kernel specifies the connected components of a graph
+* Depends only on one parameter (average degree as for large n $$&lt;k&gt; = (n - 1) p \approx n p $$ and is independent of size
+* Works well because in most real world networks $$&lt;k&gt; &lt;&lt; n$$
+
+Binomial approximated by Poisson proof:
+
+* Binomial: $$P(x = k) = {n \choose k} \cdot p^k \cdot {(1 - p)}^{n - k}$$
+* Let $$\lambda = np$$
+* $${n \choose k} \approx \frac{{(n - 1)}^k}{n!}$$
+* $$log({(1 - p)}^{n - k}) = (n - k) log (1 - p) \approx (n - k) \cdot -p = (n - k) \frac{- \lambda}{n} = - \lambda (1 - \frac{k}{n}) \approx - \lambda$$
+* Thus, $${(1 - p)}^{n - k} \approx e^{-\lambda}$$
+* Therefore Poisson is achieved by substituting in the approximations and simplifying $$n p$$ to $$\lambda$$
+
+Giant component in ER:
+
+* If $$&lt;k&gt; &gt; 1$$ then giant component exists with probability 1
+* If $$&lt;k&gt; &lt; 1$$ then giant component doesn't exist with probability 1
+* if $$&lt;k&gt; = 1$$ no giant component but a component with size $$\approx n^{2/3}$$
+
+Sketch of Proof:
+
+* Let $$n_c$$ be the number of nodes in GC
+* Therefore, $$x = 1 - \frac{n_c}{n}$$ is the fraction of nodes not in GC
+* Thus, x is the probability that a randomly chosen node is not in GC
+* If $$i \in GC$$, then it is connected to another node j in the GC
+* $$i \notin GC$$, then there is either no edge between i and j or there is an edge between i and j but j not in GC
+* Therefore, probability that i not in GC = $$x ={((1 - p) + p \cdot x)}^{n - 1}$$
+* Taking logs on both side we get $$ln(x) = (n - 1)log(1 - \frac{&lt;k&gt;}{(n - 1)} (1 - x)) \approx - &lt;k&gt; (1 - x)$$
+* Therefore $$x = e^{-&lt;k&gt; \cdot (1 - x)}$$
+* Thus consider $$\mu = 1 - x$$, the proportion of nodes in GC
+* $$\mu = 1 - e^{-&lt;k&gt; \mu}$$
+* No closed form solution, therefore graphically solve to get https://imgur.com/jj0d0Q9
+* Plotted $$y = \mu$$ alongside to depict GC
+* Phase change occurs when derivatives are equal therefore solve for derivate of above equation = 1, solving shows that it occurs when $$&lt;k&gt; = 1$$
+* Thus $$&lt;k&gt; &lt; 1$$ only solution is $$\mu = 0$$ - which means no GC
+* $$k &gt; 1$$ - obvious second solution, therefore there is a GC
+* $$k = 1$$, tricky and as a result there is a component of size $$n^{2/3}$$ but no GC
+
+Can we have more than 1 GC? That is can there be two components that grow linearly with the size of the network
+
+* Let $$C_1$$ and $$C_2$$ be the two GC and let $$x_1$$ be probability node is in $$C_1$$ and so on
+* Probability that the two GC are not connected by an edge = $${(1 - p)}^{n^2 x_1 x_2} = q$$
+* $$1 - p &lt; 1$$, therefore $$n \rightarrow \infty$$ implies $$q \rightarrow 0$$
+
+Diameter:
+
+* $$l(G) = $$ largest distance between any two nodes in the same component
+* Using average degree, we get that the estimated number of nodes at distance d = $$&lt;k&gt;^d$$
+* Thus the expected # of nodes at distance $$\leq$$ d from starting node $$n(d) = 1 + ... + &lt;k&gt;^d$$
+* $$n(d) = \frac{&lt;k&gt;^{d + 1} - 1}{&lt;k&gt; - 1}$$
+* If $$&lt;k&gt; &gt;&gt; 1$$, then $$\approx &lt;k&gt;^d$$
+* $$n(d_{max}) = n$$
+* Thus $$n \approx &lt;k&gt;^{d_{max}}$$
+* Thus $$d_max \approx \frac{log(n)}{log(&lt;k&gt;)}$$
+* $$d_{max} \propto \frac{1}{log(&lt;k&gt;}$$ means denser the network, smaller the distance
+
+Why is the small world effect suprising?
+
+Since our intuition for distance comes for lattices where $$d_max$$ is approximately squareroot of size which is much faster the log(n)
+
+Clustering Coefficient = p, and with fixed average degree, turns to 0 and n turns to infinity</pre>
 </div>
 <div author="Siddharth Joshi" created="20191122024614624" modified="20191122025225433" tags="[[needs expanding]] [[machine learning]] [[learning algorithm selection]]" title="Explainability of Model" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Most very accurate learning algorithms are 'black-boxes' i.e it is hard to understand why a model made a particular prediction. 
@@ -11980,6 +12217,11 @@ Example: Training AIBO to walk by Finite Difference Policy Gradient (AIBO walk p
 <pre>* Negation of a for every x, proposition is true is there exists x such that proposition is false
 * Can swap the order of two adjacent for every or two adjacent there exists without changing logical meaning
 * Cannot swap the order of for every and there exists, in particular: There exists y such that for every x ... is stronger than for every x there exists y ...</pre>
+</div>
+<div created="20200308212845972" modified="20200308214931866" tags="[[graph theory]]" title="Generalizations of Networks" revision="3" bag="default">
+<pre>* Hyper-graphs - edges can join any number of nodes
+* Simplical Complexes (Geometry, Topology): 0-simplex = vertex, 1-simplex = edge, 2-simplex = triangle ...
+* Multi-Layer Networks</pre>
 </div>
 <div created="20200203054844757" modified="20200203072126323" tags="[[graph theory]]" title="Groups of Nodes" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Cliques - maximal set of nodes where every 2 nodes have an edge between them - can overlap
@@ -13205,6 +13447,45 @@ __[[TD(lamda) Learning]]__
 
 </pre>
 </div>
+<div created="20200308215037408" modified="20200309033500756" tags="[[graph theory]]" title="Models of Networks" revision="10" bag="default">
+<pre>Models of networks needed to understand:
+
+* Why networks look the way they do and how they change with changing parameters
+* Processes taking place on networks
+
+Types of Models:
+
+* Random Graph Models - Erdos-Renyi Model, Configuration Model
+* Models of Network Formation - Preferential Attachment Model
+
+Ensemble of Networks: probability distribution over a bunch of networks indicating how likely each one is
+
+__[[Erdos-Renyi Random Graph Model]]__
+
+{{Erdos-Renyi Random Graph Model}}
+
+To deal with the issue of the binomial degree distribution of ER model, since most real world networks do not have such a degree distribution we introduce the Configuration model that is specified by a degree sequence 
+
+__[[Configuration Model (Random Graph Model)]]__
+
+{{Configuration Model (Random Graph Model)}}
+
+Random Graph Models for Directed Network:
+
+* G(n, p): directed i -&gt; j with probability p and j -&gt; i with p as well
+* Directed version of configuration model: two degree sequences, one for in-degree and one for out-degree, but need in-degree sum to equal out-degree sum
+
+__Preferential Attachment Model__
+
+* Configuration model doesn't cover how the degree distribution is produced
+
+Price Model:
+
+* Generative model for producing networks with power distribution
+* Fix c = avg in-degree = avg out-degreee
+* Add nodes one at a time, when you add a new node add m out edges where m E[m] = c and connect the edges to a given a node i with probability $$in-deg(i) + \alpha / \sum_i in-deg(i) + \alpha$$
+* $$\alpha$$ put in to deal with problem of nodes starting with in-degree 0</pre>
+</div>
 <div created="20200223051617443" modified="20200223053500802" tags="[[reinforcement learning]] [[Policy Gradient Methods]]" title="Monte-Carlo Policy Gradient" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Score function:
 
@@ -13777,7 +14058,7 @@ In April 2008, Google launched App Engine, with a free trial version limited to 
 
 The original intent of PaaS was to simplify the code-writing process for developers, with the infrastructure and operations handled by the PaaS provider. Originally, all ~PaaSes were in the public cloud. Because many companies did not want to have everything in the public cloud, private and hybrid PaaS options (managed by internal IT departments) were created.</pre>
 </div>
-<div created="20200229034825603" modified="20200308065413183" tags="[[reinforcement learning]]" title="Papers on Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<div created="20200229034825603" modified="20200308065414415" tags="[[reinforcement learning]]" title="Papers on Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Overview of the field (March 2019): https://thegradient.pub/the-promise-of-hierarchical-reinforcement-learning/ 
 
 * Hierarchical Reinforcement and Imitation Learning (June 2018): https://arxiv.org/pdf/1803.00590.pdf
@@ -15375,7 +15656,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Cardinality]]
 # [[Metric Spaces]]</pre>
 </div>
-<div created="20200203042433991" modified="20200203074559261" tags="ongoing [[discrete math]] math [[graph theory]]" title="UCLA Math 168 - Introduction to Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200203042433991" modified="20200309040849998" tags="[[discrete math]] math [[graph theory]]" title="UCLA Math 168 - Introduction to Networks" type="text/vnd.tiddlywiki" revision="4" bag="default">
 <pre>Syllabus:
 
 # [[Basics of Network Theory]]
@@ -15385,7 +15666,8 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Properties of Real World Networks]]
 # [[Generalizations of Networks]]
 # [[Models of Networks]]
-</pre>
+# [[Community Detection Methods]]
+# [[Epidemics on Networks]]</pre>
 </div>
 <div created="20200227025721288" modified="20200227025735707" tags="[[machine learning]]" title="Unsupervised Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://stanford.edu/~shervine/teaching/cs-229/cheatsheet-unsupervised-learning</pre>
