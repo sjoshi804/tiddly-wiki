@@ -329,6 +329,8 @@ Error message and password prompt
 
 <li>Integrating Learning and Planning</li>
 
+<li>Introduction to Lisp</li>
+
 <li>Introduction to Reinforcement Learning</li>
 
 <li>K Nearest Neighbors</li>
@@ -482,6 +484,8 @@ Error message and password prompt
 <li>Things I want to learn about in 2020</li>
 
 <li>Topological Spaces</li>
+
+<li>UCLA CS 161 - Fundamentals of Artificial Intelligence</li>
 
 <li>UCLA CS 201 Winter 2020</li>
 
@@ -10018,7 +10022,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Welcome [[How to Contribute?]]" title="$:/StoryList" revision="1" bag="default">
+<div created="20200402185723130" list="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[Introduction to Lisp]] Welcome [[How to Contribute?]]" modified="20200402185723130" title="$:/StoryList" revision="8" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -12605,6 +12609,67 @@ __[[Integrated Architectures of Model-Based RL and Model-Free RL]]__
 __[[Simulation-Based Search]]__
 
 {{Simulation-Based Search}}</pre>
+</div>
+<div created="20200402185730908" modified="20200402185756942" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[programming languages]]" title="Introduction to Lisp" revision="2" bag="default">
+<pre>Lisp Expressions: 
+
+* atoms - symbols, numbers etc.
+* lists - ( ...)
+
+Accessors for Lists:
+
+* car - get the head - first (modern syntax)
+* cdr - get the tail - rest
+
+Constructors for Lists:
+
+* cons - joins a head and a tail - (cons 1 (cons 2 (cons 3 NIL)))
+* list - creates a list - e.g. (list 1 2 3)
+
+Boolean Expressions:
+
+* t - True 
+* NIL - False
+* Anything that is not NIL is false
+* NIL is equivalent to the empty list
+* NOT, OR, AND
+* &gt;, &lt;, =
+* Equality: = - just for numbers, equal - equality of expression
+* cond - kinda like a switch case e.g. (cond ( (= x 0) 0) ((&lt; x 0) 'neg) (t 'pos))) - if none of the expressions evaluate i.e. no catch all case - cond just returns NIL
+
+Functions:
+
+* (__defun__ square __(x)__ __(* x x)__) - square function 
+* (defun func_name (parameters) (expression to evaluate))
+
+
+Assignment:
+
+* (setq var val) -&gt; not best practice though
+* (let ((var val) ..) (expression where var has val)
+* let carries out all assignment expressions in parallel v/s let* that does in sequential order
+
+Examples:
+
+
+```
+&gt; (setq x 5)
+5
+&gt; (+ (let ((x 3)) (+ x (* x 10))) x)
+38
+```
+let v/s let*
+
+```
+&gt; (setq x 5)
+5
+&gt; (+ (let ((x 3) (y (+ x 1))) (+ x y) //value of y here is 6 as assignment of y done in parallel to assignment of 3 to x and x's old value is 5
+9
+&gt; (+ (let* ((x 3) (y (+ x 1))) (+ x y) //value of y here is 4 as assignment of y done after the first let assignment
+7
+```
+
+</pre>
 </div>
 <div created="20200211210217680" modified="20200222063802153" tags="[[reinforcement learning]]" title="Introduction to Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__[[About Reinforcement Learning]]__
@@ -15529,6 +15594,9 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Connectedness]]
 * [[Path Connectedness]]
 </pre>
+</div>
+<div created="20200402185643352" modified="20200402185719815" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" revision="1" bag="default">
+<pre># [[Introduction to Lisp]]</pre>
 </div>
 <div created="20200131000351410" modified="20200312211523121" tags="[[computer science]] ucla" title="UCLA CS 201 Winter 2020" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney]]
