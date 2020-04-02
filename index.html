@@ -177,16 +177,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/Excise/-896989314/tagnew</li>
-
-<li>$:/state/showeditpreview</li>
-
-<li>$:/state/sidebar</li>
-
-<li>$:/state/tab--1498284803</li>
-
-<li>$:/state/tab/moresidebar-1850697562</li>
-
 <li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
@@ -199,11 +189,7 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
-<li>$:/temp/advancedsearch</li>
-
 <li>$:/temp/info-plugin</li>
-
-<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -453,11 +439,11 @@ Error message and password prompt
 
 <li>Regularization and Overfitting</li>
 
-<li>Reinforcement Learning with Langevin Dynamics</li>
-
 <li>Reinforcement Learning: David Silver Course</li>
 
 <li>Ridge Regression</li>
+
+<li>Robust Reinforcement Learning with Langevin Dynamics</li>
 
 <li>SaaS</li>
 
@@ -10017,23 +10003,8 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200309004454962" modified="20200309004454962" title="$:/state/Excise/-896989314/tagnew" revision="1" bag="default">
-<pre>yes</pre>
-</div>
-<div created="20200308215418985" modified="20200309054846853" title="$:/state/showeditpreview" revision="11" bag="default">
-<pre>yes</pre>
-</div>
-<div created="20200308222200417" modified="20200309062415021" title="$:/state/sidebar" revision="12" bag="default">
-<pre>yes</pre>
-</div>
-<div created="20200309034416386" modified="20200309034416386" title="$:/state/tab--1498284803" revision="1" bag="default">
-<pre>$:/core/ui/AdvancedSearch/Filter</pre>
-</div>
-<div created="20200309061550458" modified="20200309061550458" title="$:/state/tab/moresidebar-1850697562" revision="1" bag="default">
-<pre>$:/core/ui/MoreSideBar/Drafts</pre>
-</div>
-<div created="20200309061524785" modified="20200309062416156" title="$:/state/tab/sidebar--595412856" revision="7" bag="default">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20200402185627597" modified="20200402185628576" title="$:/state/tab/sidebar--595412856" revision="2" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10047,11 +10018,8 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200308212825119" list="" modified="20200309061619972" title="$:/StoryList" revision="123" bag="default">
+<div list="Welcome [[How to Contribute?]]" title="$:/StoryList" revision="1" bag="default">
 <pre></pre>
-</div>
-<div created="20200309034416386" modified="20200309034416386" title="$:/temp/advancedsearch" revision="1" bag="default">
-<pre>[tags[]sort[title]]</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
 <pre>{
@@ -10098,11 +10066,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1440&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;900&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10110,9 +10078,6 @@ Error message and password prompt
         }
     }
 }</pre>
-</div>
-<div created="20200308212819826" modified="20200309034408787" title="$:/temp/search" revision="13" bag="default">
-<pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -10995,7 +10960,7 @@ HNC is poly time solvable: monotone IP3 (Hochbaum 2010) - need to avoid the case
 
 </pre>
 </div>
-<div created="20200309034356041" modified="20200309041557592" tags="[[graph theory]]" title="Community Detection Methods" revision="5" bag="default">
+<div created="20200309034356041" modified="20200309082916257" tags="[[graph theory]]" title="Community Detection Methods" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Three different levels of network study:
 
 * microscopic - properties of nodes - centrality etc.
@@ -11024,7 +10989,7 @@ NP Hard, thus want a good poly time approximation
 Louvain Algorithm - Hierarchical Clustering
 
 * Every block contains just 1 node
-* For ever every node, consider the change in modularity of adding to the community of one of its neighbors and make the move that would increase modularity the most (none if no moves achieve this)
+* For ever every node, consider the change in modularity of adding it to the community of one of its neighbors and make the move that would increase modularity the most (none if no moves achieve this)
 * Coalesce partitions into nodes, edges within the community become two self loops
 * Repeat until convergence
 
@@ -11383,7 +11348,7 @@ Millions of Instructions Per Second = Instruction Count / Execution Time * 10^6 
 
 </pre>
 </div>
-<div created="20200309013140710" modified="20200309034247685" tags="[[Models of Networks]]" title="Configuration Model (Random Graph Model)" revision="8" bag="default">
+<div created="20200309013140710" modified="20200309082747401" tags="[[Models of Networks]]" title="Configuration Model (Random Graph Model)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Configuration Model - specified by n nodes and a degree sequence
 
 * Need the sum of the degrees to be an even number, since edges = 1/2 sum of degree
@@ -11398,7 +11363,7 @@ Friendship Paradox:
 
 * Probability that one of the half edges of u is attached to a specific node with degree k = $$\frac{k}{2m - 1} \approx \frac{k}{2m}$$
 * number of nodes with degree k = $$n \cdot p_k$$, therefore probability of being connected to a node with degree k = $$\frac{n}{2m} k p_k = \frac{1}{&lt;k&gt;} k p_k$$
-* Average degree on node attached to half edge of a node = $$\sum_{k \in N} \frac{k p_k}{&lt;k&gt;} = \frac{1}{&lt;k&gt;} \sum_k k^2 p_k = \frac{&lt;k^2&gt;}{&lt;k&gt;}$$
+* Average degree of node attached to half edge of a node = $$\sum_{k \in N} \frac{k p_k}{&lt;k&gt;} = \frac{1}{&lt;k&gt;} \sum_k k^2 p_k = \frac{&lt;k^2&gt;}{&lt;k&gt;}$$
 * $$\frac{&lt;k^2&gt;}{&lt;k&gt;} - &lt;k&gt; = \frac{&lt;k^2&gt; - &lt;k&gt;^2}{&lt;k&gt;} = \frac{\sigma_k^2}{&lt;k&gt;}$$ and this value is greater than 0 unless all nodes have same degree, therefore the conclusion is that typically your friends have more friends than you
 * Generalized Friendship paradox: for any property correlated with degree e.g friends have more followers, virality: friends receive more viral content etc.
 
@@ -11428,7 +11393,7 @@ In some sense a generalization of the notion that the clustering coefficient goe
 
 Average number of second neighbors
 
-$$c2=⟨k⟩\frac{⟨k2⟩−⟨k⟩}{⟨k⟩}=⟨k^2⟩−⟨k⟩$$
+$$c2=⟨k⟩\frac{⟨k^2⟩−⟨k⟩}{⟨k⟩}=⟨k^2⟩−⟨k⟩$$
 
 Therefore, average excess degree = $$\frac{\text{avg num of second neighbors}}{\text{avg num of neighbors = mean degree}}$$
 
@@ -11837,7 +11802,7 @@ tbd
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
 </div>
-<div created="20200309040928771" modified="20200309062405694" tags="[[graph theory]]" title="Epidemics on Networks" revision="9" bag="default">
+<div created="20200309040928771" modified="20200309173052693" tags="[[graph theory]]" title="Epidemics on Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Idea of compartmentalization:
 
 * Every individual is in exactly one of a possible set of states at any time t
@@ -11847,7 +11812,7 @@ SI Model: S -&gt; I (once infected, stays infected forever)
 
 SIS Model: S -&gt; I -&gt; back to S (once infected individuals become susceptible again)
 
-SIR Model: S -&gt; I (once infected individual either dies or becomes immune)
+SIR Model: S -&gt; I -&gt; R(once infected individual either dies or becomes immune)
 
 SIRS Model: S -&gt; I -&gt; R -&gt; back to S
 
@@ -11922,7 +11887,7 @@ Under simple moment closure
 * Using this approximation, can use same eigenvector decomposition trick to approximate using leading eigenvalue term
 * $$x(t) = \alpha_L(0) e^{(q\lambda_L - \gamma) t}\vec{v_L}$$
 * $$q \lambda_L - \gamma = 0$$ means no growth, but since these are approximations therefore means no epidemic
-* Therefore, epidemic threshold $$q / \gamma = 1 \ \lambda_L$$
+* Therefore, epidemic threshold $$q / \gamma = 1 / \lambda_L$$
 * Smaller values of $$\lambda_L$$ mean it is more difficult for the disease to spread and vice-a-versa
 
 </pre>
@@ -11939,13 +11904,13 @@ For a relation to be an equivalence relation:
 If the relation is non-empty then symmetric and transitive imply reflexive. 
 </pre>
 </div>
-<div created="20200309004455699" modified="20200309004455699" tags="[[Models of Networks]]" title="Erdos-Renyi Random Graph Model" revision="1" bag="default">
+<div created="20200309004455699" modified="20200309075304950" tags="[[Models of Networks]]" title="Erdos-Renyi Random Graph Model" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Erdos-Renyi Model:
 
 * n nodes, probability p of any edge existing independent of other edges
 * Probability of a specific graph G existing = $$p^m {(1-p)}^{{n \choose 2} - m}$$ where m is the number of edges
 * Probability that any graph with m edges exists = $${{n \choose 2} \choose m} p^m {(1-p)}^{{n \choose 2} - m}$$
-* Expected number of edges = $$&lt;m&gt; = sum_{m = 0}^{{n \choose 2}} m \cdot P(\text{G has m edges})$$
+* Expected number of edges = $$&lt;m&gt; = \sum_{m = 0}^{{n \choose 2}} m \cdot P(\text{G has m edges})$$
 * Expected mean degree by handshake lemma = $$&lt;k&gt; = &lt;\frac{2 |E|}{n}&gt; = \frac{2&lt;m&gt;}{n}$$
 * Degree Distribution is binomial: $${n - 1 \choose k} p^k {(1 - p)}^{n - 1 - k}$$ = probability a node has degree k
 * Using this can recover mean degree as above is binomial distribution with n - 1 trials and probability of success p therefore $$&lt;k&gt; = (n - 1) p$$
@@ -11968,7 +11933,7 @@ Binomial approximated by Poisson proof:
 * Binomial: $$P(x = k) = {n \choose k} \cdot p^k \cdot {(1 - p)}^{n - k}$$
 * Let $$\lambda = np$$
 * $${n \choose k} \approx \frac{{(n - 1)}^k}{n!}$$
-* $$log({(1 - p)}^{n - k}) = (n - k) log (1 - p) \approx (n - k) \cdot -p = (n - k) \frac{- \lambda}{n} = - \lambda (1 - \frac{k}{n}) \approx - \lambda$$
+* $$log{(1 - p)}^{n - k}= (n - k) log (1 - p) \approx (n - k) \cdot -p = (n - k) \frac{- \lambda}{n} = - \lambda (1 - \frac{k}{n}) \approx - \lambda$$
 * Thus, $${(1 - p)}^{n - k} \approx e^{-\lambda}$$
 * Therefore Poisson is achieved by substituting in the approximations and simplifying $$n p$$ to $$\lambda$$
 
@@ -12012,12 +11977,12 @@ Diameter:
 * If $$&lt;k&gt; &gt;&gt; 1$$, then $$\approx &lt;k&gt;^d$$
 * $$n(d_{max}) = n$$
 * Thus $$n \approx &lt;k&gt;^{d_{max}}$$
-* Thus $$d_max \approx \frac{log(n)}{log(&lt;k&gt;)}$$
-* $$d_{max} \propto \frac{1}{log(&lt;k&gt;}$$ means denser the network, smaller the distance
+* Thus $$d_{max}\approx \frac{log(n)}{log(&lt;k&gt;)}$$
+* $$d_{max} \propto \frac{1}{log(&lt;k&gt;)}$$ means denser the network, smaller the distance
 
 Why is the small world effect suprising?
 
-Since our intuition for distance comes for lattices where $$d_max$$ is approximately squareroot of size which is much faster the log(n)
+Since our intuition for distance comes for lattices where $$d_{max}$$ is approximately squareroot of size which is much faster than $$log(n)$$
 
 Clustering Coefficient = p, and with fixed average degree, turns to 0 and n turns to infinity</pre>
 </div>
@@ -12199,7 +12164,7 @@ Example: Training AIBO to walk by Finite Difference Policy Gradient (AIBO walk p
 * Can swap the order of two adjacent for every or two adjacent there exists without changing logical meaning
 * Cannot swap the order of for every and there exists, in particular: There exists y such that for every x ... is stronger than for every x there exists y ...</pre>
 </div>
-<div created="20200308212845972" modified="20200308214931866" tags="[[graph theory]]" title="Generalizations of Networks" revision="3" bag="default">
+<div created="20200308212845972" modified="20200308214932933" tags="[[graph theory]]" title="Generalizations of Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Hyper-graphs - edges can join any number of nodes
 * Simplical Complexes (Geometry, Topology): 0-simplex = vertex, 1-simplex = edge, 2-simplex = triangle ...
 * Multi-Layer Networks</pre>
@@ -13428,7 +13393,7 @@ __[[TD(lamda) Learning]]__
 
 </pre>
 </div>
-<div created="20200308215037408" modified="20200309033500756" tags="[[graph theory]]" title="Models of Networks" revision="10" bag="default">
+<div created="20200308215037408" modified="20200309082753822" tags="[[graph theory]]" title="Models of Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Models of networks needed to understand:
 
 * Why networks look the way they do and how they change with changing parameters
@@ -14591,7 +14556,52 @@ Probabilistic Interpretation of Regularization - https://imgur.com/dqD7A6M, http
 
 </pre>
 </div>
-<div created="20200205001742305" modified="20200205014948019" tags="[[needs formatting]] [[reinforcement learning]]" title="Reinforcement Learning with Langevin Dynamics" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div author="Siddharth Joshi" created="20191125022514242" modified="20200227194431825" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Part 1: Elementary Reinforcement Learning
+
+# [[Introduction to Reinforcement Learning]]
+# [[Markov Decision Processes from scratch]]
+# [[Planning by Dynamic Programming]]
+# [[Model-Free Prediction]]
+# [[Model-Free Control]]
+
+Part 2: Reinforcement Learning in Practice
+
+# [[Value Function Approximation]]
+# [[Policy Gradient Methods]]
+# [[Integrating Learning and Planning]]
+# [[Exploration and Exploitation]]
+# [[Case Study: Classic Games in RL]]
+
+Link to videos: https://www.youtube.com/watch?v=2pWv7GOvuf0&amp;list=PLzuuYNsE1EZAXYR4FJ75jcJseBmo4KQ9-&amp;fbclid=IwAR0lD-SDq5vtgIlUwb4IQryt6USHNndwB2eI0j7cpyfsPkeESv4Rok5YGhY
+
+Link to slides: http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html</pre>
+</div>
+<div created="20200210183534008" modified="20200210184458014" tags="[[machine learning]]" title="Ridge Regression" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>$$l_2$$ regularized linear regression aka Ridge Regression
+
+Deals with issue of $$XX^T$$ not being invertible in [[Linear Regression]]
+
+Solution is now: $$\hat{\theta} = {(X^T X + \lambda I)}^{-1} X^T y$$
+
+This is equivalent to adding an extra term to $$J(\theta) = \| y - X\theta\|^2_2 + \lambda \sum_d \theta_d$$
+
+Called $$l_2$$ as it used $$l_2$$ norm to regularize the weights vector - penalty for complexity of model
+
+Why is this reasonable or what do we mean by doing this?
+
+Want to minimize training error and complexity of model (which we estimate by how large the weights vector is) - which is desired due to Occam's razor inductive bias - simplest hypothesis is probably true
+
+$$\lambda $$ is a new hyperparameter that we need to set using cross-validation etc.
+
+Mini Summary:
+
+* Helps avoid numerical instability that would lead to non-invertibility 
+* New hyperparameter introduced
+
+Refer to [[Regularization and Overfitting]] to understand more about why this is how we estimate complexity of the model</pre>
+</div>
+<div created="20200205001742305" modified="20200312211538245" tags="[[needs formatting]] [[reinforcement learning]]" title="Robust Reinforcement Learning with Langevin Dynamics" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Environment: Markov Decision Process (MDP) $$M = (S, A, T, \gamma, P_0, R)$$
 
 Agent: Parametrized deterministic policy $$\mu_0 : S \rightarrow A$$ where $$\theta \in \Theta$$
@@ -14671,51 +14681,6 @@ reduction step 2 - stochastic gradient langevin dynamics (SGLD) - instead of lea
 
 implementable in entropic mirror descent - hsieh et al 2019
 </pre>
-</div>
-<div author="Siddharth Joshi" created="20191125022514242" modified="20200227194431825" tags="[[online course]] [[reinforcement learning]] [[machine learning]]" title="Reinforcement Learning: David Silver Course" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>Part 1: Elementary Reinforcement Learning
-
-# [[Introduction to Reinforcement Learning]]
-# [[Markov Decision Processes from scratch]]
-# [[Planning by Dynamic Programming]]
-# [[Model-Free Prediction]]
-# [[Model-Free Control]]
-
-Part 2: Reinforcement Learning in Practice
-
-# [[Value Function Approximation]]
-# [[Policy Gradient Methods]]
-# [[Integrating Learning and Planning]]
-# [[Exploration and Exploitation]]
-# [[Case Study: Classic Games in RL]]
-
-Link to videos: https://www.youtube.com/watch?v=2pWv7GOvuf0&amp;list=PLzuuYNsE1EZAXYR4FJ75jcJseBmo4KQ9-&amp;fbclid=IwAR0lD-SDq5vtgIlUwb4IQryt6USHNndwB2eI0j7cpyfsPkeESv4Rok5YGhY
-
-Link to slides: http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html</pre>
-</div>
-<div created="20200210183534008" modified="20200210184458014" tags="[[machine learning]]" title="Ridge Regression" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>$$l_2$$ regularized linear regression aka Ridge Regression
-
-Deals with issue of $$XX^T$$ not being invertible in [[Linear Regression]]
-
-Solution is now: $$\hat{\theta} = {(X^T X + \lambda I)}^{-1} X^T y$$
-
-This is equivalent to adding an extra term to $$J(\theta) = \| y - X\theta\|^2_2 + \lambda \sum_d \theta_d$$
-
-Called $$l_2$$ as it used $$l_2$$ norm to regularize the weights vector - penalty for complexity of model
-
-Why is this reasonable or what do we mean by doing this?
-
-Want to minimize training error and complexity of model (which we estimate by how large the weights vector is) - which is desired due to Occam's razor inductive bias - simplest hypothesis is probably true
-
-$$\lambda $$ is a new hyperparameter that we need to set using cross-validation etc.
-
-Mini Summary:
-
-* Helps avoid numerical instability that would lead to non-invertibility 
-* New hyperparameter introduced
-
-Refer to [[Regularization and Overfitting]] to understand more about why this is how we estimate complexity of the model</pre>
 </div>
 <div created="20200204064622667" modified="20200204064633242" tags="technology" title="SaaS" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Software as a service (SaaS) is a software distribution model in which a third-party provider hosts applications and makes them available to customers over the Internet. SaaS is one of three main categories of cloud computing, alongside infrastructure as a service (IaaS) and platform as a service (PaaS).</pre>
@@ -15565,13 +15530,14 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Path Connectedness]]
 </pre>
 </div>
-<div created="20200131000351410" modified="20200219081933401" tags="[[computer science]] ucla" title="UCLA CS 201 Winter 2020" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200131000351410" modified="20200312211523121" tags="[[computer science]] ucla" title="UCLA CS 201 Winter 2020" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney]]
 # [[A Geometric Data Structure from Neuroscience by Sanjoy Dasgupta]]
 # [[Quantum Temporal Logic by Nengkun Yu]]
-# [[Reinforcement Learning with Langevin Dynamics]]
+# [[Robust Reinforcement Learning with Langevin Dynamics]]
 # [[Combinatorial Optimization Algorithms for Clustering and Machine Learning by Dorith Hochbaum]]
 # [[Extreme Classification: Algorithms &amp; Evaluation by Yashoteja Prabhu]]
+# [[Recent Progress in Model-Based Learning by Csaba Szepesvari]]
 </pre>
 </div>
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -15637,7 +15603,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Cardinality]]
 # [[Metric Spaces]]</pre>
 </div>
-<div created="20200203042433991" modified="20200309040849998" tags="[[discrete math]] math [[graph theory]]" title="UCLA Math 168 - Introduction to Networks" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<div created="20200203042433991" modified="20200309040851149" tags="[[discrete math]] math [[graph theory]]" title="UCLA Math 168 - Introduction to Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Syllabus:
 
 # [[Basics of Network Theory]]
