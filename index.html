@@ -177,7 +177,7 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/tab/sidebar--595412856</li>
+<li>$:/state/sidebar</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -190,6 +190,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -328,6 +330,8 @@ Error message and password prompt
 <li>Integrated Architectures of Model-Based RL and Model-Free RL</li>
 
 <li>Integrating Learning and Planning</li>
+
+<li>Introduction to Artificial Intelligence</li>
 
 <li>Introduction to Lisp</li>
 
@@ -10007,8 +10011,8 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200402185627597" modified="20200402185628576" title="$:/state/tab/sidebar--595412856" revision="2" bag="default">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200404185505682" modified="20200404190937282" title="$:/state/sidebar" revision="2" bag="default">
+<pre>yes</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10022,7 +10026,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200402185723130" list="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[Introduction to Lisp]] Welcome [[How to Contribute?]]" modified="20200402185723130" title="$:/StoryList" revision="8" bag="default">
+<div created="20200404042843416" list="" modified="20200404185434229" title="$:/StoryList" revision="17" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10082,6 +10086,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200404042839987" modified="20200404190938854" title="$:/temp/search" revision="11" bag="default">
+<pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -12610,7 +12617,40 @@ __[[Simulation-Based Search]]__
 
 {{Simulation-Based Search}}</pre>
 </div>
-<div created="20200402185730908" modified="20200402185756942" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[programming languages]]" title="Introduction to Lisp" revision="2" bag="default">
+<div created="20200404185457513" modified="20200404190920149" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[artificial intelligence]]" title="Introduction to Artificial Intelligence" revision="2" bag="default">
+<pre>The Intelligent Agent Architecture: https://imgur.com/5FOvphf
+
+Knowledge Representation:
+
+* Factual Knowledge - facts
+* Uncertain Knowledge - beliefs
+
+How do we acquire knowledge?
+
+* From experts
+* By conversion from other forms of knowledge
+* By learning from experience
+
+Reasoning:
+
+* Deduction
+* Belief Revision
+* Causality  
+
+The time, space etc. efficiency of these processes is also an interesting problem
+
+Natural Language Understanding Challenges:
+
+*  Syntactic ambiguity - they are cooking apples - adj or verb
+* Semantic ambiguity - She ran to the bank - money bank or river bank
+* Pragmatic ambiguity - Can you open the door? - request or asking about the ability
+
+
+
+
+</pre>
+</div>
+<div created="20200402185730908" modified="20200402185758030" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[programming languages]]" title="Introduction to Lisp" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Lisp Expressions: 
 
 * atoms - symbols, numbers etc.
@@ -14069,7 +14109,7 @@ In April 2008, Google launched App Engine, with a free trial version limited to 
 
 The original intent of PaaS was to simplify the code-writing process for developers, with the infrastructure and operations handled by the PaaS provider. Originally, all ~PaaSes were in the public cloud. Because many companies did not want to have everything in the public cloud, private and hybrid PaaS options (managed by internal IT departments) were created.</pre>
 </div>
-<div created="20200229034825603" modified="20200308065414415" tags="[[reinforcement learning]]" title="Papers on Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200229034825603" modified="20200404042916331" tags="[[reinforcement learning]]" title="Papers on Hierarchical Reinforcement Learning" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>* Overview of the field (March 2019): https://thegradient.pub/the-promise-of-hierarchical-reinforcement-learning/ 
 
 * Hierarchical Reinforcement and Imitation Learning (June 2018): https://arxiv.org/pdf/1803.00590.pdf
@@ -14078,9 +14118,9 @@ The original intent of PaaS was to simplify the code-writing process for develop
 
 * Modulated Policy Hierarchies (November 2018): https://arxiv.org/pdf/1812.00025.pdf
 
-''* Sub-Policy Adaptation for Hierarchical Reinforcement Learning (November 2019): https://arxiv.org/pdf/1906.05862.pdf''
+* ''Sub-Policy Adaptation for Hierarchical Reinforcement Learning (November 2019): https://arxiv.org/pdf/1906.05862.pdf''
 
-''* Meta-Learning Shared Hierarchies (October 2017): https://arxiv.org/pdf/1710.09767.pdf''
+* ''Meta-Learning Shared Hierarchies (October 2017): https://arxiv.org/pdf/1710.09767.pdf''
 
 * Near-Optimal Representation Learning for Hierarchical Reinforcement Learning (January 2019): https://arxiv.org/pdf/1810.01257.pdf
 
@@ -14088,7 +14128,7 @@ The original intent of PaaS was to simplify the code-writing process for develop
 
 * Planning with Abstract Markov Decision Processes (2016): https://h2r.cs.brown.edu/wp-content/uploads/2016/05/gopalan16.pdf
 
-''* Language as an Abstraction for Hierarchical Deep Reinforcement Learning (Nov 2019): https://arxiv.org/pdf/1906.07343.pdf''</pre>
+* ''Language as an Abstraction for Hierarchical Deep Reinforcement Learning (Nov 2019): https://arxiv.org/pdf/1906.07343.pdf''</pre>
 </div>
 <div created="20200227075022683" modified="20200227080320938" tags="topology" title="Path Connectedness" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Intuition: A formalism of the idea that a geometric figure is all one piece if it is possible to go from any point to any other point via a curve that never leaves the figure
@@ -15595,8 +15635,9 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Path Connectedness]]
 </pre>
 </div>
-<div created="20200402185643352" modified="20200402185719815" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" revision="1" bag="default">
-<pre># [[Introduction to Lisp]]</pre>
+<div created="20200402185643352" modified="20200404185432692" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre># [[Introduction to Artificial Intelligence]]
+# [[Introduction to Lisp]]</pre>
 </div>
 <div created="20200131000351410" modified="20200312211523121" tags="[[computer science]] ucla" title="UCLA CS 201 Winter 2020" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney]]
