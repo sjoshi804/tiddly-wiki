@@ -177,6 +177,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/sidebar</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -10019,7 +10021,10 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200404185505682" modified="20200405230318034" title="$:/state/sidebar" revision="4" bag="default">
+<div created="20200405230821071" modified="20200405230821071" title="$:/state/showeditpreview" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200404185505682" modified="20200406033624711" title="$:/state/sidebar" revision="6" bag="default">
 <pre>yes</pre>
 </div>
 <div created="20200404190942433" modified="20200404190942433" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
@@ -10037,7 +10042,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200404042843416" list="[[UCLA Math 114L - Mathematical Logic]] [[Introduction to Mathematical Logic]] [[Propositional Logic]]" modified="20200405230423015" title="$:/StoryList" revision="56" bag="default">
+<div created="20200404042843416" list="[[UCLA Math 114L - Mathematical Logic]] [[Propositional Logic]]" modified="20200405230706432" title="$:/StoryList" revision="81" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -12722,7 +12727,7 @@ let v/s let*
 
 </pre>
 </div>
-<div created="20200405221831913" modified="20200405230624347" tags="[[UCLA Math 114L - Mathematical Logic]] logic math" title="Introduction to Mathematical Logic" revision="4" bag="default">
+<div created="20200405221831913" modified="20200405230726197" tags="[[UCLA Math 114L - Mathematical Logic]] logic math" title="Introduction to Mathematical Logic" revision="5" bag="default">
 <pre>Formal Logical System:
 
 * Collection of symbols
@@ -12736,7 +12741,8 @@ Programming language:
 * Symbols - anything on your keyboard
 * Syntax - syntax of the language
 * Semantics - how your machine implements the program
-</pre>
+
+Mathematical Logic is study of logical systems as mathematical objects</pre>
 </div>
 <div created="20200211210217680" modified="20200222063802153" tags="[[reinforcement learning]]" title="Introduction to Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__[[About Reinforcement Learning]]__
@@ -14468,8 +14474,90 @@ Transitivity and the clustering coefficient:
 * $$C = \frac{\text{num of closed paths of length 2}}{\text{num of paths of length 2}} = \frac{\text{num of triangles} \times 6}{\text{num of paths of length 2}} =  \frac{\text{num of triangles} \times 3}{\text{num of connected triangles}}$$
 * Social networks have high values of clustering coefficient like 0.2 till 0.5 or 0.6</pre>
 </div>
-<div created="20200405222045199" modified="20200405230348121" tags="[[UCLA Math 114L - Mathematical Logic]] logic math" title="Propositional Logic" revision="3" bag="default">
-<pre></pre>
+<div created="20200405222045199" modified="20200406033319556" tags="[[UCLA Math 114L - Mathematical Logic]] logic math" title="Propositional Logic" type="text/vnd.tiddlywiki" revision="14" bag="default">
+<pre>Propositional Logic - the mathematical object PL
+
+__Symbols__
+
+* ( ) - parentheses - parsing symbols - to help with parsing of expressions
+* $$\neg \land \lor \rightarrow$$ - logical connectives
+ * $$A_1, A_2, A_3$$ - propositional variables - countably infinite set - each $$A_i$$ stands for some statement that is either true or false - e.g. $$A_1$$ could be it is raining
+
+We use metavariables to  name arbitrary propositional variables - analogous to way in which we use x y z to name arbitrary numbers in algebra
+
+Let p be a propositional variable - means p is one of $$A_i$$ but we haven't specified which
+
+__Syntax__
+
+Def: A string of PL symbols is any finite sequence of PL symbols
+
+E.g. $$A_3 \neg ( \land$$, $$((A_1 \land \lor$$
+
+Equality of strings - for strings $$\alpha$$ and $$\beta$$, $$\alpha \equiv \beta$$ means the strings are equal i.e. they have the same number of symbols and the first symbols match, ...
+
+String concatenation - $$\alpha$$ and $$\beta$$ can be concatenated to form $$\alpha \beta$$ which if $$\alpha = A_1$$ and $$\beta = (A_2 \lor A_3)$$ is $$A_1 (A_2 \lor A_3)$$
+
+Formulas - well formed strings of symbols are called formulas i.e the ones that have meaning
+
+(Informal) Def: Recursive definition
+
+* Each propositional variable $$A_i$$ is a formula as a string of length 1
+* If $$\phi$$ and $$\psi$$ are formulas then $$(\neg \phi)$$, $$(\phi \land \psi)$$, $$(\phi \lor \psi)$$ and $$(\phi \rightarrow \psi)$$ are also formulas
+
+Summarized in: $$\phi :\equiv A_i | (\neg \phi) | (\phi \land \psi) | (\phi \lor \psi) | (\phi \rightarrow \psi)$$
+
+Formal set-theoretic definition: A set S of strings is propositionally closed if 
+
+* $$A_i \in S$$ $$\forall i \in N$$
+* if $$\alpha \in S$$ then $$(\neg \alpha) \in S$$
+* if $$\alpha \beta \in S$$, then $$(\alpha \land \beta), (\alpha \lor \beta), (\alpha \rightarrow \beta) \in S$$
+
+A string $$\alpha$$ is a PL-formula if $$\alpha \in S$$ for every set S of strings which is propositionally closed
+
+Let $$F_{PL}$$ be the set of all PL-formulae, then $$F_{PL} = \cap {S: \text{S is propositionally closed}}$$
+
+Therefore, $$F_{PL}$$ is the smallest propositionally closed set i.e. it is the unique set which is prop. closed and a subset of every prop. closed set
+
+Structural Induction on Formulas - method for proving that every PL-formula has a certain property P
+
+* Suffices to prove that the set of strings $$S = \{ \alpha : \alpha \text{ has property P}\}$$ is propositionally closed as if S is propositionally closed then every PL formula has this property as every PL formula $$\in S$$
+
+Three steps need to do the aforementioned:
+
+* For each i, $$A_i$$ has property P
+* If $$\alpha$$ has property P, then $$(\neg \alpha)$$ has property P
+* if $$\alpha \beta$$ have P, then $$(\alpha \land \beta), (\alpha \lor \beta), (\alpha \rightarrow \beta)$$ have P
+
+Lemma 1: 
+
+* Parentheses match in every formula 
+* If $$\alpha$$ is a proper non-empty initial part of a formula then the number of left parentheses in $$\alpha$$ is greater than the number of right parentheses in $$\alpha$$
+
+Proof for part 1:
+
+*  For any $$i$$, $$A_i \in S$$
+* Suppose $$\alpha \in S$$, so that #L$$[\alpha]$$ = #R$$[\alpha]$$, then #L$$[(\neg \alpha)]$$ = 1 + #L$$[\alpha]$$  = 1 + #R$$[\alpha]$$ = #R$$[(\neg \alpha)]$$, therefore $$(\neg \alpha) \in S$$
+* Suppose $$\alpha, \psi \in S$$ and $$\cdot$$ is a binary connective - then by same reasoning as previous point, $$(\alpha \cdot \psi) \in S$$
+
+Thm 2 (Unique Readability): For every PL-formula $$\phi$$ exactly one of the following is true
+
+# $$\phi$$ is a propositional variable $$A_i$$
+# There is a formula $$\psi$$ s.t $$\phi \equiv (\neg \psi)$$
+# There are formulae $$\psi, \chi$$ and a binary connective $$\cdot$$ s.t. $$\phi \equiv (\psi \cdot \chi)$$
+
+Main connectives: applies only to formulae that are not prime i.e. not just a propositional variable
+
+* $$\neg$$ - if in category 2 from above theorem
+* $$\cdot$$ - if in category 3 from above thereom
+
+Unique readability guarantees that the notion of the main connective is well-defined. 
+
+Misspellings and abbreviations:
+
+* not putting the correct amount of brackets
+* [] - used to complete all extraneous brackets
+
+</pre>
 </div>
 <div created="20200131001522764" modified="20200131030522424" tags="[[needs formatting]] [[talk summary]] [[quantum computing]]" title="Quantum Temporal Logic by Nengkun Yu" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Quantum Shock - Quantum computing can solve halting problem (Ji-Natarajan)
