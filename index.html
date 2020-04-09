@@ -177,6 +177,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/Excise/-15636755/tagnew</li>
+
 <li>$:/state/sidebar</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -279,6 +281,10 @@ Error message and password prompt
 
 <li>Do Calculus</li>
 
+<li>Draft of 'Internet: A Brief Overview'</li>
+
+<li>Draft of 'Search Strategies'</li>
+
 <li>Epidemics on Networks</li>
 
 <li>Equivalence Relations</li>
@@ -302,6 +308,8 @@ Error message and password prompt
 <li>Finite Difference Policy Gradient</li>
 
 <li>For Every and There Exists</li>
+
+<li>Formulating a problem as search</li>
 
 <li>Foundations of Quantum Computing: History and Overview</li>
 
@@ -338,6 +346,8 @@ Error message and password prompt
 <li>Integrated Architectures of Model-Based RL and Model-Free RL</li>
 
 <li>Integrating Learning and Planning</li>
+
+<li>Internet: A Brief Overview</li>
 
 <li>Introduction to Artificial Intelligence</li>
 
@@ -469,6 +479,8 @@ Error message and password prompt
 
 <li>Scalable, transparent, and post-quantum secure computational integrity</li>
 
+<li>Search Strategies</li>
+
 <li>Separation Axioms</li>
 
 <li>Similarity Measures</li>
@@ -502,6 +514,8 @@ Error message and password prompt
 <li>Things I want to learn about in 2020</li>
 
 <li>Topological Spaces</li>
+
+<li>UCLA CS 118 - Computer Network Fundamentals</li>
 
 <li>UCLA CS 161 - Fundamentals of Artificial Intelligence</li>
 
@@ -10029,7 +10043,10 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200408193203556" modified="20200409142444178" title="$:/state/sidebar" revision="6" bag="default">
+<div created="20200409170239012" modified="20200409170239012" title="$:/state/Excise/-15636755/tagnew" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200408193203556" modified="20200409185340583" title="$:/state/sidebar" revision="16" bag="default">
 <pre>yes</pre>
 </div>
 <div created="20200408202807555" modified="20200408202807555" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
@@ -10047,7 +10064,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200408193118770" list="" modified="20200409050849054" title="$:/StoryList" revision="99" bag="default">
+<div created="20200408193118770" list="" modified="20200409170413874" title="$:/StoryList" revision="157" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -11834,6 +11851,64 @@ tbd
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
 </div>
+<div created="20200409151749185" modified="20200409151749185" title="Draft of 'Internet: A Brief Overview'" revision="2306" bag="default">
+<pre>__What is the internet?__ - global information infrastructure
+
+* Can be subdivided into smaller subnetworks - North American Network, European Network and further subdivided within these by ISPs - all connected by high speed connections
+* Hosts - end systems running network apps - servers, pcs, mobile phones etc.
+* Communication links - fiber, copper, radio etc., transmission rate = bandwidth
+* Routers and switches - perform packet switching - forward packets i.e. chunks of data
+
+__Network Edge__ - https://imgur.com/09h8Jl9
+
+* Network Edge - Hosts - client and servers and servers are usually in often data centers
+* Access Networks - home network, institutional network, mobile network - factors to keep in mind: bandwidth, shared or dedicated
+* Physical Media - wired, wireless communication links
+* Network core - interconnected routers, network of networks
+* Network Edge connected to Network core by Access Network
+
+Access Network: Digital Subscriber Line (DSL) - https://imgur.com/9sdZ10J
+
+* use existing telephone line to central office DSL access multiplexer
+* data over DSL phone line goes to internet
+* voice over DSL phone line goes to telephone net
+* &lt; 2.5 Mbps upstream -usually way lower than downstream since typical users are downloading primarily and upstream is only for sending small requests
+* &lt; 24 Mbps downstream
+
+Access Network: Cable Network - use television cable instead of telephone line - https://imgur.com/8KQJcnU
+
+* HFC: hybrid fiber coax - asymmetric again with up to 30mbps down stream and 2 mbps upstream
+* Unlike DSL homes share access network to cable headend
+
+Access Network: Home Network - https://imgur.com/Mj4vy38
+
+Enterprise Access Network (Ethernet): speeds of 100mbps - 10Gbps are common - https://imgur.com/C6Q010Z
+
+Wireless Access Networks - https://imgur.com/RIXKG97
+
+Physical Media - Fiber Optic Cable:
+
+* glass fiber carrying light pulses - each pulse a bit
+* High speed operation - 10s - 1000s Gbps
+* Low error rate
+* Typically used to build network core - backbone of internet
+
+__Network Core__
+
+
+
+
+
+
+</pre>
+</div>
+<div created="20200409170539669" modified="20200409170539669" title="Draft of 'Search Strategies'" revision="219" bag="default">
+<pre>__Types of search strategies__
+
+* Uninformed / Blind - needs just the three things discussed in [[Formulating a problem as search]]
+* Informed / Heuristic
+</pre>
+</div>
 <div created="20200309040928771" modified="20200309173052693" tags="[[graph theory]]" title="Epidemics on Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Idea of compartmentalization:
 
@@ -12195,6 +12270,77 @@ Example: Training AIBO to walk by Finite Difference Policy Gradient (AIBO walk p
 <pre>* Negation of a for every x, proposition is true is there exists x such that proposition is false
 * Can swap the order of two adjacent for every or two adjacent there exists without changing logical meaning
 * Cannot swap the order of for every and there exists, in particular: There exists y such that for every x ... is stronger than for every x there exists y ...</pre>
+</div>
+<div created="20200409170240004" modified="20200409170328386" tags="[[artificial intelligence]] [[Problem Solving using Search]]" title="Formulating a problem as search" revision="3" bag="default">
+<pre>Problems can be formulated as search problems: https://imgur.com/lWiwKr2 - then given to a search engine with a search strategy to obtain a knowledge
+
+8 puzzle: https://imgur.com/c2hqhQ2
+
+Search Problem:
+
+# Initial State
+# Final/Goal State
+# Actions / Operators - State -&gt; apply action -&gt; State
+
+Solution to a problem is just a sequence of actions
+
+Not all actions can be applied in all states - sometimes applying an action to a state might lead to an illegal state
+
+When designing a formulation, we want to simplify the action space 
+
+* Could potentially define action with all 4 movements for each number tile - https://imgur.com/4tUvjw4
+* But a much simpler action space is just considering the 4 movements of the blank tile - https://imgur.com/Whw5M6H
+
+Search Tree: https://imgur.com/V1i8QAF
+
+* start with initial state and branch on actions
+* could be infinite
+* notion of a path - following a sequence of actions - it is possible that some paths have a final state at end of path and some might not
+* search is basically finding the path that leads us to the final state
+* some paths are faster than others
+
+
+What can contribute to the difficulty of a search problem:
+
+* Branching factor - dependent on size of the action space (equal to the number of possible actions)
+* Number of states
+* Depth of the solution - how far the initial state is from the final state
+
+Missionaries and Cannibals Problem: https://imgur.com/rFAS2P3
+
+* Initial State - all on one side
+* Final State - all on other side
+* Actions - boat can only take one or two (note can't take zero)
+* Constraint - cannot have more cannibals than missionaries on a side at any point
+
+Solving the problem:
+
+* Defining the state representation: (M C B) - B = t if right NIL if left - M = number of missionaries on boat side, C = num of cannibals on boat side
+* Then initial state is (3, 3, t) and final state is (3, 3, NIL)
+* Need to pass initial state to search engine
+* Need to pass final-state predicate - a function that just returns (equal state final-state) to check if the state passed in is the final state
+* Need to define successor function - a function that takes a state and returns all the successor states
+
+Constraint Satisfaction Problem - example - n Queen problem - place n Queens on n*n board such that they do not attack each other - https://imgur.com/dTuQMX6
+
+* What is a state: Partially filled board - so positions for queens - list of positions
+* What is an action: Place a queen on the board
+* Key differentiator here from other problems is that the search tree is finite
+* Cost of solution is irrelevant here as every solution has cost 8
+* Initial State: Empty Board - empty list
+* Final State Predicate: Many final states exists so define a predicate more generally
+* Actions: placing queen - adding next queen - positions limited by queen attacking rules
+
+Cryptarithmetic:
+
+* State - partial assignment of digits to letters
+* Initial States - empty assignment
+* Finial state - full assignment that satisfying given constraints
+
+Route Finding - initial location, final location, actions: edges, streets
+
+* Traveling Salesmen Problem - start at X, visit a number of locations and then get back to X
+</pre>
 </div>
 <div created="20200408193924478" modified="20200409042110751" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Foundations of Quantum Computing: History and Overview" revision="2" bag="default">
 <pre>Current Quantum Computers have 50-80 qubits and 100 qubits is around the corner, 1000 qubits is well within reach
@@ -12780,6 +12926,77 @@ __[[Integrated Architectures of Model-Based RL and Model-Free RL]]__
 __[[Simulation-Based Search]]__
 
 {{Simulation-Based Search}}</pre>
+</div>
+<div created="20200409143643694" modified="20200409160549420" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Internet: A Brief Overview" revision="6" bag="default">
+<pre>__What is the internet?__ - global information infrastructure
+
+* Can be subdivided into smaller subnetworks - North American Network, European Network and further subdivided within these by ISPs - all connected by high speed connections
+* Hosts - end systems running network apps - servers, pcs, mobile phones etc.
+* Communication links - fiber, copper, radio etc., transmission rate = bandwidth
+* Routers and switches - perform packet switching - forward packets i.e. chunks of data
+
+__Network Edge__ - https://imgur.com/09h8Jl9
+
+* Network Edge - Hosts - client and servers and servers are usually in often data centers
+* Access Networks - home network, institutional network, mobile network - factors to keep in mind: bandwidth, shared or dedicated
+* Physical Media - wired, wireless communication links
+* Network core - interconnected routers, network of networks
+* Network Edge connected to Network core by Access Network
+
+Access Network: Digital Subscriber Line (DSL) - https://imgur.com/9sdZ10J
+
+* use existing telephone line to central office DSL access multiplexer
+* data over DSL phone line goes to internet
+* voice over DSL phone line goes to telephone net
+* &lt; 2.5 Mbps upstream -usually way lower than downstream since typical users are downloading primarily and upstream is only for sending small requests
+* &lt; 24 Mbps downstream
+
+Access Network: Cable Network - use television cable instead of telephone line - https://imgur.com/8KQJcnU
+
+* HFC: hybrid fiber coax - asymmetric again with up to 30mbps down stream and 2 mbps upstream
+* Unlike DSL homes share access network to cable headend
+
+Access Network: Home Network - https://imgur.com/Mj4vy38
+
+Enterprise Access Network (Ethernet): speeds of 100mbps - 10Gbps are common - https://imgur.com/C6Q010Z
+
+Wireless Access Networks - https://imgur.com/RIXKG97
+
+Physical Media - Fiber Optic Cable:
+
+* glass fiber carrying light pulses - each pulse a bit
+* High speed operation - 10s - 1000s Gbps
+* Low error rate
+* Typically used to build network core - backbone of internet
+
+__Network Core__
+
+* Mesh of interconnected routers
+* Routing - determine source-destination route taken by packets
+* Forwarding - move packets from router's input to appropriate router output
+
+Packet Switching:
+
+* sending hosts breaks application layer message into packets - fixed size
+* forward packets from one router to the next - across links on path from source destination
+* each packet transmitted at full link capacity sequentially
+* Packet size = L bits, Link capacity = R bits per second, One hop delay = L/R seconds
+
+Alternative: Circuit Switching - used for telephone networks
+
+* End to end resources allocated to, reserved for voice call btw. source &amp; dest
+* Circuit segment idle if not used by call (no sharing)
+* Dial a phone number - then telephone provider will establish a dedicated circuit for the call - after call ends, resources are released
+
+Does the telephone network need a dedicated circuit for every phone call?  No - https://imgur.com/j74o9MO
+
+* Frequency Division Multiplexing - each user takes a frequency band
+* Time Division Multiplexing - time sharing
+
+Why is packet switching chosen by the internet?
+
+* 
+</pre>
 </div>
 <div created="20200404185457513" modified="20200404190921236" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[artificial intelligence]]" title="Introduction to Artificial Intelligence" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>The Intelligent Agent Architecture: https://imgur.com/5FOvphf
@@ -14532,75 +14749,14 @@ Extensions to Policy Iteration:
 * Modifying Policy Iteration - consider epsilon convergence of value function? or simply stop after k iterations of iterative policy evaluation?, basic idea is to stop early as we may not need to know the value function to complete accuracy (and in the most extreme case just stop after k = 1, update policy every iteration - equivalent to - [[Value Iteration]])
 * Generalized Policy Iteration - https://imgur.com/cfEMFw0</pre>
 </div>
-<div created="20200407170824959" modified="20200407183300372" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Problem Solving using Search" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>Problems can be formulated as search problems: https://imgur.com/lWiwKr2 - then given to a search engine with a search strategy to obtain a knowledge
+<div created="20200407170824959" modified="20200409170411157" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Problem Solving using Search" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<pre>__[[Formulating a problem as search]]__
 
-8 puzzle: https://imgur.com/c2hqhQ2
+{{Formulating a problem as search}}
 
-Search Problem:
+__[[Search Strategies]]__
 
-# Initial State
-# Final/Goal State
-# Actions / Operators - State -&gt; apply action -&gt; State
-
-Solution to a problem is just a sequence of actions
-
-Not all actions can be applied in all states - sometimes applying an action to a state might lead to an illegal state
-
-When designing a formulation, we want to simplify the action space 
-
-* Could potentially define action with all 4 movements for each number tile - https://imgur.com/4tUvjw4
-* But a much simpler action space is just considering the 4 movements of the blank tile - https://imgur.com/Whw5M6H
-
-Search Tree: https://imgur.com/V1i8QAF
-
-* start with initial state and branch on actions
-* could be infinite
-* notion of a path - following a sequence of actions - it is possible that some paths have a final state at end of path and some might not
-* search is basically finding the path that leads us to the final state
-* some paths are faster than others
-
-
-What can contribute to the difficulty of a search problem:
-
-* Branching factor - dependent on size of the action space (equal to the number of possible actions)
-* Number of states
-* Depth of the solution - how far the initial state is from the final state
-
-Missionaries and Cannibals Problem: https://imgur.com/rFAS2P3
-
-* Initial State - all on one side
-* Final State - all on other side
-* Actions - boat can only take one or two (note can't take zero)
-* Constraint - cannot have more cannibals than missionaries on a side at any point
-
-Solving the problem:
-
-* Defining the state representation: (M C B) - B = t if right NIL if left - M = number of missionaries on boat side, C = num of cannibals on boat side
-* Then initial state is (3, 3, t) and final state is (3, 3, NIL)
-* Need to pass initial state to search engine
-* Need to pass final-state predicate - a function that just returns (equal state final-state) to check if the state passed in is the final state
-* Need to define successor function - a function that takes a state and returns all the successor states
-
-Constraint Satisfaction Problem - example - n Queen problem - place n Queens on n*n board such that they do not attack each other - https://imgur.com/dTuQMX6
-
-* What is a state: Partially filled board - so positions for queens - list of positions
-* What is an action: Place a queen on the board
-* Key differentiator here from other problems is that the search tree is finite
-* Cost of solution is irrelevant here as every solution has cost 8
-* Initial State: Empty Board - empty list
-* Final State Predicate: Many final states exists so define a predicate more generally
-* Actions: placing queen - adding next queen - positions limited by queen attacking rules
-
-Cryptarithmetic:
-
-* State - partial assignment of digits to letters
-* Initial States - empty assignment
-* Finial state - full assignment that satisfying given constraints
-
-Route Finding - initial location, final location, actions: edges, streets
-
-* Traveling Salesmen Problem - start at X, visit a number of locations and then get back to X</pre>
+{{Search Strategies}}</pre>
 </div>
 <div created="20200212013035576" modified="20200212013205444" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="Problems that RL needs to solve" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Two fundamental problems in sequential decision making:
@@ -15150,6 +15306,87 @@ Take proof statement: alpha is the result of executing C for T steps on public i
 
 First step construct an AIR:
 P = </pre>
+</div>
+<div created="20200409170400171" modified="20200409185331056" tags="[[artificial intelligence]] [[Problem Solving using Search]]" title="Search Strategies" revision="5" bag="default">
+<pre>__Types of search strategies__
+
+* Uninformed / Blind - needs just the three things discussed in [[Formulating a problem as search]]
+* Informed / Heuristic - problem dependent - need additional information
+
+The process of search:
+
+* expand v/s generate
+* Fringe / Frontier
+* State v/s Node in the search tree
+* Search tree v/s State Space
+
+https://imgur.com/YulvqGD - underlined nodes are on the fringe
+
+Generate children of Node 2 - get successor states of state 2
+
+Expanding Node 2:
+
+* Check if it is goal state
+* Generate its children
+
+Fringe/Frontier - nodes waiting to be expanded - need to make a choice regarding which nodes  on the fringe get expanded
+
+Search Strategy - the criteria for choosing a node to expand next - which node from the fringe should we choose
+
+Search Tree Node - state, parent, operator/action/ children nodes
+
+State Space - a graph with nodes being states and directed edges being actions that take you from one state to the next - https://imgur.com/XqFOAC7
+
+Search Tree - can be infinite even if state space is finite
+
+__Evaluating Search Strategies__
+
+# Completeness - does it always find a solution if one exists?
+# Time Complexity - number of nodes that will be expanded in the worst case
+# Space Complexity - maximum number of nodes in memory
+# Optimality - does it always find a least cost solution
+
+Time and Space Complexity parametrized by:
+
+* b - maximum branching factor
+* d - depth of least cost solution (root has depth 0 and so on so forth)
+* m - maximum depth of the search tree (could be infinite)
+
+Breadth-First Search (BFS): https://imgur.com/nzUyvVq - pick node at least depth - https://imgur.com/undefined
+
+Visualize order in which nodes are expanded - https://imgur.com/brSgfS5 - expand all nodes at a particular level before another level is expanded
+
+Implementing BFS using a queue (fifo):
+
+* Insert new nodes at end of queue 
+* Pick node to expand from front of queue
+
+Number of nodes in tree with branching factor b and depth d - $$N(b, d) = 1 + b + b^2 + ... + b^d = \frac{b^{d+1} - 1}{b - 1} \approx \frac{b^{d+1}}{b - 1} = b^d \frac{b}{b - 1} = O(b^d)$$
+
+# Complete? Yes
+# Time Complexity: $$O(b^d)$$
+# Space Complexity: $$O(b^d)$$
+# Optimal? Yes
+
+Depth First Search (DFS) - pick deepest node first - https://imgur.com/24td0MT - uses less memory as seen as in diagram - https://imgur.com/6XNixQH - implement using a stack (lifo)
+
+# Complete? In general no, yes if finite
+# Optimal? No, because we may find a very deep solution on the first branch we explore while there is a much shallower solution at a different branch
+# Time Complexity: $$O(b^d)$$
+# Space Complexity: $$O(bm)$$ - at most all siblings of the deepest node 
+
+Limited DFS - complete if $$limit \geq d$$ and if we choose $$l \geq |state space|$$ we are guaranteed this as $$d \leq |state space|$$
+
+Iterative Deepening Search - https://imgur.com/fMgFMvX - many iterations of limited dfs with max depth increasing incrementally
+
+* Complete - yes
+* Optimal - yes
+* Space complexity - $$O(bd)$$
+* Time Complexity - $$O(b^d)$$
+
+Search to depth d - number of nodes $$\approx b^d \frac{b}{b - 1}$$ - therefore iterative deepening = $$b^0 (\frac{b}{b - 1}) + b^1 (\frac{b}{b - 1}) + b^2 (\frac{b}{b - 1}) + ... + b^d (\frac{b}{b - 1}) = \frac{b}{b - 1}(1 + ... + b^d) = \frac{b}{b - 1} b^d \frac{b}{b - 1}$$
+
+Therefore additional cost is $$\frac{b}{b - 1}$$ which is in worst case of b = 2, = 2 but as $$b \rightarrow \infty, r \rightarrow 1$$ - so additional cost is not too bad since the last level dominates</pre>
 </div>
 <div created="20200219061250949" modified="20200221195947287" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>''Intuition:'' To identify topological spaces with enough structure i.e. they do not have too few open sets - this is best characterized by separation axioms that are some form of requirements that pairs of disjoint subsets are contained in disjoint open sets. To require this in full generality though is not helpful either as it requires every set to be open. 
@@ -15978,6 +16215,9 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Connectedness]]
 * [[Path Connectedness]]
 </pre>
+</div>
+<div created="20200409143404852" modified="20200409143749348" tags="[[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" revision="5" bag="default">
+<pre># [[Internet: A Brief Overview]]</pre>
 </div>
 <div created="20200402185643352" modified="20200407170813623" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to Artificial Intelligence]]
