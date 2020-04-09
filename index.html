@@ -10029,7 +10029,7 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200408193203556" modified="20200409050732523" title="$:/state/sidebar" revision="4" bag="default">
+<div created="20200408193203556" modified="20200409142444178" title="$:/state/sidebar" revision="6" bag="default">
 <pre>yes</pre>
 </div>
 <div created="20200408202807555" modified="20200408202807555" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
@@ -10047,7 +10047,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200408193118770" list="[[UCLA CS 239 - Quantum Computation]] [[Foundations of Quantum Computing: Linear Algebra]]" modified="20200409050849054" title="$:/StoryList" revision="71" bag="default">
+<div created="20200408193118770" list="" modified="20200409050849054" title="$:/StoryList" revision="99" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -12294,8 +12294,50 @@ Trick to take any function and make it 'reversible' using a helper bit
 * Therefore we can define $$U_f (x, b) = (x, b \oplus f(x)$$
 * Clearly reversible as $$U_f(U_f(x, b)) = (x, b \oplus f(x) \oplus f(x)) = (x, b)$$</pre>
 </div>
-<div created="20200409050857603" modified="20200409050907622" tags="[[UCLA CS 239 - Quantum Computation]] [[quantum computing]] [[linear algebra]]" title="Foundations of Quantum Computing: Linear Algebra" revision="1" bag="default">
-<pre></pre>
+<div created="20200409050857603" modified="20200409060735017" tags="[[UCLA CS 239 - Quantum Computation]] [[quantum computing]] [[linear algebra]]" title="Foundations of Quantum Computing: Linear Algebra" type="text/vnd.tiddlywiki" revision="15" bag="default">
+<pre>Hilbert Space - Vector space with an inner product
+
+Dirac Notation:
+
+* $$|0\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$$
+* $$|1\rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$$
+* $$|+\rangle = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}$$
+* $$|-\rangle = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{-1}{\sqrt{2}} \end{pmatrix}$$
+
+Conjugate Transpose of $$v$$ denoted by $$v^\dagger$$
+
+Inner Product: vector * vector -&gt; real number: $$v^\dagger w$$
+
+Outer Product: vector * vector -&gt; matrix: $$v \cdot w^\dagger$$
+
+Linear operation is unitary : $$U \cdot U^\dagger = U^\dagger \cdot U = I$$
+
+Qubit: $$\begin{pmatrix} \alpha \\ \beta \end{pmatrix} = \alpha |0\rangle + \beta |1\rangle$$
+
+* measurement with probability $$\alpha^2$$ gives us value 0 and collapses to $$|0\rangle$$
+
+Example:
+
+* $$\alpha_{00} |00\rangle + \alpha_{01} |01\rangle + \alpha_{10} |10\rangle + \alpha_{11} |11\rangle$$
+* measure both qubits at once: with probability $$|\alpha_{00}|^2$$ we get 00 and collapse to $$|00\rangle$$
+* measure just the first one and with probability $$|\alpha_{00}|^2 + |\alpha_{01}|^2$$ we get a 0 and collapses to $$\frac{\alpha_{00} |00\rangle + \alpha_{01} |01\rangle}{\sqrt{|\alpha_{00}|^2 + |\alpha_{01}|^2}}$$
+
+Copying information in quantum computation - https://imgur.com/NhjSQw8 - no cloning thm can't copy an arbitrary unknown qubit
+
+Entaglement:
+
+* Entangled state of qubits: $$\frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle$$ so the qubits are always identical, with prob 1/2 both are 0 and prob 1/2 both are 1
+
+Dirac Notation Supplement: $$|0\rangle \otimes |1\rangle = |01\rangle$$
+
+Example of computing with Dirac Notation and tensor product: https://imgur.com/FR8jXGc
+
+Tensor Product Laws:
+
+* associative
+* $$A \otimes (B + C) = A \otimes B + A \otimes C$$
+* $$(A \otimes B) (C \otimes D) = (AC) \otimes (BD)$$
+* $$(\alpha A) \otimes B = \alpha (A \otimes B) = A \otimes (\alpha B)$$</pre>
 </div>
 <div created="20200308212845972" modified="20200308214932933" tags="[[graph theory]]" title="Generalizations of Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Hyper-graphs - edges can join any number of nodes
