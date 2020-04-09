@@ -177,6 +177,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -298,6 +302,12 @@ Error message and password prompt
 <li>Finite Difference Policy Gradient</li>
 
 <li>For Every and There Exists</li>
+
+<li>Foundations of Quantum Computing: History and Overview</li>
+
+<li>Foundations of Quantum Computing: Interface to Quantum Mechanics</li>
+
+<li>Foundations of Quantum Computing: Linear Algebra</li>
 
 <li>Generalizations of Networks</li>
 
@@ -496,6 +506,8 @@ Error message and password prompt
 <li>UCLA CS 161 - Fundamentals of Artificial Intelligence</li>
 
 <li>UCLA CS 201 Winter 2020</li>
+
+<li>UCLA CS 239 - Quantum Computation</li>
 
 <li>UCLA CS 262A Learning and Reasoning with Bayesian Networks</li>
 
@@ -10017,6 +10029,12 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200408193203556" modified="20200409050732523" title="$:/state/sidebar" revision="4" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200408202807555" modified="20200408202807555" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -10029,7 +10047,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200407170756702" list="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[Problem Solving using Search]] Welcome [[How to Contribute?]]" modified="20200407170813860" title="$:/StoryList" revision="9" bag="default">
+<div created="20200408193118770" list="[[UCLA CS 239 - Quantum Computation]] [[Foundations of Quantum Computing: Linear Algebra]]" modified="20200409050849054" title="$:/StoryList" revision="71" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10090,7 +10108,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200407170753503" modified="20200407171103740" title="$:/temp/search" revision="6" bag="default">
+<div created="20200408193116525" modified="20200408193122071" title="$:/temp/search" revision="4" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -12177,6 +12195,107 @@ Example: Training AIBO to walk by Finite Difference Policy Gradient (AIBO walk p
 <pre>* Negation of a for every x, proposition is true is there exists x such that proposition is false
 * Can swap the order of two adjacent for every or two adjacent there exists without changing logical meaning
 * Cannot swap the order of for every and there exists, in particular: There exists y such that for every x ... is stronger than for every x there exists y ...</pre>
+</div>
+<div created="20200408193924478" modified="20200409042110751" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Foundations of Quantum Computing: History and Overview" revision="2" bag="default">
+<pre>Current Quantum Computers have 50-80 qubits and 100 qubits is around the corner, 1000 qubits is well within reach
+
+In comparison to a classical computer, it is unlikely that we can simulate a quantum computer with more than 100 qubits so basically with 100+ qubits a quantum computer is much more powerful than the best possible supercomputer. 
+
+Main challenge with current quantum computers is the high error rate - Intel Xeon Phi classical computer with soft error rate - 1 error in 1000 years whereas IBM Q16 has 2 errors per 1000 operations for single qubit gates and 44 errors for every 1000 operations for multi qubit gates and 6 errors for every 100 measurements
+
+Famous quantum algorithms - Shor's Algorithm - factors integers - Grover's Algorithm - searches an unstructured database very quickly
+
+Since quantum computers are only usable when it is coherent - so how much coherence time we have is also very important in understanding how powerful a quantum computer is
+
+Quantum Volume measured this = #qubits * #ops - near feature should be around 100 qubits * 1000 ops
+
+Types of problems that are well suited to quantum computation:
+
+* Small input, small output, 
+*
+*
+
+Quantum Programming Languages:
+
+* Some of the quantum languages are just Python libraries - Cirq by Google and ~PyQuil by Rigetti - useful as a lot of the code we need to write is not quantum - lot of it is for setup, post-porcessing and input-output
+* Q# is an entirely new language built specifically for this - still runs on classical computer with calls made to quantum - but the compiler decides the calls to quantum rather than the programmer explicitly controlling it
+* Some languages model the connections between qubits - on a high level this means to say that some languages let you model the implementation of the computer to write more efficient &amp; effective programs
+
+Quantum Mechanical Systems - double slit experiment - https://imgur.com/i2NOmpG
+
+* Let P =  probability that the photon lands in the interval with both slits open, $$P_1$$ = prob if only slit 1 open and $$P_2$$ similarly
+* We would think $$P = P_1 + P_2$$ but this isn't true
+* The way to make this work is to change from probabilities to amplitudes - complex numbers
+* Central idea of quantum mechanics is that to fully describe a system, you need a probability (an amplitude) for each possible configuration
+* Born Rule - $$Probability = |amplitude|^2$$
+* Redo experiment with amplitudes, $$\alpha, \alpha_1, \alpha_2$$
+* Now we do get $$\alpha = \alpha_1 + \alpha_2$$
+* Let $$\alpha_1 = \frac{1}{2}$$ and let $$\alpha_2 = \frac{-1}{2}$$
+* Probability that photon lands in interval for either slit 1 or slit 2 open is same = $$|\alpha_1|^2 = |\alpha_2|^2 = \frac{1}{4}$$
+* But if both slits open then $$|\alpha|^2 = |\alpha_1|^2 + |\alpha_2|^2 + 2 \cdot \alpha_1 \cdot \alpha_2 = \frac{1}{4} + \frac{1}{4} - {1}{2} = 0 $$- which corresponds to the results of the experiment
+* Question that arises here is how does a particle that went through the first slit know that the other silt is open? In quantum mechanics, this question is ill-formed. Particles don’t have trajectories, but rather take all paths simultaneously (with some amplitude), in superposition
+
+Two Levels of Probabilities:
+
+* Quantum Mechanics level of probabilities as discussed above
+* Probabilities in the sense of approximation - giving correct answer with high probability - quantum computers cannot find exact solutions to NP complete problems in poly time but can be much better than classical computers at finding approximate solutions
+
+</pre>
+</div>
+<div created="20200408203731872" modified="20200409044350381" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Foundations of Quantum Computing: Interface to Quantum Mechanics" type="text/vnd.tiddlywiki" revision="8" bag="default">
+<pre>Comparison of Classical Computing v/s Quantum Computing:
+
+* Software - Boolean Algebra v/s Linear Algebra
+* Hardware - Classical mechanics v/s Quantum Mechanics i.e. Semiconductors v/s Superconductors
+
+Quantum Programming is based on four postulates of quantum mechanics:
+
+* State Space rule - by the superposition principle of quantum mechanics, if a quantum system can be in one of two states, it can also be in a linear combination of these states with complex coefficients - therefore if there are two possible states, the system can be in a linear combination of the two states where the amplitude is the inclination towards a particular state
+* Composition Rule - how do we combine individual qubits - how do we describe the state space of multiple qubits - in classical computing this is done by a Cartesian Product - in quantum computing this is done by Tensor Product - therefore addition of a qubit doubles the number of dimensions
+* Step Rule - how a quantum system changes over time i.e. in every //step//- change is unitary i.e. transforms the state vector yet preserves its length - thus it is a rotation or a reflection
+* Measurement Rule - A measurement of a k state system yields one of the k possible outcomes with probability = to the amplitude of that state squared and the qubit collapses to that status
+
+Understanding quantum computing as an extension of classical computing:
+
+If we think of classical computing in terms of applying matrices 
+
+* State space rule - state is a bit vector
+* Composition Rule - compose bits using Cartesian Product
+* Step rule - for deterministic classical computing a step is applying a binary matrix 
+* Measurement Rule - read bits at any time
+
+We can take this further by switching to probabilistic computing
+
+* Step rule - the matrices we use can now take arbitrary positive values as long as every column sums up to 1
+
+Probabilistic Computing v/s Quantum Computing:
+
+* Real numbers v/s complex numbers
+* Vector of probabilities v/s vector of amplitudes
+* $$\sum p_i = 1$$ v/s $$\sum |\alpha_i|^2 = 1$$
+* Stochastic matrix - preserves the sum of probabilities v/s Unitary matrix - preserves the sum of amplitude norm squared
+
+Hadamard Matrix: $$H = \begin{pmatrix} 1 &amp; 1\\ 1 &amp; -1 \end{pmatrix}$$
+
+* ket-0 = $$|0\rangle =  \begin{pmatrix} 1\\ 0 \end{pmatrix}$$
+* ket-1 = $$|1\rangle =  \begin{pmatrix} 0\\ 1 \end{pmatrix}$$
+
+Example: $$H |0\rangle = \begin{pmatrix} \frac{1}{\sqrt{2}}\\ \frac{1}{\sqrt{2}}\end{pmatrix}$$ and $$H |1\rangle = \begin{pmatrix} \frac{1}{\sqrt{2}}\\ \frac{-1}{\sqrt{2}}\end{pmatrix}$$
+
+Unitary matrix:
+
+* Column = $$\sum |\alpha_i^2| = 1$$ 
+* U is unitary $$\iff U^{-1} U = I$$
+* Therefore all computation in the quantum setting is reversible
+
+Trick to take any function and make it 'reversible' using a helper bit
+
+* Consider for example f s.t. f(0) = 1 and f(1) = 1 - clearly not reversible as is
+* Therefore we can define $$U_f (x, b) = (x, b \oplus f(x)$$
+* Clearly reversible as $$U_f(U_f(x, b)) = (x, b \oplus f(x) \oplus f(x)) = (x, b)$$</pre>
+</div>
+<div created="20200409050857603" modified="20200409050907622" tags="[[UCLA CS 239 - Quantum Computation]] [[quantum computing]] [[linear algebra]]" title="Foundations of Quantum Computing: Linear Algebra" revision="1" bag="default">
+<pre></pre>
 </div>
 <div created="20200308212845972" modified="20200308214932933" tags="[[graph theory]]" title="Generalizations of Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Hyper-graphs - edges can join any number of nodes
@@ -14371,12 +14490,75 @@ Extensions to Policy Iteration:
 * Modifying Policy Iteration - consider epsilon convergence of value function? or simply stop after k iterations of iterative policy evaluation?, basic idea is to stop early as we may not need to know the value function to complete accuracy (and in the most extreme case just stop after k = 1, update policy every iteration - equivalent to - [[Value Iteration]])
 * Generalized Policy Iteration - https://imgur.com/cfEMFw0</pre>
 </div>
-<div created="20200407170824959" modified="20200407171107909" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Problem Solving using Search" revision="2" bag="default">
+<div created="20200407170824959" modified="20200407183300372" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Problem Solving using Search" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Problems can be formulated as search problems: https://imgur.com/lWiwKr2 - then given to a search engine with a search strategy to obtain a knowledge
 
+8 puzzle: https://imgur.com/c2hqhQ2
+
+Search Problem:
+
+# Initial State
+# Final/Goal State
+# Actions / Operators - State -&gt; apply action -&gt; State
+
+Solution to a problem is just a sequence of actions
+
+Not all actions can be applied in all states - sometimes applying an action to a state might lead to an illegal state
+
+When designing a formulation, we want to simplify the action space 
+
+* Could potentially define action with all 4 movements for each number tile - https://imgur.com/4tUvjw4
+* But a much simpler action space is just considering the 4 movements of the blank tile - https://imgur.com/Whw5M6H
+
+Search Tree: https://imgur.com/V1i8QAF
+
+* start with initial state and branch on actions
+* could be infinite
+* notion of a path - following a sequence of actions - it is possible that some paths have a final state at end of path and some might not
+* search is basically finding the path that leads us to the final state
+* some paths are faster than others
 
 
-</pre>
+What can contribute to the difficulty of a search problem:
+
+* Branching factor - dependent on size of the action space (equal to the number of possible actions)
+* Number of states
+* Depth of the solution - how far the initial state is from the final state
+
+Missionaries and Cannibals Problem: https://imgur.com/rFAS2P3
+
+* Initial State - all on one side
+* Final State - all on other side
+* Actions - boat can only take one or two (note can't take zero)
+* Constraint - cannot have more cannibals than missionaries on a side at any point
+
+Solving the problem:
+
+* Defining the state representation: (M C B) - B = t if right NIL if left - M = number of missionaries on boat side, C = num of cannibals on boat side
+* Then initial state is (3, 3, t) and final state is (3, 3, NIL)
+* Need to pass initial state to search engine
+* Need to pass final-state predicate - a function that just returns (equal state final-state) to check if the state passed in is the final state
+* Need to define successor function - a function that takes a state and returns all the successor states
+
+Constraint Satisfaction Problem - example - n Queen problem - place n Queens on n*n board such that they do not attack each other - https://imgur.com/dTuQMX6
+
+* What is a state: Partially filled board - so positions for queens - list of positions
+* What is an action: Place a queen on the board
+* Key differentiator here from other problems is that the search tree is finite
+* Cost of solution is irrelevant here as every solution has cost 8
+* Initial State: Empty Board - empty list
+* Final State Predicate: Many final states exists so define a predicate more generally
+* Actions: placing queen - adding next queen - positions limited by queen attacking rules
+
+Cryptarithmetic:
+
+* State - partial assignment of digits to letters
+* Initial States - empty assignment
+* Finial state - full assignment that satisfying given constraints
+
+Route Finding - initial location, final location, actions: edges, streets
+
+* Traveling Salesmen Problem - start at X, visit a number of locations and then get back to X</pre>
 </div>
 <div created="20200212013035576" modified="20200212013205444" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="Problems that RL needs to solve" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Two fundamental problems in sequential decision making:
@@ -15755,7 +15937,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Path Connectedness]]
 </pre>
 </div>
-<div created="20200402185643352" modified="20200407170812552" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200402185643352" modified="20200407170813623" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to Artificial Intelligence]]
 # [[Introduction to Lisp]]
 # [[Problem Solving using Search]]</pre>
@@ -15769,6 +15951,11 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Extreme Classification: Algorithms &amp; Evaluation by Yashoteja Prabhu]]
 # [[Recent Progress in Model-Based Learning by Csaba Szepesvari]]
 </pre>
+</div>
+<div created="20200408192944424" modified="20200409050847613" tags="ucla [[quantum computing]]" title="UCLA CS 239 - Quantum Computation" revision="8" bag="default">
+<pre># [[Foundations of Quantum Computing: History and Overview]]
+# [[Foundations of Quantum Computing: Interface to Quantum Mechanics]]
+# [[Foundations of Quantum Computing: Linear Algebra]]</pre>
 </div>
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
