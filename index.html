@@ -177,10 +177,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/Excise/-15636755/tagnew</li>
-
-<li>$:/state/sidebar</li>
-
 <li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
@@ -194,8 +190,6 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
-
-<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -243,6 +237,8 @@ Error message and password prompt
 
 <li>Compactness of Metric Spaces</li>
 
+<li>Compactness of Propositional Logic</li>
+
 <li>Compactness of Topological Spaces</li>
 
 <li>Completeness</li>
@@ -280,10 +276,6 @@ Error message and password prompt
 <li>Discovery of Useful Questions as Auxiliary Tasks</li>
 
 <li>Do Calculus</li>
-
-<li>Draft of 'Internet: A Brief Overview'</li>
-
-<li>Draft of 'Search Strategies'</li>
 
 <li>Epidemics on Networks</li>
 
@@ -481,6 +473,8 @@ Error message and password prompt
 
 <li>Search Strategies</li>
 
+<li>Semantics of Propositional Logic</li>
+
 <li>Separation Axioms</li>
 
 <li>Similarity Measures</li>
@@ -494,6 +488,10 @@ Error message and password prompt
 <li>Standardization of Features</li>
 
 <li>Subspaces of Topological Spaces</li>
+
+<li>Symbols of Propositional Logic</li>
+
+<li>Syntax of Propositional Logic</li>
 
 <li>TD(lamda) Learning</li>
 
@@ -10043,13 +10041,7 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200409170239012" modified="20200409170239012" title="$:/state/Excise/-15636755/tagnew" revision="1" bag="default">
-<pre>yes</pre>
-</div>
-<div created="20200408193203556" modified="20200409185340583" title="$:/state/sidebar" revision="16" bag="default">
-<pre>yes</pre>
-</div>
-<div created="20200408202807555" modified="20200408202807555" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<div created="20200411030918518" modified="20200411030918518" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
@@ -10064,7 +10056,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200408193118770" list="" modified="20200409170413874" title="$:/StoryList" revision="157" bag="default">
+<div created="20200411030921933" list="[[UCLA CS 239 - Quantum Computation]] [[Foundations of Quantum Computing: Linear Algebra]] Welcome [[How to Contribute?]]" modified="20200411030930437" title="$:/StoryList" revision="6" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10124,9 +10116,6 @@ Error message and password prompt
         }
     }
 }</pre>
-</div>
-<div created="20200408193116525" modified="20200408193122071" title="$:/temp/search" revision="4" bag="default">
-<pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -11136,6 +11125,64 @@ Summary: The following statements are equivalent
 * X is totally bounded and complete
 </pre>
 </div>
+<div created="20200410175929266" modified="20200410180550541" tags="[[Propositional Logic]]" title="Compactness of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Def 10: A PL-theory is a set T of PL-formulas. For a theory T and an assignment v, we say v satisfied T, denoted by $$v \models T$$ if $$v \models \phi, \forall \phi \in T$$
+
+Notational conventions:
+
+* $$\phi_1, ..., \phi_n \models T \iff \{ \phi_1, ..., \phi_n\} \models $$
+
+Def 11: 
+
+* T is satisfiable if there is an assignment v such that $$v \models T$$
+* T is finitely satisfiable if $$T_0$$ is satisfiable for every finite subset $$T_0 \subseteq T$$
+
+Thm 12: (Compactness for PL) If T is a finitely satisfiable then T is satisfiable (can be understood in a topological context as PL being a topological space and that space being compact)
+
+Lemma 13: Let T be a finitely satisfiable theory, For any PL-formula $$\phi$$, at least one of $$T \cup \{\phi\}$$ or $$T \cup \{(\neg \phi )\}$$ 
+
+Proof: 
+
+* Suppose towards a contraction that both are not finitely sat. This means there are finite $$T_0 \subseteq T \cup \{\phi\}$$ and $$T_1 \subseteq T \cup \{(\neg \phi) \}$$
+* wlog. $$T_0 = \bar{T_0} \cup \{ \phi \}$$ and $$T_1 = \bar{T_1} \cup \{ ( \neg \phi) \}$$
+* Since $$ \bar{T_0} \cup  \bar{T_1} \subseteq T$$ is $$ \bar{T_0} \cup  \bar{T_1}$$ is satisfiable i.e. there is v s.t $$v \models  \bar{T_0} \cup  \bar{T_1}$$
+* Either $$v \models \phi$$ or $$v \models (\neq \phi)$$
+*and $$v \models \phi \implies v \models \bar{T_0} \cup \{ \phi \}$$ and similarly for the other case
+
+Def 14: A theory is strongly complete if for every PL-formula $$\phi$$ either $$\phi \in T$$ or $$(\neg \phi) \in T$$ but not both
+
+Lemma 15: if T is a finitely sat theory, then there is a finitely sat theory S s.t. $$T \subseteq$$ which is strongly complete
+
+Proof: 
+
+* Let $$\phi_0, ...$$ be an enumeration of all PL-formula
+* We define $$S_0, S_1, ...$$ recursively, let $$S_0 = T$$
+* $$S_{n + 1} = S_n \cup \{ \phi_n \}$$ if the R.H.S. is finitely satisfiable, $$ = S_n \cup \{ (\neg \phi_n) \}$$ otherwise
+* Base case is finitely satisfiable by construction
+* Inductive step preserves finite satisfiability by Lemma 13
+* $$S_0 \subseteq S_1 \subseteq S_2 \subseteq ... $$
+* Let $$S = \cup_{n \in N} S_n$$ and $$T = S_0 \subset S$$
+* S is also strongly complete by construction
+* S is finite satisfiable: suppose $$S' \subseteq S$$ is finite, since $$S'$$ is finite, there exists $$n$$ s.t. $$S' \subseteq S_n$$, since $$S_n$$ is finitely sat, therefore so is $$S'$$
+
+Lemma 16: If T is finitely satisfiable and strongly complete, then T is satisfiable
+
+Proof: Suppose T is finitely sat and strongly complete
+
+* By strong completeness, for every $$i$$ exactly one of $$A_i \in T$$ or $$(\neg A_i) \in T$$ holds
+* Define an assignment $$v: \{ A_0, A_1, ... \} \rightarrow \{ 0, 1\}$$ by $$v(A_i) = 1$$ if $$A_i \in T$$ and $$= 0$$ if $$(\neg A_i) \in T$$
+* To show $$v \models T$$ we use structural induction to establish $$\forall \phi, \phi \in T \iff v \models \phi$$, base case is given to us for free by def of v
+* $$v \models (\phi \land \psi) \iff v \models \phi \text{ and } v \models \psi$$ by Tarski conditions
+* Which by inductive hypothesis $$ \iff \phi \in T \text{ and } \psi \in T$$
+* Crux is showing $$\phi \in T \text{ and } \psi \in T \iff (\phi \land \psi) \in T$$
+* $$\implies$$: suppose not for contradiction and then by strong completeness it must have the negation, thus we get $$T_0 \subset T$$ that contains $$\phi, \psi, (\neg (\phi \land \psi))$$ which is clearly not satisfiable so $$T$$ not finitely sat.
+* $$\impliedby$$: suppose not then by strong completeness, wlog $$(\neq \phi) \in T$$ and then the subset containing $$(\phi \land \psi)$$ and $$(\neq \phi)$$ is a finite subset of T that cannot be satisfied therefore violating finite satisfiability
+
+Proof for Compactness Thm for PL:
+
+* 
+</pre>
+</div>
 <div created="20200219061300673" modified="20200221200858325" tags="topology" title="Compactness of Topological Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A topological space is compact if every open cover has a finite subcover. 
 
@@ -11851,64 +11898,6 @@ tbd
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
 </div>
-<div created="20200409151749185" modified="20200409151749185" title="Draft of 'Internet: A Brief Overview'" revision="2306" bag="default">
-<pre>__What is the internet?__ - global information infrastructure
-
-* Can be subdivided into smaller subnetworks - North American Network, European Network and further subdivided within these by ISPs - all connected by high speed connections
-* Hosts - end systems running network apps - servers, pcs, mobile phones etc.
-* Communication links - fiber, copper, radio etc., transmission rate = bandwidth
-* Routers and switches - perform packet switching - forward packets i.e. chunks of data
-
-__Network Edge__ - https://imgur.com/09h8Jl9
-
-* Network Edge - Hosts - client and servers and servers are usually in often data centers
-* Access Networks - home network, institutional network, mobile network - factors to keep in mind: bandwidth, shared or dedicated
-* Physical Media - wired, wireless communication links
-* Network core - interconnected routers, network of networks
-* Network Edge connected to Network core by Access Network
-
-Access Network: Digital Subscriber Line (DSL) - https://imgur.com/9sdZ10J
-
-* use existing telephone line to central office DSL access multiplexer
-* data over DSL phone line goes to internet
-* voice over DSL phone line goes to telephone net
-* &lt; 2.5 Mbps upstream -usually way lower than downstream since typical users are downloading primarily and upstream is only for sending small requests
-* &lt; 24 Mbps downstream
-
-Access Network: Cable Network - use television cable instead of telephone line - https://imgur.com/8KQJcnU
-
-* HFC: hybrid fiber coax - asymmetric again with up to 30mbps down stream and 2 mbps upstream
-* Unlike DSL homes share access network to cable headend
-
-Access Network: Home Network - https://imgur.com/Mj4vy38
-
-Enterprise Access Network (Ethernet): speeds of 100mbps - 10Gbps are common - https://imgur.com/C6Q010Z
-
-Wireless Access Networks - https://imgur.com/RIXKG97
-
-Physical Media - Fiber Optic Cable:
-
-* glass fiber carrying light pulses - each pulse a bit
-* High speed operation - 10s - 1000s Gbps
-* Low error rate
-* Typically used to build network core - backbone of internet
-
-__Network Core__
-
-
-
-
-
-
-</pre>
-</div>
-<div created="20200409170539669" modified="20200409170539669" title="Draft of 'Search Strategies'" revision="219" bag="default">
-<pre>__Types of search strategies__
-
-* Uninformed / Blind - needs just the three things discussed in [[Formulating a problem as search]]
-* Informed / Heuristic
-</pre>
-</div>
 <div created="20200309040928771" modified="20200309173052693" tags="[[graph theory]]" title="Epidemics on Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Idea of compartmentalization:
 
@@ -12271,7 +12260,7 @@ Example: Training AIBO to walk by Finite Difference Policy Gradient (AIBO walk p
 * Can swap the order of two adjacent for every or two adjacent there exists without changing logical meaning
 * Cannot swap the order of for every and there exists, in particular: There exists y such that for every x ... is stronger than for every x there exists y ...</pre>
 </div>
-<div created="20200409170240004" modified="20200409170328386" tags="[[artificial intelligence]] [[Problem Solving using Search]]" title="Formulating a problem as search" revision="3" bag="default">
+<div created="20200409170240004" modified="20200409170329441" tags="[[artificial intelligence]] [[Problem Solving using Search]]" title="Formulating a problem as search" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Problems can be formulated as search problems: https://imgur.com/lWiwKr2 - then given to a search engine with a search strategy to obtain a knowledge
 
 8 puzzle: https://imgur.com/c2hqhQ2
@@ -12342,7 +12331,7 @@ Route Finding - initial location, final location, actions: edges, streets
 * Traveling Salesmen Problem - start at X, visit a number of locations and then get back to X
 </pre>
 </div>
-<div created="20200408193924478" modified="20200409042110751" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Foundations of Quantum Computing: History and Overview" revision="2" bag="default">
+<div created="20200408193924478" modified="20200409042111854" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Foundations of Quantum Computing: History and Overview" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Current Quantum Computers have 50-80 qubits and 100 qubits is around the corner, 1000 qubits is well within reach
 
 In comparison to a classical computer, it is unlikely that we can simulate a quantum computer with more than 100 qubits so basically with 100+ qubits a quantum computer is much more powerful than the best possible supercomputer. 
@@ -12388,7 +12377,7 @@ Two Levels of Probabilities:
 
 </pre>
 </div>
-<div created="20200408203731872" modified="20200409044350381" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Foundations of Quantum Computing: Interface to Quantum Mechanics" type="text/vnd.tiddlywiki" revision="8" bag="default">
+<div created="20200408203731872" modified="20200409044352138" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Foundations of Quantum Computing: Interface to Quantum Mechanics" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Comparison of Classical Computing v/s Quantum Computing:
 
 * Software - Boolean Algebra v/s Linear Algebra
@@ -12440,7 +12429,7 @@ Trick to take any function and make it 'reversible' using a helper bit
 * Therefore we can define $$U_f (x, b) = (x, b \oplus f(x)$$
 * Clearly reversible as $$U_f(U_f(x, b)) = (x, b \oplus f(x) \oplus f(x)) = (x, b)$$</pre>
 </div>
-<div created="20200409050857603" modified="20200409060735017" tags="[[UCLA CS 239 - Quantum Computation]] [[quantum computing]] [[linear algebra]]" title="Foundations of Quantum Computing: Linear Algebra" type="text/vnd.tiddlywiki" revision="15" bag="default">
+<div created="20200409050857603" modified="20200409060736146" tags="[[UCLA CS 239 - Quantum Computation]] [[quantum computing]] [[linear algebra]]" title="Foundations of Quantum Computing: Linear Algebra" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Hilbert Space - Vector space with an inner product
 
 Dirac Notation:
@@ -12927,7 +12916,7 @@ __[[Simulation-Based Search]]__
 
 {{Simulation-Based Search}}</pre>
 </div>
-<div created="20200409143643694" modified="20200409160549420" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Internet: A Brief Overview" revision="6" bag="default">
+<div created="20200409143643694" modified="20200409205033716" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Internet: A Brief Overview" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__What is the internet?__ - global information infrastructure
 
 * Can be subdivided into smaller subnetworks - North American Network, European Network and further subdivided within these by ISPs - all connected by high speed connections
@@ -12993,9 +12982,73 @@ Does the telephone network need a dedicated circuit for every phone call?  No - 
 * Frequency Division Multiplexing - each user takes a frequency band
 * Time Division Multiplexing - time sharing
 
-Why is packet switching chosen by the internet?
+Why is packet switching (on demand allocation) chosen by the internet?
 
-* 
+* More robust - if dedicated circuit breaks, circuit switching fails, but packets travel independently so can survive a few paths breaking
+* More users to use network - example - 1 mbps link speed, 100 kbps usage with each user active for 10$ f the time - with circuit switching the active time doesn't matter so can only support (link bandwidth / user usage = 10 in e.g.) users
+* contd. whereas for packet switching using probability of being active as 10%, we can use the binomial distribution to predict how many users active - so with 35 users, 0.4% chance more than 10 active - therefore we can support 35 users with probability 99.6% 
+
+Packet switching is great for data that moves in short bursts - which is an accurate model for the internet
+
+However, excessive congestion is possible - packet delay and loss
+
+Internet Structure - https://imgur.com/a/Iq3Ei75
+
+* Connect each ISP directly - doesn't scale as we have $$O(N^2)$$ links
+* One Global ISP - but then global transit ISP is a bottleneck
+* Multiple Global ISPs - which must be interconnected themselves
+* Hierarchical Structure - same idea as above but at many levels of the hierarchy - promotes sharing but avoids bottlenecks 
+* Content Provider Networks - Akamai etc. - may setup their own network to skip hierarchies on their private network to reduce latency
+
+__Delay, Loss, Throughput in Networks__
+
+Packet transmission delay - time needed to transmit L-bit packet into link
+
+Store and forward - entire packet must arrive at router before it can be transmitted on next link - so the packet must be stored first and then forwarded
+
+Queuing and loss
+
+* if arrival rate in bits to link exceeds transmission rate of link than packets get queued
+* if memory buffer fills up then packets will be dropped
+
+Four sources of packet delay:
+
+* processing delay - check error bits and determine output link - typically &lt; msec
+* queuing delay - time waiting at output line for transmission - depends on congestion level of router
+* transmission delay - L bits i.e. packet size / R bit per second i.e. link speed
+* propagation delay - time needed for propagation for physical link - d =  length of physical link, s = propagation speed (2 ~ 10^8 m/s), therefore delay = d / s - only matters for long distances
+
+Caravan analogy:
+
+* Ten car caravan, car - bit, caravan - packet
+* Cars propagate at 100km/hour
+* Toll booth takes 12 second to service car
+* Time to push entire caravan through toll booth = 12 * 10 seconds
+* Time for last car to get from 1st toll booth to second = 1 hr as dist between booths is 100km
+* Therefore total packet delay = 62 minutes
+
+Caravan analogy (more):
+
+* suppose cars now propagate at 1000km/hour and toll booth time take one min to service a car
+* after 7 mins, first car arrives at second booth but there are still 3 cars at the first
+
+Queuing Delay - https://imgur.com/vd21KcQ
+
+Real internet Delays using traceroute
+
+* provides delay measurement along end-end Internet path towards destination
+* For all routers i encountered on the path, 3 packets are intended for router i which will simply return them to sender
+
+Packet Loss:
+
+* if packet has some bits are corrupted - very rare
+* Buffer drop - network congestion - memory overflow at link since arrival rate is much faster than transmission speed - then source must slow down transmission speed and resend the dropped packets
+
+Throughput - number of bits transmitted every second - determined by bottleneck link
+
+Fairness in resource allocation - every tcp connection gets same bandwidth but you could open up more than 1 tcp link to get more bandwidth
+
+
 </pre>
 </div>
 <div created="20200404185457513" modified="20200404190921236" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[artificial intelligence]]" title="Introduction to Artificial Intelligence" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -14749,7 +14802,7 @@ Extensions to Policy Iteration:
 * Modifying Policy Iteration - consider epsilon convergence of value function? or simply stop after k iterations of iterative policy evaluation?, basic idea is to stop early as we may not need to know the value function to complete accuracy (and in the most extreme case just stop after k = 1, update policy every iteration - equivalent to - [[Value Iteration]])
 * Generalized Policy Iteration - https://imgur.com/cfEMFw0</pre>
 </div>
-<div created="20200407170824959" modified="20200409170411157" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Problem Solving using Search" type="text/vnd.tiddlywiki" revision="4" bag="default">
+<div created="20200407170824959" modified="20200409170412249" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Problem Solving using Search" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__[[Formulating a problem as search]]__
 
 {{Formulating a problem as search}}
@@ -14848,98 +14901,14 @@ Transitivity and the clustering coefficient:
 * $$C = \frac{\text{num of closed paths of length 2}}{\text{num of paths of length 2}} = \frac{\text{num of triangles} \times 6}{\text{num of paths of length 2}} =  \frac{\text{num of triangles} \times 3}{\text{num of connected triangles}}$$
 * Social networks have high values of clustering coefficient like 0.2 till 0.5 or 0.6</pre>
 </div>
-<div created="20200405222045199" modified="20200406191620893" tags="[[UCLA Math 114L - Mathematical Logic]] logic math" title="Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>Propositional Logic - the mathematical object PL
+<div created="20200405222045199" modified="20200410175936770" tags="[[UCLA Math 114L - Mathematical Logic]] logic math" title="Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre># [[Symbols of Propositional Logic]]
 
-__Symbols__
+# [[Syntax of Propositional Logic]]
 
-* ( ) - parentheses - parsing symbols - to help with parsing of expressions
-* $$\neg \land \lor \rightarrow$$ - logical connectives
- * $$A_1, A_2, A_3$$ - propositional variables - countably infinite set - each $$A_i$$ stands for some statement that is either true or false - e.g. $$A_1$$ could be it is raining
+# [[Semantics of Propositional Logic]]
 
-We use metavariables to  name arbitrary propositional variables - analogous to way in which we use x y z to name arbitrary numbers in algebra
-
-Let p be a propositional variable - means p is one of $$A_i$$ but we haven't specified which
-
-__Syntax__
-
-Def: A string of PL symbols is any finite sequence of PL symbols
-
-E.g. $$A_3 \neg ( \land$$, $$((A_1 \land \lor$$
-
-Equality of strings - for strings $$\alpha$$ and $$\beta$$, $$\alpha \equiv \beta$$ means the strings are equal i.e. they have the same number of symbols and the first symbols match, ...
-
-String concatenation - $$\alpha$$ and $$\beta$$ can be concatenated to form $$\alpha \beta$$ which if $$\alpha = A_1$$ and $$\beta = (A_2 \lor A_3)$$ is $$A_1 (A_2 \lor A_3)$$
-
-Formulas - well formed strings of symbols are called formulas i.e the ones that have meaning
-
-(Informal) Def: Recursive definition
-
-* Each propositional variable $$A_i$$ is a formula as a string of length 1
-* If $$\phi$$ and $$\psi$$ are formulas then $$(\neg \phi)$$, $$(\phi \land \psi)$$, $$(\phi \lor \psi)$$ and $$(\phi \rightarrow \psi)$$ are also formulas
-
-Summarized in: $$\phi :\equiv A_i | (\neg \phi) | (\phi \land \psi) | (\phi \lor \psi) | (\phi \rightarrow \psi)$$
-
-Formal set-theoretic definition: A set S of strings is propositionally closed if 
-
-* $$A_i \in S$$ $$\forall i \in N$$
-* if $$\alpha \in S$$ then $$(\neg \alpha) \in S$$
-* if $$\alpha \beta \in S$$, then $$(\alpha \land \beta), (\alpha \lor \beta), (\alpha \rightarrow \beta) \in S$$
-
-A string $$\alpha$$ is a PL-formula if $$\alpha \in S$$ for every set S of strings which is propositionally closed
-
-Let $$F_{PL}$$ be the set of all PL-formulae, then $$F_{PL} = \cap {S: \text{S is propositionally closed}}$$
-
-Therefore, $$F_{PL}$$ is the smallest propositionally closed set i.e. it is the unique set which is prop. closed and a subset of every prop. closed set
-
-Structural Induction on Formulas - method for proving that every PL-formula has a certain property P
-
-* Suffices to prove that the set of strings $$S = \{ \alpha : \alpha \text{ has property P}\}$$ is propositionally closed as if S is propositionally closed then every PL formula has this property as every PL formula $$\in S$$
-
-Three steps need to do the aforementioned:
-
-* For each i, $$A_i$$ has property P
-* If $$\alpha$$ has property P, then $$(\neg \alpha)$$ has property P
-* if $$\alpha \beta$$ have P, then $$(\alpha \land \beta), (\alpha \lor \beta), (\alpha \rightarrow \beta)$$ have P
-
-Lemma 1: 
-
-* Parentheses match in every formula 
-* If $$\alpha$$ is a proper non-empty initial part of a formula then the number of left parentheses in $$\alpha$$ is greater than the number of right parentheses in $$\alpha$$
-
-Proof for part 1:
-
-*  For any $$i$$, $$A_i \in S$$
-* Suppose $$\alpha \in S$$, so that #L$$[\alpha]$$ = #R$$[\alpha]$$, then #L$$[(\neg \alpha)]$$ = 1 + #L$$[\alpha]$$  = 1 + #R$$[\alpha]$$ = #R$$[(\neg \alpha)]$$, therefore $$(\neg \alpha) \in S$$
-* Suppose $$\alpha, \psi \in S$$ and $$\cdot$$ is a binary connective - then by same reasoning as previous point, $$(\alpha \cdot \psi) \in S$$
-
-Thm 2 (Unique Readability): For every PL-formula $$\phi$$ exactly one of the following is true
-
-# $$\phi$$ is a propositional variable $$A_i$$
-# There is a formula $$\psi$$ s.t $$\phi \equiv (\neg \psi)$$
-# There are formulae $$\psi, \chi$$ and a binary connective $$\cdot$$ s.t. $$\phi \equiv (\psi \cdot \chi)$$
-
-Main connectives: applies only to formulae that are not prime i.e. not just a propositional variable
-
-* $$\neg$$ - if in category 2 from above theorem
-* $$\cdot$$ - if in category 3 from above thereom
-
-Unique readability guarantees that the notion of the main connective is well-defined. 
-
-Misspellings and abbreviations:
-
-* not putting the correct amount of brackets
-* [] - used to complete all extraneous brackets
-* abbreviation - biconditional - $$(\phi \leftrightarrow \psi) :\equiv ((\phi \leftarrow \psi) \land (\phi \rightarrow \psi))$$
-
-__Semantics__
-
-* Let $$B = \{ 0, 1 \}$$ - 0 stands for falsity, 1 stands for truth
-* The semantics of the system PL will describe the formal rules to determine the truth values fo a formula $$\phi$$ given truth values for all the propositional variables which occur in $$\phi$$
-* Formally, for each formula $$\phi$$ and each list $$\vec{p} = p_1, ..., p_n$$ which includes all the variables in $$\phi$$, $$F_{\phi; \vec{p}}(\vec{x}) = 1 \iff \phi$$ is true and each has $$p_i$$ has truth value $$x_i$$ and conversely $$F_{\phi; \vec{p}}(\vec{x}) = 0$$ is the same but $$\phi$$ is false
-
-
-</pre>
+# [[Compactness of Propositional Logic]]</pre>
 </div>
 <div created="20200131001522764" modified="20200131030522424" tags="[[needs formatting]] [[talk summary]] [[quantum computing]]" title="Quantum Temporal Logic by Nengkun Yu" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Quantum Shock - Quantum computing can solve halting problem (Ji-Natarajan)
@@ -15307,7 +15276,7 @@ Take proof statement: alpha is the result of executing C for T steps on public i
 First step construct an AIR:
 P = </pre>
 </div>
-<div created="20200409170400171" modified="20200409185331056" tags="[[artificial intelligence]] [[Problem Solving using Search]]" title="Search Strategies" revision="5" bag="default">
+<div created="20200409170400171" modified="20200409190734237" tags="[[artificial intelligence]] [[Problem Solving using Search]]" title="Search Strategies" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Types of search strategies__
 
 * Uninformed / Blind - needs just the three things discussed in [[Formulating a problem as search]]
@@ -15372,7 +15341,7 @@ Depth First Search (DFS) - pick deepest node first - https://imgur.com/24td0MT -
 
 # Complete? In general no, yes if finite
 # Optimal? No, because we may find a very deep solution on the first branch we explore while there is a much shallower solution at a different branch
-# Time Complexity: $$O(b^d)$$
+# Time Complexity: $$O(b^m)$$
 # Space Complexity: $$O(bm)$$ - at most all siblings of the deepest node 
 
 Limited DFS - complete if $$limit \geq d$$ and if we choose $$l \geq |state space|$$ we are guaranteed this as $$d \leq |state space|$$
@@ -15387,6 +15356,13 @@ Iterative Deepening Search - https://imgur.com/fMgFMvX - many iterations of limi
 Search to depth d - number of nodes $$\approx b^d \frac{b}{b - 1}$$ - therefore iterative deepening = $$b^0 (\frac{b}{b - 1}) + b^1 (\frac{b}{b - 1}) + b^2 (\frac{b}{b - 1}) + ... + b^d (\frac{b}{b - 1}) = \frac{b}{b - 1}(1 + ... + b^d) = \frac{b}{b - 1} b^d \frac{b}{b - 1}$$
 
 Therefore additional cost is $$\frac{b}{b - 1}$$ which is in worst case of b = 2, = 2 but as $$b \rightarrow \infty, r \rightarrow 1$$ - so additional cost is not too bad since the last level dominates</pre>
+</div>
+<div created="20200410175859133" modified="20200410175900281" tags="[[Propositional Logic]]" title="Semantics of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>__Semantics__
+
+* Let $$B = \{ 0, 1 \}$$ - 0 stands for falsity, 1 stands for truth
+* The semantics of the system PL will describe the formal rules to determine the truth values fo a formula $$\phi$$ given truth values for all the propositional variables which occur in $$\phi$$
+* Formally, for each formula $$\phi$$ and each list $$\vec{p} = p_1, ..., p_n$$ which includes all the variables in $$\phi$$, $$F_{\phi; \vec{p}}(\vec{x}) = 1 \iff \phi$$ is true and each has $$p_i$$ has truth value $$x_i$$ and conversely $$F_{\phi; \vec{p}}(\vec{x}) = 0$$ is the same but $$\phi$$ is false</pre>
 </div>
 <div created="20200219061250949" modified="20200221195947287" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>''Intuition:'' To identify topological spaces with enough structure i.e. they do not have too few open sets - this is best characterized by separation axioms that are some form of requirements that pairs of disjoint subsets are contained in disjoint open sets. To require this in full generality though is not helpful either as it requires every set to be open. 
@@ -15593,6 +15569,91 @@ Proof:
 Thm 2: Let S be a subspace of T and let E be a subset of S, then the relative closure of E in S is $$\bar{E} \cap S$$ where $$\bar{E}$$ is the closure of $$E$$ in X. 
 
 Proof: $$x \in S$$ then x is in the relative closure of E ''iff'' every relatively open neighborhood of E in S intersects E ''iff'' the intersection of S with every open neighborhood of x in X intersects E ''iff'' every open neighborhood of x in X intersects E (as E is a subset of S, intersecting with S is unnecessary) ''iff'' x is in closure of E in X and in S</pre>
+</div>
+<div created="20200410175807964" modified="20200410175809196" tags="[[Propositional Logic]]" title="Symbols of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Propositional Logic - the mathematical object PL
+
+__Symbols__
+
+* ( ) - parentheses - parsing symbols - to help with parsing of expressions
+* $$\neg \land \lor \rightarrow$$ - logical connectives
+ * $$A_1, A_2, A_3$$ - propositional variables - countably infinite set - each $$A_i$$ stands for some statement that is either true or false - e.g. $$A_1$$ could be it is raining
+
+We use metavariables to  name arbitrary propositional variables - analogous to way in which we use x y z to name arbitrary numbers in algebra
+
+Let p be a propositional variable - means p is one of $$A_i$$ but we haven't specified which</pre>
+</div>
+<div created="20200410175832554" modified="20200410175833738" tags="[[Propositional Logic]]" title="Syntax of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>__Syntax__
+
+Def: A string of PL symbols is any finite sequence of PL symbols
+
+E.g. $$A_3 \neg ( \land$$, $$((A_1 \land \lor$$
+
+Equality of strings - for strings $$\alpha$$ and $$\beta$$, $$\alpha \equiv \beta$$ means the strings are equal i.e. they have the same number of symbols and the first symbols match, ...
+
+String concatenation - $$\alpha$$ and $$\beta$$ can be concatenated to form $$\alpha \beta$$ which if $$\alpha = A_1$$ and $$\beta = (A_2 \lor A_3)$$ is $$A_1 (A_2 \lor A_3)$$
+
+Formulas - well formed strings of symbols are called formulas i.e the ones that have meaning
+
+(Informal) Def: Recursive definition
+
+* Each propositional variable $$A_i$$ is a formula as a string of length 1
+* If $$\phi$$ and $$\psi$$ are formulas then $$(\neg \phi)$$, $$(\phi \land \psi)$$, $$(\phi \lor \psi)$$ and $$(\phi \rightarrow \psi)$$ are also formulas
+
+Summarized in: $$\phi :\equiv A_i | (\neg \phi) | (\phi \land \psi) | (\phi \lor \psi) | (\phi \rightarrow \psi)$$
+
+Formal set-theoretic definition: A set S of strings is propositionally closed if 
+
+* $$A_i \in S$$ $$\forall i \in N$$
+* if $$\alpha \in S$$ then $$(\neg \alpha) \in S$$
+* if $$\alpha, \beta \in S$$, then $$(\alpha \land \beta), (\alpha \lor \beta), (\alpha \rightarrow \beta) \in S$$
+
+A string $$\alpha$$ is a PL-formula if $$\alpha \in S$$ for every set S of strings which is propositionally closed
+
+Let $$F_{PL}$$ be the set of all PL-formulae, then $$F_{PL} = \cap {S: \text{S is propositionally closed}}$$
+
+Therefore, $$F_{PL}$$ is the smallest propositionally closed set i.e. it is the unique set which is prop. closed and a subset of every prop. closed set
+
+Structural Induction on Formulas - method for proving that every PL-formula has a certain property P
+
+* Suffices to prove that the set of strings $$S = \{ \alpha : \alpha \text{ has property P}\}$$ is propositionally closed as if S is propositionally closed then every PL formula has this property as every PL formula $$\in S$$
+
+Three steps need to do the aforementioned:
+
+* For each i, $$A_i$$ has property P
+* If $$\alpha$$ has property P, then $$(\neg \alpha)$$ has property P
+* if $$\alpha \beta$$ have P, then $$(\alpha \land \beta), (\alpha \lor \beta), (\alpha \rightarrow \beta)$$ have P
+
+Lemma 1: 
+
+* Parentheses match in every formula 
+* If $$\alpha$$ is a proper non-empty initial part of a formula then the number of left parentheses in $$\alpha$$ is greater than the number of right parentheses in $$\alpha$$
+
+Proof for part 1:
+
+*  For any $$i$$, $$A_i \in S$$
+* Suppose $$\alpha \in S$$, so that #L$$[\alpha]$$ = #R$$[\alpha]$$, then #L$$[(\neg \alpha)]$$ = 1 + #L$$[\alpha]$$  = 1 + #R$$[\alpha]$$ = #R$$[(\neg \alpha)]$$, therefore $$(\neg \alpha) \in S$$
+* Suppose $$\alpha, \psi \in S$$ and $$\cdot$$ is a binary connective - then by same reasoning as previous point, $$(\alpha \cdot \psi) \in S$$
+
+Thm 2 (Unique Readability): For every PL-formula $$\phi$$ exactly one of the following is true
+
+# $$\phi$$ is a propositional variable $$A_i$$
+# There is a formula $$\psi$$ s.t $$\phi \equiv (\neg \psi)$$
+# There are formulae $$\psi, \chi$$ and a binary connective $$\cdot$$ s.t. $$\phi \equiv (\psi \cdot \chi)$$
+
+Main connectives: applies only to formulae that are not prime i.e. not just a propositional variable
+
+* $$\neg$$ - if in category 2 from above theorem
+* $$\cdot$$ - if in category 3 from above thereom
+
+Unique readability guarantees that the notion of the main connective is well-defined. 
+
+Misspellings and abbreviations:
+
+* not putting the correct amount of brackets
+* [] - used to complete all extraneous brackets
+* abbreviation - biconditional - $$(\phi \leftrightarrow \psi) :\equiv ((\phi \leftarrow \psi) \land (\phi \rightarrow \psi))$$</pre>
 </div>
 <div created="20200217003158071" modified="20200220023509365" tags="[[reinforcement learning]] [[Model-Free Prediction]]" title="TD(lamda) Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>n-step Prediction - https://imgur.com/QU5Yfkh - instead of taking one real step and then using estimate, use n-steps (as n turns to infinity approaches Monte-Carlo)
@@ -16216,7 +16277,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Path Connectedness]]
 </pre>
 </div>
-<div created="20200409143404852" modified="20200409143749348" tags="[[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" revision="5" bag="default">
+<div created="20200409143404852" modified="20200409195615992" tags="[[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Internet: A Brief Overview]]</pre>
 </div>
 <div created="20200402185643352" modified="20200407170813623" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -16234,7 +16295,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 # [[Recent Progress in Model-Based Learning by Csaba Szepesvari]]
 </pre>
 </div>
-<div created="20200408192944424" modified="20200409050847613" tags="ucla [[quantum computing]]" title="UCLA CS 239 - Quantum Computation" revision="8" bag="default">
+<div created="20200408192944424" modified="20200409050848678" tags="ucla [[quantum computing]]" title="UCLA CS 239 - Quantum Computation" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Foundations of Quantum Computing: History and Overview]]
 # [[Foundations of Quantum Computing: Interface to Quantum Mechanics]]
 # [[Foundations of Quantum Computing: Linear Algebra]]</pre>
