@@ -177,9 +177,13 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/sidebar</li>
+
 <li>$:/state/tab-1749438307</li>
 
 <li>$:/state/tab-2065006209</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -348,6 +352,8 @@ Error message and password prompt
 <li>Introduction to Lisp</li>
 
 <li>Introduction to Mathematical Logic</li>
+
+<li>Introduction to Probabilistic Programming</li>
 
 <li>Introduction to Reinforcement Learning</li>
 
@@ -526,6 +532,8 @@ Error message and password prompt
 <li>UCLA CS 239 - Quantum Computation</li>
 
 <li>UCLA CS 262A Learning and Reasoning with Bayesian Networks</li>
+
+<li>UCLA CS 267A - Probabilistic Programming</li>
 
 <li>UCLA CS M146 - Machine Learning</li>
 
@@ -10045,11 +10053,17 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200412190200705" modified="20200412190200706" title="$:/state/tab-1749438307" revision="1" bag="default">
-<pre>$:/core/ui/ControlPanel/Saving</pre>
+<div created="20200412210157428" modified="20200412220529032" title="$:/state/sidebar" revision="4" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200412190200705" modified="20200412202934495" title="$:/state/tab-1749438307" revision="2" bag="default">
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
 <div created="20200412190203311" modified="20200412190240620" title="$:/state/tab-2065006209" revision="4" bag="default">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
+</div>
+<div created="20200412210015336" modified="20200412210015336" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10063,7 +10077,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200412190159077" list="$:/ControlPanel Welcome [[How to Contribute?]]" modified="20200412202846846" title="$:/StoryList" revision="4" bag="default">
+<div created="20200412190159077" list="" modified="20200412210129477" title="$:/StoryList" revision="25" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -13168,6 +13182,63 @@ Programming language:
 * Semantics - how your machine implements the program
 
 Mathematical Logic is study of logical systems as mathematical objects</pre>
+</div>
+<div created="20200412210136302" modified="20200412220514973" tags="[[artificial intelligence]] [[UCLA CS 267A - Probabilistic Programming]]" title="Introduction to Probabilistic Programming" revision="6" bag="default">
+<pre>AI Dilemma:
+
+* https://imgur.com/wifBDDn - slow thinking: deliberative, cognitive, model-based, extrapolation
+* https://imgur.com/1wpXaij - fast thinking: instinctive, perceptive, model-free, interpolation - fails to incorporate a sensible model of the world
+
+This is really a false dilemma: we can instead have a Probabilistic World Model - best of both worlds
+
+* Joint distribution $$P(X)$$
+* Wealth of representations: can be causal, relational etc.
+* Knowledge + data
+* Reasoning + Learning
+
+How do current systems that are obsessed with data incorporate knowledge?
+
+*  Python scripts that fix inconsistencies or encode things cleverly
+* Rule-based decision systems
+* Dataset design
+
+but these methods are less principled, scientific and intellectually satisfying ways of incorporating knowledge
+
+Graphical Model Learning - https://imgur.com/bok4jmI - bayesian networks
+
+* typically rows are independent during learning and inference which may not take into consideration relations like smoking is social so friends of smokers more likely to smoke and asthma is kind of hereditary
+* A system like Markov Logic (rule based) - might let us model this by having logical variables that refer to entities and having more rules that incorporate the information in these relations - https://imgur.com/UXMiQWD
+
+Classical Machine Learning - determining what phone people buy
+
+* Data about who buys what phone based on information about their age etc.
+
+But with Statistical Relational Learning we can incorporate information about their relations like family as well into making a classification
+
+Collective Classification - classifying webpages based on the words that appear on them AND the links to other pages 
+
+Querying Knowledge:
+
+* ask google a question like is there someone who is a coauthor of einstein and erdos
+* but google can't answer this question despite having the answer in its knowledge graph (since it knows about erdos, einstein and strauss and the fact that they collaborated)
+
+To achieve desired query answer:
+* Fuse uncertain information about the world - embrace probability
+* Cannot come from labeled data - need to embrace query eval 
+
+Motivation for Code as Model:
+
+* Programming Language + Random Variables
+* Edges (interactions) have probability - does there exists a path containing two proteins - find a path from A to B but edges aren't deterministic so need to incorporate 
+* Inverse Graphics - using your physics engine, sample configurations from a distribution conditioned on the fact that they will not fall - gives you a posterior distribution - reasoning backwards from the physics engine - https://imgur.com/LVEVOdU 
+
+Tackle Programs Throughout the Pipeline:
+
+* Knowledge Representations and Semantics - how to represent a probability distribution
+* Theory - complexity of representation, inference, learning tasks
+* Inference algorithms - prediction, probability estimation, decision making
+* Learning algorithms
+* Applications</pre>
 </div>
 <div created="20200211210217680" modified="20200222063802153" tags="[[reinforcement learning]]" title="Introduction to Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__[[About Reinforcement Learning]]__
@@ -16383,6 +16454,10 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 </div>
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
+</div>
+<div created="20200412210020323" modified="20200412210127279" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" revision="1" bag="default">
+<pre># [[Introduction to Probabilistic Programming]]
+</pre>
 </div>
 <div created="20200126032331506" modified="20200210191753424" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
