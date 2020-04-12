@@ -177,7 +177,9 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/tab/sidebar--595412856</li>
+<li>$:/state/tab-1749438307</li>
+
+<li>$:/state/tab-2065006209</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -492,6 +494,8 @@ Error message and password prompt
 <li>Symbols of Propositional Logic</li>
 
 <li>Syntax of Propositional Logic</li>
+
+<li>Tautologies, Logical Equivalence and Logical Consequence</li>
 
 <li>TD(lamda) Learning</li>
 
@@ -10041,8 +10045,11 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200411030918518" modified="20200411030918518" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200412190200705" modified="20200412190200706" title="$:/state/tab-1749438307" revision="1" bag="default">
+<pre>$:/core/ui/ControlPanel/Saving</pre>
+</div>
+<div created="20200412190203311" modified="20200412190240620" title="$:/state/tab-2065006209" revision="4" bag="default">
+<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10056,7 +10063,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200411030921933" list="[[UCLA CS 239 - Quantum Computation]] [[Foundations of Quantum Computing: Linear Algebra]] Welcome [[How to Contribute?]]" modified="20200411030930437" title="$:/StoryList" revision="6" bag="default">
+<div created="20200412190159077" list="$:/ControlPanel Welcome [[How to Contribute?]]" modified="20200412202846846" title="$:/StoryList" revision="4" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -14901,12 +14908,14 @@ Transitivity and the clustering coefficient:
 * $$C = \frac{\text{num of closed paths of length 2}}{\text{num of paths of length 2}} = \frac{\text{num of triangles} \times 6}{\text{num of paths of length 2}} =  \frac{\text{num of triangles} \times 3}{\text{num of connected triangles}}$$
 * Social networks have high values of clustering coefficient like 0.2 till 0.5 or 0.6</pre>
 </div>
-<div created="20200405222045199" modified="20200410175936770" tags="[[UCLA Math 114L - Mathematical Logic]] logic math" title="Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200405222045199" modified="20200412182718821" tags="[[UCLA Math 114L - Mathematical Logic]] logic math" title="Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Symbols of Propositional Logic]]
 
 # [[Syntax of Propositional Logic]]
 
 # [[Semantics of Propositional Logic]]
+
+# [[Tautologies, Logical Equivalence and Logical Consequence]]
 
 # [[Compactness of Propositional Logic]]</pre>
 </div>
@@ -15357,12 +15366,38 @@ Search to depth d - number of nodes $$\approx b^d \frac{b}{b - 1}$$ - therefore 
 
 Therefore additional cost is $$\frac{b}{b - 1}$$ which is in worst case of b = 2, = 2 but as $$b \rightarrow \infty, r \rightarrow 1$$ - so additional cost is not too bad since the last level dominates</pre>
 </div>
-<div created="20200410175859133" modified="20200410175900281" tags="[[Propositional Logic]]" title="Semantics of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200410175859133" modified="20200412182645222" tags="[[Propositional Logic]]" title="Semantics of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Semantics__
 
 * Let $$B = \{ 0, 1 \}$$ - 0 stands for falsity, 1 stands for truth
 * The semantics of the system PL will describe the formal rules to determine the truth values fo a formula $$\phi$$ given truth values for all the propositional variables which occur in $$\phi$$
-* Formally, for each formula $$\phi$$ and each list $$\vec{p} = p_1, ..., p_n$$ which includes all the variables in $$\phi$$, $$F_{\phi; \vec{p}}(\vec{x}) = 1 \iff \phi$$ is true and each has $$p_i$$ has truth value $$x_i$$ and conversely $$F_{\phi; \vec{p}}(\vec{x}) = 0$$ is the same but $$\phi$$ is false</pre>
+* Formally, for each formula $$\phi$$ and each list $$\vec{p} = p_1, ..., p_n$$ which includes all the variables in $$\phi$$, $$F_{\phi; \vec{p}}(\vec{x}) = 1 \iff \phi$$ is true and each has $$p_i$$ has truth value $$x_i$$ and conversely $$F_{\phi; \vec{p}}(\vec{x}) = 0$$ is the same but $$\phi$$ is false
+* described using truth tables often
+
+Will define $$F_{\phi; \vec{p}}$$ using structural recursion - unique readability ensures that each composite formulae has a uniquely determined main connective and immediate parts
+
+* $$F_{\phi; \vec{p}}: B^n \rightarrow B$$
+* if $$\phi = p_i$$, then $$F_{\phi; \vec{p}} = p_i$$
+* If $$\phi = (\neg \psi)$$ then $$F_{\phi; \vec{p}} = 1 - F_{\psi; \vec{p}} = p_i$$
+* if $$\phi = (\psi \land \chi)$$, then $$F_{\phi; \vec{p}} = min(F_{\psi; \vec{p}}, F_{\chi; \vec{p}})$$
+* if $$\phi = (\psi \lor \chi)$$, then $$F_{\phi; \vec{p}} = max(F_{\psi; \vec{p}}, F_{\chi; \vec{p}})$$
+* if $$\phi = (\psi \rightarrow \chi)$$, then $$F_{\phi; \vec{p}} = max(1 - F_{\psi; \vec{p}}, F_{\chi; \vec{p}})$$
+
+__Satisfaction and the Tarski Conditions__
+
+An assignment (to the variables) is a function $$v: \{A_0, A_1, ...\} \rightarrow \{0, 1\} = B$$
+
+Notation: $$\bar{v}(\phi) = F_{\phi; \vec{p}}(v(p_1), ..., v(p_n)) = $$ truth value of $$\phi$$ given that $$p_i$$ has truth value $$v(p_i)$$
+
+Def 3: Let $$\phi$$ be a PL-formula and let $$v: \{A_0, ... \} \rightarrow \{0, 1\}$$ be an assignment, v //satisfies// $$\phi$$ ($$v \models \phi$$) if $$\bar{v}(\phi) = 1$$ - can alternatively say $$\phi$$ is true for the assignment $$v$$
+
+Thm 4 (Tarski Conditions): For all variables $$p$$, formulae $$\phi, \psi$$ and assignments $$v$$
+
+* $$v \models p \iff v(p) = 1$$ - notice the absence of the bar on the v, this means this is the value that function gives to p rather than the evaluation of the truth function (which is what the left hand-side notation is equivalent to by previous definition)
+* $$v \models \neg \phi \iff v \not\models \phi$$
+* $$v \models \phi \land \psi \iff v \models \phi \text{ and } v \models \psi$$
+* $$v \models \phi \lor \psi \iff v \models \phi \text{ or } v \models \psi$$
+* $$v \models \phi \rightarrow \psi \iff v \not\models \phi \text{ or } v \models \psi$$</pre>
 </div>
 <div created="20200219061250949" modified="20200221195947287" tags="topology" title="Separation Axioms" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>''Intuition:'' To identify topological spaces with enough structure i.e. they do not have too few open sets - this is best characterized by separation axioms that are some form of requirements that pairs of disjoint subsets are contained in disjoint open sets. To require this in full generality though is not helpful either as it requires every set to be open. 
@@ -15583,7 +15618,7 @@ We use metavariables to  name arbitrary propositional variables - analogous to w
 
 Let p be a propositional variable - means p is one of $$A_i$$ but we haven't specified which</pre>
 </div>
-<div created="20200410175832554" modified="20200410175833738" tags="[[Propositional Logic]]" title="Syntax of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200410175832554" modified="20200412182515669" tags="[[Propositional Logic]]" title="Syntax of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Syntax__
 
 Def: A string of PL symbols is any finite sequence of PL symbols
@@ -15653,7 +15688,53 @@ Misspellings and abbreviations:
 
 * not putting the correct amount of brackets
 * [] - used to complete all extraneous brackets
-* abbreviation - biconditional - $$(\phi \leftrightarrow \psi) :\equiv ((\phi \leftarrow \psi) \land (\phi \rightarrow \psi))$$</pre>
+* abbreviation - biconditional - $$(\phi \leftrightarrow \psi) :\equiv ((\phi \leftarrow \psi) \land (\phi \rightarrow \psi))$$
+
+Def: $$\beta$$ is a proper initial part of $$\alpha$$ if there is a non-empty string $$\gamma$$ s.t. $$\alpha \equiv \beta \gamma$$</pre>
+</div>
+<div created="20200412182725484" modified="20200412190057098" tags="[[Propositional Logic]]" title="Tautologies, Logical Equivalence and Logical Consequence" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Def 5: A PL-formula $$\phi$$ is a tautology if $$v \models \phi$$ for all assignments $$v$$
+
+Example: $$(p \lor (\neg p))$$
+
+Lemma 6: Let $$\phi$$ be a PL-formula, the following are equivalent:
+
+* $$\models \phi$$ - which means $$v \models \phi, \forall v$$
+* For every assignment v, $$\bar{v}(\phi) = 1$$
+* For every list $$\vec{p} = p_1, ..., p_n$$ which includes all the variables in $$\phi$$, $$F_{\phi; \vec{p}}: B^n \rightarrow B$$ is a constant function with value 1
+
+Def 7: $$\phi$$ and $$\psi$$ are logically equivalent if $$\phi \leftrightarrow \psi$$ (note use of the abbrevation) is a tautology
+
+Notation: $$\phi \asymp \psi$$ means they are logically equivalent
+
+Lemma 8: For PL-formulae $$\phi, \psi$$, the following are equivalent:
+
+* $$\phi \asymp \psi$$
+* $$\models \phi \rightarrow \psi$$ and $$\models \psi \rightarrow \phi$$
+* For every assignment v, $$v \models \phi \iff v \models \psi$$
+
+Replacement: Suppose $$\phi$$ is a formula $$p_1, ... , p_l$$ are distinct variables (which may or may not occur in $$\phi$$, and $$\psi_1, ..., \psi_k$$ is a sequence of formulae, then we set $$\phi\{p_1 :\equiv \psi_1, ..., p_k :\equiv \psi_k\} = $$ the result of replacing each occurrence of each $$p_i$$ in $$\phi$$ by $$\psi_i$$
+
+Thm 9 (Replacement Theorem): If $$\phi$$ is a tautology, then the result $$\phi \{p_1 :\equiv \psi_1, ... ,p_k :\equiv \psi_k\}$$ of any simultaneous replacement of $$\phi$$ is also a tautology
+
+Proof:
+
+* wlog assume $$p_1, ..., p_k$$ includes all propositional variables in $$\phi$$
+* Let $$q_1, ..., q_l$$ include all the variables in $$\psi_1, ..., \psi_k$$
+* This means $$\vec{q}$$ includes all the variables in $$\chi :\equiv \phi \{p_1 :\equiv \psi_1, ... ,p_k :\equiv \psi_k\}$$
+* Since $$\phi$$ is a tautology, $$F_{\phi; \vec{p}}(\vec{x}) = 1, \forall \vec{x} \in B^k$$
+* Using structural induction on $$\phi$$ show that for any assignment v, $$F_{\chi; \vec{q}} (v(q_1), ..., v(q_n)) = \bar{v}(\chi) = F_{\phi; \vec{p}}(\bar{v}(\phi_1), ... , \bar{v}(\phi_k))$$
+* Thus $$\chi$$ is a tautology as for every v $$\bar{v}(\chi) = F_{\phi; \vec{p}}(\bar{v}(\phi_1), ... , \bar{v}(\phi_k))$$ which is itself equal to 1 as $$\phi$$ is a tautology
+
+How to apply the replacement theorem.
+
+Given that $$\models p \lor (\neg p)$$ for any propositional variable p, prove $$\phi \lor (\neg \psi)$$ a tautology
+
+Proof:
+
+* $$\models p \lor (\neg p)$$
+* $$\chi :\equiv ( p \lor (\neg p)) \{p :\equiv \psi\} = (\psi \lor (\neg \psi))$$ thus by replacement thm, $$\chi$$ is a tautology
+</pre>
 </div>
 <div created="20200217003158071" modified="20200220023509365" tags="[[reinforcement learning]] [[Model-Free Prediction]]" title="TD(lamda) Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>n-step Prediction - https://imgur.com/QU5Yfkh - instead of taking one real step and then using estimate, use n-steps (as n turns to infinity approaches Monte-Carlo)
