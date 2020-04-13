@@ -181,6 +181,8 @@ Error message and password prompt
 
 <li>$:/state/Excise/--491030173/type</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/sidebar</li>
 
 <li>$:/status/IsAnonymous</li>
@@ -10069,7 +10071,10 @@ Error message and password prompt
 <div created="20200413074605100" modified="20200413074619641" title="$:/state/Excise/--491030173/type" revision="3" bag="default">
 <pre>link</pre>
 </div>
-<div created="20200413055901697" modified="20200413075541800" title="$:/state/sidebar" revision="4" bag="default">
+<div created="20200413175159721" modified="20200413182218477" title="$:/state/showeditpreview" revision="2" bag="default">
+<pre>no</pre>
+</div>
+<div created="20200413055901697" modified="20200413182027191" title="$:/state/sidebar" revision="6" bag="default">
 <pre>yes</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
@@ -10084,7 +10089,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200413064915122" list="[[Compactness of Propositional Logic]]" modified="20200413170300672" title="$:/StoryList" revision="78" bag="default">
+<div created="20200413064915122" list="[[Web and HTTP]]" modified="20200413182036591" title="$:/StoryList" revision="92" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10145,7 +10150,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200413064913409" modified="20200413170237487" title="$:/temp/search" revision="8" bag="default">
+<div created="20200413064913409" modified="20200413184751221" title="$:/temp/search" revision="12" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -10417,7 +10422,7 @@ Natural Policy Gradient - parametrization independent
 Summary: https://imgur.com/JOMKK7m
 </pre>
 </div>
-<div created="20200413071459662" modified="20200413074722090" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Application Layer" revision="11" bag="default">
+<div created="20200413071459662" modified="20200413182035199" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Application Layer" revision="12" bag="default">
 <pre># [[Principles of Network Applications]]
 # [[Web and HTTP]]</pre>
 </div>
@@ -11160,7 +11165,7 @@ Summary: The following statements are equivalent
 * X is totally bounded and complete
 </pre>
 </div>
-<div created="20200410175929266" modified="20200413175121271" tags="[[Propositional Logic]]" title="Compactness of Propositional Logic" type="text/vnd.tiddlywiki" revision="8" bag="default">
+<div created="20200410175929266" modified="20200413175309909" tags="[[Propositional Logic]]" title="Compactness of Propositional Logic" type="text/vnd.tiddlywiki" revision="10" bag="default">
 <pre>Def 10: A PL-theory is a set T of PL-formulas. For a theory T and an assignment v, we say v satisfied T, denoted by $$v \models T$$ if $$v \models \phi, \forall \phi \in T$$
 
 Notational conventions:
@@ -11221,7 +11226,7 @@ __Application of PL compactness: graph colorings__
 
 * Graph in this class always - simple &amp; undirected
 * $$V$$ - set of vertices
-* $$E \subesteq V \times V$$ of edges satisfying for all $$(x, x) \notin E$$ and $$(x, y) \in E \implies (y, x) \in E$$
+* $$E \subseteq V \times V$$ of edges satisfying for all $$(x, x) \notin E$$ and $$(x, y) \in E \implies (y, x) \in E$$
 * this notion disallows multi-edges by defintion
 * $$(x, y) \in E$$ - x and y are adjacent in the graph - written as $$xEy$$
 * Induced subgraph on $$W \subseteq V$$ is the graph $$G_w = (W, E \cap (W \times W))$$
@@ -11235,9 +11240,9 @@ Proof:  Proof only given k = 3, but other cases are identical
 
 * Let $$x_0, x_1, ...$$ be an injective enumeration (no repeats) of the vertices of the graph 
 * Let $$R_i, B_i, Y_i$$ for each $$i \in N$$ be distinct propositional variables
-* $$R_i is true \iff x_i \text{ has color red}$$
-* $$B_i is true \iff x_i \text{ has color blue}$$
-* $$Y_i is true \iff x_i \text{ has color yellow}$$
+* $$R_i  \iff x_i \text{ has color red}$$
+* $$B_i  \iff x_i \text{ has color blue}$$
+* $$Y_i  \iff x_i \text{ has color yellow}$$
 * For each $$i \in N$$, define $$\phi_i :\equiv (R_i \land (\neg B_i) \land (\neg Y_i)) \lor ((\neg R_i) \land B_i \land (\neg Y_i)) \lor ((\neg R_i) \land (\neg B_i) \land Y_i)$$ - so it basically says node is is colored with exactly one color
 * For each pair $$i, j$$ s.t. $$x_i$$ and $$x_j$$ are adjacent in the graph, define $$\psi_{i, j} = (\neg(R_i \land R_j)) \lor (\neg(B_i \land B_j)) \lor (\neg(Y_i \land Y_j))$$
 * Define theory $$T = \{ \phi_i : i \in N \} \cup \{ \psi_{i, j} : i, j \in N \text{ and } x_iEx_j \}$$
@@ -16895,17 +16900,88 @@ https://www.cs.ubc.ca/~poole/demos/mdp/vi.html - link to play around with value 
 
 Summary - https://imgur.com/kAutPIf</pre>
 </div>
-<div created="20200413074727373" modified="20200413075315990" tags="[[Application Layer]] compu" title="Web and HTTP" revision="5" bag="default">
+<div created="20200413074727373" modified="20200413191035914" tags="[[Application Layer]] compu" title="Web and HTTP" type="text/vnd.tiddlywiki" revision="7" bag="default">
 <pre>Most popular application on the internet
 
 * Content - webpages
 * How to transfer? HTTP connections
 * In what messages? HTTP messages
 
+Client - web browser is the client application 
+
 Web page
 
 * base HTML file which includes several referenced objects
-* each object is addressable by a Unique Resource Locator (URL)
+* each object is addressable by a Unique Resource Locator (URL - composed of host name www.google.com + path name - /images/logo.png)
+
+HTTP = Hypertext (means objects can be in different formats) Transfer Protocol
+
+HTTP overview - client-server model:
+
+* client - browser that requests and receives and displays Web objects
+* server - Web server sends objects in response to requests
+* uses TCP
+
+HTTP TCP usage:
+
+* client initiates a TCP connection - socket to server port 80
+* server accepts TCP connection from client
+* HTTP messages exchanges between browser - the client and web server 
+* TCP connection closed
+* HTTP is &quot;stateless&quot; - server maintains no information about past client requests
+
+HTTP connections:
+
+* non-persistent HTTP (HTTP 1.0) - at most one object over each TCP connection, connection then closed, downloading multiple objects required multiple connections
+* persistent HTTP (1.1) - multiple objects can be sent over single TCP connection between client, server
+
+Non-persistent HTTP:
+
+# HTTP client initiates TCP connection to HTTP server (process) at www.google.com on port 80 and HTTP server at host www.google.com waiting for TCP connection at port 80.  “accepts” connection, notifying client
+# HTTP client sends HTTP request message (containing URL) into TCP connection socket. Message indicates that client wants the basic object  (URL /) 
+# HTTP server closes TCP connection. 
+# HTTP client receives response message containing html file, displays html.  Parsing html file, finds 10 referenced jpeg  objects
+# Steps 1-5 repeated for each of 10 jpeg objects 
+
+Reason for not closing TCP connection and not sending many objects is to avoid too much data being sent over in response, only send what browser requests
+
+Response time for Non-persistent HTTP:
+
+* RTT - round trip time for small packet from client to server and back
+* One RTT to initiate TCP
+* One RTT for HTTP request plus first few bytes of response
+* Time for file transmission
+* Total = 2 RTT + file transmission time
+
+Parallel non-persistent HTTP  v/s Persistent HTTP to speed up this process:
+
+* Solution 1 - first base HTML exchanged and then parallel TCP connections to fetch multiple referenced objects - heavy OS usage to maintain many TCP connections but quite fast - to be able to do this client needs to use a new port every time - TCP connection referenced by (client address, server address, client port, server port) and new client ports help uniquely identify each connection
+* Solution 2 - reuse same TCP connection - reduces time for each object to 1RTT + time for object and overhead for setting up TCP connection is amortized
+
+Example: web page (base.html) with 10 referenced objects - ignore file transmission time 
+
+* non-persistent HTTP: 2RTT (for base) + 2RTT*10 (for each object) = 22RTT
+* persistent HTTP: 2RTT + 10RTT = 12RTT - how to know when to close connection - after some time has passed from last request then close connection
+* non-persistent HTTP (w limit of 5 tcp connections): 2RTT + 2RTT (1~5 objects) + 2RTT (6~10  objects)
+
+HTTP request message: https://imgur.com/tQkv1qR, https://imgur.com/JbrVde3
+
+Method types:
+
+* POST method - web page often includes form input - input is uploaded to server in entity body
+* HEAD method - similar to get but leaves out the requested object - only trying to get headers of the get request
+* HTTP/1.0 - GET, POST, HEAD
+* HTTP/1.1 - GET, POST, HEAD, PUT - uploads file in entity body to path specified in URL, DELETE - deletes file specified in the URL field
+
+HTTP response message: https://imgur.com/u2WbMsl, https://imgur.com/tB9xHzI
+
+HTTP 2.0 - derived from SPDY - designed to improve throughput of client-server connections
+
+* multiplexing multiple streams over one HTTP2.0 connection; request-response pipelining
+* Header compression
+* Server push
+
+
 </pre>
 </div>
 <div author="Siddharth Joshi" created="20191119180323660" modified="20200211182518465" tags="introduction" title="Welcome" type="text/vnd.tiddlywiki" revision="0" bag="default">
