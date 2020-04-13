@@ -459,6 +459,8 @@ Error message and password prompt
 
 <li>Propositional Logic</li>
 
+<li>Propositional Reasoning</li>
+
 <li>Quantum Temporal Logic by Nengkun Yu</li>
 
 <li>Real Numbers</li>
@@ -10053,7 +10055,7 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200412210157428" modified="20200412220529032" title="$:/state/sidebar" revision="4" bag="default">
+<div created="20200412210157428" modified="20200413002520456" title="$:/state/sidebar" revision="10" bag="default">
 <pre>yes</pre>
 </div>
 <div created="20200412190200705" modified="20200412202934495" title="$:/state/tab-1749438307" revision="2" bag="default">
@@ -10077,7 +10079,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200412190159077" list="" modified="20200412210129477" title="$:/StoryList" revision="25" bag="default">
+<div created="20200412190159077" list="" modified="20200413001814332" title="$:/StoryList" revision="52" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -14990,6 +14992,89 @@ Transitivity and the clustering coefficient:
 
 # [[Compactness of Propositional Logic]]</pre>
 </div>
+<div created="20200412231348139" modified="20200413002515115" tags="[[UCLA CS 267A - Probabilistic Programming]] [[artificial intelligence]]" title="Propositional Reasoning" revision="9" bag="default">
+<pre>* Structure - Reasoning Engine which takes in the knowledge base (Declarative sentences in a knowledge representation language), new queries lead to conclusions that are arrived at by logical deduction
+
+Some applications of logic i.e. symbolic reasoning:
+
+* Formal program verification - specification a and implementation b, verifying program is simply showing that b entails a using a SAT solver
+* Cryptography
+* Planning problem
+* Theorem provers
+
+Motivation: wumpus world - https://imgur.com/tw6H5J5
+
+* Go to right and get breeze so backtrack since pit could be above or to the right
+* Go up and get stench and then make logical deduction that if pit was to your right now then you would have to have felt a breeze and if the wumpus was to your left the previous move should've resulted in encountering a stench - so can deduce that wumpus must be upwards and rightwards block is safe
+
+Refer: [[Syntax of Propositional Logic]], notation - literal is an atom or its negation
+
+Modeling the robot vacuum cleaner world - https://imgur.com/vOMteYN
+
+* Variables - LR, RR - robot on left, robot on right, LD, RD - dirt on left, dirt on right
+* &quot;Has exactly one robot&quot; - $$(LR \land \neg RR) \lor (\neg LR \land RR)$$ - many other logical statements can encode this too
+
+
+Relationship between sentence $$\alpha$$ and world $$w$$:
+
+* Sentence $$\alpha$$ is true in world $$w$$ - $$w \models \alpha$$
+* Sentence $$\alpha$$ is false in world - $$w \not\models \alpha$$
+* Meaning of $$\alpha$$ is that &quot;the set of worlds $$w$$ where $$\alpha$$ is true
+* $$M(\alpha) = \{ w : w \models \alpha \}$$
+
+Refer to [[Semantics of Propositional Logic]]
+
+Wumpus World - modeling the fact that a pit implies a breeze: https://imgur.com/5gDR7Zu
+
+* evidential - diagnosis - symptoms to disease
+$$B \implies P_1 \lor P_2 \lor P_3 \lor P_4$$
+$$\neg B \implies \neg P_1 \land \neg P_2 \land P_3 \land P_4$$
+
+* causal - disease to symptoms
+$$P_1 \lor P_2 \lor P_3 \lor P_4 \implies B$$
+$$\neg P_1 \land \neg P_2 \land \neg P_3 \land \neg P_4 \implies B$$
+
+Properties of Sentences:
+
+* a is valid - holds at every world - is a tautology - $$M(\alpha) = W \text{ the set of all worlds }$$
+* a is inconsistent (UNSAT) - holds at no world - $$M(\alpha) = \emptyset$$
+* a is satisfiable (SAT) - not inconsistent - there exists a world in which this sentence is true 
+* $$\alpha$$ entails $$\beta$$, $$\alpha \models \beta$$ which means $$M(\alpha) \subseteq M(\beta)$$
+* $$\alpha \equiv \beta$$ - $$M(\alpha) = M(\beta)$$
+* $$\alpha$$ and $$\beta$$ are mutually exclusive - $$M(\alpha) \cap M(\beta) = \emptyset$$
+
+Example:
+
+* https://imgur.com/iHqxKH8 - Question is essentially is this statement $$KB \models \alpha_1$$ true?
+* - $$KB \models \alpha_2$$? False as $$M(KB) \not\subeteq M(\alpha_2)$$ - there is a world that is possible under the current knowledge base but not under $$\alpha_2$$
+
+Monotonicity of logic: https://imgur.com/undefined
+
+* what happens if we extend the KB? 
+* a claim that was previously true cannot later become false 
+
+Normal Forms:
+
+* Clause - disjunction of literals
+* Conjunctive normal form (CNF) - conjunction of clauses
+* Disjunctive normal form (DNF) - disjunction of conjunctions of literals
+
+Complexity: refer to this for a more detailed explanation https://www7.in.tum.de/um/courses/logic/SS11/folien/horn-english.pdf
+
+* SAT solver - CNF? NP-complete, DNF? Linear
+* Validity - is the statement a tautology? - CNF? Linear, DNF? NP
+
+Inference by Enumerating Models
+
+* use deduction thm - see if $$KB \models \alpha$$ by checking if $$KB \implies \alpha$$ is always true - build a very large truth table basically - exponential in number of variables so we want better solutions than this
+
+Exercises:
+
+* How to implement a validity solver given SAT Solver - which tells you if something is UNSAT or SAT? If negation of alpha is unsatisfiable, then alpha is valid
+* How to check if $$KB \models \alpha$$ using SAT solver - $$KB \land \neg \alpha$$ is UNSAT - proof by refutation uses this sort of mechanism
+
+</pre>
+</div>
 <div created="20200131001522764" modified="20200131030522424" tags="[[needs formatting]] [[talk summary]] [[quantum computing]]" title="Quantum Temporal Logic by Nengkun Yu" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Quantum Shock - Quantum computing can solve halting problem (Ji-Natarajan)
 
@@ -16455,9 +16540,9 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
 </div>
-<div created="20200412210020323" modified="20200412210127279" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" revision="1" bag="default">
+<div created="20200412210020323" modified="20200412231338083" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" revision="2" bag="default">
 <pre># [[Introduction to Probabilistic Programming]]
-</pre>
+# [[Propositional Reasoning]]</pre>
 </div>
 <div created="20200126032331506" modified="20200210191753424" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
