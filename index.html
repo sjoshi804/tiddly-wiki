@@ -10084,7 +10084,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200413064915122" list="[[Web and HTTP]]" modified="20200413074723757" title="$:/StoryList" revision="56" bag="default">
+<div created="20200413064915122" list="[[Compactness of Propositional Logic]]" modified="20200413170300672" title="$:/StoryList" revision="78" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10145,7 +10145,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200413064913409" modified="20200413075543460" title="$:/temp/search" revision="4" bag="default">
+<div created="20200413064913409" modified="20200413170237487" title="$:/temp/search" revision="8" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11160,7 +11160,7 @@ Summary: The following statements are equivalent
 * X is totally bounded and complete
 </pre>
 </div>
-<div created="20200410175929266" modified="20200410180550541" tags="[[Propositional Logic]]" title="Compactness of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200410175929266" modified="20200413175121271" tags="[[Propositional Logic]]" title="Compactness of Propositional Logic" type="text/vnd.tiddlywiki" revision="8" bag="default">
 <pre>Def 10: A PL-theory is a set T of PL-formulas. For a theory T and an assignment v, we say v satisfied T, denoted by $$v \models T$$ if $$v \models \phi, \forall \phi \in T$$
 
 Notational conventions:
@@ -11215,8 +11215,37 @@ Proof: Suppose T is finitely sat and strongly complete
 
 Proof for Compactness Thm for PL:
 
-* 
-</pre>
+* PENDING
+
+__Application of PL compactness: graph colorings__
+
+* Graph in this class always - simple &amp; undirected
+* $$V$$ - set of vertices
+* $$E \subesteq V \times V$$ of edges satisfying for all $$(x, x) \notin E$$ and $$(x, y) \in E \implies (y, x) \in E$$
+* this notion disallows multi-edges by defintion
+* $$(x, y) \in E$$ - x and y are adjacent in the graph - written as $$xEy$$
+* Induced subgraph on $$W \subseteq V$$ is the graph $$G_w = (W, E \cap (W \times W))$$
+* A k-coloring of G is a function $$c : V \rightarrow \{1, ..., k\}$$ i.e. each vertex is given a color from the set $$\{1, ..., k\}$$. A k-coloring is proper if no two adjacent vertices get the same color
+
+Def 19: A set X is countably infinite if there is a bijective function $$f: N \rightarrow X$$
+
+Thm 20: Let $$G = (V, E)$$ be a graph whose vertex set V is //countably infinite// and let $$k \in N$$. Suppose that for every finite $$V_0 \subseteq V$$, the induced subgraph of $$v_0$$ admits a proper k-coloring, then G admits a proper k-coloring. 
+
+Proof:  Proof only given k = 3, but other cases are identical
+
+* Let $$x_0, x_1, ...$$ be an injective enumeration (no repeats) of the vertices of the graph 
+* Let $$R_i, B_i, Y_i$$ for each $$i \in N$$ be distinct propositional variables
+* $$R_i is true \iff x_i \text{ has color red}$$
+* $$B_i is true \iff x_i \text{ has color blue}$$
+* $$Y_i is true \iff x_i \text{ has color yellow}$$
+* For each $$i \in N$$, define $$\phi_i :\equiv (R_i \land (\neg B_i) \land (\neg Y_i)) \lor ((\neg R_i) \land B_i \land (\neg Y_i)) \lor ((\neg R_i) \land (\neg B_i) \land Y_i)$$ - so it basically says node is is colored with exactly one color
+* For each pair $$i, j$$ s.t. $$x_i$$ and $$x_j$$ are adjacent in the graph, define $$\psi_{i, j} = (\neg(R_i \land R_j)) \lor (\neg(B_i \land B_j)) \lor (\neg(Y_i \land Y_j))$$
+* Define theory $$T = \{ \phi_i : i \in N \} \cup \{ \psi_{i, j} : i, j \in N \text{ and } x_iEx_j \}$$
+* Claim: if $$v \models T$$ where $$v: \{R_0, ..., B_0, ..., Y_0, ... \} \rightarrow \{ 0, 1 \}$$ then the coloring $$c: V \rightarrow \{red, blue, yellow\}$$ defined by $$c(x_i) = red$$ if $$v(R_i) = 1$$ and so on, is a proper 3-coloring of graph G
+* $$v \models \phi_i \implies$$ v satisfies exactly one of $$R_i, B_i, Y_i \implies c$$ is a valid coloring
+* $$v \models \psi_{i, j} \implies c(x_i) \neq c(x_j)$$
+* Therefore we have shown if $$T$$ is sat. then $$G$$ has a proper 3-coloring
+* Claim 2: T is finitely satisfiable (hence by compactness, T is satisfiable) but this can be proven easily using our hypothesis that any the graph induced on any finite subset of the vertices is 3-colorable</pre>
 </div>
 <div created="20200219061300673" modified="20200221200858325" tags="topology" title="Compactness of Topological Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def: A topological space is compact if every open cover has a finite subcover. 
