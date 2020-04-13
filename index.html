@@ -459,6 +459,8 @@ Error message and password prompt
 
 <li>Propositional Logic</li>
 
+<li>Propositional Probability</li>
+
 <li>Propositional Reasoning</li>
 
 <li>Quantum Temporal Logic by Nengkun Yu</li>
@@ -10055,7 +10057,7 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200412210157428" modified="20200413002520456" title="$:/state/sidebar" revision="10" bag="default">
+<div created="20200412210157428" modified="20200413053839198" title="$:/state/sidebar" revision="12" bag="default">
 <pre>yes</pre>
 </div>
 <div created="20200412190200705" modified="20200412202934495" title="$:/state/tab-1749438307" revision="2" bag="default">
@@ -10079,7 +10081,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200412190159077" list="" modified="20200413001814332" title="$:/StoryList" revision="52" bag="default">
+<div created="20200412190159077" list="[[Propositional Probability]] [[UCLA CS 267A - Probabilistic Programming]]" modified="20200413034648519" title="$:/StoryList" revision="95" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -14992,7 +14994,96 @@ Transitivity and the clustering coefficient:
 
 # [[Compactness of Propositional Logic]]</pre>
 </div>
-<div created="20200412231348139" modified="20200413002515115" tags="[[UCLA CS 267A - Probabilistic Programming]] [[artificial intelligence]]" title="Propositional Reasoning" revision="9" bag="default">
+<div created="20200413030638758" modified="20200413053753043" tags="probability [[artificial intelligence]] [[UCLA CS 267A - Probabilistic Programming]]" title="Propositional Probability" type="text/vnd.tiddlywiki" revision="14" bag="default">
+<pre>Motivation for Probability to be included in reasoning from a Logical point of view:
+
+* $$Toothache \implies Cavity$$ but this isn't entirely correct
+* $$Toothache \implies Cavity ... $$ but this is intractable
+* Flipping it may also not be correct as it may not account for exceptions to the rule when cavities don't cause toothaches
+
+Issue is monotonicity of logic:
+
+* Either you model everything exhaustively -&gt; intractable
+* Assume too much and get stuck when you later find a contradiction 
+
+Epistemological change: we no longer believe in possible worlds but care about what the probability of each world is - rather than having a binary true or false
+
+Uncertainty is epistemological - pertaining to an agent's beliefs of the world rather than ontological - how the world actually is
+
+Knowledge Base $$KB \approx Pr$$ in this new probabilistic model
+
+Decision-Making Motivation for Probability:
+
+* Acting with partial (noisy) sensor information - consider every logical possible explanation can be impossible - leaving early for airport - if Uber can break down then need to leave earlier and keep recursing down this infinitely and then need to leave infinitely early for airport
+* Decisions depend on relative importance of goals (utility), likelihood of achieving them (probability) in order to get the maximum expected utility
+
+Considering non-boolean Propositions:
+
+* Categorial Variables - create indicator variables 
+* Continuous variables - can use SAT Modulo Theories (SMT) 
+
+Sentences of Events:
+
+* Belief is a probability for every world: $$Pr(w)$$
+* What is the probability of a sentence $$\alpha$$
+* Need to axiomatize probability (Kolmogorov)
+
+# Probabilities are non-negative
+# Probability of true event is one
+# If $$\alpha$$ and $$\beta$$ are mutually exclusive, then $$Pr(\alpha \lor \beta) = Pr(\alpha) + Pr(\beta)$$
+
+What is the probability of sentences?
+
+* Sentence $$\alpha$$ is equivalent to disjunction of $$M(\alpha)$$: $$\alpha \equiv w_1 \lor w_4 \lor w_{34}$$ for example
+* Each $$w_i$$ represents a single world which assigns values to the atoms $$X_1 \land \neg X_2 ... $$
+* Each $$w_i, w_j$$ for $$i \neq j$$ are mutually exclusive
+* $$Pr(\alpha) = Pr(w_1) + Pr(w_{4} + Pr(w_{34})$$
+* $$Pr(\alpha) = \sum_{w \models \alpha} Pr(w) = \sum_{w \in M(\alpha)} Pr(w)$$
+
+Properties of Probability 
+
+* Complement events - $$Pr(\alpha) + Pr(\neg \alpha) = 1$$
+* Inclusion-exclusion - $$Pr(\alpha \lor \beta) = Pr(\alpha) + Pr(\beta) - Pr(\alpha \land \beta)$$
+
+Conditional Probability:
+
+* what if i observe a new information $$\beta$$
+* Belief changes from $$Pr(\alpha)$$ to $$Pr(\alpha | \beta)$$
+* $$Pr(\alpha | \beta) = \frac{Pr(\alpha \land \beta)}{Pr(\beta)}$$
+
+Non-monotonicity of Belief:
+
+* Is it possible to observe something new and undo prior beliefs
+* Example: Observe no earthquake, then probability of alarm GIVEN earthquake is lower than original probability of alarm and as a result we have shown a decrease in belief of alarm so non-monotonic
+
+Product Rule: $$P(X, Y) = P(X) P(Y | X)$$
+
+Chain Rule: $$P(X_1, ..., X_n) = P(X_1) \cdot P(X_2 | X_1) \cdot P(X_3 | X_2, X_1) \cdot ... \cdot P(X_n | X_1, ... , X_{n - 1})$$
+
+Bayes Rule: $$P(cause | effect) = \frac{P(effect | cause) P(cause)}{P(effect)}$$
+
+Independent: $$P(X Y) = P(X) P(Y)$$
+
+Mutual Information: $$MI(X, Y) = 0 \implies X \text{ independent } Y$$ - kind of like a degree of dependence
+
+Example of Conditional Independence - https://imgur.com/zPzXpfv
+
+* $$J {\perp\!\!\!\perp} M | A$$ but $$J \not\!\perp\!\!\!\perp M$$
+* Since if you know the alarm called, you already know that it is likely that John and Mary call and them calling is due to the alarm but independent of each other calling, but if you don't know what the state of the alarm is then knowing that Mary called tells you that it is more likely that the alarm rang and that John will also call
+* arrow in diagram shows that conditioned on A, J and M are independent and without that since they both tell us something about the occurrence of A 
+
+Naive Bayes Assumption: $$Effect_i {\perp\!\!\!\perp} Effect_j$$ when $$i \neq j$$
+
+* $$P(Cause, Effect_1, ..., Effect_n) = P(Cause) \prod P(Effect_i | Cause)$$ - used in spam filters
+
+Markov Chains and Hidden Markov Model: https://imgur.com/OTNaoh1
+
+Markovian Assumptions:
+
+* A variable X is independent of its non-descents given its parents
+* Markov Blanket - A variable X is independent of everything else given its parents its children and the other parents of its children</pre>
+</div>
+<div created="20200412231348139" modified="20200413033005368" tags="[[UCLA CS 267A - Probabilistic Programming]] [[artificial intelligence]]" title="Propositional Reasoning" revision="12" bag="default">
 <pre>* Structure - Reasoning Engine which takes in the knowledge base (Declarative sentences in a knowledge representation language), new queries lead to conclusions that are arrived at by logical deduction
 
 Some applications of logic i.e. symbolic reasoning:
@@ -15073,7 +15164,32 @@ Exercises:
 * How to implement a validity solver given SAT Solver - which tells you if something is UNSAT or SAT? If negation of alpha is unsatisfiable, then alpha is valid
 * How to check if $$KB \models \alpha$$ using SAT solver - $$KB \land \neg \alpha$$ is UNSAT - proof by refutation uses this sort of mechanism
 
-</pre>
+Reductions to facilitate inference:
+
+* Reduce $$KB \models \alpha$$ to $$SAT(KB \land \neg \alpha)$$ - Refutation Theorem
+* Resolution Refutation - $$X \lor \neg Y$$ $$Y \lor Z$$ -&gt; resolved to -&gt; $$X \lor Z$$
+
+DPLL Solver: https://imgur.com/TJAPUxq - can convert to validity solver by replacing the OR with an AND - this is just the core, can speedup using other tricks
+
+* Stop early
+* Choose variable - which var to choose first
+* Choose value - correct choice of value might help eliminate a recursive call
+* Jump levels, Cache etc. 
+
+Unit Resolution / Propagation: optimization trick for SAT solver
+
+* $$(X \lor Z) \land X \land (\neg Y \lor Z) \land (Y \lor \neg X)$$ - the unit clause tells us that $$X$$ must be 1, then we also don't care about the clause $$X \lor Z$$ and we can remove X from the clause $$Y \lor \neg X$$ and then we have another unit clause and can repeat this process
+* propagating a literal either removes a clause or removes that literal from a clause potentially creating new unit clause
+
+Model Counting: https://imgur.com/7kh0Urh
+
+* Model = solution to a propositional logical formula $$\Delta$$
+* Model counting = #SAT - number of satisfying assignments - #P-hard 
+
+Algorithms for model counting - the expansion for the model counting version of DPLL: $$\#F = \#F_{x=0} + \#F_{x=1}$$ - can be sped up by
+* Caching - store #F and look up later
+* Components if $$Vars(F1) \cap Vars(F2) = \emptyset$$ then $$\#(F1 \land F2) = \#F1 * \#F2$$
+* can also modify this algorithm easily to compute the probability that a random assignment satisfies the formula </pre>
 </div>
 <div created="20200131001522764" modified="20200131030522424" tags="[[needs formatting]] [[talk summary]] [[quantum computing]]" title="Quantum Temporal Logic by Nengkun Yu" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Quantum Shock - Quantum computing can solve halting problem (Ji-Natarajan)
@@ -16540,9 +16656,10 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
 </div>
-<div created="20200412210020323" modified="20200412231338083" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" revision="2" bag="default">
+<div created="20200412210020323" modified="20200413030527044" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" revision="3" bag="default">
 <pre># [[Introduction to Probabilistic Programming]]
-# [[Propositional Reasoning]]</pre>
+# [[Propositional Reasoning]]
+# [[Propositional Probability]]</pre>
 </div>
 <div created="20200126032331506" modified="20200210191753424" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
