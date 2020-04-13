@@ -177,13 +177,11 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/Excise/--491030173/tagnew</li>
+
+<li>$:/state/Excise/--491030173/type</li>
+
 <li>$:/state/sidebar</li>
-
-<li>$:/state/tab-1749438307</li>
-
-<li>$:/state/tab-2065006209</li>
-
-<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -196,6 +194,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -214,6 +214,8 @@ Error message and password prompt
 <li>About Reinforcement Learning</li>
 
 <li>Actor-Critic Policy Gradient</li>
+
+<li>Application Layer</li>
 
 <li>Arithmetic for Computers</li>
 
@@ -449,6 +451,8 @@ Error message and password prompt
 
 <li>Policy Iteration</li>
 
+<li>Principles of Network Applications</li>
+
 <li>Problem Solving using Search</li>
 
 <li>Problems that RL needs to solve</li>
@@ -560,6 +564,8 @@ Error message and password prompt
 <li>Value Function Approximation</li>
 
 <li>Value Iteration</li>
+
+<li>Web and HTTP</li>
 
 <li>Welcome</li>
 
@@ -10057,17 +10063,14 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200412210157428" modified="20200413053839198" title="$:/state/sidebar" revision="12" bag="default">
+<div created="20200413074600739" modified="20200413074600739" title="$:/state/Excise/--491030173/tagnew" revision="1" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200412190200705" modified="20200412202934495" title="$:/state/tab-1749438307" revision="2" bag="default">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20200413074605100" modified="20200413074619641" title="$:/state/Excise/--491030173/type" revision="3" bag="default">
+<pre>link</pre>
 </div>
-<div created="20200412190203311" modified="20200412190240620" title="$:/state/tab-2065006209" revision="4" bag="default">
-<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
-</div>
-<div created="20200412210015336" modified="20200412210015336" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200413055901697" modified="20200413075541800" title="$:/state/sidebar" revision="4" bag="default">
+<pre>yes</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10081,7 +10084,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200412190159077" list="[[Propositional Probability]] [[UCLA CS 267A - Probabilistic Programming]]" modified="20200413034648519" title="$:/StoryList" revision="95" bag="default">
+<div created="20200413064915122" list="[[Web and HTTP]]" modified="20200413074723757" title="$:/StoryList" revision="56" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10141,6 +10144,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200413064913409" modified="20200413075543460" title="$:/temp/search" revision="4" bag="default">
+<pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -10410,6 +10416,10 @@ Natural Policy Gradient - parametrization independent
 
 Summary: https://imgur.com/JOMKK7m
 </pre>
+</div>
+<div created="20200413071459662" modified="20200413074722090" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Application Layer" revision="11" bag="default">
+<pre># [[Principles of Network Applications]]
+# [[Web and HTTP]]</pre>
 </div>
 <div created="20200122065241575" modified="20200203014712334" tags="[[computer architecture]]" title="Arithmetic for Computers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Arithmetic for Computers:
@@ -12941,7 +12951,7 @@ __[[Simulation-Based Search]]__
 
 {{Simulation-Based Search}}</pre>
 </div>
-<div created="20200409143643694" modified="20200409205033716" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Internet: A Brief Overview" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200409143643694" modified="20200413071338199" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Internet: A Brief Overview" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>__What is the internet?__ - global information infrastructure
 
 * Can be subdivided into smaller subnetworks - North American Network, European Network and further subdivided within these by ISPs - all connected by high speed connections
@@ -13073,7 +13083,38 @@ Throughput - number of bits transmitted every second - determined by bottleneck 
 
 Fairness in resource allocation - every tcp connection gets same bandwidth but you could open up more than 1 tcp link to get more bandwidth
 
+__Protocol Layers, Service Models__
 
+* Protocols: control sending, receiving messages e.g. HTTP for web browsing, Skype Protocol for VoIP, TCP, IP, 802.11 - wifi technology
+* Internet standards: standardize protocol specifications - RFC(request for comments), IETF: Internet Engineering Task Force
+
+3 elements of a protocol:
+
+* format
+* order of messages
+* actions to take when messages received or other events
+
+__Protocol &quot;layers&quot;__
+
+https://imgur.com/qH0C6ET
+
+* Explicit structure allows identification relationship of complex systems through this
+* Modularization eases maintenance, updating of system - change of implementation of layer's service is abstracted for other layers - each layer implements a service and relies on service provided by layer below
+
+Applications built on Reliable transport built on Best-effort global Packet delivery built on Best-effort local packet Delivery built on Physical Transfer of Bits
+
+* Application: supporting network applications - FTP, SMTP, HTTP
+* Transport: process to process data transfer - TCP, UDP
+* Network: routing of data grams from source to destination - IP, routing protocols
+* Link: Data transfer between neighboring network elements - ethernet, 802.111, PPP
+* Physical: bits &quot;on the wire&quot;
+
+ISO/OSI Referenece Model - https://imgur.com/mOk7X71
+
+* Presentation: allow applications to interpret meaning of data: encryption, compression, machine-specific conventions
+* Session: synchronization, checkpointing, recovery of data exchange
+
+Example: https://imgur.com/g2MSB85
 </pre>
 </div>
 <div created="20200404185457513" modified="20200404190921236" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[artificial intelligence]]" title="Introduction to Artificial Intelligence" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -13187,7 +13228,7 @@ Programming language:
 
 Mathematical Logic is study of logical systems as mathematical objects</pre>
 </div>
-<div created="20200412210136302" modified="20200412220514973" tags="[[artificial intelligence]] [[UCLA CS 267A - Probabilistic Programming]]" title="Introduction to Probabilistic Programming" revision="6" bag="default">
+<div created="20200412210136302" modified="20200412220516066" tags="[[artificial intelligence]] [[UCLA CS 267A - Probabilistic Programming]]" title="Introduction to Probabilistic Programming" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>AI Dilemma:
 
 * https://imgur.com/wifBDDn - slow thinking: deliberative, cognitive, model-based, extrapolation
@@ -14884,6 +14925,59 @@ Extensions to Policy Iteration:
 * Modifying Policy Iteration - consider epsilon convergence of value function? or simply stop after k iterations of iterative policy evaluation?, basic idea is to stop early as we may not need to know the value function to complete accuracy (and in the most extreme case just stop after k = 1, update policy every iteration - equivalent to - [[Value Iteration]])
 * Generalized Policy Iteration - https://imgur.com/cfEMFw0</pre>
 </div>
+<div created="20200413074634586" modified="20200413074652764" tags="[[computer networks]] [[Application Layer]]" title="Principles of Network Applications" revision="2" bag="default">
+<pre>Need to write code for two parties typically
+
+Can rely on the transport layer APIs entirely and do not need to worry about the network etc. layers, do not need to write code for network core etc. 
+
+Application Architectures:
+
+* client-server - the two parties play different roles
+* p2p - peer to peer - symmetric roles
+
+__Client-Server Architecture__
+
+* Server - always on, permanent IP address, data centers for scaling
+* Client - communicate with server, may be intermittently connected, may have dynamic IP address, do not communicate directly with other clients
+
+__P2P Architecture__
+
+* no always on server, instead arbitrary end systems directly communicate
+* Peers request service from other peers, provide service in return to other peers - self scalability - new peers bring new service capacity, as well as new service demands 
+* Peers are intermittently connected and change IP addresses which requires complex management
+
+Processes communicating:
+
+* IPC facilitates this on same host
+* processes in different hosts communicate by exchanging messages
+* Client process - process that initiates communication
+* Server process - process that waits to be contacted
+
+Sockets:
+
+* process sends/receives messages to/from its socket
+* socket analogous to door - sending process shoves message out door, sending process relies on transport infrastructure on other side of door to deliver message
+
+Addressing processes:
+
+* to receive messages, processes have identifier
+* host device has unique 32-bit IP address
+* this IP address doesn't suffice for identifying the process as there might be many processes can be running on same host - identifier includes therefore both address and port number
+* Example of reserved port number: HTTP server - 80, mail server - 25
+
+Application Layer protocol defines: open protocols defined in RFCs - HTTP, SMTP, proprietary protocols - Skype, SPDY (Google)
+
+* types of message exchanged - request, response
+* message syntax - what fields in messages &amp; how fields are delineated
+* message semantics - meaning of information in fields - headers v/s body etc.
+* rules for when and how processes send * respond to messages
+
+What transport service does an app need:
+
+* criteria: data integrity, timing, throughput - elastic means it is okay with pretty much anything v/s a specific rate required for correct functioning, security 
+* TCP - reliable, flow control - sender won't overwhelm receiver, congestion control - throttle sender when network overloaded, doesn't provide - timing minimum throughput guarantee, security; connection-oriented - setup required between client and server processes
+* UDP - unreliable but very fast - audio, video can tolerate some packet loss but delay must be very small, doesn't provide the things that TCP does - more flexibility at application layer for developers</pre>
+</div>
 <div created="20200407170824959" modified="20200409170412249" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Problem Solving using Search" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__[[Formulating a problem as search]]__
 
@@ -14994,7 +15088,7 @@ Transitivity and the clustering coefficient:
 
 # [[Compactness of Propositional Logic]]</pre>
 </div>
-<div created="20200413030638758" modified="20200413053753043" tags="probability [[artificial intelligence]] [[UCLA CS 267A - Probabilistic Programming]]" title="Propositional Probability" type="text/vnd.tiddlywiki" revision="14" bag="default">
+<div created="20200413030638758" modified="20200413053754235" tags="probability [[artificial intelligence]] [[UCLA CS 267A - Probabilistic Programming]]" title="Propositional Probability" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Motivation for Probability to be included in reasoning from a Logical point of view:
 
 * $$Toothache \implies Cavity$$ but this isn't entirely correct
@@ -15083,7 +15177,7 @@ Markovian Assumptions:
 * A variable X is independent of its non-descents given its parents
 * Markov Blanket - A variable X is independent of everything else given its parents its children and the other parents of its children</pre>
 </div>
-<div created="20200412231348139" modified="20200413033005368" tags="[[UCLA CS 267A - Probabilistic Programming]] [[artificial intelligence]]" title="Propositional Reasoning" revision="12" bag="default">
+<div created="20200412231348139" modified="20200413033006521" tags="[[UCLA CS 267A - Probabilistic Programming]] [[artificial intelligence]]" title="Propositional Reasoning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Structure - Reasoning Engine which takes in the knowledge base (Declarative sentences in a knowledge representation language), new queries lead to conclusions that are arrived at by logical deduction
 
 Some applications of logic i.e. symbolic reasoning:
@@ -16630,8 +16724,9 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Path Connectedness]]
 </pre>
 </div>
-<div created="20200409143404852" modified="20200409195615992" tags="[[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre># [[Internet: A Brief Overview]]</pre>
+<div created="20200409143404852" modified="20200413074752267" tags="[[computer networks]] [[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<pre># [[Internet: A Brief Overview]]
+# [[Application Layer]]</pre>
 </div>
 <div created="20200402185643352" modified="20200407170813623" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to Artificial Intelligence]]
@@ -16656,7 +16751,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
 </div>
-<div created="20200412210020323" modified="20200413030527044" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" revision="3" bag="default">
+<div created="20200412210020323" modified="20200413030528119" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to Probabilistic Programming]]
 # [[Propositional Reasoning]]
 # [[Propositional Probability]]</pre>
@@ -16770,6 +16865,19 @@ Intuition - like dynamic programming, start with final rewards and work backward
 https://www.cs.ubc.ca/~poole/demos/mdp/vi.html - link to play around with value iteration
 
 Summary - https://imgur.com/kAutPIf</pre>
+</div>
+<div created="20200413074727373" modified="20200413075315990" tags="[[Application Layer]] compu" title="Web and HTTP" revision="5" bag="default">
+<pre>Most popular application on the internet
+
+* Content - webpages
+* How to transfer? HTTP connections
+* In what messages? HTTP messages
+
+Web page
+
+* base HTML file which includes several referenced objects
+* each object is addressable by a Unique Resource Locator (URL)
+</pre>
 </div>
 <div author="Siddharth Joshi" created="20191119180323660" modified="20200211182518465" tags="introduction" title="Welcome" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Hi, welcome to my ~TiddlyWiki!
