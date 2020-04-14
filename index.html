@@ -177,13 +177,9 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/Excise/--491030173/tagnew</li>
-
-<li>$:/state/Excise/--491030173/type</li>
-
-<li>$:/state/showeditpreview</li>
-
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -226,6 +222,8 @@ Error message and password prompt
 <li>Base for a Topology</li>
 
 <li>Basics of Network Theory</li>
+
+<li>Basics of Probabilistic Programming Languages</li>
 
 <li>Basics of Topological Spaces</li>
 
@@ -286,6 +284,10 @@ Error message and password prompt
 <li>Discovery of Useful Questions as Auxiliary Tasks</li>
 
 <li>Do Calculus</li>
+
+<li>Domain Name System (DNS)</li>
+
+<li>Electronic Mail (Email)</li>
 
 <li>Epidemics on Networks</li>
 
@@ -435,6 +437,8 @@ Error message and password prompt
 
 <li>Overview of Supervised Learning</li>
 
+<li>P2P Architecture</li>
+
 <li>PaaS</li>
 
 <li>Papers on Hierarchical Reinforcement Learning</li>
@@ -566,6 +570,8 @@ Error message and password prompt
 <li>Value Function Approximation</li>
 
 <li>Value Iteration</li>
+
+<li>Video Streaming and Content Distribution Networks (CDNs)</li>
 
 <li>Web and HTTP</li>
 
@@ -10065,17 +10071,11 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200413074600739" modified="20200413074600739" title="$:/state/Excise/--491030173/tagnew" revision="1" bag="default">
+<div created="20200413222211534" modified="20200414045503954" title="$:/state/sidebar" revision="10" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200413074605100" modified="20200413074619641" title="$:/state/Excise/--491030173/type" revision="3" bag="default">
-<pre>link</pre>
-</div>
-<div created="20200413175159721" modified="20200413182218477" title="$:/state/showeditpreview" revision="2" bag="default">
-<pre>no</pre>
-</div>
-<div created="20200413055901697" modified="20200413182027191" title="$:/state/sidebar" revision="6" bag="default">
-<pre>yes</pre>
+<div created="20200414035106208" modified="20200414035106208" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10089,7 +10089,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200413064915122" list="[[Web and HTTP]]" modified="20200413182036591" title="$:/StoryList" revision="92" bag="default">
+<div created="20200413221944954" list="" modified="20200414043526404" title="$:/StoryList" revision="83" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10150,7 +10150,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200413064913409" modified="20200413184751221" title="$:/temp/search" revision="12" bag="default">
+<div created="20200413222104652" modified="20200413230408994" title="$:/temp/search" revision="14" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200227023751835" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -10422,9 +10422,13 @@ Natural Policy Gradient - parametrization independent
 Summary: https://imgur.com/JOMKK7m
 </pre>
 </div>
-<div created="20200413071459662" modified="20200413182035199" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Application Layer" revision="12" bag="default">
+<div created="20200413071459662" modified="20200414043524831" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Application Layer" type="text/vnd.tiddlywiki" revision="3" bag="default">
 <pre># [[Principles of Network Applications]]
-# [[Web and HTTP]]</pre>
+# [[Web and HTTP]]
+# [[Electronic Mail (Email)]]
+# [[Domain Name System (DNS)]] 
+# [[P2P Architecture]]
+# [[Video Streaming and Content Distribution Networks (CDNs)]]</pre>
 </div>
 <div created="20200122065241575" modified="20200203014712334" tags="[[computer architecture]]" title="Arithmetic for Computers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Arithmetic for Computers:
@@ -10664,6 +10668,112 @@ Properties of Graph Laplacian:
 * (1, 1, ...) is always an eigenvector - corresponding to the eigenvalue zero -&gt; doesn't have inverse as determinant is product of eigenvalues. This is easy to see as sum of all rows is all sum of all degrees minus sum of all edges twice
 * Multiplicity of zero corresponds thus to the number of connected components and each block induced in the Laplacian is the Laplacian of the component https://imgur.com/qk4g9eD
 * The second smallest eigenvalue of the Laplacian is called the algebraic connectivity of the network or the spectral gap
+</pre>
+</div>
+<div created="20200413230548400" modified="20200414004831587" tags="[[UCLA CS 267A - Probabilistic Programming]] [[artificial intelligence]]" title="Basics of Probabilistic Programming Languages" revision="6" bag="default">
+<pre>Example program - https://imgur.com/93J8kJf
+
+* flip - flip a biased coin using random number generator
+* observe - 
+
+Probabilistic Programming Languages - Pyro most popular, ~ProbLog - Prolog with probability
+
+Motivation:
+
+* Abstraction - abstract away implementation of probabilistic modeling
+* Expressivity - we want to be able to write any computable distribution - any distribution that a Turing machine can model
+* Usability - democratization of probabilistic modeling
+
+What is a possible world:
+
+* in the logic case: An assignment to the variables in the Knowledge Base 
+* a world is one execution of the program: https://imgur.com/frQKIbP - a sequence of states, a path through the program - values can be data structure
+
+Possible Worlds:
+
+* often programs generate an interesting distribution 
+* usually we care only about the final value - the return value
+* it is sequential - so richer meaning in worlds
+* can also have a program that is an infinite sequence 
+* when modeling non-sequential worlds, focus on the final value of the program
+
+Meaning of a program - a distribution over executions (set of executions + probabilities)
+
+Sampling Execution Semantics - meaning of program is probability of sampling execution A or execution B ...
+
+Return Value semantics - distribution over the return values of the program - from example - distribution over tuples
+
+Sampling Semantics:
+
+* Pro - only need to be able to run the program to understand sampling semantics
+* Con - procedural - meaning of program is whatever it executes to 
+* Con - a sample is a full execution - a global property that makes it harder to think about local meaning of an if statement or a function etc. 
+
+Denotational Semantics - meaning of program defined from meaning of subparts - gold standard in programming languages
+
+Goal: associate with every program a semantic object
+
+Notation: semantic bracket - $$[[ . ]]$$
+
+* in propositional logic - $$[[KB]] = M(KB)$$
+* in Bayesian network - $$[BN]] = Pr_{BN}(\cdot)$$
+* In probabilistic programs: $$[[e]](.)$$ for all expressions
+* Idea - don't need to run flip 0.4 infinite times to know meaning
+
+Dice Syntax - https://imgur.com/FRBQVpE
+
+$$[[flip r]](v) :\equiv \text{ w probability r, v = True, w probability 1 - r = False, w probability 0 r = anything else}$$
+
+$$[[v]] :\equiv $$ a probability distribution which says the probability it takes value v is 1
+
+Similarly for fst(v_1, v_2) and snd(v_1, v_2), if statements
+
+Let expression: https://imgur.com/yr6MVrJ - can think of this as $$Pr(v) = \sum_{v'} Pr(exp1 = v') * Pr(exp2 = v | x = v')$$
+
+Free variables:
+
+* variables not bound to any value
+* Defines a conditional distribution P( return value | value for free variables)
+
+Conditional Probabilities:
+
+* can compute using conditional probability formula using unconditional probabilities at the end of the program
+* but probabilistic programming is more powerful and we can do this throughout
+* can do this using observe statement
+
+Semantics of observe:
+
+
+```
+x ~ flip(0.5)
+y ~ flip(0.7)
+observe (x || y)
+
+```
+
+Rejection Sampling Semantics - only worlds where either x or y is true are valid 
+
+So new probabilities of events are original probability / probability that the observer is true
+
+Example: https://imgur.com/g8qfWua - always evaluates to true due to the observe
+
+Consider now 
+
+
+```
+let x = flip .5 in y = f(x) in x
+```
+
+* probability of true is 2/3 
+* this is due to the fact that the function having observe y fails executions where y is false - therefore 1/2 of the executions where x is false fail 
+
+Denotational Semantics of observe statement: https://imgur.com/g8qfWua
+
+* subscript a refers to the probability of accepting the execution i.e. the probability of getting an answer at all
+* subscript d refers to the case of observing a particular value given that the execution completed
+
+Example Programs
+
 </pre>
 </div>
 <div created="20200219031614417" modified="20200219045037009" tags="topology" title="Basics of Topological Spaces" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11165,7 +11275,7 @@ Summary: The following statements are equivalent
 * X is totally bounded and complete
 </pre>
 </div>
-<div created="20200410175929266" modified="20200413175309909" tags="[[Propositional Logic]]" title="Compactness of Propositional Logic" type="text/vnd.tiddlywiki" revision="10" bag="default">
+<div created="20200410175929266" modified="20200413175311191" tags="[[Propositional Logic]]" title="Compactness of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def 10: A PL-theory is a set T of PL-formulas. For a theory T and an assignment v, we say v satisfied T, denoted by $$v \models T$$ if $$v \models \phi, \forall \phi \in T$$
 
 Notational conventions:
@@ -11966,6 +12076,123 @@ tbd
 </div>
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
+</div>
+<div created="20200413222312251" modified="20200414042538273" tags="[[Application Layer]] [[computer networks]]" title="Domain Name System (DNS)" revision="5" bag="default">
+<pre>Translation from host name to IP address
+
+Why DNS? from human readable to machine readable
+
+Hostname to IP address translation:
+
+* distributed database - implemented in hierarchy of many name servers
+* application layer protocol - this complexity exists at network's edge
+
+DNS also provides:
+
+* aliasing - many names for same ip address
+* load balancing - many ip addresses correspond to one name - example google distributing requests to www.google.com
+
+DNS Structure - can't be centralized - single point of failure - doesn't scale - maintenance down time causes failure of internet
+
+Hierarchical organization of DNS:
+
+* Names are hierarchical - kiwi.cs.ucla.edu - highest hierarchy edu then next level is ucla then so on and so forth
+* Name servers are also hierarchical - each name server handles a small portion of the names space hierarchy 
+* Name resolution - follow hierarchy to resolve name to IP addresses
+
+Example of a DNS query: https://imgur.com/q63oQKV
+
+DNS root name servers - contacted by local name server that can not resolve name - contacts authoritative name server if name mapping unknown - only 13 in the world
+
+Top-level domain servers - responsible for com, org, net, edu, aero, jobs, museums and all top-level country domains
+
+Authoritative DNS servers - organization's own DNS servers providing hostname to IP mapping for organization's named hosts - maintained by organization or service provider
+
+Local DNS name server - doesn't strictly belong to hierarchy - each ISP, company, uni might have one - default name server - acts as a proxy for the DNS server, forwards query if it not found in cache
+
+DNS iterated query example: contacted server replies with name of server to connect - I don't have answer but follow this next server in hierarchy who might have it - https://imgur.com/haEZ7VA
+
+DNS recursive query example: high level server provide query answers by querying lower levels of hierarchy - https://imgur.com/NLZKRQn - could increase work load at higher levels of hierarchy but caching might reduce this
+
+DNS: cache both at client and local dns servers - entries disappear after some time called time to live (ttl)
+
+RFC 2136 - since caches may not check for update until entry timed out - there is a mechanism to inform dns servers of translation change
+
+DNS Records: (name, value, type, ttl) 
+
+* type=A: name=hostname, value=IP address
+* type=NS (name server): name=domain, value=authoritative name server for this domain
+* type=CNAME: name=alias name, value=canonical name 
+* type=MX (mail server associated with host name): name=host name value=name of mail server 
+
+Can try DNS lookup queries using nslookup 
+
+DNS protocol messages: https://imgur.com/Xxhf8FW, https://imgur.com/VQvylnz
+
+* typically over UDP
+* query and reply have same format
+
+
+
+</pre>
+</div>
+<div created="20200413204659846" modified="20200413222226122" tags="[[Application Layer]] [[computer networks]]" title="Electronic Mail (Email)" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<pre>Two components:
+
+* user agents
+* mail servers
+
+User Agent - mail reader:
+
+* composing, editing, reading mail messages
+* outgoing, incoming messages stored on server
+
+Mail Servers:
+
+* mailbox: contains incoming messages for user
+* message queue: of outgoing (to be sent) mail messages
+
+How is an email sent: https://imgur.com/44Nsxhz
+
+# Alice users UA to compose message to Bob
+# Alice's UA sends message to mail server and message is placed in message queue
+# Alice's mail server opens TCP connection with Bob's mail server
+# Alice's mail server sends Alice's message over the TCP connection
+# Bob's mail server places the message in Bob's mailbox
+# Bob invokes his user agent to read message
+
+Two types of interaction: UA to Mail Server, Mail Server to Mail Server
+
+Simple Mail Transfer Protocol - between mail servers to send email messages:
+
+* client - sending mail server
+* server - receiving mail server
+* uses TCP to reliably transfer from client to server's port 25
+* three phases of transfer: handshake (greeting), transfer of messages, closure - https://imgur.com/eeP3cky
+
+SMTP Request Messages: can try by using telnet servername 25 and sending these messages
+
+* HELO - greeting for handshake
+* MAIL FROM - sender
+* RCPT TO - recipient
+* DATA - actual mail data
+* QUIT - terminate connection
+
+SMTP Response Messages:
+
+* 250 XXX ok
+* 221 XXX closing connection
+
+Mail message Format - RFC 22: standard for text message format
+
+* Header lines - To, From, Subject - don't have to correspond to MAIL FROM and RCPT TO
+* Body message - ASCII characters only
+
+Mail Access Protocols - retrieval from server:
+
+* POP - Post Office Protocol authorization, download - https://imgur.com/xo4Z18A
+* IMAP - Internet Mail Access Protocol - more features including manipulation of stored messages on server
+* HTTP - Gmail, ~YahooMail etc.</pre>
 </div>
 <div created="20200309040928771" modified="20200309173052693" tags="[[graph theory]]" title="Epidemics on Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Idea of compartmentalization:
@@ -12985,7 +13212,7 @@ __[[Simulation-Based Search]]__
 
 {{Simulation-Based Search}}</pre>
 </div>
-<div created="20200409143643694" modified="20200413071338199" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Internet: A Brief Overview" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200409143643694" modified="20200413071339322" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Internet: A Brief Overview" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__What is the internet?__ - global information infrastructure
 
 * Can be subdivided into smaller subnetworks - North American Network, European Network and further subdivided within these by ISPs - all connected by high speed connections
@@ -14710,6 +14937,14 @@ ML in practice:
 <div created="20200227025649148" modified="20200227062101257" tags="[[machine learning]]" title="Overview of Supervised Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://stanford.edu/~shervine/teaching/cs-229/cheatsheet-supervised-learning</pre>
 </div>
+<div created="20200414042617937" modified="20200414043457492" tags="[[computer networks]] [[Application Layer]]" title="P2P Architecture" revision="2" bag="default">
+<pre>Motivating example - https://imgur.com/YBgbfyM - time to distribute file from server to N clients
+
+* Client-Server Model - Server must sequentially send (upload) N file copies, time to send all copies: $$NF/u_s$$, client must download $$F/d_min$$, max time $$\geq max(NF/u_s), F/d_min$$
+* P2P architecture - max time $$\geq max (F/u_s, F/d_min, NF/(u_s + Su_i))$$ where S is the number of clients uploading - as N grows large, so does S, therefore this scales well
+
+P2P better performance - https://imgur.com/v4tiTNp</pre>
+</div>
 <div created="20200204064753630" modified="20200204064918698" tags="technology" title="PaaS" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Platform as a service (PaaS) or application platform as a service (aPaaS) or platform-based service is a category of cloud computing services that provides a platform allowing customers to develop, run, and manage applications without the complexity of building and maintaining the infrastructure typically associated with developing and launching an app.
 
@@ -14959,7 +15194,7 @@ Extensions to Policy Iteration:
 * Modifying Policy Iteration - consider epsilon convergence of value function? or simply stop after k iterations of iterative policy evaluation?, basic idea is to stop early as we may not need to know the value function to complete accuracy (and in the most extreme case just stop after k = 1, update policy every iteration - equivalent to - [[Value Iteration]])
 * Generalized Policy Iteration - https://imgur.com/cfEMFw0</pre>
 </div>
-<div created="20200413074634586" modified="20200413074652764" tags="[[computer networks]] [[Application Layer]]" title="Principles of Network Applications" revision="2" bag="default">
+<div created="20200413074634586" modified="20200413074653833" tags="[[computer networks]] [[Application Layer]]" title="Principles of Network Applications" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Need to write code for two parties typically
 
 Can rely on the transport layer APIs entirely and do not need to worry about the network etc. layers, do not need to write code for network core etc. 
@@ -16758,7 +16993,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Path Connectedness]]
 </pre>
 </div>
-<div created="20200409143404852" modified="20200413074752267" tags="[[computer networks]] [[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200409143404852" modified="20200413074753338" tags="[[computer networks]] [[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Internet: A Brief Overview]]
 # [[Application Layer]]</pre>
 </div>
@@ -16785,10 +17020,11 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
 </div>
-<div created="20200412210020323" modified="20200413030528119" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200412210020323" modified="20200414001451546" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" type="text/vnd.tiddlywiki" revision="3" bag="default">
 <pre># [[Introduction to Probabilistic Programming]]
 # [[Propositional Reasoning]]
-# [[Propositional Probability]]</pre>
+# [[Propositional Probability]]
+# [[Basics of Probabilistic Programming Languages]]</pre>
 </div>
 <div created="20200126032331506" modified="20200210191753424" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
@@ -16900,7 +17136,44 @@ https://www.cs.ubc.ca/~poole/demos/mdp/vi.html - link to play around with value 
 
 Summary - https://imgur.com/kAutPIf</pre>
 </div>
-<div created="20200413074727373" modified="20200413191035914" tags="[[Application Layer]] compu" title="Web and HTTP" type="text/vnd.tiddlywiki" revision="7" bag="default">
+<div created="20200414043531641" modified="20200414045452229" tags="[[Application Layer]] [[computer networks]]" title="Video Streaming and Content Distribution Networks (CDNs)" revision="3" bag="default">
+<pre>Challenge is serving nearly 1B users and heterogeneity of users 
+
+Multimedia - can be efficiently encoded to utilize redundancy across frames or within frames - MPEG4 fairly compressed
+
+Streaming multimedia using Dynamic Adaptive Streaming over HTTP (DASH):
+
+Server - 
+
+* divides video into multiple chunks
+* each chunk stored, encoded at different rates
+* manifest file: provides URLs for different chunks
+
+Client - 
+
+* periodically measures server-to-client bandwidth
+* consulting manifest request one chunk at a time, choose max coding rate current bandwidth can handle and can vary this dynamically - better resolution when you have better internet 
+
+Intelligent at client:
+
+* when to request chunk - avoid buffer starvation or overflow
+* what encoding rate to request
+* where to request chunk
+
+Content Distribution Networks - how to stream content to hundreds of thousands of simultaneous users
+
+* enter deep: push CDN servers deep into many access networks, close to users used by Akamai
+* bring home: smaller number (10's) of larger clusters in points of presence (POPs) near access networks
+
+Example - https://imgur.com/lC4ISLz
+
+# want to reach netcinema.com
+# ask local dns server
+# local dns asks king CDN
+# dns query then resolved
+# connection established with KingCDN and then use DASH to stream</pre>
+</div>
+<div created="20200413074727373" modified="20200413204628259" tags="[[computer networks]] [[Application Layer]]" title="Web and HTTP" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Most popular application on the internet
 
 * Content - webpages
@@ -16979,10 +17252,27 @@ HTTP 2.0 - derived from SPDY - designed to improve throughput of client-server c
 
 * multiplexing multiple streams over one HTTP2.0 connection; request-response pipelining
 * Header compression
-* Server push
+* Server push (preemptive transfer to clients)
 
+__Advanced Features__
 
-</pre>
+HTTP is stateless but this can be useful information
+
+User-server state: cookies - basically an ID for user - https://imgur.com/SEW9SH - stored at client by web browser in cookies folder
+
+Web caches (proxy server): server-side caching
+
+* satisfy client request without involving origin server
+* proxy server intercepts all requests and works as a cache - provided by CDN like Akamai - proxy much closer to client 
+
+What is cache is stale at client level? Fixed by conditional GET - this is from client to server not including proxy - the proxy server lives in between and there are complex mechanisms to ensure proxy server has latest updates
+
+Goal: don't send object if cache has up-to-data cached version - no object transmission delay, lower link utilization
+
+Cache - specify date of cached copy in HTTP request - if modified since
+
+Server - response contains no object object if cached copy is 
+up-to-date - returns 304 - not modified</pre>
 </div>
 <div author="Siddharth Joshi" created="20191119180323660" modified="20200211182518465" tags="introduction" title="Welcome" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Hi, welcome to my ~TiddlyWiki!
