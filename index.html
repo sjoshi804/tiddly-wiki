@@ -255,6 +255,8 @@ Error message and password prompt
 
 <li>Connectedness</li>
 
+<li>Connectionless Transport: UDP</li>
+
 <li>Constraint Satisfaction Problems</li>
 
 <li>Contagion Models</li>
@@ -414,6 +416,8 @@ Error message and password prompt
 <li>Monte-Carlo Reinforcement Learning</li>
 
 <li>Multi-Armed Bandits</li>
+
+<li>Multiplexing and Demultiplexing</li>
 
 <li>N-ary Relations</li>
 
@@ -10088,7 +10092,7 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200417155405790" modified="20200417160131178" title="$:/state/sidebar" revision="4" bag="default">
+<div created="20200417155405790" modified="20200417165305940" title="$:/state/sidebar" revision="12" bag="default">
 <pre>yes</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
@@ -10103,7 +10107,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200417155843639" list="[[Transport Layer Services]]" modified="20200417160139178" title="$:/StoryList" revision="25" bag="default">
+<div created="20200417155843639" list="" modified="20200417165319856" title="$:/StoryList" revision="64" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10164,7 +10168,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200417155836183" modified="20200417160158291" title="$:/temp/search" revision="8" bag="default">
+<div created="20200417155836183" modified="20200417165326235" title="$:/temp/search" revision="74" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200414190048197" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11742,6 +11746,37 @@ Proof: Any interval is homeomorphic to one of $$[0, 1], [0, 1), (0, 1)$$
 * Since $$E$$ is open, there exists an interval $$[t, t + \epsilon)$$ that is contained in E, this contradicts the supremum assumption however, therefore $$[0, 1]$$ is connected
 * Thus every compact interval of $$R$$ is connected 
 * Since $$[0, 1)$$ and $$(0, 1)$$ can be expressed as the union of sequences of compact intervals, each element in these sequence is connected and thus by Thm 2, the sets are connected. </pre>
+</div>
+<div created="20200417163222143" modified="20200417165257136" tags="[[Transport Layer]]" title="Connectionless Transport: UDP" revision="2" bag="default">
+<pre>User Datagram Protocol - [RFC 768]
+
+Best effort - segments may be lost, delivered out of order to app
+
+Connectionless - no handshake, each UDP segment sent independently 
+
+Use cases:
+
+* streaming multimedia apps (loss-tolerant, rate sensitive)
+* DNS
+* SNMP - Network Management - logs etc.
+* Can add reliable transfer over UDP in application layer, to build application specific recovery etc. - maximum flexibility
+
+UDP: segment header - https://imgur.com/MY9RqVk
+
+* length - length in bytes of entire segment including header, allows flexibility in application data (payload) - no reserved sequences
+* checksum - used to check if errors in application data (flipped bits)
+
+UDP checksum - detect flipped bits in transmitted segment
+
+* Sender - treat segment contents, including header fields as sequences of 16-bit integers, checksum = addition of segment contents
+* Receiver - computes checksum of received segment, if computed checksum = checksum  field, then no error detected, else error detected
+* add with overflow wrap around - checksum is then every bit of the sum flipped - 1's complement
+* Error detection capability is limited
+
+
+
+
+</pre>
 </div>
 <div created="20200416170442510" modified="20200416184213168" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[artificial intelligence]]" title="Constraint Satisfaction Problems" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Variables:
@@ -14873,6 +14908,34 @@ Summary:
 * Optimism in the face of uncertainty: Optimistic Initialization, UCB, Thompson Sampling (not best for MDP as it doesn't take into consideration sequential decision making) - this method can be problematic due to very large action spaces and due to the risk of certain actions having really bad values (crashing helicopter etc.)
 * Information state space: Gittins indices and Bayes-adaptive MDPs</pre>
 </div>
+<div created="20200417160845352" modified="20200417162949958" tags="[[Transport Layer]]" title="Multiplexing and Demultiplexing" revision="1" bag="default">
+<pre>Representative Diagram: https://imgur.com/Lz7cBlz
+
+Multiplexing at sender - handle data from multiple sockets, add transport header - combine data from two or more different sockets to same host into one logical stream 
+
+Demultiplexing at Receiver: use header info to deliver received segments to correct socket, deliver the messages to the right process / socket
+
+Demultiplexing: https://imgur.com/lvTSVK9
+
+* each datagram has src and dest IP addresses and contains one transport layer segment
+* each segment has source and port destination number
+* host uses IP addresses &amp; port number to direct segment to appropriate socket
+
+Connectionless Demultiplexing in UDP: https://imgur.com/FbWiY00
+
+At host, the demultiplexing process only checks dest port - so if two different host addresses and/or different port numbers send to the same dest port - they get routed identically by demultiplexing i.e. go to the same socket
+
+Connection-Oriented Demux in TCP:
+
+* TCP socket: identified by a 4 tuple (src IP, src port, dest IP, dest port)
+* Demux uses all four values to route to the correct socket so even if two different ip address/port numbers send to the same dest port, they will be routed to the socket corresponding to the socket corresponding to their IP &amp; port
+
+Example: TCP v/s UDP for demultiplexing - https://imgur.com/Qqv0DAr, https://imgur.com/VWId8D5
+
+Why do we not have to check of destination IP - the network layer takes care of this for us, only segments going to this host's IP will be routed to it
+
+</pre>
+</div>
 <div created="20200415173741324" modified="20200415175047587" tags="[[Propositional Logic]]" title="N-ary Relations" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Def 22: Let X be a set, for any positive natural number n $$X^n = \{(x_0, ..., x_{n - 1} : x_0, ..., x_{n - 1} \in X\} = X \times ... \times X$$
 
@@ -17424,13 +17487,33 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Path Connectedness]]
 </pre>
 </div>
-<div created="20200417155924595" modified="20200417160104302" tags="[[UCLA CS 118 - Computer Network Fundamentals]] [[computer networks]]" title="Transport Layer" revision="3" bag="default">
+<div created="20200417155924595" modified="20200417163045281" tags="[[UCLA CS 118 - Computer Network Fundamentals]] [[computer networks]]" title="Transport Layer" revision="7" bag="default">
+<pre># [[Transport Layer Services]]
+# [[Multiplexing and Demultiplexing]]
+# [[Connectionless Transport: UDP]]</pre>
+</div>
+<div created="20200417160127840" modified="20200417160746289" tags="[[Transport Layer]]" title="Transport Layer Services" type="text/vnd.tiddlywiki" revision="7" bag="default">
 <pre>Built for Application Layer to use and uses Network Layer itself. 
 
-# [[Transport Layer Services]]</pre>
-</div>
-<div created="20200417160127840" modified="20200417160150419" tags="[[Transport Layer]]" title="Transport Layer Services" type="text/vnd.tiddlywiki" revision="3" bag="default">
-<pre></pre>
+Application Layer - process to process communication
+
+Network Layer - host to host communication
+
+Transport Layer needs to bridge this
+
+Provides logical communication between processes
+
+Run in end system:
+
+* sender: break application's messages into packets called segments and passes to network layer 
+* receiver: reassemble segments into messages to pass to application layer
+
+Two types of protocols:
+
+* Reliable, in-order (TCP) - congestion control, flow control, connection-oriented service with connection setup
+* Unreliable, unordered - simplest transport layer 
+
+Neither provides delay or bandwidth guarantees</pre>
 </div>
 <div created="20200409143404852" modified="20200417155912299" tags="[[computer networks]] [[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre># [[Internet: A Brief Overview]]
