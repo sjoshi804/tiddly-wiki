@@ -299,6 +299,8 @@ Error message and password prompt
 
 <li>Domain Name System (DNS)</li>
 
+<li>Draft of 'Algorithms: Deutsh-Jozsa Algorithm'</li>
+
 <li>Draft of 'Transport Layer Services'</li>
 
 <li>Electronic Mail (Email)</li>
@@ -10127,7 +10129,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200417155843639" list="[[Algorithms: Bernstein-Vazirani]]" modified="20200418062536505" title="$:/StoryList" revision="172" bag="default">
+<div created="20200417155843639" list="" modified="20200418064755315" title="$:/StoryList" revision="179" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10460,7 +10462,7 @@ Natural Policy Gradient - parametrization independent
 Summary: https://imgur.com/JOMKK7m
 </pre>
 </div>
-<div created="20200418061450580" modified="20200418062530588" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Algorithms: Bernstein-Vazirani" revision="4" bag="default">
+<div created="20200418061450580" modified="20200418064823139" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Algorithms: Bernstein-Vazirani" revision="5" bag="default">
 <pre>Problem Definiton:
 
 * Input: $$f: \{0, 1\}^n \rightarrow \{0, 1\}$$ defined as $$f(x) = a \cdot x + b$$
@@ -10475,9 +10477,35 @@ Note that if $$a = 0....0$$ f is constant else it is balanced and therefore we c
 Algorithm:
 
 * Classical computation - run $$f(0...0)$$ to get b
-* Quantum circuit is same as [[Algorithms: Deutsh-Jozsa Algorithm]]</pre>
+* Quantum circuit is same as [[Algorithms: Deutsh-Jozsa Algorithm]] - https://imgur.com/c6OhUMQ
+
+Proof of correctness: https://imgur.com/9Tqqyhi (Step 3 uses kickback lemma, Step 5 uses Lemma 6 from [[Algorithms: Deutsh-Jozsa Algorithm]])
+
+Last step can be understood in a way similar to [[Algorithms: Deutsh-Jozsa Algorithm]], in that when $$|y\rangle = |a\rangle$$, then $$a \oplus y = 0$$, therefore $$-1^{(a \oplus y)\cdot x} = 1$$ and if not then $$(a \oplus y) \cdot x$$ = 1 exactly half the time and 0 exactly half the time and hence this gets cancelled out in the summation
+Therefore we have that the final state is with amplitude $$-1^b$$ = $$|a\rangle$$ and since $$b \in \{0, 1\}$$, we have with probability 1 this algorithm returns a
+
+Considering an other problem where we can use similar ideas.
+
+Problem Definiton:
+
+* Input: $$f: \{0, 1\}^2 \rightarrow \{0, 1\}$$ defined s.t. $$f = 1$$ for a single input, and $$0$$ for all others
+* Output: the 2 bit input for which $$f = 1$$
+
+Quantum Circuit: https://imgur.com/KqnbpWs
+
+? = https://imgur.com/uItpVb0 - helps us identify the state with negative amplitude
+
+Lemma 1: $$\forall c, d \in {0, 1} : U( \phi_{cd} ) = |cd\rangle$$
+
+Proof: Case analysis - https://imgur.com/vfDsd3e
+
+Proof of Correctness for Algorithm: https://imgur.com/eAP4aA0
+
+In the second last step, we can see, we will always be in the state $$\phi_{cd}$$ due to the definition of the function and the U helps us get to the final solution (Step 3 uses kickback lemma, Step 5 uses Lemma 1)
+
+</pre>
 </div>
-<div created="20200418045403116" modified="20200418061006746" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Algorithms: Deutsh-Jozsa Algorithm" revision="11" bag="default">
+<div created="20200418045403116" modified="20200418064849203" tags="[[quantum computing]] [[UCLA CS 239 - Quantum Computation]]" title="Algorithms: Deutsh-Jozsa Algorithm" revision="12" bag="default">
 <pre>Deutsch-Jozsa Problem: 
 
 * Input: $$f: \{0, 1\}^n \rightarrow \{0, 1\}$$
@@ -10538,7 +10566,7 @@ Deutsch-Jozsa Algorithm - generalization to n bits: https://imgur.com/c6OhUMQ
 
 Lemma 5: $$\forall x \in \{0, 1\}: H|x\rangle = \frac{1}{\sqrt{2}} \sum_{y \in \{0, 1\}} {(-1)}^{x \cdot y} |y\rangle$$
 
-Lemma 6: $$\forall x \in \{0, 1\}^n: H|x\rangle = \frac{1}{\sqrt{2^n}} \sum_{y \in \{0, 1\}^n} {(-1)}^{x \cdot y} |y\rangle$$
+Lemma 6: $$\forall x \in \{0, 1\}^n: H^{\otimes n}|x\rangle = \frac{1}{\sqrt{2^n}} \sum_{y \in \{0, 1\}^n} {(-1)}^{x \cdot y} |y\rangle$$
 
 Proof: expand and repeated apply lemma 5 repeatedly
 
@@ -12433,6 +12461,9 @@ DNS protocol messages: https://imgur.com/Xxhf8FW, https://imgur.com/VQvylnz
 
 
 </pre>
+</div>
+<div created="20200418053308834" modified="20200418053308834" title="Draft of 'Algorithms: Deutsh-Jozsa Algorithm'" type="text/vnd.tiddlywiki" revision="2537" bag="default">
+<pre></pre>
 </div>
 <div created="20200417160727705" modified="20200417160727705" title="Draft of 'Transport Layer Services'" type="text/vnd.tiddlywiki" revision="718" bag="default">
 <pre></pre>
