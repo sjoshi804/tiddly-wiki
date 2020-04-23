@@ -169,6 +169,8 @@ Error message and password prompt
 
 <li>$:/GitHub/Username</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/plugins/tiddlywiki/highlight</li>
@@ -177,11 +179,9 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/Excise/--1306064280/tagnew</li>
+<li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
-
-<li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
 
@@ -196,6 +196,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -336,6 +338,8 @@ Error message and password prompt
 <li>Foundations of Quantum Computing: Linear Algebra</li>
 
 <li>Foundations of Quantum Computing: Quantum Circuits</li>
+
+<li>General Probabilistic Programming Inference</li>
 
 <li>Generalizations of Networks</li>
 
@@ -524,6 +528,8 @@ Error message and password prompt
 <li>Search Strategies: Blind Search</li>
 
 <li>Search Strategies: Heuristic Search</li>
+
+<li>Semantics of First Order Logic</li>
 
 <li>Semantics of Propositional Logic</li>
 
@@ -9861,6 +9867,16 @@ Error message and password prompt
 <div created="20191119192037438" modified="20191119192039472" title="$:/GitHub/Username" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>sjoshi804</pre>
 </div>
+<div plugin-type="import" status="pending" title="$:/Import" type="application/json" revision="2" bag="default">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;Untitled&quot;: {
+            &quot;title&quot;: &quot;Untitled&quot;,
+            &quot;text&quot;: &quot;https://imgur.com/tB9xHzI&quot;
+        }
+    }
+}</pre>
+</div>
 <div title="$:/isEncrypted" revision="0" bag="default">
 <pre>no</pre>
 </div>
@@ -10108,17 +10124,14 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200420170228297" modified="20200420170228297" title="$:/state/Excise/--1306064280/tagnew" revision="1" bag="default">
+<div created="20200423220221041" modified="20200423220221041" title="$:/state/showeditpreview" revision="1" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200420170150332" modified="20200420175214457" title="$:/state/sidebar" revision="4" bag="default">
+<div created="20200423220218344" modified="20200423231208368" title="$:/state/sidebar" revision="2" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200420175227396" modified="20200420175229657" title="$:/state/tab/moresidebar-1850697562" revision="4" bag="default">
-<pre>$:/core/ui/MoreSideBar/All</pre>
-</div>
-<div created="20200420170154095" modified="20200420175242638" title="$:/state/tab/sidebar--595412856" revision="10" bag="default">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20200423215810466" modified="20200423215810466" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10132,7 +10145,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200420170206547" list="" modified="20200420175236610" title="$:/StoryList" revision="42" bag="default">
+<div created="20200423215817612" list="[[Application Layer]]" modified="20200423230722335" title="$:/StoryList" revision="47" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10192,6 +10205,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200423215814190" modified="20200423215820273" title="$:/temp/search" revision="4" bag="default">
+<pre></pre>
 </div>
 <div created="20200227023745997" modified="20200414190048197" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -12369,7 +12385,7 @@ end for
 tbd
 </pre>
 </div>
-<div created="20200415230358403" modified="20200416010024829" tags="[[UCLA CS 267A - Probabilistic Programming]] [[artificial intelligence]]" title="Discrete Probabilistic Program Inference" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200415230358403" modified="20200421000343202" tags="[[UCLA CS 267A - Probabilistic Programming]] [[artificial intelligence]]" title="Discrete Probabilistic Program Inference" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Going from Model Counting to Probabilistic Inference
 
 * $$Pr(\alpha | KB) = \frac{MC(\alpha)}{MC(KB)}$$
@@ -12398,7 +12414,75 @@ Basic DPLL: https://imgur.com/hrm8z4r - can do better with caching the tree - ht
 
 Weighted Model Counting helps you get SOTA results across many probabilistic reasoning applications
 
-In general #P-hard, but in practice quite tractable in reality. </pre>
+In general #P-hard, but in practice quite tractable in reality. 
+
+Why exact inference?
+
+* No error propagation
+* Approximation are intractable in theory as well
+* Approximates are known to mislead learners
+* Core of effective approximation techniques
+* Unaffected by low probability observations
+
+Dice Approach: https://imgur.com/XY4CqS3
+
+
+```
+let x = flip_1 0.6 in 
+let y = flip_2 0.4 in 
+(x, y)
+```
+
+Weights: https://imgur.com/eO1NzTM
+
+Variables:
+
+* $$r_l $$ corresponds to x
+* $$r_r$$ corresponds to y
+* $$f_1$$ corresponds to flip_1
+* $$f_2$$ corresponds to flip_2
+ 
+Graphical representation: https://imgur.com/oDNj59m
+
+Dotted line - setting the variable to false, Solid line - setting the variable to true
+
+Consider now an example where X and Y are independent only given Z, otherwise they are dependent on each other
+
+
+```
+let z = flip .6 in 
+if z
+   let x = flip .7 in 
+   let y = flip .4 in (x, y)
+else
+  let x = flip .8 in 
+  let y = flip .9 in (x, y)
+```
+
+If I know z, then the two are independent
+
+But if I only know y = 1, then else branch is more likely, therefore x value from the x branch is more likely, and since 0.8 &gt; 0.7, x is more likely to be 1
+
+Context-Specific Independence
+
+```
+let z = flip .5 in 
+let x = if z
+  then flip 0.7
+  else flip 0.6 in 
+let y = if z then 
+  flip 0.7 else
+  x in 
+  (z, (x, y))
+```
+
+If z is false, then x and y are exactly the same, but if z is true, then the two are independent 
+
+Graphical Representation: https://imgur.com/ww1ykiK
+
+Network Verification Example: https://imgur.com/KB4MGd5
+
+Semantics of DICE: https://imgur.com/wrwmPzO</pre>
 </div>
 <div author="" created="20191124064904814" modified="20191124064949779" tags="research probability math" title="Do Calculus" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://arxiv.org/pdf/1305.5506.pdf</pre>
@@ -12462,7 +12546,7 @@ DNS protocol messages: https://imgur.com/Xxhf8FW, https://imgur.com/VQvylnz
 
 </pre>
 </div>
-<div created="20200413204659846" modified="20200413222227198" tags="[[Application Layer]] [[computer networks]]" title="Electronic Mail (Email)" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200413204659846" modified="20200423225512151" tags="[[Application Layer]] [[computer networks]]" title="Electronic Mail (Email)" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>Two components:
 
 * user agents
@@ -12480,7 +12564,7 @@ Mail Servers:
 
 How is an email sent: https://imgur.com/44Nsxhz
 
-# Alice users UA to compose message to Bob
+# Alice uses UA to compose message to Bob
 # Alice's UA sends message to mail server and message is placed in message queue
 # Alice's mail server opens TCP connection with Bob's mail server
 # Alice's mail server sends Alice's message over the TCP connection
@@ -12877,9 +12961,10 @@ Example: Training AIBO to walk by Finite Difference Policy Gradient (AIBO walk p
 
 </pre>
 </div>
-<div created="20200417165905555" modified="20200420170335837" tags="logic [[UCLA Math 114L - Mathematical Logic]]" title="First Order Logic" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<div created="20200417165905555" modified="20200422173110844" tags="logic [[UCLA Math 114L - Mathematical Logic]]" title="First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to First Order Logic]]
-# [[Syntax of First Order Logic]]</pre>
+# [[Syntax of First Order Logic]]
+# [[Semantics of First Order Logic]]</pre>
 </div>
 <div created="20191227164059875" modified="20191227164351343" tags="math logic [[real analysis]]" title="For Every and There Exists" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Negation of a for every x, proposition is true is there exists x such that proposition is false
@@ -13168,6 +13253,24 @@ Universal Sets of Operations:
 * For reversible computing CCNOT plus helper bits is a universal set and since we can get $$|0\rangle from |1\rangle$$ using only 1s as helper bits, we can have the helper bits be 
 * For quantum computing H, CCNOT is a universal set that can express all real unitary matrices, adding Scale $$\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; i \end{pmatrix}$$ includes all complex matrices as well. 
 * $$R_\theta = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; e^{i\theta} \end{pmatrix}$$ can be used to substitute Scale and make the universal set as well</pre>
+</div>
+<div created="20200420231413286" modified="20200421005007142" tags="[[artificial intelligence]] [[UCLA CS 267A - Probabilistic Programming]]" title="General Probabilistic Programming Inference" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>How to deal with continuous variables?
+
+* If only continuous variables - Stan &amp; Hamiltonian Monte-Carlo
+* Mixed with discrete? Use Anglican, Church, ~WebPPL etc.
+
+Intuition for how Probabilistic Programs execute: https://imgur.com/RYaFzXn
+
+Different ways of interpreting the semantics of programs: https://imgur.com/5VzIRvZ
+
+Hidden Markov Model as a STAN program - https://imgur.com/TiWZAK0
+
+__Anglican - General Probabilistic Program Inference__
+
+Model a simple nested gaussian distribution: https://imgur.com/Qq7OoJI
+
+Hidden Markov Model: https://imgur.com/lhvzjeB</pre>
 </div>
 <div created="20200308212845972" modified="20200308214932933" tags="[[graph theory]]" title="Generalizations of Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Hyper-graphs - edges can join any number of nodes
@@ -13611,7 +13714,7 @@ __[[Simulation-Based Search]]__
 
 {{Simulation-Based Search}}</pre>
 </div>
-<div created="20200409143643694" modified="20200413071339322" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Internet: A Brief Overview" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200409143643694" modified="20200423221559387" tags="[[computer networks]] [[UCLA CS 118 - Computer Network Fundamentals]]" title="Internet: A Brief Overview" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>__What is the internet?__ - global information infrastructure
 
 * Can be subdivided into smaller subnetworks - North American Network, European Network and further subdivided within these by ISPs - all connected by high speed connections
@@ -13680,8 +13783,8 @@ Does the telephone network need a dedicated circuit for every phone call?  No - 
 Why is packet switching (on demand allocation) chosen by the internet?
 
 * More robust - if dedicated circuit breaks, circuit switching fails, but packets travel independently so can survive a few paths breaking
-* More users to use network - example - 1 mbps link speed, 100 kbps usage with each user active for 10$ f the time - with circuit switching the active time doesn't matter so can only support (link bandwidth / user usage = 10 in e.g.) users
-* contd. whereas for packet switching using probability of being active as 10%, we can use the binomial distribution to predict how many users active - so with 35 users, 0.4% chance more than 10 active - therefore we can support 35 users with probability 99.6% 
+* More users to use network - example - 1 mbps link speed, 100 kbps usage with each user active for 10% of the time - with circuit switching the active time doesn't matter so can only support (link bandwidth / user usage = 10 in e.g.) users
+* contd. whereas for packet switching using probability of being active as 10%, we can use the binomial distribution to predict how many users active - so with 35 users, 0.4% chance more than 10 active - therefore we can support 35 users with probability 99.6% (Probability that exactly 10 active = $${35\choose10} \cdot 0.1^{10} \cdot 0.9^{25}$$)
 
 Packet switching is great for data that moves in short bursts - which is an accurate model for the internet
 
@@ -13745,7 +13848,7 @@ Fairness in resource allocation - every tcp connection gets same bandwidth but y
 
 __Protocol Layers, Service Models__
 
-* Protocols: control sending, receiving messages e.g. HTTP for web browsing, Skype Protocol for VoIP, TCP, IP, 802.11 - wifi technology
+* Protocols: control sending, receiving messages e.g. HTTP for web browsing, Skype Protocol for ~VoIP, TCP, IP, 802.11 - wifi technology
 * Internet standards: standardize protocol specifications - RFC(request for comments), IETF: Internet Engineering Task Force
 
 3 elements of a protocol:
@@ -13876,7 +13979,7 @@ Current research:
 * Multi-domain learning for simulation to real world transfer
 </pre>
 </div>
-<div created="20200420170244663" modified="20200420170244663" tags="[[First Order Logic]]" title="Introduction to First Order Logic" revision="1" bag="default">
+<div created="20200420170244663" modified="20200420170245733" tags="[[First Order Logic]]" title="Introduction to First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Also known as Lower Predicate Calculus with Identity (therefore object called LPCI)
 
 * In LPCI - individual variables - not stand-ins for propositions, range over the elements of a mathematical structure - what we are used to - e.g. let x be a real number
@@ -15493,11 +15596,11 @@ ML in practice:
 <div created="20200227025649148" modified="20200227062101257" tags="[[machine learning]]" title="Overview of Supervised Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>https://stanford.edu/~shervine/teaching/cs-229/cheatsheet-supervised-learning</pre>
 </div>
-<div created="20200414042617937" modified="20200414043458586" tags="[[computer networks]] [[Application Layer]]" title="P2P Architecture" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200414042617937" modified="20200423231159056" tags="[[computer networks]] [[Application Layer]]" title="P2P Architecture" type="text/vnd.tiddlywiki" revision="3" bag="default">
 <pre>Motivating example - https://imgur.com/YBgbfyM - time to distribute file from server to N clients
 
-* Client-Server Model - Server must sequentially send (upload) N file copies, time to send all copies: $$NF/u_s$$, client must download $$F/d_min$$, max time $$\geq max(NF/u_s), F/d_min$$
-* P2P architecture - max time $$\geq max (F/u_s, F/d_min, NF/(u_s + Su_i))$$ where S is the number of clients uploading - as N grows large, so does S, therefore this scales well
+* Client-Server Model - Server must sequentially send (upload) N file copies, time to send all copies: $$NF/u_s$$, client must download $$F/d_{min}$$, max time $$\geq max(NF/u_s, F/d_{min})$$
+* P2P architecture - max time $$\geq max (F/u_s, F/d_{min}, NF/(u_s + Su_i))$$ where S is the number of clients uploading - as N grows large, so does S, therefore this scales well
 
 P2P better performance - https://imgur.com/v4tiTNp</pre>
 </div>
@@ -16714,6 +16817,23 @@ So to evaluate a heuristic, we can fix d and compute b* for that value by starti
 Table evaluating heuristics and comparing to Iterative Deepening - https://imgur.com/2iwq4Vd
 </pre>
 </div>
+<div created="20200422173116436" modified="20200422174611497" tags="logic [[First Order Logic]]" title="Semantics of First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>A structure of signature $$\tau = (Const, Rel, Funct, arity)$$ or a $$\tau-structure$$ is a pair $$\textbf{ A } = (A, I)$$ where A is a non-empty set and the interpretation of $$I$$ assigns:
+
+* a member $$I(c) = c^{\textbf{A}}$$ of A, to each constant symbol $$c$$
+* an n-ary relation $$I(R) = R^{\textbf{A}} \subseteq A^n$$ to each n-ary relation symbol
+* an n-ary function $$I(f) = f^{\textbf{A}} = A^n \rightarrow A$$ to each n-ary relation symbol $$f$$
+
+Succinct notation: 
+
+* 
+* For finite signautre, something like $$\textbf{A} = (A, c_1^{\textbf{A}}, )$$
+* 
+
+
+
+</pre>
+</div>
 <div created="20200410175859133" modified="20200412182645222" tags="[[Propositional Logic]]" title="Semantics of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Semantics__
 
@@ -16969,7 +17089,7 @@ We use metavariables to  name arbitrary propositional variables - analogous to w
 
 Let p be a propositional variable - means p is one of $$A_i$$ but we haven't specified which</pre>
 </div>
-<div created="20200420170350307" modified="20200420175043561" tags="[[First Order Logic]] logic" title="Syntax of First Order Logic" revision="9" bag="default">
+<div created="20200420170350307" modified="20200422173021650" tags="[[First Order Logic]] logic" title="Syntax of First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Syntax of LPCI__
 
 Def: A vocabulary or signature is a quadruple $$\tau = (Const, Rel, Funct, arity)$$
@@ -17038,12 +17158,38 @@ Free and Bound Variables
 # $$FO((\phi \cdot \phi)) = FO(\phi) \cup FO(\psi$$
 # $$FO(\forall v \phi) = FO(\exists v \phi) = FO(\phi) \setminus \{v\}$$
 
+Free Variables of $$\alpha$$ are the variables that have at least one free occurrence in $$\alpha$$, the bound variables of $$\alpha$$ are those which at least one bound occurrence in $$\alpha$$ and $$\alpha$$ is closed if it has no free variables
+
+A closed formula is called a sentence
+
+* https://imgur.com/2f0sXE4
+* https://imgur.com/5oRrU3C
+
+Terms and formulae together are called expressions (well formed words i.e finite strings)
+
+Free substitutions - for each expression $$\alpha$$ each variable $$v$$ and each term $$t$$ $$\alpha\{v:\equiv t\}$$ is the result of replacing all ''free'' occurrences of $$v$$ in $$\alpha$$ with t
+
+Can be extended to simultaneous substitution: $$\alpha\{v_1:\equiv t_1, ..., v_n :\equiv t_n\}$$
+
+Example: https://imgur.com/7sp8Yae
+
+Note that in general $$\alpha\{v_1 :\equiv t_1\}\{v_2 :\equiv t_2\} \not\equiv \alpha\{v_1:\equiv t_1, ..., v_n :\equiv t_n\}$$ - sequential replacement not equivalent to simultaneous replacement
+
+A term $$t_i$$ is free for $$v_i$$ in a substitution if no occurrence of a variable in $$t_i$$ is bound in the result of this substitution. (We only form free substitutions - leads to confusion)
+
+https://imgur.com/Caf1eV9
+
+Extended terms and formula - if $$\alpha$$ is a term which includes all the free variables of $$\alpha$$
+
+* $$\alpha (v_1, ..., v_n) :\equiv (\alpha (v_1, ..., v_n))$$
+* thus we get $$\alpha (t_1, ..., t_n) :\equiv \alpha\{v_1:\equiv t_1, ..., v_n :\equiv t_n\}$$
+
 </pre>
 </div>
-<div created="20200410175832554" modified="20200412182515669" tags="[[Propositional Logic]]" title="Syntax of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200410175832554" modified="20200423195649020" tags="[[Propositional Logic]]" title="Syntax of Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>__Syntax__
 
-Def: A string of PL symbols is any finite sequence of PL symbols
+Def: A string of PL symbols is any ''finite'' sequence of PL symbols
 
 E.g. $$A_3 \neg ( \land$$, $$((A_1 \land \lor$$
 
@@ -17080,7 +17226,7 @@ Three steps need to do the aforementioned:
 
 * For each i, $$A_i$$ has property P
 * If $$\alpha$$ has property P, then $$(\neg \alpha)$$ has property P
-* if $$\alpha \beta$$ have P, then $$(\alpha \land \beta), (\alpha \lor \beta), (\alpha \rightarrow \beta)$$ have P
+* if $$\alpha, \beta$$ have P, then $$(\alpha \land \beta), (\alpha \lor \beta), (\alpha \rightarrow \beta)$$ have P
 
 Lemma 1: 
 
@@ -17098,6 +17244,12 @@ Thm 2 (Unique Readability): For every PL-formula $$\phi$$ exactly one of the fol
 # $$\phi$$ is a propositional variable $$A_i$$
 # There is a formula $$\psi$$ s.t $$\phi \equiv (\neg \psi)$$
 # There are formulae $$\psi, \chi$$ and a binary connective $$\cdot$$ s.t. $$\phi \equiv (\psi \cdot \chi)$$
+
+Proof: Check all 3 cases
+
+# https://imgur.com/bPYol6P
+# https://imgur.com/hx1twHP
+# https://imgur.com/HWYXeHj
 
 Main connectives: applies only to formulae that are not prime i.e. not just a propositional variable
 
@@ -17844,12 +17996,13 @@ Neither provides delay or bandwidth guarantees</pre>
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
 </div>
-<div created="20200412210020323" modified="20200415230241864" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200412210020323" modified="20200421000439668" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to Probabilistic Programming]]
 # [[Propositional Reasoning]]
 # [[Propositional Probability]]
 # [[Basics of Probabilistic Programming Languages]]
-# [[Discrete Probabilistic Program Inference]]</pre>
+# [[Discrete Probabilistic Program Inference]]
+# [[General Probabilistic Programming Inference]]</pre>
 </div>
 <div created="20200126032331506" modified="20200210191753424" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
@@ -17879,7 +18032,7 @@ Neither provides delay or bandwidth guarantees</pre>
 <div created="20191121010859851" modified="20191121011220661" tags="" title="UCLA CS M282A - Cryptography 1" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
-<div created="20200405194525208" modified="20200420170211608" tags="math ucla" title="UCLA Math 114L - Mathematical Logic" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200405194525208" modified="20200420170212699" tags="math ucla" title="UCLA Math 114L - Mathematical Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to Mathematical Logic]]
 # [[Propositional Logic]]
 # [[First Order Logic]]</pre>
@@ -17962,7 +18115,7 @@ https://www.cs.ubc.ca/~poole/demos/mdp/vi.html - link to play around with value 
 
 Summary - https://imgur.com/kAutPIf</pre>
 </div>
-<div created="20200414043531641" modified="20200414045453308" tags="[[Application Layer]] [[computer networks]]" title="Video Streaming and Content Distribution Networks (CDNs)" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200414043531641" modified="20200423231124902" tags="[[Application Layer]] [[computer networks]]" title="Video Streaming and Content Distribution Networks (CDNs)" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>Challenge is serving nearly 1B users and heterogeneity of users 
 
 Multimedia - can be efficiently encoded to utilize redundancy across frames or within frames - MPEG4 fairly compressed
@@ -17993,13 +18146,14 @@ Content Distribution Networks - how to stream content to hundreds of thousands o
 
 Example - https://imgur.com/lC4ISLz
 
-# want to reach netcinema.com
-# ask local dns server
-# local dns asks king CDN
-# dns query then resolved
-# connection established with KingCDN and then use DASH to stream</pre>
+# Want to reach netcinema.com
+# Ask Local DNS server
+# Local DNS asks Net Cinema Authoritative DNS -&gt; points to King CDN DNS
+# Local DNS asks King CDN DNS and gets King CDN hosted url for video
+# Local DNS replies with resolution to DNS query
+# Connection established with King CDN and then use DASH to stream</pre>
 </div>
-<div created="20200413074727373" modified="20200413204628259" tags="[[computer networks]] [[Application Layer]]" title="Web and HTTP" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200413074727373" modified="20200423225408024" tags="[[computer networks]] [[Application Layer]]" title="Web and HTTP" type="text/vnd.tiddlywiki" revision="3" bag="default">
 <pre>Most popular application on the internet
 
 * Content - webpages
@@ -18037,12 +18191,12 @@ HTTP connections:
 Non-persistent HTTP:
 
 # HTTP client initiates TCP connection to HTTP server (process) at www.google.com on port 80 and HTTP server at host www.google.com waiting for TCP connection at port 80.  “accepts” connection, notifying client
-# HTTP client sends HTTP request message (containing URL) into TCP connection socket. Message indicates that client wants the basic object  (URL /) 
+# HTTP client sends HTTP request message (containing URL) into TCP connection socket. Message indicates that client wants the base object  (URL /) 
 # HTTP server closes TCP connection. 
 # HTTP client receives response message containing html file, displays html.  Parsing html file, finds 10 referenced jpeg  objects
 # Steps 1-5 repeated for each of 10 jpeg objects 
 
-Reason for not closing TCP connection and not sending many objects is to avoid too much data being sent over in response, only send what browser requests
+Reason for closing TCP connection and not sending many objects is to avoid too much data being sent over in response, only send what browser requests
 
 Response time for Non-persistent HTTP:
 
@@ -18084,14 +18238,14 @@ __Advanced Features__
 
 HTTP is stateless but this can be useful information
 
-User-server state: cookies - basically an ID for user - https://imgur.com/SEW9SH - stored at client by web browser in cookies folder
+User-server state: cookies - basically an ID for user - https://imgur.com/BWX3LhZ - stored at client by web browser in cookies folder
 
 Web caches (proxy server): server-side caching
 
 * satisfy client request without involving origin server
 * proxy server intercepts all requests and works as a cache - provided by CDN like Akamai - proxy much closer to client 
 
-What is cache is stale at client level? Fixed by conditional GET - this is from client to server not including proxy - the proxy server lives in between and there are complex mechanisms to ensure proxy server has latest updates
+What if cache is stale at client level? Fixed by conditional GET - this is from client to server not including proxy - the proxy server lives in between and there are complex mechanisms to ensure proxy server has latest updates
 
 Goal: don't send object if cache has up-to-data cached version - no object transmission delay, lower link utilization
 
