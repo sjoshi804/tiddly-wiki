@@ -177,6 +177,12 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
+<li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -188,6 +194,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -10104,6 +10112,15 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200424060455435" modified="20200424060455435" title="$:/state/showeditpreview" revision="1" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200424060453411" modified="20200424061009230" title="$:/state/sidebar" revision="4" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200424061010413" modified="20200424061010903" title="$:/state/tab/sidebar--595412856" revision="2" bag="default">
+<pre>$:/core/ui/SideBar/Tools</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -10116,7 +10133,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Welcome" title="$:/StoryList" revision="1" bag="default">
+<div created="20200424055838665" list="" modified="20200424060634243" title="$:/StoryList" revision="10" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10176,6 +10193,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200424060632746" modified="20200424060707472" title="$:/temp/search" revision="6" bag="default">
+<pre></pre>
 </div>
 <div created="20200227023745997" modified="20200414190048197" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -16785,7 +16805,7 @@ So to evaluate a heuristic, we can fix d and compute b* for that value by starti
 Table evaluating heuristics and comparing to Iterative Deepening - https://imgur.com/2iwq4Vd
 </pre>
 </div>
-<div created="20200422173116436" modified="20200422174611497" tags="logic [[First Order Logic]]" title="Semantics of First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200422173116436" modified="20200424061004812" tags="logic [[First Order Logic]]" title="Semantics of First Order Logic" type="text/vnd.tiddlywiki" revision="3" bag="default">
 <pre>A structure of signature $$\tau = (Const, Rel, Funct, arity)$$ or a $$\tau-structure$$ is a pair $$\textbf{ A } = (A, I)$$ where A is a non-empty set and the interpretation of $$I$$ assigns:
 
 * a member $$I(c) = c^{\textbf{A}}$$ of A, to each constant symbol $$c$$
@@ -16794,9 +16814,12 @@ Table evaluating heuristics and comparing to Iterative Deepening - https://imgur
 
 Succinct notation: 
 
-* 
-* For finite signautre, something like $$\textbf{A} = (A, c_1^{\textbf{A}}, )$$
-* 
+* $$\textbf{A} = (A, \{c^{\textbf{A}}\}_{c \in Const},   \{R^{\textbf{A}}\}_{R \in Rel}, \{f^{\textbf{A}}\}_{f \in Funct})$$
+* For finite signature, something like $$\textbf{A} = (A, c_1^{\textbf{A}}, ..., c_n^{\textbf{A}}), ... )$$
+
+In casual notation, we conflate formal symbols and notation for e.g. $$\textbf{N} = (N, 0, S, +, \cdot)$$ when we really mean to refer to the interpretations not the symbol i.e. we should say $$\textbf{N} = (N, 0^N, S^N, +^N, \cdot)$$
+
+Thus, while may often represent graphs as $$\tau=\{E\}$$ structures, not every $$\tau=\{E\}$$ structure is a graph, consider $$\textbf{A} = (A, E)$$ where $$A = \{0, 1, 2\}$$ and $$E^{\textbf{A}} = \{(1, 0), (0, 1)\}$$ therefore neither anti-symmetric nor reflexive, thus not a graph but is technically a $$\tau=\{E\}$$ structure as it does use the symbol $$E$$ which is typically used to represent an edge relation but needn't always be used to represent that very relation (i.e. there are structures where it can take different meanings, based on the interpretation $$I$$)
 
 
 
@@ -17931,7 +17954,7 @@ Two types of protocols:
 
 Neither provides delay or bandwidth guarantees</pre>
 </div>
-<div created="20200409143404852" modified="20200417194254304" tags="[[computer networks]] [[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200409143404852" modified="20200424045548151" tags="[[computer networks]] [[computer science]] ucla" title="UCLA CS 118 - Computer Network Fundamentals" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Internet: A Brief Overview]]
 # [[Application Layer]]
 # [[Transport Layer]]</pre>
