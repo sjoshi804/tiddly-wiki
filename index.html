@@ -177,8 +177,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/showeditpreview</li>
-
 <li>$:/state/sidebar</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -10112,14 +10110,11 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200424060455435" modified="20200424060455435" title="$:/state/showeditpreview" revision="1" bag="default">
+<div created="20200426213506203" modified="20200427040201674" title="$:/state/sidebar" revision="4" bag="default">
 <pre>yes</pre>
 </div>
-<div created="20200424060453411" modified="20200424061009230" title="$:/state/sidebar" revision="4" bag="default">
-<pre>yes</pre>
-</div>
-<div created="20200424061010413" modified="20200424061010903" title="$:/state/tab/sidebar--595412856" revision="2" bag="default">
-<pre>$:/core/ui/SideBar/Tools</pre>
+<div created="20200427035935749" modified="20200427040120026" title="$:/state/tab/sidebar--595412856" revision="7" bag="default">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10133,7 +10128,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200424055838665" list="" modified="20200424060634243" title="$:/StoryList" revision="10" bag="default">
+<div created="20200426212814112" list="" modified="20200427035939451" title="$:/StoryList" revision="31" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10194,7 +10189,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200424060632746" modified="20200424060707472" title="$:/temp/search" revision="6" bag="default">
+<div created="20200426212812608" modified="20200426212815921" title="$:/temp/search" revision="4" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200414190048197" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -15894,32 +15889,9 @@ What transport service does an app need:
 * TCP - reliable, flow control - sender won't overwhelm receiver, congestion control - throttle sender when network overloaded, doesn't provide - timing minimum throughput guarantee, security; connection-oriented - setup required between client and server processes
 * UDP - unreliable but very fast - audio, video can tolerate some packet loss but delay must be very small, doesn't provide the things that TCP does - more flexibility at application layer for developers</pre>
 </div>
-<div created="20200417165450610" modified="20200417202144544" tags="[[Transport Layer]]" title="Principles of Reliable Data Transfer" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>How to send all segments from sender to receiver - need to implement a reliable channel over an unreliable channel - https://imgur.com/8UlS3we
+<div created="20200427040132647" modified="20200427040155812" tags="[[Transport Layer]]" title="Principles of Reliable Data Transfer" revision="11" bag="default">
+<pre>''NEED TO REDO WHEN STUDYING FOR MIDTERM''
 
-Consider only unidirectional data transfer - but control info will flow in both directions
-
-Will use a Finite State Machine to illustrate this - States, Events causing state transition, Action taken to affect the state transition
-
-Iteration 1: reliable transfer over a reliable channel
-
-
-Iteration 2: channel with bit errors
-
-* detect errors with checksum
-* acknowledgements (ACKs) - receiver explicitly tells sender that pkt received OK
-* negative acknowledgements (NAKs) - receiver explicitly tells sender that pkt has errors 
-* sender retransmits pkt on receipt of NAK
-
-this is the common case: typically errors don't occur in the  ACK, NAK since they are much smaller messages - but this case will also be dealt with 
-
-No errors: https://imgur.com/YluP5kN
-
-Packet with bit errors: https://imgur.com/1jcVTgc
-
-Finite State Machine for this: https://imgur.com/b8JfuFG
-
-But this mechanism cannot handle ACK/NAK being corrupted? Can't just retransmit because possible duplicate
 </pre>
 </div>
 <div created="20200415162452078" modified="20200415171830947" tags="[[quantum computing]] [[quantum mechanics]]" title="Probability Theory of Quantum Mechanics" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -16805,7 +16777,7 @@ So to evaluate a heuristic, we can fix d and compute b* for that value by starti
 Table evaluating heuristics and comparing to Iterative Deepening - https://imgur.com/2iwq4Vd
 </pre>
 </div>
-<div created="20200422173116436" modified="20200424061004812" tags="logic [[First Order Logic]]" title="Semantics of First Order Logic" type="text/vnd.tiddlywiki" revision="3" bag="default">
+<div created="20200422173116436" modified="20200424061005936" tags="logic [[First Order Logic]]" title="Semantics of First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>A structure of signature $$\tau = (Const, Rel, Funct, arity)$$ or a $$\tau-structure$$ is a pair $$\textbf{ A } = (A, I)$$ where A is a non-empty set and the interpretation of $$I$$ assigns:
 
 * a member $$I(c) = c^{\textbf{A}}$$ of A, to each constant symbol $$c$$
@@ -17925,7 +17897,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Path Connectedness]]
 </pre>
 </div>
-<div created="20200417155924595" modified="20200417165444335" tags="[[UCLA CS 118 - Computer Network Fundamentals]] [[computer networks]]" title="Transport Layer" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200417155924595" modified="20200426233251793" tags="[[UCLA CS 118 - Computer Network Fundamentals]] [[computer networks]]" title="Transport Layer" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre># [[Transport Layer Services]]
 # [[Multiplexing and Demultiplexing]]
 # [[Connectionless Transport: UDP]]
