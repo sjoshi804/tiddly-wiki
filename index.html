@@ -177,9 +177,9 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/showeditpreview</li>
-
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/IsAnonymous</li>
 
@@ -293,8 +293,6 @@ Error message and password prompt
 
 <li>Domain Name System (DNS)</li>
 
-<li>Draft of 'Knowledge Representation &amp; Reasoning: Logic'</li>
-
 <li>Electronic Mail (Email)</li>
 
 <li>Epidemics on Networks</li>
@@ -356,6 +354,8 @@ Error message and password prompt
 <li>Incremental Methods of Value Function Approximation</li>
 
 <li>Induction</li>
+
+<li>Inference in Propositional Logic</li>
 
 <li>Inside a RL Agent</li>
 
@@ -486,6 +486,8 @@ Error message and password prompt
 <li>Principles of Network Applications</li>
 
 <li>Principles of Reliable Data Transfer</li>
+
+<li>Probabilistic Logic Program Inference and Learning</li>
 
 <li>Probabilistic Logic Programming</li>
 
@@ -10126,11 +10128,11 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200504215721664" modified="20200504215725339" title="$:/state/showeditpreview" revision="2" bag="default">
-<pre>no</pre>
-</div>
-<div created="20200504215804731" modified="20200504230330051" title="$:/state/sidebar" revision="4" bag="default">
+<div created="20200505035400617" modified="20200505070027262" title="$:/state/sidebar" revision="8" bag="default">
 <pre>yes</pre>
+</div>
+<div created="20200505035342371" modified="20200505035342371" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10144,7 +10146,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200504214136786" list="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" modified="20200504225625901" title="$:/StoryList" revision="43" bag="default">
+<div created="20200505035344552" list="[[Constraint Satisfaction Problems]]" modified="20200505061113406" title="$:/StoryList" revision="61" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10205,7 +10207,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200504214125410" modified="20200504223956677" title="$:/temp/search" revision="23" bag="default">
+<div created="20200505035438636" modified="20200505061110004" title="$:/temp/search" revision="22" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200414190048197" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11815,7 +11817,7 @@ UDP checksum - detect flipped bits in transmitted segment
 
 </pre>
 </div>
-<div created="20200416170442510" modified="20200416184213168" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[artificial intelligence]]" title="Constraint Satisfaction Problems" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200416170442510" modified="20200505070018344" tags="[[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[artificial intelligence]]" title="Constraint Satisfaction Problems" type="text/vnd.tiddlywiki" revision="2" bag="default">
 <pre>Variables:
 
 * Each variable $$X_i$$  has a number of values
@@ -11903,7 +11905,40 @@ Detecting Failures Early:
 
 Forward Checking - keep track of remaining legal values of assigned variables &amp; terminate search when a variable has no legal values - https://imgur.com/qW5KUsR, https://imgur.com/UO1pmmz - standard backtracking might fail in such cases when there is no constraint directly involved yet 
 
-Arc Consistency - </pre>
+Arc Consistency - able to detect failure here - https://imgur.com/6PXdz7l - propagating the constraints in some sense
+
+* arc can be thought to model relation between constraints on the values of two variables - https://imgur.com/jZRmUs6
+* arc consistent if for every value of x of X, there is some allowed value y for Y
+* constraint propagation - https://imgur.com/sypBpa0 - value of SA limited to B makes NSW - SA inconsistent, which can be made consistent by removing B as a value for NSW but then V - NSW is inconsistent, which can be fixed by removing R - now we have reduced the possible values for our variables - simplified the problem
+
+Time Complexity of Arc Consistency:
+
+# Checking consistency of an arc - if d possible values for a variable then $$O(d^2)$$
+# Binary CSPs - arcs only between pairs of nodes - approx number of arcs = $$O(n^2)$$
+# Ripple Effect - number of times you need to check an arc across the program is d since you only need to check every time a value is lost - $$O(d)$$
+
+Complexity of AC: $$O(n^2 d^3)$$ for Binary CSPs
+
+Using Problem Structure to split problem:
+
+* Constraint graph (use topology of this to be more efficient) - to identify connected components - worst case is $$O(d^n) = 2^80$$ which will take 4 billion years v/s if we have 4 subproblems in which case we get $$2^20 \times 4$$ which will take 0.4 seconds
+
+__Tree-Structured CSPs__
+
+* No cycles
+* N nodes, d Values
+* $$O(nd^2)$$ in worst case
+
+# Orient the tree - pick a root node and orient edges away from root and Topological Sort the tree
+# For i form n down to 2: apply remove consistency (parent $$x_i$$, $$x_i$$) //backward pass//
+# For i from 1 to n: assign a value to $$x_i$$ which is consistent with the value of its parent($$x_i$$) and can do this since arcs from parent to child and all consistent //forward pass//
+
+Time Complexity: 
+
+* Tree implies n nodes -&gt; n - 1 edges
+* $$d^2$$ time to check an arc
+* Done once in backward pass and forward pass
+* Hence $$O(nd^2)$$</pre>
 </div>
 <div created="20200302190348920" modified="20200302200436089" tags="" title="Contagion Models" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Si(t) = probability that node i is susceptible at time t
@@ -12417,9 +12452,6 @@ DNS protocol messages: https://imgur.com/Xxhf8FW, https://imgur.com/VQvylnz
 
 
 </pre>
-</div>
-<div modified="20200504225537753" title="Draft of 'Knowledge Representation &amp; Reasoning: Logic'" revision="1283" bag="default">
-<pre></pre>
 </div>
 <div created="20200413204659846" modified="20200423225513254" tags="[[Application Layer]] [[computer networks]]" title="Electronic Mail (Email)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Two components:
@@ -13438,6 +13470,122 @@ Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
 </div>
+<div created="20200505035539556" modified="20200505054619070" tags="logic [[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[artificial intelligence]]" title="Inference in Propositional Logic" revision="18" bag="default">
+<pre>Techniques: 
+
+* Enumerating Models
+* Inference Rules (Resolution)
+* Compiling to Search: CSP / SAT
+* Compiling sentences to tractable forms (NNF Circuits)
+
+
+__''Method 1'': Enumerating Models as seen in [[Propositional Reasoning]]__
+
+
+For a set of inference rules $$R$$
+
+* Completeness: If $$\Delta \models \alpha$$ then $$\Delta \vdash_R \alpha$$ - sufficiently powerful
+* Soundness: If $$\Delta \vdash_R \alpha$$ then $$\Delta \models \alpha$$
+
+__''Method 2'': Resolution__
+
+* $$\alpha \lor \beta$$, $$\neg \beta \lor \gamma$$ $$\implies$$ $$\alpha \lor \gamma$$
+* Not complete in general, but refutation complete when applied to CNFs i.e. if a contradiction exists, repeated applications of resolution will find it
+
+Pipeline: $$Delta \models \alpha$$?
+
+* $$UNSAT(\delta \land \neg \alpha)$$ - convert to cnf
+* Apply Resolution
+* If contradiction found, $$\Delta \land \neg \alpha$$ is unsatisfiable, therefore $$\not\exists v, v \models \Delta \land \neg \alpha$$, thus $$\forall v, v \models \Delta \implies v \models \alpha$$ - thus $$\Delta \models \alpha$$
+* Else can't apply any more resolutions, therefore we know that no contradiction exists, thus $$\Delta \not\models \alpha$$
+
+Example: https://imgur.com/UNICR6V, https://imgur.com/Nk9MnO4 - it is satisfiable if we set A to true, B to False, C to False
+
+Unit Resolution: Special case of Resolution - takes linear time in CNF - not refutation complete
+
+$$A \lor \neg B \lor C$$, $$\neg A, A \lor B \lor \neg C$$ $$\implies$$ $$A \lor C \lor D$$ - not unit resolution as neither or the clauses are unit clauses
+
+Converting to CNF: 
+
+* can always be done
+* can possibly blow up
+
+Three Steps:
+
+# Get rid of $$\implies$$
+# Use ~DeMorgan's Law to push negations inwards
+# Distribute $$\lor$$ over $$\land$$
+
+Example: https://imgur.com/ax7gwUdk, https://imgur.com/dyyWD3m
+
+__''Method 3'': Reducing queries to SAT (CSP)__
+
+CNF: $$\Delta: (A \lor B \lor \neg C) \land (\neg A \lor C) \land (A \lor C \lor \neg D)$$
+
+* Each clause is a constraint
+
+Using SAT for reasoning:
+
+* $$\Delta \implies \alpha$$ - $$UNSAT(\Delta \land \neg \alpha)$$ 
+* $$\Delta \equiv \alpha$$ - $$UNSAT(\Delta \land \neg \alpha) and UNSAT(\alpha \land \neg \Delta) = UNSAT((\Delta \land \neg \alpha) \lor (\alpha \land \neg \Delta))$$ 
+
+SAT Solvers:
+
+* Backtrack Search - DFS + detect failures early (DPLL)
+* Local Search - can be very fast but not complete
+
+Overview of discussion of DPLL:
+
+* unit resolution as an aid
+* use special variable/value ordering
+* What do Modern SAT solvers do?, learn clauses i.e use inference to add new clauses, expands the CNF therefore 
+
+DPLL (backtrack search for SAT): https://imgur.com/5DglmxK
+
+* Assignments can also be thought of as clauses i.e. assigning False to A is equivalent to adding the clause $$\neg A$$ to the CNF etc.
+* This expands the CNF and makes unit resolution more potent
+* https://imgur.com/7PiMpxc - as we can see here, repeated unit resolution helps us infer the value of C to be True if we set A and B as such since the the literal C is the new clause we inferred 
+
+Solving SAT (CSP) using Local Search:
+
+* Guess a truth assignment (world w)
+* Check whether $$w \models \Delta$$ if yes, we're done
+* If no, find another world $$w$$ to try
+
+One possible method: 
+
+* Pick a clause that is violated (unsat) - $$A \lor \neg B \lor C$$ then this means A must've been set to be F, B must've been set to T, C must've been set to F
+* One of these clearly needs to be flipped - pick the one that maximizes the number of satisfied clauses (since flipping might violate other clauses) and repeat 
+
+More on Local Search as a solution for CSP: 
+
+* hill climbing - min conflict scoring function
+* neighborhood helps you get to local minima / maxima - loop through this for some time or until you reach local optima
+* restart 
+* side moves - move to a position that is equivalent
+
+Stochastic methods - ''simulated annealing'' - randomly jumps to a neighbor even if worse with probability inversely proportional to how much worse than neighbor is and how long search has been running
+
+__''Method 4'': NNF Sentences into Tractable Circuits __
+
+* CNF, DNF - special case on NNF circuits - depth always 2, flat NNF circuits
+
+Decomposable NNF Circuit (DNNF) - Tractable - done by Knowledge Compilers
+
+
+* Just need to SAT for the literals that are the input wires and then just do a pass through the circuit: Output of OR Gate is SAT if one of inputs is SAT, and Output of AND Gate is SAT is all of the inputs are SAT
+
+
+Smoothness - For inputs to OR gates, you want the subcircuits to have the same set of variables - easy to get this
+
+https://imgur.com/Hd5i59b
+
+Determinism - at most one high input for each OR gate under any circuit input - inputs of OR gates are mutually exclusive
+
+Gives a new class of circuits: deterministic NNF circuits
+
+If we have both determinism and decomposability we get d-DNNF circuit which can be used to solve #SAT problems used as a method for performing probabilistic reasoning</pre>
+</div>
 <div created="20200212012131650" modified="20200222063819535" tags="[[reinforcement learning]] [[Introduction to Reinforcement Learning]]" title="Inside a RL Agent" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Major Components of a RL Agent:
 
@@ -14237,7 +14385,7 @@ Hyperparameters in NNC:
 
 </pre>
 </div>
-<div created="20200504223902197" modified="20200504230148778" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Knowledge Representation &amp; Reasoning: Logic" revision="6" bag="default">
+<div created="20200504223902197" modified="20200505053929381" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Knowledge Representation &amp; Reasoning: Logic" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>Symbolic Representation v/s Numeric Representation (using probability theory)
 
 Model v/s Learn - function approximation 
@@ -14253,7 +14401,7 @@ Normal Forms - allows to do inference more efficiently in some cases:
 * CNF: Clauses = disjunction of literals, Conjunction of Clauses - NP hard - universal i.e. we can represent any formula as a CNF
 * DNF: Term = conjunction of literals, Disjunction of Terms - can solve efficiently: universal 
 * Horn: Subset of CNF, Horn Clause - clause with at most one positive literal, Horn Form: conjunction of Horn Clause - tractable - can solve in linear time 
-* Negation Normal Form: can only use $$\neg, \land, \lor$$ but can only have $$\neg$$ in front of literals, NNF Circuit: https://imgur.com/a7CGiVt, DNNF Circuit: Decomposable Non-Negative Circuit - no overlap of variables in sub-circuits coming in as input values (Linear time, Universal)
+* Negation Normal Form: can only use $$\neg, \land, \lor$$ but can only have $$\neg$$ in front of literals, NNF Circuit: https://imgur.com/a7CGiVt, DNNF Circuit: Decomposable Non-Negative Circuit - no overlap of variables in sub-circuits coming in as inputs to AND Gates (Linear time, Universal)
 
 Examples:
 
@@ -15974,6 +16122,119 @@ Summary: https://imgur.com/y5kB4ru
 
 </pre>
 </div>
+<div created="20200504230418233" modified="20200505003928472" tags="[[artificial intelligence]] [[UCLA CS 267A - Probabilistic Programming and Relational Learning]]" title="Probabilistic Logic Program Inference and Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Answering Questions: https://imgur.com/egGEq48
+
+Pipeline is roughly: logical reasoning -&gt;  data structure -&gt; probabilistic inference 
+
+Logical Reasoning: Proofs in Prolog
+
+```
+stress(ann).
+influences(ann, bob).
+influences(bob, carl).
+smokes(X):- stress(X).
+smokes(X):- influences(Y,X), smokes(Y). 
+```
+
+Backward Chaining - constructing tree: https://imgur.com/gwXuRrS, https://imgur.com/Mc4rG1G
+
+
+Proofs in Problog: 
+
+```
+0.8::stress(ann).
+0.6::influences(ann, bob).
+0.2::influences(bob, carl).
+smokes(X):- stress(X).
+smokes(X):- influences(Y,X), smokes(Y). 
+```
+
+Binary Decision Diagram - compact representation for logical statements that automatically makes proofs disjoint  - https://imgur.com/t3xSKFv
+
+Algorithmically getting probability of proof: https://imgur.com/BOWkBhn
+
+Initial Approach:
+
+* Find all proofs of query
+* Compile into BDD
+* Calculate Marginal by Dynamic Programming
+
+More Refined Approach: Using Weighted Model Counting - more efficient if you have exponential proof paths: https://imgur.com/mMYC7zS - can turn logic programs into weighted CNFs etc. 
+
+__ProbLog and Learning__
+
+Many things that could be learned, simplest is perhaps Parameter Learning
+
+Parameter Learning: 
+
+Estimate the probability of certain facts being true by learning 
+
+```
+prob::link_class(Source, Target, Classs1, Class2). 
+prob::word_class(W, C)
+
+class(Page, C) :- has_word(Page, W), word_class(W, C)
+class(Page, C):- 
+   links_to(OtherPage, Class),
+   class(OtherPage, OtherClass),
+   link_class(OtherPage, OtherClass, OtherClass, C)
+```
+Soft Expectation-Minimization, set parameters, compute probability based on assumption and update parameters using that 
+
+
+Information Extraction in Never Ending Language Learner, Rule Learner:
+
+* http://www.cse.unsw.edu.au/~cs9417ml/Rule/index.html
+
+Differentiable Programming:
+
+Learning and Reasoning both needed:
+
+* System 1  - thinking fast - data driven - subsymbolic can do things like 2+2= and recognize objects in image
+* System 2 - thinking slow - can reason about solving complex problems - planning a complex task
+
+~AlphaGo: Learned Heuristics in Neural Network Value Function Approximation - System 1, Thinking Slow - Monte Carlo Tree Search for Control (RL)
+
+Real Life problems usually need both: e.g. Subsymbolic perception and reasoning with knowledge
+ 
+~NeSY state of the art: refer to slides here 
+
+Motivation for ~DeepProbLog
+
+Common problems:
+
+* Logic is made less expressive
+* Fuzzy logic with unclear semantics
+* Logic is pushed into the neural network and disappears after training
+* No clear separation between the logic and the neural network
+
+~DeepProbLog:
+
+https://imgur.com/v40kkM8
+* Neural Predicate - uncertainty in their predictions
+* Normalized output can be interpreted as a probability distribution
+* Neural predicate models the output as probabilistic facts
+* No changes needed in the probabilistic host language
+
+Output of neural predicate is the probabilistic facts in ~DeepProbLog
+
+```
+nn(mnist_nt, [X], Y, [0 ... 9])::digit(X, Y). 
+```
+instantiated into a (neural) annotated disjunction: 
+X can be image, Y is the digit, some probability that X represents Y
+
+Example of a program for addition of numbers from images of numbers: https://imgur.com/fyYLUo4
+
+https://imgur.com/trSJCgM
+
+Program Induction: approach similar to that of Programming with a Differentiable Forth Interpreter
+
+Differentiable Programming: Can look at talk by Gordon Plotkin 
+
+https://arxiv.org/pdf/1805.10872.pdf</pre>
+</div>
 <div created="20200429230109592" modified="20200430004223774" tags="[[UCLA CS 267A - Probabilistic Programming and Relational Learning]]" title="Probabilistic Logic Programming" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Relational Data - very prevalent - relational db - use first order logic
 
@@ -16312,7 +16573,7 @@ Markovian Assumptions:
 * A variable X is independent of its non-descents given its parents
 * Markov Blanket - A variable X is independent of everything else given its parents its children and the other parents of its children</pre>
 </div>
-<div created="20200412231348139" modified="20200504223556231" tags="[[UCLA CS 267A - Probabilistic Programming and Relational Learning]] [[artificial intelligence]]" title="Propositional Reasoning" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200412231348139" modified="20200504223557396" tags="[[UCLA CS 267A - Probabilistic Programming and Relational Learning]] [[artificial intelligence]]" title="Propositional Reasoning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Structure - Reasoning Engine which takes in the knowledge base (Declarative sentences in a knowledge representation language), new queries lead to conclusions that are arrived at by logical deduction
 
 Some applications of logic i.e. symbolic reasoning:
@@ -18355,7 +18616,7 @@ Two types of protocols:
 
 Neither provides delay or bandwidth guarantees</pre>
 </div>
-<div created="20200504214156257" modified="20200504223058217" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Two Player Games" revision="4" bag="default">
+<div created="20200504214156257" modified="20200504223059351" tags="[[artificial intelligence]] [[UCLA CS 161 - Fundamentals of Artificial Intelligence]]" title="Two Player Games" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Can be categorized by:
 
 * Deterministic v/s Nondeterministic
@@ -18434,13 +18695,14 @@ In such games, more focus on good evaluation functions than depth. </pre>
 # [[Application Layer]]
 # [[Transport Layer]]</pre>
 </div>
-<div created="20200402185643352" modified="20200504223857043" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200402185643352" modified="20200505035530241" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre># [[Introduction to Artificial Intelligence]]
 # [[Introduction to Lisp]]
 # [[Problem Solving using Search]]
 # [[Constraint Satisfaction Problems]]
 # [[Two Player Games]]
-# [[Knowledge Representation &amp; Reasoning: Logic]]</pre>
+# [[Knowledge Representation &amp; Reasoning: Logic]]
+# [[Inference in Propositional Logic]]</pre>
 </div>
 <div created="20200131000351410" modified="20200312211523121" tags="[[computer science]] ucla" title="UCLA CS 201 Winter 2020" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney]]
@@ -18465,7 +18727,7 @@ In such games, more focus on good evaluation functions than depth. </pre>
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
 </div>
-<div created="20200412210020323" modified="20200429234428645" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming and Relational Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200412210020323" modified="20200504230410298" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming and Relational Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to Probabilistic Programming]]
 # [[Propositional Reasoning]]
 # [[Propositional Probability]]
@@ -18473,7 +18735,8 @@ In such games, more focus on good evaluation functions than depth. </pre>
 # [[Discrete Probabilistic Program Inference]]
 # [[General Probabilistic Programming Inference]]
 # [[First Order Logic - An AI Perspective]]
-# [[Probabilistic Logic Programming]]</pre>
+# [[Probabilistic Logic Programming]]
+# [[Probabilistic Logic Program Inference and Learning]]</pre>
 </div>
 <div created="20200126032331506" modified="20200210191753424" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
