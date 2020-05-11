@@ -177,6 +177,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -211,6 +215,8 @@ Error message and password prompt
 
 <li>Arithmetic for Computers</li>
 
+<li>Assignments and Denotations</li>
+
 <li>Auxiliary Tasks in Reinforcement Learning</li>
 
 <li>Base for a Topology</li>
@@ -236,6 +242,8 @@ Error message and password prompt
 <li>Combinatorial Optimization Algorithms for Clustering and Machine Learning by Dorith Hochbaum</li>
 
 <li>Community Detection Methods</li>
+
+<li>Compactness of First Order Logic</li>
 
 <li>Compactness of Metric Spaces</li>
 
@@ -310,6 +318,8 @@ Error message and password prompt
 <li>February Learning List</li>
 
 <li>Finite Difference Policy Gradient</li>
+
+<li>First Order Definability</li>
 
 <li>First Order Logic</li>
 
@@ -481,6 +491,8 @@ Error message and password prompt
 
 <li>Principles of Reliable Data Transfer</li>
 
+<li>Probabilistic Database Semantics</li>
+
 <li>Probabilistic Logic Program Inference and Learning</li>
 
 <li>Probabilistic Logic Programming</li>
@@ -576,6 +588,8 @@ Error message and password prompt
 <li>The Real Line</li>
 
 <li>The Reinforcement Learning Problem Set Up</li>
+
+<li>Theories and Elementary Classes</li>
 
 <li>Things I want to learn about in 2020</li>
 
@@ -10122,6 +10136,12 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200511230313149" modified="20200511230320134" title="$:/state/sidebar" revision="2" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200510230320301" modified="20200510230320301" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -10134,7 +10154,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Welcome" title="$:/StoryList" revision="1" bag="default">
+<div created="20200510230322000" list="" modified="20200511011510854" title="$:/StoryList" revision="14" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10606,6 +10626,45 @@ Floating Point Addition: e.g. $$9.999 \cdot 10^1 + 1.610 \cdot  10^{-1}$$
 * Round and renormalize if needed - $$1.002 \cdot 10^1$$
 
 Floating Point Hardware - https://imgur.com/hnfgAVy - very complex - usually many cycles - may be pipelined but always high latency</pre>
+</div>
+<div created="20200510025323612" modified="20200510041018447" tags="[[First Order Logic]]" title="Assignments and Denotations" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>An assignment into a structure ''A'' is any association of objects in A with variables i.e. any function $$\pi:{v_0, v_1, ...} \rightarrow A$$
+
+The value or denotation of a term for an assignment $$\pi$$ in a structure ''A'' is defined by structural recursion on terms as follows:
+
+* $$value(v, \pi) = \pi(v)$$
+* $$value(c, \pi) = c^A$$
+* $$value(f(t_1, ..., t_n), \pi).= f^A(value(t_1, \pi), ..., value(t_n,\pi))$$
+
+''Value of a term is an element of A''
+
+For a variable $$v$$ and $$x \in A$$, update $$\pi\{v := x\}$$ is the assignment which agrees with $$\pi$$ on all variables except v to which it assigns x 
+
+''Value of a formula is a Boolean truth value''
+
+Defined by structural recursion as follows:
+
+# $$value(s = t, \pi) = 1$$ if $$value(s, \pi) = value(t, \pi)$$ and 0 otherwise
+# $$value(R(t_1, ..., t_n), \pi) = 1$$ if $$R^A(value(t_1, \pi), ..., value(t_n, \pi))$$ 0 otherwise
+# $$value(\neg \phi, \pi) = 1 - value(\phi, \pi)$$
+# $$value(\phi \land \psi, \pi) = min(value(\phi, \pi), value(\psi, \pi))$$
+# $$value(\phi \lor \psi, \pi) = max(value(\phi, \pi), value(\psi, \pi))$$
+# $$value(\phi \implies \psi, \pi) = value((\neg \phi) \lor \psi, \pi)$$
+# $$value(\exists v \phi, \pi0 = max\{value(\phi, \rho), \text{ s.t. for all } v' \not\equiv v, \rho(v') - \pi(v')\}$$
+# $$value(\forall v \phi, \pi) = min\{ value(\phi, \rho) \text{ s.t. for all } v' \not\equiv v, \rho(v') = \pi(v')\}$$
+
+$$A, \pi \models \phi \iff value^A(\phi, \pi) = 1 \iff \text{ the assignment } \pi \text{ satisfies the formula } \pi \text{ in the structure A}$$
+
+Tarski Conditions: https://imgur.com/nsJs6ia
+
+A ''sentence'' is a ''formula'' which has no free variables, thus the truth of a sentence $$\chi$$ does not depend on the assignment of any variables. 
+
+Hence $$A \models \chi \iff A, \pi \models \chi \text{ for some } \pi \iff A, \pi \models \chi \text{ for some } \forall \pi$$
+
+Helpful Notation: 
+
+* $$t^A[a_1, ..., a_n]$$  = $$value(t, \pi)$$ where $$\pi$$ is any assignment s..t $$\pi(v_i) = a_i \forall i \in \{1, ..., n\}$$
+* For formulas similarly, $$A \models \phi[a_1, ..., a_n]$$ means $$A, \pi \models \phi$$ where $$\pi$$ is any assignment with $$\pi[v_i] = a_i$$ $$ \forall i \in \{1, ..., n\}$$</pre>
 </div>
 <div created="20191120052924192" modified="20191121010447190" tags="incomplete research [[intelligence project]] [[machine learning]] [[reinforcement learning]]" title="Auxiliary Tasks in Reinforcement Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
@@ -11236,6 +11295,45 @@ Measuring Performance of Community Detection:
 Real World Benchmarks - karate-club network, dolphin, football
 
 Synthetic Benchmarks - fractal networks - self-similar networks, stochastic block model- a variant of where nodes divided into blocks and probability of having edge between block is modeled 
+
+</pre>
+</div>
+<div created="20200510214552723" modified="20200511013541102" tags="[[First Order Logic]]" title="Compactness of First Order Logic" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<pre>Let $$\tau$$ be a fixed countable signature
+
+Lemma: Let T be a finitely satisfiable $$\tau$$-theory. For any $$\tau$$-sentence $$\chi$$, at least one of $$T \cup \{ \chi \}$$ and $$T \cup \{\neg \chi \}$$ is satisfiable (proven for [[Propositional Logic]])
+
+Def: Let T be a $$\tau$$-theory
+
+* T is strongly complete if for every $$\tau$$ sentence $$\chi$$, either $$\chi \in T$$ or $$\neg \chi \in T$$
+* T has the witness property if for every $$\tau$$ sentence $$\chi \in T$$ of the form $$\chi = \exists x \phi$$, there is a constant symbol c in $$\tau$$ such that $$\phi\{x :\equiv c\} \in T$$ i.e. $$\phi$$ with x substituted by c 
+
+Lemma: Let T be a finitely satisfiable $$\tau$$ theory. Then there exists a countable signature $$\tau^* \supseteq \tau$$ and a $$\tau^*$$-theory $$T^* \supseteq T$$ such that 
+
+# $$T^*$$ is finitely satisfiable
+# $$T^*$$ is strongly complete 
+# $$T^*$$ has the witness property
+
+Proof: https://imgur.com/Xad7Yw2, https://imgur.com/AdYuneK, https://imgur.com/9Pa0ZQM
+
+Lemma: Let $$\tau$$ be a countable signature and let $$T$$ be a $$\tau$$-theory that is strongly complete and has the witness property, then there is a countable model of T
+
+Proof: 
+
+*  Let C be the set of constant symbols for $$\tau$$, define a binary relation $$\sim$$ on C by $$c \sim d \iff c = d \in T$$
+* Claim 1: $$\sim$$ is an equivalence relation - proof: come up with contradictions to the finite satisfiability if this is not true
+* Let $$A = \{ [c]: c \in \}$$ be the set of ~-equivalence classes. Define a $$\tau$$ structure ''A'' so that its underlying set is A and: 
+
+for a constant symbol, $$c \in \tau, c^A = [c]$$
+
+for an n-ary relation symbol $$R \in \tau$$ and $$[c_1], ..., [c_n] \in A$$ - $$R^A([c_1], ..., [c_n]) \iff R(c_1, ..., c_n) \in T$$
+
+for an n-ary function symbol $$f \in \tau$$ and $$[c_1], ..., [c_n], [d] \in A$$, $$f^A([c_1], ..., [c_n]) = [d] \iff f(c_1, ..., c_n) = d \in T$$
+
+* Must now prove that the relations and functions of $$A$$ are well defined 
+
+
+
 
 </pre>
 </div>
@@ -12853,10 +12951,58 @@ Example: Training AIBO to walk by Finite Difference Policy Gradient (AIBO walk p
 
 </pre>
 </div>
-<div created="20200417165905555" modified="20200422173110844" tags="logic [[UCLA Math 114L - Mathematical Logic]]" title="First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200510041048931" modified="20200510190809732" tags="[[First Order Logic]]" title="First Order Definability" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Idea of primitives - what is defined by the interpretation $$I$$ of the symbols in the signatures (primitive relations, primitive functions, primitive constants)
+
+Def: A n-ary relation $$R \subset A^n$$ is first order definable in A if there is an extended $$\tau$$-formula $$\psi(v_1, ..., v_n)$$ s.t. $$\forall a_1, ..., a_n \in A$$, $$R(a_1, ..., a_n) \iff A \models \psi[a_1, ..., a_n]$$
+
+Example: 
+
+* Can define the usual ordering $$\leq$$ in $$R = (R, 0, 1, +, \cdot)$$ by the logic that $$x \leq q \iff y - x \geq 0 \iff \exists \sqrt{y - x}$$ which in FOL is $$\phi(v_1, v_2) \equiv \exists v_3(v_3 \cdot v_3 + v_1 = v_2)$$
+* Divisibility in $$N$$, $$v_1$$ is divisible by $$v_2$$ if $$\exists v_3 (v_2 = v_1 \cdot v_3)$$
+
+Intuition: A unary relation is just a subset of A: so special case of the previous definition. $$A \models \phi[\alpha] \iff \alpha \in U \iff U(a)$$
+
+Def: (Again special special case): First order definable constants, if the singleton set $$\{a_0\} \in A$$ is definable i.e. if there is a formula that is true only for that constant.
+
+* Can define $$\sqrt{2}$$ in terms of simply the field R
+* Every natural number can be defined in this way
+
+Def: First Order Definable functions: n-ary function $$f: A^n \rightarrow A$$ is first order definable if its grpah relation $$G_f(x_1, ..., x_n, y) \iff f(x_1, ..., x_n) = y$$
+
+Example: the $$\leq$$-successor function is first order definable in $$(Z, \leq)$$
+
+* $$w = v + 1 \iff (v \leq w) \land (v \neq w)$$ \land $$ \forall u ((v \leq u \land u \leq w) \implies (u = v \lor u = w))$$
+
+Expanding a structure with definable objects: You can add definable objects as //primitives// to the structure without changing the collection of definable objects for the original structure - some sort of closure 
+
+//Anything that was already definable is still all that is definable //
+
+Similar to how //helper functions// in a programming language don't make your language more expressive. 
+
+__Showing a relation/constant/function is not first-order definable using automorphisms__
+
+Doesn't work for all objects, doesn't work in $$(N, 0, 1, +, \cdot)$$
+
+Thm: A formula that is true in A must be true in every structure isomorphic to A
+
+Corollary 2: 
+
+* If $$a_0$$ is definable in ''A'', then $$\sigma(a_0) = a_0$$
+* $$R \subseteq A^n$$, for every $$a_1, ..., a_n \in A$$, then $$R(a_1, ..., a_n) \iff R(\sigma(a_1), ..., \sigma(a_n))$$
+* If $$f: A^n \rightarrow A$$, then for every $$a_1, ..., a_n$$, $$\sigma(f(a_1, ..., a_n)) = f(\sigma(a_1), ..., \sigma(a_n))$$
+
+* 0 is not definable constant in $$(Z, \leq)$$ - consider $$\sigma(z) = z + 1$$
+* The set of positive integers is not definable in $$(Z, +$$  - consider $$\sigma(z) = -z$$</pre>
+</div>
+<div created="20200417165905555" modified="20200510214803467" tags="logic [[UCLA Math 114L - Mathematical Logic]]" title="First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to First Order Logic]]
 # [[Syntax of First Order Logic]]
-# [[Semantics of First Order Logic]]</pre>
+# [[Semantics of First Order Logic]]
+# [[Assignments and Denotations]]
+# [[First Order Definability]]
+# [[Theories and Elementary Classes]]
+# [[Compactness of First Order Logic]]</pre>
 </div>
 <div created="20200427230559757" modified="20200429230130977" tags="[[UCLA CS 267A - Probabilistic Programming and Relational Learning]] [[First Order Logic]] logic" title="First Order Logic - An AI Perspective" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>World now has:
@@ -16107,6 +16253,80 @@ Summary: https://imgur.com/y5kB4ru
 
 </pre>
 </div>
+<div created="20200506230433307" modified="20200507000942508" tags="[[UCLA CS 267A - Probabilistic Programming and Relational Learning]] [[artificial intelligence]]" title="Probabilistic Database Semantics" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Recap: Unique Names assumption and Closed World assumption
+
+Relations -&gt; Tables - everything not in table is assumed to be false
+
+Query: First Order Formula: https://imgur.com/KmWaDcP
+
+* variable z in above example still unbound, unlike typical FOL formula since we want all z that satisfy this
+
+
+Closed World Assumption helps circumvent Monotonicity of logic - can add new entries to table, under the closed world assumption the entry that was early assumed to be false is now true so not query -&gt; true to false therefore this non-monotonic 
+
+Database semantics: going from declarative query -&gt; logical query plan -&gt; physical query plan - https://imgur.com/5Bp66dr
+
+Theory of Databases: Problem $$Q(D)$$
+
+* Data Complexity: fix Q, complexity = $$f(D)$$ - time complexity as D increases in size
+* Query Complexity: fix D, complexity = $$f(Q)$$ - complexity for fixed D but query becomes more complex and larger
+* Combined Complexity = $$f(D, Q)$$ - traditional 
+
+Probabilistic Database:
+
+* Semantics = Probability distribution over possible worlds (deterministic databases) - e.g. https://imgur.com/Wg03r2o
+* For a boolean query $$\alpha$$, $$P(\alpha) = \sum_{w \models \alpha} P(w)$$ where w are the deterministic databases and w $$\models \alpha$$ means alpha is true in that database
+* Not practical though, can get very expensive
+
+In propositional worlds, how do we do this more effectively? Use compact representation of Bayesian Networks - by specifying dependencies and using conditional probabilities, we can reduce the number of parameters we need to specify greatly - 100 variables - $$2^100$$ probabilities but can be specified in a bayesian network using around 1000 parameters
+
+Assert Marginal Probabilities:
+
+```
+p(Researcher(Carol, Upenn)) = 0.7
+```
+
+Rules out certain possible probabilistic databases https://imgur.com/aTKZ5Ad
+
+Markovian Assumption: https://en.wikipedia.org/wiki/Causal_Markov_condition
+
+Markov Blanket: https://en.wikipedia.org/wiki/Markov_blanket
+
+General Technique in AI:
+
+* Assert compact knowledge
+* Ideally until that knowledge implies uniquely what you want to specify
+* //Knowledge Representation//
+
+How do we model the necessary independence assumptions in Probabilistic Database case:
+
+Attribute-Level Uncertainty: 
+
+* assumptions blocks are independent
+* uncertainty only in column i.e affiliation
+* can take only one value in the last column - categorical distribution
+
+Block-Independent Disjoint Databases: https://www.cs.ox.ac.uk/people/dan.olteanu/papers/do-edbs14b.pdf
+
+Tuple Independence: All tuples are independent
+
+https://imgur.com/3O5EWym
+
+Every world has a subset of the facts in the tuple
+
+Example: https://imgur.com/ZffbD7A
+
+CNFs v/s DNFs: https://imgur.com/LleSNKv
+
+Generalized Query Semantics:
+
+A query over a traditional database is a function $$Q: 2^{Tup} \rightarrow R^d$$. The semantics of Q over a probabilistic database D = $$(\Omega, P)$$ is the expectation $$E_D[Q] = \sum_{w \in Q} P_D(w) \cdot Q(w)$$
+
+Set Values Queries: e.g. what expertise exists at brown with same example
+
+Expectation = https://imgur.com/rEGxmjB</pre>
+</div>
 <div created="20200504230418233" modified="20200505003928472" tags="[[artificial intelligence]] [[UCLA CS 267A - Probabilistic Programming and Relational Learning]]" title="Probabilistic Logic Program Inference and Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Answering Questions: https://imgur.com/egGEq48
 
@@ -17447,7 +17667,7 @@ So to evaluate a heuristic, we can fix d and compute b* for that value by starti
 Table evaluating heuristics and comparing to Iterative Deepening - https://imgur.com/2iwq4Vd
 </pre>
 </div>
-<div created="20200422173116436" modified="20200424061005936" tags="logic [[First Order Logic]]" title="Semantics of First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200422173116436" modified="20200510031412160" tags="logic [[First Order Logic]]" title="Semantics of First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>A structure of signature $$\tau = (Const, Rel, Funct, arity)$$ or a $$\tau-structure$$ is a pair $$\textbf{ A } = (A, I)$$ where A is a non-empty set and the interpretation of $$I$$ assigns:
 
 * a member $$I(c) = c^{\textbf{A}}$$ of A, to each constant symbol $$c$$
@@ -17464,6 +17684,34 @@ In casual notation, we conflate formal symbols and notation for e.g. $$\textbf{N
 Thus, while may often represent graphs as $$\tau=\{E\}$$ structures, not every $$\tau=\{E\}$$ structure is a graph, consider $$\textbf{A} = (A, E)$$ where $$A = \{0, 1, 2\}$$ and $$E^{\textbf{A}} = \{(1, 0), (0, 1)\}$$ therefore neither anti-symmetric nor reflexive, thus not a graph but is technically a $$\tau=\{E\}$$ structure as it does use the symbol $$E$$ which is typically used to represent an edge relation but needn't always be used to represent that very relation (i.e. there are structures where it can take different meanings, based on the interpretation $$I$$)
 
 
+An isomorphism between two $$\tau$$ structures A, B is a bijection $$\sigma: A \rightarrow B$$ s.t. 
+
+* $$\forall$$ constants $$c, \sigma(c^A) = c^B$$
+* $$\forall$$ n-ary relations symbol $$R$$ and all $$x_1, ..., x_N \in A, R^A(x_1, ..., x_n) = R^B(\sigma(x_1), ..., \sigma(x_n))$$
+* $$\forall$$ n-ary function symbols $$f$$ and all $$x_1, ..., x_n \in A$$, $$\sigma(f^A(x_1, ..., x_n)) = f^B(\sigma(x_1), ..., \sigma(x_n))$$. 
+
+An isomorphism $$\sigma: A \rightarrow A$$ is called an automorphism
+
+$$A \cong B \iff \text{ exists isomorphism } \sigma: A \rightarrow B$$
+
+Examples: $$\tau = (\leq)$$, Automorphisms of the $$\tau$$ structure $$(Z, \leq)$$ are all maps $$\sigma(z) = z + x_0$$ for some fixed $$x_0 \in Z$$
+
+__Reduct and Expansion__
+
+If $$\sigma$$, $$\tau$$ are vocabularies, each symbol of $$\sigma$$ is a symbol of the same kind and with same arity in $$\tau$$, then $$\sigma$$ is a reduct of $$\tau$$ and $$\tau$$ is an expansion of $$\sigma$$, $$\sigma \subseteq \tau$$
+
+If B is a given $$\tau$$ structure, and $$\sigma \subseteq \tau$$, reduct of B to $$\sigma$$ by deleting from B the objects assigned to symbol not in $$\sigma$$ formally $$B | \sigma = (B, I, | \sigma)$$
+
+If $$\tau \subseteq \sigma$$, we can define expansions of B by assigning interpretation to the symbols in $$\sigma$$ which are not in $$\tau$$, notation for this is $$(\textbf{B}, I) = $$ expansion of B by I
+
+__Substructres__
+
+Suppose $$\textbf{A} = (A, I)$$ and $$\textbf{B} = (B, I)$$ are $$\tau$$-structures, ''A'' is //substructure// of ''B'' (''A'' $$\subseteq$$ ''B'') if
+
+* $$A \subseteq B$$ - subset on the underlying set
+* For each constantly symbol c of $$\tau$$, $$c^B = c^A \in A$$
+* For every nary relation and all $$x_1, ..., x_n \in A$$, $$R^B(x_1, ..., x_n) \iff R^A(x_1, ..., x_n)$$
+* FOr every n-ary function symbol f and all $$x_1, ..., x_n \in A$$, $$f^B(x_1, ..., x_n) = f^A (x_1, ..., x_n) \in A$$
 
 </pre>
 </div>
@@ -18538,6 +18786,115 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Recurrent Neural Network]]: linear transformation of previous state and current observation with some non-linearity around it to determine current state - S^a_t = \sigma(S^a_{t-1} W_s + O_t W_o)
 </pre>
 </div>
+<div created="20200510190823200" modified="20200510230339639" tags="[[First Order Logic]]" title="Theories and Elementary Classes" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<pre>A theory is a language LPCI($$\tau$$) is any (possibly infinite) set of sentences T of LPCI($$\tau$$). The members of T are its axioms
+
+A $$\tau$$-structure is a model of T is every sentence of T is true in: $$A \models T \iff \forall \phi \in T, A \models \phi$$
+
+$$Mod(T) = \{ A | A \models T\}$$
+
+A property of $$\tau$$-structures is ''elementary'' if there is a $$\tau$$-theory T such that A has property $$\phi \iff A \models T$$
+
+If there is a finite theory T that does the same, then the property is ''basic elementary''
+
+The theory of a $$\tau$$-structure A is the set of all LPCI($$\tau$$) sentences that is satisfies 
+
+$$Th(A) = \{ \chi | \chi \text{ is a sentence and } A \models \chi$$
+
+Two $$\tau$$-structures are elementarily equivalent if they satisfy the same sentences $$A \approx B \iff Th(A) = Th(B)$$
+
+Example: The property of being a symmetric binary relation is basic elementary. 
+
+* $$\tau = \{R\}$$
+* R is a binary relation symbol
+* $$\chi \equiv \forall v_1 \forall v_2 (R(v_1, v_2) \rightarrow R(v_2, v_1)$$
+* Then for any A, $$\tau$$-structure, $$(A, R^A)$$, $$R^A \text{ is symmetric } \iff A \models \chi$$
+
+Def: Let A be a set and let E $$\subset A^2$$ be a binary relation on A. E is called an equivalence relation if E is reflexive, symmetric and transitive. For an element $$x \in A$$, the equivalence class of x is $$[x] = \{ a \in A: xEa \}$$
+
+Thm: Let E be an equivalence relation on A, then the set of equivalent classes $$\{[x]_E: x \in A \}$$ form a partition of A. 
+
+Example: 
+
+* $$t = \emptyset$$ so the structure is just the set
+* For each $$n \in N  \setminus \{1\} $$, $$\chi_n \equiv \exists v_1 \exists v_2 .... \exists v_n (\text{ AND }_{1 \leq i &lt; j \leq n} v_i \neq v_j)$$ i.e. there are at least n distinct elements
+* $$T_{inf} = \{ \chi_n \forall n \in N \setminus \{1\} \}$$
+* A is infinite $$\iff \textbf{A} \models T_{inf}$$
+
+A theory is:
+
+* satisfiable if there is a structure ''A'' s.t. $$\textbf{A} \models T$$
+* finitely satisfiable if every finite $$T_0 \subset T$$ is satisfiable 
+
+Thm: Compactness for First order Logic i.e if $$T$$ is finitely satisfiable it is satisfiable for every countable signature $$\tau$$
+
+Logical consequence operator - entails: $$\models$$
+
+Corollary: If $$T \models \chi$$, $$\exists$$ finite $$T_0 \subset T$$ s.t. $$T_0 \models \chi$$
+
+Proof: Suppose not so then $$T_0 \cup \{ \neq \chi\}$$ is satisfiable for every finite $$T_0 \subset T$$
+
+Proposition: The property of being an infinite set is not a basic elementary property of $$\tau$$-structures
+
+Proof: 
+
+* Let $$T_{inf}$$ be defined as above
+* $$A \text{ is inf } \iff \textbf{A} \models T_{inf}$$
+* Suppose towards a contradiction that there exists $$\phi$$ a $$\tau$$-sentence (thus by def finite) s.t. $$A \text{ is inf } \iff \textbf{A} \models \phi$$
+* Therefore $$T_{inf} \models \phi$$ - logical consequence
+* Thus by corollary, $$\exists T_0 \subseteq T_{inf} s.t T_0 \models \phi$$
+* Let $$N \in \textbf{N}$$ be the smallest value such that $$T_0 \subset \{\chi_2, ..., \chi_N\}$$
+* Consider the substructure $$\textbf{A} = (\{1, 2, ..., N\})$$, then $$A \models T_0 \implies (\because T_0 \models \phi) A \models \phi \implies A \text{ is infinite} $$, but this is a contradiction, hence proven. 
+
+Def: Let $$(L, \leq)$$ be a linear ordering, then an infinite descending sqeuence is a sequence $$\{x_n\}_{n \in N}$$ of elements of L such that $$... &lt; x_2 &lt; x_1 &lt; x_0 $$
+
+A linear ordering $$(L, \leq)$$ is well-ordered if it has no infinite descending sequences. 
+
+Example: 
+
+* $$(N, \leq)$$ is well-ordered
+
+Being well-ordered is not an elementary property. 
+
+Thm: Let $$\phi$$ be a property of $$\tau$$-structures. Suppose there are two structures ''A'' and ''B'' such that: 
+
+* A and B are elementarily equivalent
+* A has property $$\phi$$
+* B doesn't have property $$\phi$$
+
+Proof: 
+
+* Suppose towards a contradiction, there is $$\tau$$-theory T s.t for all $$\tau$$-structures ''M, M'' has $$\phi \iff \textbf{ M} \models T$$
+* Since $$\textbf{A}$$ has $$\phi$$, $$A \models T$$
+* B doesn't have $$\phi, B \not\models T$$
+* Thus $$\exists \chi \in T$$ s.t. $$B \not\models \chi$$, $$A \models \chi$$
+* But then $$Th(A) \neq Th(B)$$ - contradiction
+
+Proposition: For any infinite well-ordering ''A'' = $$(A, \leq^A)$$, there exists a linear ordering ''B'' = $$(B, \leq^B)$$ which is not well-ordered but elementary equivalent to A. 
+
+Proof: 
+
+* Let $$c_1, c_2, ...$$ be new constant symbols
+* For each $$n = 2, 3, ...$$, let $$\chi_n = c_n &lt; c_{n - 1} &lt; ...$$ (misspelling but can easily be defined properly) 
+* Let $$T = Th(A) \cup \{\chi_n: n = 2, 3, ..\}$$
+* Claim: T is finitely satisfiable
+* Suffices to show for N = 2, 3, ... $$T_N = Th(A) \cup \{\chi_2, ..., \chi_N\}$$ is finitely satisfiable since $$Th(A)$$ is obviously satisfiable 
+* Fix such an N
+* Since A is infinite, select $$A_0 \subset A$$ consisting of exactly N elements
+* Since these elements are well ordered, can label them such that $$a_N &lt;^A a_{N - 1} &lt;^A ... &lt;^A a_1$$
+* Consider A* = $$(A, c_1, ..., c_N)$$ where $$c_i = a_i$$ 
+* Then, A* $$\models \chi_N$$ since $$c_N &lt; c_{N - 1} &lt; ... &lt; c_1$$ - ''1''
+* Since A* is an expansion of A = $$(A, \leq^A)$$, they have the same $$\{\leq\}$$-theory
+* Thus A* $$\models Th(A)$$ - ''2''
+* Therefore by ''1 and 2,'' A* $$\models T_N$$
+* Hence by compactness T is satisfiable 
+* Thus $$\exists B = (B, \leq^B, \{c_i^B\}_{i \in N}) \models T$$
+* Since $$B \models Th(A)$$, the reduct $$(\textbf{B}, \leq^B) \models Th(A)$$ since $$Th(A)$$ contains only $$\{\leq\}$$-sentences
+* So the reduct $$(\textbf{B}, \leq^B)$$ is elementarily equivalent to A, but not well ordered since $$... &lt; c_2^\textbf{B} &lt; c_1^\textbf{B}$$ an infinite descending sequence exists
+
+
+</pre>
+</div>
 <div created="20200131030723016" modified="20200131155509679" tags="" title="Things I want to learn about in 2020" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Machine Learning (in practice)
 * Reinforcement Learning
@@ -18712,7 +19069,7 @@ In such games, more focus on good evaluation functions than depth. </pre>
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
 </div>
-<div created="20200412210020323" modified="20200504230410298" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming and Relational Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200412210020323" modified="20200506230521259" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming and Relational Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to Probabilistic Programming]]
 # [[Propositional Reasoning]]
 # [[Propositional Probability]]
@@ -18721,7 +19078,8 @@ In such games, more focus on good evaluation functions than depth. </pre>
 # [[General Probabilistic Programming Inference]]
 # [[First Order Logic - An AI Perspective]]
 # [[Probabilistic Logic Programming]]
-# [[Probabilistic Logic Program Inference and Learning]]</pre>
+# [[Probabilistic Logic Program Inference and Learning]]
+# [[Probabilistic Database Semantics]]</pre>
 </div>
 <div created="20200126032331506" modified="20200210191753424" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
