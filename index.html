@@ -179,8 +179,6 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
-<li>$:/state/tab/sidebar--595412856</li>
-
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -192,6 +190,8 @@ Error message and password prompt
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -294,6 +294,10 @@ Error message and password prompt
 <li>Do Calculus</li>
 
 <li>Domain Name System (DNS)</li>
+
+<li>Draft 2 of 'Transmission Control Protocol (TCP)'</li>
+
+<li>Draft of 'Transmission Control Protocol (TCP)'</li>
 
 <li>Electronic Mail (Email)</li>
 
@@ -491,6 +495,8 @@ Error message and password prompt
 
 <li>Principles of Reliable Data Transfer</li>
 
+<li>Probabilistic Database Query Evaluation</li>
+
 <li>Probabilistic Database Semantics</li>
 
 <li>Probabilistic Logic Program Inference and Learning</li>
@@ -595,7 +601,7 @@ Error message and password prompt
 
 <li>Topological Spaces</li>
 
-<li>Transmission Control Protocol (TCP</li>
+<li>Transmission Control Protocol (TCP)</li>
 
 <li>Transport Layer</li>
 
@@ -10136,11 +10142,8 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
-<div created="20200511230313149" modified="20200511230320134" title="$:/state/sidebar" revision="2" bag="default">
+<div created="20200514181814014" modified="20200514210436081" title="$:/state/sidebar" revision="12" bag="default">
 <pre>yes</pre>
-</div>
-<div created="20200510230320301" modified="20200510230320301" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
-<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
@@ -10154,7 +10157,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200510230322000" list="" modified="20200511011510854" title="$:/StoryList" revision="14" bag="default">
+<div created="20200514181537331" list="[[Transmission Control Protocol (TCP)]]" modified="20200514210349211" title="$:/StoryList" revision="64" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10214,6 +10217,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200514181534880" modified="20200514210409517" title="$:/temp/search" revision="8" bag="default">
+<pre></pre>
 </div>
 <div created="20200227023745997" modified="20200414190048197" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -11298,7 +11304,7 @@ Synthetic Benchmarks - fractal networks - self-similar networks, stochastic bloc
 
 </pre>
 </div>
-<div created="20200510214552723" modified="20200511013541102" tags="[[First Order Logic]]" title="Compactness of First Order Logic" type="text/vnd.tiddlywiki" revision="2" bag="default">
+<div created="20200510214552723" modified="20200511013541102" tags="[[First Order Logic]]" title="Compactness of First Order Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Let $$\tau$$ be a fixed countable signature
 
 Lemma: Let T be a finitely satisfiable $$\tau$$-theory. For any $$\tau$$-sentence $$\chi$$, at least one of $$T \cup \{ \chi \}$$ and $$T \cup \{\neg \chi \}$$ is satisfiable (proven for [[Propositional Logic]])
@@ -12535,6 +12541,12 @@ DNS protocol messages: https://imgur.com/Xxhf8FW, https://imgur.com/VQvylnz
 
 
 </pre>
+</div>
+<div modified="20200514193047741" title="Draft 2 of 'Transmission Control Protocol (TCP)'" revision="2353" bag="default">
+<pre></pre>
+</div>
+<div modified="20200514185945853" title="Draft of 'Transmission Control Protocol (TCP)'" revision="3545" bag="default">
+<pre></pre>
 </div>
 <div created="20200413204659846" modified="20200423225513254" tags="[[Application Layer]] [[computer networks]]" title="Electronic Mail (Email)" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Two components:
@@ -15065,7 +15077,7 @@ Example: https://imgur.com/JSGaogc, https://imgur.com/9VuO5oP
 
 Q - how to deal with non-fixed probability - non-stationary MDPs, augment MDP to represent it (w possible infinite states)</pre>
 </div>
-<div created="20200212022712329" modified="20200222064146679" tags="[[Markov Decision Processes from scratch]]" title="Markov Reward Processes" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200212022712329" modified="20200514181916566" tags="[[Markov Decision Processes from scratch]]" title="Markov Reward Processes" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>A Markov reward process is a Markov chain with value judgement:
 
 * $$&lt;S, P, R, \gamma&gt;$$
@@ -16253,6 +16265,56 @@ Summary: https://imgur.com/y5kB4ru
 
 </pre>
 </div>
+<div created="20200511230411050" modified="20200512004832210" tags="[[UCLA CS 267A - Probabilistic Programming and Relational Learning]]" title="Probabilistic Database Query Evaluation" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Query Evaluation following the semantics directly is intractable i.e. enumerating worlds - grows exponentially 
+
+Example Queries:
+
+* $$Scientist(John)$$
+
+Just pull probability from data 
+
+* $$\exists x \  Scientist(x)$$
+
+$$1 - P(\neg (\exists x S(x)) = 1 - P(\forall x \neg S(x)) = 1 - P(\neg S(A) \land .... ) = 1 - \prod_i (\neg S(i)) = 1 - \prod_i (1 - P(S(i)))$$
+
+* $$\exists x \  Scientist(x) \land Handsome(x)$$
+
+$$1 - P(\neg (\exists x S(x) \land H(x))) = 1 - P(\forall x \neg S(x) \lor \neg H(x)) = 1 - P((\neg S(A) \lor H(A))\land .... ) = 1 - \prod_i (\neg S(i) \lor H(i)) = 1 - \prod_i (1 - P(S(i) \land H(i))) = 1 - \prod_i (1 - P(S(i))P(H(i)))$$
+
+* $$\exists x \exists y Scientist(x) \land Coauthor(x, y)$$
+
+- Need to use the tricks we learned above in a way such that the terms of our product don't have the same probability S(x) or H(x, y) in this case appear in two different terms 
+- Hence turning into negation all the way doesn't help as double product results in dependent terms
+- Also negating the y 's existential quantifier, doesn't help as the resulting product has these dependent terms
+- Another common pitfall is using addition to compute the or but this double counts the intersection, so instead convert or to and for simplicity 
+
+Derivation: https://imgur.com/fkhEjV9 - and then we have reduced to essentially the same case as above 
+
+Evidently poly time in size of database as finally what we have can be evaluated as a bunch of nested for loops
+
+More advanced queries: 
+
+* $$\exists x \exists y S(x) \land A(x, y) \lor \exists S(x) \land H(x)$$
+
+Reducing to previous cases: https://imgur.com/m7dMQUh
+
+
+* $$\forall x_1 \forall y_1 \forall x_2 \forall y_2 (S(x_1, y_1) \lor R(y_1) \lor S(x_2, y_2) \lor T(y_2))$$
+
+https://imgur.com/5Ht17qT - trick is use inclusion exclusion, take a difficult or and divide it into simpler queries
+
+__Lifted Inference Rules__
+
+# Negation: $$P(\neg Q) = 1 - P(Q)$$
+# Decomposable $$\lor, \land$$  - $$P(Q_1 \land Q_2) = P(Q_1) P(Q_2)$$, $$P(Q_1 \lor Q_2) = 1 - ( 1- P(Q_1)) (1 - P(Q_2)) $$
+# Decomposable $$\exists, \forall$$ - $$P(\exists z Q) = 1 - \prod_{A \in Domain} (1 - P(Q[A/z]))$$, $$P(\forall z Q = \prod_{A \in Domain} P(Q[A/z])$$
+#Inclusion / Exclusion - $$P(Q_1 \land Q_2) = 1 - P(\neg Q_1 \lor \neg Q_2)$$, $$P(Q_1 \lor Q_2) = P(Q_1) + P(Q_2) - P(Q_1 \land Q_2)$$
+
+Most Advanced Query: $$\forall x \forall y Smoker(x) \lor Friend(x, y) \lor Jogger(y)$$
+
+</pre>
+</div>
 <div created="20200506230433307" modified="20200507000942508" tags="[[UCLA CS 267A - Probabilistic Programming and Relational Learning]] [[artificial intelligence]]" title="Probabilistic Database Semantics" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Recap: Unique Names assumption and Closed World assumption
 
@@ -17074,7 +17136,7 @@ Determining how many iterations will get us to to the $$|A\rangle$$
 
 </pre>
 </div>
-<div created="20200429180631608" modified="20200429215817066" tags="[[UCLA CS 239 - Quantum Computation]] [[quantum computing]]" title="Quantum Algorithms: Simon" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200429180631608" modified="20200512041451729" tags="[[UCLA CS 239 - Quantum Computation]] [[quantum computing]]" title="Quantum Algorithms: Simon" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Problem: Input a function $$f: \{0, 1\}^n \rightarrow \{0, 1\}^n$$
 
 Assumption: $$\exists s \in \{0, 1\}^n, \forall x, y \in \{0, 1\}^n : f(x) = f(y) \iff (x \oplus y = 0^n \lor x \oplus y = s)$$
@@ -17099,7 +17161,7 @@ Understanding the classical part:
 * picking at random, we want all y to be linearly independent, but we can't guarantee this
 * probability of failure to find s after 4m iterations = (probability that y picked in iteration are not linearly independent)^4m &lt; $$(1 - \frac{1}{4})^{4m} &lt; e^{-m}$$
 
-Since $$\forall \epsilon &gt; 0, \exists m : e^{-m} &lt; \epislon$$ we can choose m large enough to give us our desired success rate 
+Since $$\forall \epsilon &gt; 0, \exists m : e^{-m} &lt; \epsilon$$ we can choose m large enough to give us our desired success rate 
 
 Aim for the quantum part: Pick the ys randomly so we can use the guarantees on linear independence
 
@@ -18786,7 +18848,7 @@ Partially Observable Environments - indirectly observes environment (e.g. poker 
 * [[Recurrent Neural Network]]: linear transformation of previous state and current observation with some non-linearity around it to determine current state - S^a_t = \sigma(S^a_{t-1} W_s + O_t W_o)
 </pre>
 </div>
-<div created="20200510190823200" modified="20200510230339639" tags="[[First Order Logic]]" title="Theories and Elementary Classes" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20200510190823200" modified="20200510230340896" tags="[[First Order Logic]]" title="Theories and Elementary Classes" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>A theory is a language LPCI($$\tau$$) is any (possibly infinite) set of sentences T of LPCI($$\tau$$). The members of T are its axioms
 
 A $$\tau$$-structure is a model of T is every sentence of T is true in: $$A \models T \iff \forall \phi \in T, A \models \phi$$
@@ -18915,7 +18977,7 @@ Proof:
 * [[Path Connectedness]]
 </pre>
 </div>
-<div created="20200430061116963" modified="20200430062258806" tags="[[Transport Layer]]" title="Transmission Control Protocol (TCP" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200430061116963" modified="20200514210040632" tags="[[Transport Layer]]" title="Transmission Control Protocol (TCP)" type="text/vnd.tiddlywiki" revision="25" bag="default">
 <pre>Overview:
 
 * point to point - one sender, one receiver
@@ -18924,16 +18986,145 @@ Proof:
 * bidirectional data transfer aka full duplex data
 * connection oriented - handshake - initializes sender and receiver state before data is exchanged 
 
-TCP Segment Structure: https://imgur.com/BOTg66B - need to have sequence number and ack number in bytes rather than packets since we allow variable length data - can use options field to extend seqeuence number space further if needed
+TCP Segment Structure: https://imgur.com/BOTg66B - need to have sequence number and ack number in bytes rather than packets since we allow variable length data - can use options field to extend sequence number space further if needed
 
-</pre>
+__Sequence Numbers, Ack Numbers__
+
+* Sequence Number: byte stream number of first byte in segments data
+* Acknowledge # - seq# of next byte of expected from the other side, cumulative acks
+* TCP doesn't specify how to handle out-of-order segment (but typically uses Selective Repeat) 
+
+Simple Telnet Scenario - server echos back client message - https://imgur.com/6FLwc1c
+
+__Timeout__
+
+Sample RTT = measured time from segment transmission until ACK receipt 
+
+but we can't directly use this as Sample RTT varies a lot and will result in a lot of cases when it is either too short or too long 
+
+Estimated RTT =  (1 - a) * Estimated RTT (prev) + a * Sample RTT
+
+(Need to have some margin of error from what we expect the RTT to be, hence we have Dev RTT to take into consideration this safety margin)
+
+Dev RTT = (1 - b) * Dev RTT prev + b * |Sample RTT - Estimated RTT (current)| 
+
+Timeout Interval = Estimated RTT + 4 * Dev RTT
+
+__Reliable Data Transfer of TCP__
+
+TCP only has one app 
+
+TCP sender events: 
+
+* data rcvd from app - create segment with seq #, seq# is byte stream number of first data byte in segment, start time if not already running - timer is timer of oldest unacked segment (expires in Timeout Interval time (check above)) 
+* timeout - retransmit segment that caused timeout and restart timer
+* ack received - if ack acknowledges previously unacked segments then update what is known to be acked and start a timer if there are still unacked segments 
+
+TCP: retransmission scenarios https://imgur.com/Sc0fP1t
+
+TCP receiver events:
+
+* arrival of in-order segment with expected seq #, all data up to expected seq# already ACKed - ''delayed ACK'' - wait up to 500 ms for next segment, if no next segment then end ACK - to reduce overhead of ACK messages if everything going smoothly
+* arrival of in-order segment with expected seq #, one other segment has ACK pending - immediately send cumulative ACK - so no more unacked segments up till the current in order segment
+* Arrival of out-of-order segment higher than expected seq#, gap detected - immediately send duplicate ACK, indicating sequence # of next expected byte
+* Arrival of segment that partially or completely fills gap - immediately send ACK, provided that segment starts at lower end of gap 
+* Arrival of segment that partially or completely fills gap - immediate send ACK, provided that segment starts at lower end of gap 
+
+TCP fast retransmit:
+
+* if 3 duplicate acks (i.e. 1 original ack + 3 repeated acks) received then retransmit 
+* to be able to retransmit quickly before time out period as timeout period is very long 
+* if segment lost there will be infinite duplicate acks, allowing for 3 duplicate acks rather than just one allows for more out of delivery 
+
+__TCP Flow Control__
+
+To ensure that the TCP sender doesn't overwhelm the receiver and cause the buffer to overflow
+
+* Receiver shares free buffer space by including ''rwnd'' value in TCP header of receiver-to-send segments (subset of ''~RcvBuffer'' that is free) - set via socket options, typically 4096 bytes
+* Sender limits amount of unacked to ''rwnd''
+
+TCP 2-way Handshake - two one way communication can have pitfalls due to short timeout values etc. : https://imgur.com/6FLwc1c - need to establish two one-way communications and hence with just two messages don't let you confirm which one way communication is set and which is not 
+
+TCP 3-way Handshake - https://imgur.com/dEWyjoR - clever use of the TCP header lets you send the new connection set up message while acknowledging the previous message in the server's message 
+
+TCP 4-way closing a connection: https://imgur.com/Rpd0qpk
+
+__Congestion Control__
+
+Too many sources sending too much data too fast for //network// to handle - results in buffer overflow at routers -&gt; lost packets, results in long queues in router buffers in long delays 
+
+Two main approaches: 
+
+* End to end congestion control - no explicit feedback from network, must be inferred from end system observed loss and delay - ''TCP uses this''
+* Network-assisted congestion control - routers provide feedback to end systems - single bit indicating congestion (SNA, DECbit, TCP/IP ECN, ATM) - explicit rate sender should send at
+
+TCP Congestion Control: 
+
+* Assumptions - best effort network (so can have packet drop), each source determine network capacity from its perspective, ACKs pace transmission (self-clocking) 
+
+* Challenge - determining initial available capacity, adjusting to changes in capacity in a timely manner
+
+Add notion of congestion window ''cwnd'' - effective window is //min(cwnd, rwnd)//
+
+Changes in congestion window size: slow increases to absorb new bandwidth, quick decreases to eliminate congestion 
+
+Fact: Congestion causes packet drop
+Not always true: Packet drop implies congestion - possible packets dropped due to corruption in IP header - since links becoming more reliable, this is becoming more true however and thus the assumption is more realistic 
+
+Sender infers congestion by observing timeout or 3 duplicate ACKs
+
+Three Mechanisms (RFC 5681):
+
+* Additive Increase Multiplicative Decrease
+* Slow Start: to help TCP start fast
+* Retransmission upon timeout - conservative loss / failure handling
+
+Additive Increase, Multiplicative Decrease: https://imgur.com/b0rGic5
+
+* Additive increase - increase ''cwnd'' by 1  maximum TCP segment size every RTT until loss is detected
+* Multiplicative decrease - cut ''cwnd'' by 50% after loss
+
+Why AIMD? Ensures Fairness in TCP - if multiple connections sharing link then eventually each should get just its fair share - https://imgur.com/Z41qrhC - decreasing proportionally is the key idea 
+
+Trace for TCP Congestion WIndow: https://imgur.com/EC7bZLT
+
+TCP Slow Start: increase quickly when starting out i.e. cwnd &lt;= 2, every ACK cwnd += 1, leads to exponential increase every RTT - https://imgur.com/fRg5GMO
+
+After we cross ''ssthresh'' - typically want to set this threshold to half of max capacity, switch to AIMD
+
+Congestion Avoidance: goal is to increased ''cwnd'' by 1MSS per RTT until congestion is detected - cwnd += (MSS/cwnd)*MSS(bytes) upon every incoming non-duplicate ACK - so by the end of 1 RTT we have increased by 1MSS
+
+When loss occurs: 
+
+* through duplicate ACKS - fast retransmit / fast recovery - multiplicative decrease cwnd
+* through retransmission timeout - reset everything 
+
+Fast Retransmit: 
+
+* use 3 duplicate ACKs to infer packet loss
+* set //ssthresh// = max(cwnd/2, 2MSS)
+* cwnd = sshthread + 3MSS - we add 3 MSS since we know from 3 dup acks that 3 more segments have been received
+* retransmit lost packet
+
+Fast Recovery: governs the transmission of new data until a non-duplicate ACK arrives - increase cwnd by 1MSS upon every duplicate ACK - wants to quickly get normal ACKs - key idea here is that the increase of cwnd doesn't actually sending rate but is required to actually maintain the sending rate at 50% - since the inflight segments remain same, the cwnd just needs to be increased to ensure that the next packet leaves, otherwise the sending rate would be dropped even further than 50% of its former value 
+ 
+When a new ack is received then we turn off fast recovery, set //cwnd = ssh// 
+
+Retransmission Timeout: 
+
+* set //ssthresh// = max(cwnd/2, 2MSS)
+* retransmission only occurs upon heavy loss so need to reset to back off a lot 
+
+Summary: https://imgur.com/n1Morq4
+
+Examples: https://imgur.com/UKYvuSG, https://imgur.com/8gnbJLZ</pre>
 </div>
-<div created="20200417155924595" modified="20200430061111702" tags="[[UCLA CS 118 - Computer Network Fundamentals]] [[computer networks]]" title="Transport Layer" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200417155924595" modified="20200514181551360" tags="[[UCLA CS 118 - Computer Network Fundamentals]] [[computer networks]]" title="Transport Layer" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre># [[Transport Layer Services]]
 # [[Multiplexing and Demultiplexing]]
 # [[Connectionless Transport: UDP]]
 # [[Principles of Reliable Data Transfer]]
-# [[Transmission Control Protocol (TCP]]</pre>
+# [[Transmission Control Protocol (TCP)]]</pre>
 </div>
 <div created="20200417160127840" modified="20200417160747368" tags="[[Transport Layer]]" title="Transport Layer Services" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Built for Application Layer to use and uses Network Layer itself. 
@@ -19069,7 +19260,7 @@ In such games, more focus on good evaluation functions than depth. </pre>
 <div created="20200212062244378" modified="20200219024018484" tags="[[artificial intelligence]] ucla [[bayesian networks]]" title="UCLA CS 262A Learning and Reasoning with Bayesian Networks" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Historical Perspective on AI]]</pre>
 </div>
-<div created="20200412210020323" modified="20200506230521259" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming and Relational Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200412210020323" modified="20200511230341560" tags="[[artificial intelligence]] ucla" title="UCLA CS 267A - Probabilistic Programming and Relational Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Introduction to Probabilistic Programming]]
 # [[Propositional Reasoning]]
 # [[Propositional Probability]]
@@ -19079,7 +19270,8 @@ In such games, more focus on good evaluation functions than depth. </pre>
 # [[First Order Logic - An AI Perspective]]
 # [[Probabilistic Logic Programming]]
 # [[Probabilistic Logic Program Inference and Learning]]
-# [[Probabilistic Database Semantics]]</pre>
+# [[Probabilistic Database Semantics]]
+# [[Probabilistic Database Query Evaluation]]</pre>
 </div>
 <div created="20200126032331506" modified="20200210191753424" tags="[[machine learning]] ucla" title="UCLA CS M146 - Machine Learning" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! Syllabus
