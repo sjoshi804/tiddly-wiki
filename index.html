@@ -177,6 +177,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/sidebar</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
+
 <li>$:/status/IsAnonymous</li>
 
 <li>$:/status/IsLoggedIn</li>
@@ -356,6 +360,8 @@ Error message and password prompt
 <li>Incremental Methods of Value Function Approximation</li>
 
 <li>Induction</li>
+
+<li>Inference in First Order Logic</li>
 
 <li>Inference in Propositional Logic</li>
 
@@ -10136,6 +10142,12 @@ Error message and password prompt
 <div created="20191119201741688" modified="20191119201751499" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Sid's ~TiddlyWiki</pre>
 </div>
+<div created="20200515154412925" modified="20200515182057339" title="$:/state/sidebar" revision="4" bag="default">
+<pre>yes</pre>
+</div>
+<div created="20200515154407818" modified="20200515154407818" title="$:/state/tab/sidebar--595412856" revision="1" bag="default">
+<pre>$:/core/ui/SideBar/Recent</pre>
+</div>
 <div title="$:/status/IsAnonymous" revision="1" bag="default">
 <pre>yes</pre>
 </div>
@@ -10148,7 +10160,7 @@ Error message and password prompt
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20200515024106532" list="[[Transmission Control Protocol (TCP)]] Welcome" modified="20200515024106532" title="$:/StoryList" revision="2" bag="default">
+<div created="20200515154410832" list="" modified="20200515164325941" title="$:/StoryList" revision="43" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -10209,7 +10221,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200515024104720" modified="20200515024108251" title="$:/temp/search" revision="4" bag="default">
+<div created="20200515154403168" modified="20200515182058761" title="$:/temp/search" revision="11" bag="default">
 <pre></pre>
 </div>
 <div created="20200227023745997" modified="20200414190048197" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -13597,6 +13609,76 @@ Claim: If $$A(1)$$ is true and $$A(n) \implies A(n+1)$$ then $$A(n)$$ is true $$
 Proof: Define $$S = \{n | A(n) $$ is true$$\}$$
 
 By axiom, S = N</pre>
+</div>
+<div created="20200515164332130" modified="20200515182024806" tags="[[artificial intelligence]] [[First Order Logic]]" title="Inference in First Order Logic" revision="9" bag="default">
+<pre>__Universal Instantiation__
+
+Take a universally quantified sentence and replace with specific instances
+
+$$\forall x King(x) \land Greedy(x) \implies Evil(x)$$
+
+Can be mapped to:
+
+* $$King(John) \land Greedy(John) \implies Evil(John)$$
+* $$King(Father(John)) \land Greedy(Father(John)) \implies Evil(Father(John))$$
+
+Ground term - doesn't have any variables
+
+Under this conversion for universal instantiation, equivalence is preserved when we don't have any function symbols and can generate a finite propositional kb to represent this. 
+
+__Existential Instantiation__
+
+* $$\exists x Crown(x) \land OnHead(x, John)$$
+
+* $$Crown(c_1) \land OnHead(c_1, John)$$ 
+
+Under this conversion for existential instantiation, satisfiability is preserved, but not necessarily equivalence
+
+__Entailment in FOL is Semi-Decidable__
+
+If sentence $$\alpha$$ is entailed by an FOL KB, it is entailed by a finite subset of the corresponding propositional KB (relates to compactness in [[Propositional Logic]] and [[First Order Logic]])
+
+For n = 0 to $$\infty$$
+
+* create a propositional KB by instantiating with depth-n terms
+* See if $$\alpha$$ is entailed by this KB 
+
+If it is, this algorithm will terminate but otherwise it won't hence //semi-decidable//
+
+__Forward Chaining and Backward Chaining__
+
+Definite Clauses - exactly one positive literal - this is useful as the clauses can be converted then into implication with positive literals on both sides
+
+$$\neg A \lor \neg B \lor C \equiv A \land B \implies C$$
+
+Forward Chaining - get the statements that are implied by the knowledge base by trying to match the head of a rule to the ground terms we have - https://imgur.com/ijZ8YFZ
+
+Backward Chaining - try to prove in reverse direction - so take what you need to prove and match the implied part of every rule and use the different rules that it matches as ways to prove - https://imgur.com/dIHNCBf
+
+
+__Resolution in FOL__
+
+''Unificiation'': A substitution that is applied to two F.O.L. terms s.t. the two are equal 
+
+Example: 
+
+* Knows(John, x) unifying with Knows(y, Mother(y))
+* The substitution that unifies them is $$\theta = \{ y/John, x/Mother(John)\}$$
+
+Note the resulting terms don't necessarily have to be ground
+
+''Resolution'': unification and resolution as before (i.e. as is done in propositional logic)
+
+''Conversion to CNF'':
+
+# Eliminate $$\implies$$ and $$\iff$$
+# Move $$\neg$$ inwards
+# Standardize variables - each quantifier should be over a different variable
+# Skolemize - replace existential quantifiers with skolem functions i.e. $$\forall x \exists y Owns(x, y)$$ becomes $$\forall x Owns(x, F(x))$$ where F is a new function symbol introduced into the vocabulary
+# Drop universal quantifiers
+# Distribute $$\lor$$ over $$\land$$
+
+</pre>
 </div>
 <div created="20200505035539556" modified="20200505054620280" tags="logic [[UCLA CS 161 - Fundamentals of Artificial Intelligence]] [[artificial intelligence]]" title="Inference in Propositional Logic" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Techniques: 
@@ -19213,14 +19295,16 @@ In such games, more focus on good evaluation functions than depth. </pre>
 # [[Application Layer]]
 # [[Transport Layer]]</pre>
 </div>
-<div created="20200402185643352" modified="20200505035531331" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20200402185643352" modified="20200515164324490" tags="ucla [[artificial intelligence]]" title="UCLA CS 161 - Fundamentals of Artificial Intelligence" type="text/vnd.tiddlywiki" revision="6" bag="default">
 <pre># [[Introduction to Artificial Intelligence]]
 # [[Introduction to Lisp]]
 # [[Problem Solving using Search]]
 # [[Constraint Satisfaction Problems]]
 # [[Two Player Games]]
 # [[Knowledge Representation &amp; Reasoning: Logic]]
-# [[Inference in Propositional Logic]]</pre>
+# [[Inference in Propositional Logic]]
+# [[First Order Logic]], [[First Order Logic - An AI Perspective]]
+# [[Inference in First Order Logic]]</pre>
 </div>
 <div created="20200131000351410" modified="20200312211523121" tags="[[computer science]] ucla" title="UCLA CS 201 Winter 2020" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># [[Explainable AI: Making Visual Question Answering Systems More Transparent by Raymond J. Mooney]]
